@@ -1,10 +1,21 @@
-// Fonts
+// laravel(default_styles)
+// fonts 
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
-// Variables
+// variables
 @import 'variables';
 
-// Bootstrap
+// bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-@import 'auth/_login.sass';
+// bk(optional_styles)
+@import 'bk/_variables.sass';
+@import 'bk/_base.sass';
+
+@import 'bk/auth/_login.sass';
+@import 'bk/auth/_register.sass';
+
+@import 'bk/includes/_logo.sass';
+@import 'bk/includes/_footer.sass';
+
+
