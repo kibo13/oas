@@ -14,14 +14,10 @@
                         </div>
                     @endif -->
 
-                    <h1>Главная страница</h1>
+                    <h1>ДОБРО ПОЖАЛОВА В АДМИН ПАНЕЛЬ</h1>
 
-                    <button class="btn btn-primary">
-                        <a href="">USER</a>
-                    </button>
-                    <button class="btn btn-primary">
-                        <a href="{{ route('admin') }}">ADMIN</a>
-                    </button>
+ 
+
                 </div>
             </div>
         </div>

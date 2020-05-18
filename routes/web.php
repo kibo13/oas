@@ -10,6 +10,14 @@ Auth::routes([
     // 'register' => false
 ]);
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/', 'HomeController@index')->name('index');
+Route::middleware(['auth'])->group(function() {
+
+    Route::get('/', 'HomeController@index')->name('home');
+
+    Route::group([
+        'middleware' => 'is_admin',
+        'prefix' => 'admin'
+    ], function () {
+        Route::get('/', 'AdminController@admin')->name('admin');
+    });
 });
