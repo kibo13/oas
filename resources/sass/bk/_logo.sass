@@ -1,0 +1,41 @@
+.bk-logo
+  user-select: none
+
+  &--mb 
+    margin-bottom: 35px 
+
+  &__img
+    &--size-sm 
+      height: 40px
+      width: 40px
+    &--size-md
+      height: 60px
+      width: 60px
+
+  &__title 
+    position: relative
+    margin-bottom: 0
+    min-width: 150px
+
+    &--size-sm 
+      padding-left: 10px
+      padding-top: 5px
+      font-size: $text-xl
+      
+      &::after
+        content: 'диспетчера ОАС'
+        position: absolute
+        left: 0
+        bottom: -10px
+        padding-left: 10px
+        min-width: inherit
+        font-size: $text-base-size
+
+    &--size-md
+      &::after
+        content: 'диспетчера ОАС'
+        position: absolute
+        left: 0
+        bottom: -15px
+        min-width: inherit
+        font-size: $text-md

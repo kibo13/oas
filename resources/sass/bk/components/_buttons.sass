@@ -1,0 +1,29 @@
+.bk-btn
+		display: flex 
+		justify-content: center 
+		align-items: center 
+
+		width: 25px
+		height: 25px
+
+		transition: $transition
+
+		&--show 
+			color: $warning
+
+			&:hover
+				color: rgba($warning, .65)
+
+		&--edit 
+			color: $success
+
+			&:hover
+				color: rgba($success, .65)
+				
+		&--del 
+			color: $danger
+
+			&:hover
+				color: rgba($danger, .65)
+	
+		

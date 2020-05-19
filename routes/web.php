@@ -11,13 +11,15 @@ Auth::routes([
 ]);
 
 Route::middleware(['auth'])->group(function() {
-
+    // guest 
     Route::get('/', 'HomeController@index')->name('home');
 
+    // admin 
     Route::group([
-        'middleware' => 'is_admin',
+        'middleware' => 'admin', 
+        'namespace' => 'Admin',
         'prefix' => 'admin'
     ], function () {
-        Route::get('/', 'AdminController@admin')->name('admin');
+        Route::get('/users', 'UserController@index')->name('users.index');
     });
 });
