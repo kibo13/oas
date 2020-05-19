@@ -20,6 +20,7 @@ Route::middleware(['auth'])->group(function() {
         'namespace' => 'Admin',
         'prefix' => 'admin'
     ], function () {
-        Route::get('/users', 'UserController@index')->name('users.index');
+        Route::resource('users', 'UserController');
+        Route::resource('positions', 'PositionController');
     });
 });

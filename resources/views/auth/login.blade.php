@@ -23,8 +23,8 @@
 
               <div class="bk-login-form__group row mb-2">
                 <div class="col-md-12 d-flex flex-column align-items-center">
-                  <input id="email" type="email" class="form-control @error('email') is-invalid @enderror bk-input bk-login-form__input" name="email" value="{{ old('email') }}" required placeholder="Логин" autofocus>
-                  @error('email')
+                  <input id="name" type="name" class="form-control @error('name') is-invalid @enderror bk-input bk-login-form__input" name="name" value="{{ old('name') }}" required placeholder="Логин" autofocus>
+                  @error('name')
                   <span class="invalid-feedback bk-login-form__alert" role="alert">
                     <strong>{{ $message }}</strong>
                   </span>
