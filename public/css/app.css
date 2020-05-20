@@ -11087,20 +11087,13 @@ a.text-dark:focus {
   width: 86% !important;
 }
 
-.bk-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+.bk-footer-author {
+  text-align: center;
+  font-size: 10px;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-}
-
-.bk-footer-author {
-  text-align: center;
-  font-size: 10px;
 }
 
 .bk-footer-author__link {
@@ -11119,36 +11112,67 @@ a.text-dark:focus {
   padding: 5px 10px !important;
 }
 
-.bk-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.bk-crud__wrap {
+  position: relative;
+}
+
+.bk-crud__wrap:hover .bk-crud__tip {
+  visibility: visible;
+}
+
+.bk-crud__tip {
+  position: absolute;
+  top: -20px;
+  left: -30px;
+  padding: 0 5px;
+  text-align: center;
+  font-size: 12px;
+  color: #343a40;
+  background: #ffffff;
+  box-shadow: 0 0 2px;
+  border-radius: 4px;
+  visibility: hidden;
+  z-index: 5;
+}
+
+.bk-crud__btn {
+  cursor: pointer;
+  padding: 0;
   width: 25px;
   height: 25px;
-  transition: 0.25s;
+  color: #ffffff !important;
+  overflow: hidden;
 }
 
-.bk-btn--show {
-  color: #ffc107;
+.bk-form__label {
+  margin-bottom: 2px;
+  font-size: 14px;
 }
 
-.bk-btn--show:hover {
-  color: rgba(255, 193, 7, 0.65);
+.bk-form__input {
+  padding: 0 10px;
+  height: 30px;
+  font-size: 14px;
+  border-radius: 0;
 }
 
-.bk-btn--edit {
-  color: #28a745;
+.bk-form__input::-webkit-input-placeholder {
+  font-size: 14px;
 }
 
-.bk-btn--edit:hover {
-  color: rgba(40, 167, 69, 0.65);
+.bk-form__input::-moz-placeholder {
+  font-size: 14px;
 }
 
-.bk-btn--del {
-  color: #dc3545;
+.bk-form__input:-ms-input-placeholder {
+  font-size: 14px;
 }
 
-.bk-btn--del:hover {
-  color: rgba(220, 53, 69, 0.65);
+.bk-form__input::-ms-input-placeholder {
+  font-size: 14px;
+}
+
+.bk-form__input::placeholder {
+  font-size: 14px;
 }
 

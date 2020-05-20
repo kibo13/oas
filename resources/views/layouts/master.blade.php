@@ -37,7 +37,9 @@
     </main>
     <!-- /.bk-main -->
 
-    @include('includes.footer')
+    <footer class="fixed-bottom w-100"> 
+      @include('includes.footer')
+    </footer>
     <!-- /.bk-footer -->
   </div>
 </body>

@@ -26,7 +26,9 @@
     @yield('content')
     <!-- /.main -->
 
-    @include('includes.footer')
+    <footer class="fixed-bottom w-100">
+      @include('includes.footer')
+    </footer>
     <!-- /.footer -->
   </div>
 </body>

@@ -15,7 +15,9 @@ class PositionController extends Controller
      */
     public function index()
     {
-        return view('pages.positions.index');
+        // $positions = Position::get();
+        $positions = Position::paginate(7);
+        return view('pages.positions.index', compact('positions'));
     }
 
     /**
@@ -25,7 +27,7 @@ class PositionController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.positions.form');
     }
 
     /**
@@ -36,7 +38,8 @@ class PositionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Position::create($request->all());
+        return redirect()->route('positions.index');
     }
 
     /**
@@ -47,7 +50,7 @@ class PositionController extends Controller
      */
     public function show(Position $position)
     {
-        //
+        
     }
 
     /**
@@ -58,7 +61,7 @@ class PositionController extends Controller
      */
     public function edit(Position $position)
     {
-        //
+        return view('pages.positions.form', compact('position'));
     }
 
     /**
@@ -70,7 +73,8 @@ class PositionController extends Controller
      */
     public function update(Request $request, Position $position)
     {
-        //
+        $position->update($request->all());
+        return redirect()->route('positions.index');
     }
 
     /**
@@ -81,6 +85,7 @@ class PositionController extends Controller
      */
     public function destroy(Position $position)
     {
-        //
+        $position->delete();
+        return redirect()->route('positions.index');
     }
 }
