@@ -19,19 +19,19 @@
 			<!-- Left Side Of Navbar -->
 
 			@if(Auth::user()->roles()->pluck('name')->contains('Админ'))
-				<ul class="bk-navbar__list navbar-nav mr-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="{{ route('users.index') }}">Пользователи</a>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Справочник</a>
-						<div class="dropdown-menu" aria-labelledby="dropdown04">
-							<a class="dropdown-item" href="#">Отделы</a>
-							<a class="dropdown-item" href="{{ route('positions.index') }}">Дожности</a>
-							<a class="dropdown-item" href="#">Неисправности</a>
-						</div>
-					</li>
-				</ul>
+			<ul class="bk-navbar__list navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="{{ route('users.index') }}">Пользователи</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Справочник</a>
+					<div class="dropdown-menu" aria-labelledby="dropdown04">
+						<a class="dropdown-item" href="{{ route('branches.index') }}">Отделы</a>
+						<a class="dropdown-item" href="{{ route('positions.index') }}">Дожности</a>
+						<a class="dropdown-item" href="#">Неисправности</a>
+					</div>
+				</li>
+			</ul>
 			@endif
 
 			<!-- Right Side Of Navbar -->

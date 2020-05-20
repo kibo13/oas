@@ -22,5 +22,6 @@ Route::middleware(['auth'])->group(function() {
     ], function () {
         Route::resource('users', 'UserController');
         Route::resource('positions', 'PositionController');
+        Route::resource('branches', 'BranchController');
     });
 });
