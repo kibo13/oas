@@ -21,6 +21,7 @@ Route::middleware(['auth'])->group(function() {
         'prefix' => 'admin'
     ], function () {
         Route::resource('users', 'UserController');
+        Route::resource('roles', 'RoleController');
         Route::resource('positions', 'PositionController');
         Route::resource('branches', 'BranchController');
     });

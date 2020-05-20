@@ -16,7 +16,7 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Должность</th>
-          <th scope="col">Действия</th>
+          <th scope="col">Действие</th>
         </tr>
       </thead>
       <tbody>

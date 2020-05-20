@@ -2,11 +2,14 @@
 
 @section('content')
 <div class="overflow-hidden pt-4 py-2">
-  <h2 class="mb-0">Отделы</h2>
+  <h2 class="mb-0">Роли</h2>
 
   <div class="py-2 mb-1">
-    <a href="{{ route('branches.create') }}" class="btn btn-outline-primary">
-      Новый отдел
+    <a href="{{ route('roles.create') }}" class="btn btn-outline-primary">
+      Новая роль
+    </a>
+    <a href="{{ route('users.index') }}" class="btn btn-outline-secondary">
+      Пользователи
     </a>
   </div>
 
@@ -15,22 +18,26 @@
       <thead class="thead-light">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Отдел</th>
+          <th scope="col">Наименование</th>
+          <th scope="col">Обозначение</th>
+          <th scope="col">Пользователи</th>
           <th scope="col">Действие</th>
         </tr>
       </thead>
       <tbody>
-        @foreach($branches as $key => $branch)
+        @foreach($roles as $key => $role)
         <tr>
-          <th scope="row">{{ $key+=1 }}</th>
-          <td>{{ $branch->name }}</td>
+          <td>{{ $key+=1 }}</td>
+          <td>{{ $role->name }}</td>
+          <td>{{ $role->slug }}</td>
+          <td>{{ $role->users()->pluck('name')->implode(', ') }}</td>
           <td>
             <div>
-              <form action="{{ route('branches.destroy', $branch) }}" method="POST">
+              <form action="{{ route('roles.destroy', $role) }}" method="POST">
                 <div class="d-flex">
 
                   <div class="bk-crud__wrap mr-1">
-                    <a href="{{ route('branches.edit', $branch) }}" class="bk-crud__btn btn btn-warning mr-1">
+                    <a href="{{ route('roles.edit', $role) }}" class="bk-crud__btn btn btn-warning mr-1">
                       Р
                     </a>
                     <span class="bk-crud__tip">Редактировать</span>
@@ -48,10 +55,9 @@
           </td>
         </tr>
         @endforeach
-
       </tbody>
     </table>
   </div>
-  {{ $branches->links() }}
+
 </div>
 @endsection
