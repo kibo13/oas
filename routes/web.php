@@ -7,7 +7,7 @@ Auth::routes([
     'reset' => false,
     'verify' => false,
     'confirm' => false,
-    // 'register' => false
+    'register' => false
 ]);
 
 Route::middleware(['auth'])->group(function() {
@@ -24,5 +24,6 @@ Route::middleware(['auth'])->group(function() {
         Route::resource('roles', 'RoleController');
         Route::resource('positions', 'PositionController');
         Route::resource('branches', 'BranchController');
+        Route::resource('organizations', 'OrganizationController');
     });
 });

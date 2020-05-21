@@ -23,25 +23,30 @@
 
 <body>
   <div id="app">
-    @include('includes.header')
-    <!-- /.bk-header -->
+    <div class="wrapper">
 
-    <main>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-12">
-            @yield('content')
-          </div>
-        </div>
+      @include('includes.sidebar')
+      <!-- /.sidebar -->
+
+      <div id="content" class="content">
+
+        @include('includes.header')
+        <!-- /.header -->
+
+        @yield('content')
+        <!-- /.content -->
+
       </div>
-    </main>
-    <!-- /.bk-main -->
+      <!-- /.content -->
+    </div>
+    <!-- /.wrapper -->
 
-    <footer class="fixed-bottom w-100"> 
+    <footer>
       @include('includes.footer')
     </footer>
     <!-- /.bk-footer -->
   </div>
+  <!-- /#app.app -->
 </body>
 
 </html>

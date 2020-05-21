@@ -23,7 +23,7 @@
 
               <div class="bk-login-form__group row mb-2">
                 <div class="col-md-12 d-flex flex-column align-items-center">
-                  <input id="name" type="name" class="form-control @error('name') is-invalid @enderror bk-input bk-login-form__input" name="name" value="{{ old('name') }}" required placeholder="Логин" autofocus>
+                  <input id="name" type="name" class="form-control @error('name') is-invalid @enderror bk-input bk-login-form__input" name="name" value="{{ old('name') }}" required placeholder="Логин" autofocus autocomplete="off">
                   @error('name')
                   <span class="invalid-feedback bk-login-form__alert" role="alert">
                     <strong>{{ $message }}</strong>
@@ -34,7 +34,7 @@
 
               <div class="bk-login-form__group row mb-4">
                 <div class="col-md-12 d-flex flex-column align-items-center">
-                  <input id="password" type="password" class="form-control @error('password') is-invalid @enderror bk-input bk-login-form__input" name="password" required placeholder="Пароль">
+                  <input id="password" type="password" class="form-control @error('password') is-invalid @enderror bk-input bk-login-form__input" name="password" required placeholder="Пароль" autocomplete="off">
                   @error('password')
                   <span class="invalid-feedback bk-login-form__alert" role="alert">
                     <strong>{{ $message }}</strong>

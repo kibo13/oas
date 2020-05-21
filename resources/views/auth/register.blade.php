@@ -23,7 +23,7 @@
 
               <div class="bk-register-form__group row mb-2">
                 <div class="col-md-12 d-flex flex-column align-items-center">
-                  <input id="name" type="text" class="form-control @error('name') is-invalid @enderror bk-input bk-register-form__input" name="name" value="{{ old('name') }}" required placeholder="Имя" autofocus>
+                  <input id="name" type="text" class="form-control @error('name') is-invalid @enderror bk-input bk-register-form__input" name="name" value="{{ old('name') }}" required placeholder="Имя" autofocus autocomplete="off">
                   @error('name')
                   <span class="invalid-feedback bk-register-form__alert" role="alert">
                     <strong>{{ $message }}</strong>
@@ -34,7 +34,7 @@
 
               <div class="bk-register-form__group row mb-2">
                 <div class="col-md-12 d-flex flex-column align-items-center">
-                  <input id="email" type="email" class="form-control @error('email') is-invalid @enderror bk-input bk-register-form__input" name="email" value="{{ old('email') }}" required placeholder="E-mail">
+                  <input id="email" type="email" class="form-control @error('email') is-invalid @enderror bk-input bk-register-form__input" name="email" value="{{ old('email') }}" required placeholder="E-mail" autocomplete="off">
                   @error('email')
                   <span class="invalid-feedback bk-register-form__alert" role="alert">
                     <strong>{{ $message }}</strong>
@@ -45,7 +45,7 @@
 
               <div class="bk-register-form__group row mb-2">
                 <div class="col-md-12 d-flex flex-column align-items-center">
-                  <input id="password" type="password" class="form-control @error('password') is-invalid @enderror bk-input bk-register-form__input" name="password" required placeholder="Пароль">
+                  <input id="password" type="password" class="form-control @error('password') is-invalid @enderror bk-input bk-register-form__input" name="password" required placeholder="Пароль" autocomplete="off">
                   @error('password')
                   <span class="invalid-feedback bk-register-form__alert" role="alert">
                     <strong>{{ $message }}</strong>
@@ -56,7 +56,7 @@
 
               <div class="bk-register-form__group row mb-4">
                 <div class="col-md-12 d-flex flex-column align-items-center">
-                  <input id="password-confirm" type="password" class="form-control bk-input bk-register-form__input" name="password_confirmation" required placeholder="Пароль повторно">
+                  <input id="password-confirm" type="password" class="form-control bk-input bk-register-form__input" name="password_confirmation" required placeholder="Пароль повторно" autocomplete="off">
                 </div>
               </div>
 
