@@ -11144,35 +11144,73 @@ a.text-dark:focus {
   overflow: hidden;
 }
 
+.bk-form__wrap {
+  position: relative;
+  margin-bottom: 15px;
+  padding: 20px 20px 15px;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+}
+
+.bk-form__wrap::before {
+  content: attr(data-info);
+  padding: 0 5px;
+  position: absolute;
+  left: 10px;
+  top: -10px;
+  font-size: 14px;
+  font-weight: bold;
+  background: #f8f9fa;
+}
+
+.bk-form__group {
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.bk-form__group * {
+  border: 1px dashed #dc3545;
+}
+
 .bk-form__label {
   margin-bottom: 2px;
   font-size: 14px;
 }
 
-.bk-form__input {
+.bk-form__label--checkbox {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.bk-form__text {
   padding: 0 10px;
   height: 30px;
   font-size: 14px;
   border-radius: 0;
 }
 
-.bk-form__input::-webkit-input-placeholder {
+.bk-form__text::-webkit-input-placeholder {
   font-size: 14px;
 }
 
-.bk-form__input::-moz-placeholder {
+.bk-form__text::-moz-placeholder {
   font-size: 14px;
 }
 
-.bk-form__input:-ms-input-placeholder {
+.bk-form__text:-ms-input-placeholder {
   font-size: 14px;
 }
 
-.bk-form__input::-ms-input-placeholder {
+.bk-form__text::-ms-input-placeholder {
   font-size: 14px;
 }
 
-.bk-form__input::placeholder {
+.bk-form__text::placeholder {
   font-size: 14px;
 }
 

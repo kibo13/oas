@@ -15,6 +15,7 @@ class RoleController extends Controller
      */
     public function index()
     {
+        
         return view('pages.roles.index', [
             'roles' => Role::get(),
         ]);
@@ -61,7 +62,7 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        return view('pages.roles.form', compact('position'));
+        return view('pages.roles.form', compact('role'));
     }
 
     /**

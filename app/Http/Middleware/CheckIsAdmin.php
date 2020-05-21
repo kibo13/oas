@@ -16,10 +16,10 @@ class CheckIsAdmin
      */
     public function handle($request, Closure $next)
     {   
-        $user = Auth::user()->roles->pluck('name');
+        $user = Auth::user()->roles->pluck('slug');
         // dd($user);
 
-        if (!$user->contains('Админ')) {
+        if (!$user->contains('admin')) {
             // session()->flash('warning', 'У вас нет прав администратора');
             return redirect()->route('home');
         }

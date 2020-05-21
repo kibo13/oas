@@ -19,7 +19,6 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Наименование</th>
-          <th scope="col">Обозначение</th>
           <th scope="col">Пользователи</th>
           <th scope="col">Действие</th>
         </tr>
@@ -29,7 +28,6 @@
         <tr>
           <td>{{ $key+=1 }}</td>
           <td>{{ $role->name }}</td>
-          <td>{{ $role->slug }}</td>
           <td>{{ $role->users()->pluck('name')->implode(', ') }}</td>
           <td>
             <div>

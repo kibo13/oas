@@ -18,7 +18,7 @@
 		<div class="collapse bk-navbar navbar-collapse" id="navbarSupportedContent">
 			<!-- Left Side Of Navbar -->
 
-			@if(Auth::user()->roles()->pluck('name')->contains('Админ'))
+			@if(Auth::user()->roles()->pluck('slug')->contains('admin'))
 			<ul class="bk-navbar__list navbar-nav mr-auto">
 				<li class="nav-item">
 					<a class="nav-link" href="{{ route('users.index') }}">Пользователи</a>

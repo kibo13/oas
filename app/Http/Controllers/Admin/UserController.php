@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Role;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -26,12 +27,15 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('pages.users.form', [
-            'user' => [],
-            'roles' => Role::get(),
-        ]);
+    public function create(Request $request)
+    {   
+        return view(
+            'pages.users.create',
+            [
+                'user' => [],
+                'roles' => Role::get()
+            ]
+        );
     }
 
     /**
@@ -42,10 +46,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::create($request->all());
+        $user = User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
 
         // roles 
-        if($request->input('roles')) :  
+        if ($request->input('roles')) :
             $user->roles()->attach($request->input('roles'));
         endif;
 
@@ -60,7 +68,6 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        
     }
 
     /**
@@ -71,7 +78,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('pages.users.form', [
+        return view('pages.users.edit', [
             'user' => $user,
             'roles' => Role::get(),
         ]);
@@ -86,15 +93,19 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $user->update($request->all());
+        $user->update([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
 
         // roles 
         $user->roles()->detach();
-        if($request->input('roles')) : 
+        if ($request->input('roles')) :
             $user->roles()->attach($request->input('roles'));
         endif;
 
-        return redirect()->route('users.index'); 
+        return redirect()->route('users.index');
     }
 
     /**
@@ -109,6 +120,6 @@ class UserController extends Controller
         $user->roles()->detach();
         $user->delete();
 
-        return redirect()->route('users.index'); 
+        return redirect()->route('users.index');
     }
 }

@@ -24,7 +24,35 @@
 				</tr>
 			</thead>
 			<tbody>
+				@foreach($users as $key => $user)
+				<tr>
+					<td>{{ $key+=1 }}</td>
+					<td>{{ $user->name }}</td>
+					<td>{{ $user->roles()->pluck('name')->implode(', ') }}</td>
+					<td>
+						<div>
+							<form action="{{ route('users.destroy', $user) }}" method="POST">
+								<div class="d-flex">
 
+									<div class="bk-crud__wrap mr-1">
+										<a href="{{ route('users.edit', $user) }}" class="bk-crud__btn btn btn-warning mr-1">
+											Р
+										</a>
+										<span class="bk-crud__tip">Редактировать</span>
+									</div>
+
+									<div class="bk-crud__wrap">
+										@csrf
+										@method('DELETE')
+										<input class="bk-crud__btn btn btn-danger" type="submit" value="У">
+										<span class="bk-crud__tip">Удалить</span>
+									</div>
+								</div>
+							</form>
+						</div>
+					</td>
+				</tr>
+				@endforeach
 			</tbody>
 		</table>
 	</div>
