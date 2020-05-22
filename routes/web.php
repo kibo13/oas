@@ -7,7 +7,7 @@ Auth::routes([
     'reset' => false,
     'verify' => false,
     'confirm' => false,
-    'register' => false
+    // 'register' => false
 ]);
 
 Route::middleware(['auth'])->group(function() {
@@ -36,7 +36,23 @@ Route::middleware(['auth'])->group(function() {
         return view('pages.subscribers.index');
     })->name('subscribers.index');
 
-    // admin 
+
+    // temp route 
+    Route::resource('branches', 'BranchController');
+    Route::resource('positions', 'PositionController');
+    Route::resource('organizations', 'OrganizationController');
+    Route::resource('streets', 'StreetController');
+
+
+
+
+
+
+    
+    // role: admin 
+    // permissions : 
+    // - add users to app 
+    // - set roles for users 
     Route::group([
         'middleware' => 'admin', 
         'namespace' => 'Admin',
@@ -44,8 +60,5 @@ Route::middleware(['auth'])->group(function() {
     ], function () {
         Route::resource('users', 'UserController');
         Route::resource('roles', 'RoleController');
-        Route::resource('positions', 'PositionController');
-        Route::resource('branches', 'BranchController');
-        Route::resource('organizations', 'OrganizationController');
     });
 });

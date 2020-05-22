@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Branch;
+use App\Models\Street;
 use Illuminate\Http\Request;
 
-class BranchController extends Controller
+class StreetController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,9 @@ class BranchController extends Controller
      */
     public function index()
     {
-        // $branches = Branch::get();
-        $branches = Branch::paginate(7);
-        return view('pages.branches.index', compact('branches'));
+        // $streets = Street::get();
+        $streets = Street::paginate(7);
+        return view('pages.streets.index', compact('streets'));
     }
 
     /**
@@ -27,7 +26,7 @@ class BranchController extends Controller
      */
     public function create()
     {
-        return view('pages.branches.form');
+        return view('pages.streets.form');
     }
 
     /**
@@ -38,54 +37,54 @@ class BranchController extends Controller
      */
     public function store(Request $request)
     {
-        Branch::create($request->all());
-        return redirect()->route('branches.index');
+        Street::create($request->all());
+        return redirect()->route('streets.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Branch  $branch
+     * @param  \App\Models\Street  $street
      * @return \Illuminate\Http\Response
      */
-    public function show(Branch $branch)
+    public function show(Street $street)
     {
-        //
+        // 
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Branch  $branch
+     * @param  \App\Models\Street  $street
      * @return \Illuminate\Http\Response
      */
-    public function edit(Branch $branch)
+    public function edit(Street $street)
     {
-        return view('pages.branches.form', compact('branch'));
+        return view('pages.streets.form', compact('street'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Branch  $branch
+     * @param  \App\Models\Street  $street
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Branch $branch)
+    public function update(Request $request, Street $street)
     {
-        $branch->update($request->all());
-        return redirect()->route('branches.index');
+        $street->update($request->all());
+        return redirect()->route('streets.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Branch  $branch
+     * @param  \App\Models\Street  $street
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Branch $branch)
+    public function destroy(Street $street)
     {
-        $branch->delete();
-        return redirect()->route('branches.index');
+        $street->delete();
+        return redirect()->route('streets.index');
     }
 }
