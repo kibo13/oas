@@ -14,6 +14,28 @@ Route::middleware(['auth'])->group(function() {
     // guest 
     Route::get('/', 'HomeController@index')->name('home');
 
+
+    // temp 
+    Route::get('/charts', function () {
+        return view('pages.charts.index');
+    })->name('charts.index');
+    
+    Route::get('/statements', function () {
+        return view('pages.statements.index');
+    })->name('statements.index');
+
+    Route::get('/workers', function () {
+        return view('pages.workers.index');
+    })->name('workers.index');
+    
+    Route::get('/works', function () {
+        return view('pages.works.index');
+    })->name('works.index');
+
+    Route::get('/subscribers', function () {
+        return view('pages.subscribers.index');
+    })->name('subscribers.index');
+
     // admin 
     Route::group([
         'middleware' => 'admin', 
