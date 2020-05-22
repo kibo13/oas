@@ -5,16 +5,6 @@
 
   <h2>Редактирование записи</h2>
 
-  @if($errors->any())
-  <div class="alert alert-danger">
-    <ul>
-      @foreach($errors->all() as $error)
-      <li>$error</li>
-      @endforeach
-    </ul>
-  </div>
-  @endif
-
   <form method="POST" action="{{ route('users.update', $user) }}" class="bk-form">
     @csrf
     <div>
@@ -23,17 +13,32 @@
       <div class="bk-form__wrap" data-info="Пользователь">
         <div class="form-group mb-2">
           <label for="name" class="bk-form__label mb-0">Логин</label>
-          <input id="name" type="text" class="form-control bk-form__text" name="name" placeholder="Введите логин" autocomplete="off" value="@if(old('name')) {{ old('name') }} @else {{ $user->name }} @endif">
+          <input id="name" type="text" class="form-control bk-form__text @error('name') is-invalid @enderror" name="name" placeholder="Введите логин" autocomplete="off" value="{{ old('name', isset($user) ? $user->name : null) }}">
+          @error('name')
+          <span class="invalid-feedback bk-alert-danger" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
         </div>
 
         <div class="form-group mb-2">
           <label for="email" class="bk-form__label mb-0">E-mail</label>
-          <input id="email" type="text" class="form-control bk-form__text" name="email" placeholder="Введите E-mail" autocomplete="off" value="@if(old('email')) {{ old('email') }} @else {{ $user->email }} @endif">
+          <input id="email" type="text" class="form-control bk-form__text @error('email') is-invalid @enderror" name="email" placeholder="Введите E-mail" autocomplete="off" value="{{ old('email', isset($user) ? $user->email : null) }}">
+          @error('email')
+          <span class="invalid-feedback bk-alert-danger" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
         </div>
 
         <div class="form-group mb-0">
           <label for="password" class="bk-form__label mb-2">Пароль</label>
-          <input id="password" type="password" class="form-control bk-form__text" name="password" autocomplete="off">
+          <input id="password" type="password" class="form-control bk-form__text @error('password') is-invalid @enderror" name="password" autocomplete="off">
+          @error('password')
+          <span class="invalid-feedback bk-alert-danger" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
         </div>
 
         <div class="form-group mb-0">

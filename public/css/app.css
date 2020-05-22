@@ -11048,11 +11048,6 @@ a:hover {
   text-align: center;
 }
 
-.bk-login-form__alert {
-  padding-left: 12px;
-  width: 86% !important;
-}
-
 .bk-register {
   position: relative;
   display: flex;
@@ -11097,11 +11092,6 @@ a:hover {
 
 .bk-register-form__input::placeholder {
   text-align: center;
-}
-
-.bk-register-form__alert {
-  padding-left: 12px;
-  width: 86% !important;
 }
 
 #sidebar {
@@ -11386,6 +11376,16 @@ a[data-toggle=collapse] {
 
 .bk-form__text::placeholder {
   font-size: 14px;
+}
+
+.bk-alert-auth {
+  padding-left: 12px;
+  width: 86% !important;
+}
+
+.bk-alert-danger {
+  padding: 0 10px;
+  width: 100% !important;
 }
 
 @media (max-width: 768px) {
