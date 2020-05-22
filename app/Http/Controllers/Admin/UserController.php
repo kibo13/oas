@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Role;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -46,12 +45,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+        ]);
+
         $user = User::create([
             'name' => $request['name'],
             'email' => $request['email'],
-            'password' => Hash::make($request['password']),
+            'password' => bcrypt($request['password'])
         ]);
-
+        
         // roles 
         if ($request->input('roles')) :
             $user->roles()->attach($request->input('roles'));
@@ -93,17 +98,30 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $user->update([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
+        $validator = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => [
+                'required', 
+                'string', 
+                'email', 
+                'max:255', 
+                \Illuminate\Validation\Rule::unique('users')->ignore($user->id),
+            ],
+            'password' => ['nullable', 'string', 'min:6', 'confirmed'],
         ]);
 
+        $user->name = $request['name'];
+        $user->email = $request['email'];
+        $request['password'] == null ?:
+            $user->password = bcrypt($request['password']);
+  
         // roles 
         $user->roles()->detach();
         if ($request->input('roles')) :
             $user->roles()->attach($request->input('roles'));
         endif;
+
+        $user->save();
 
         return redirect()->route('users.index');
     }
