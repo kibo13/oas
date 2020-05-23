@@ -38,21 +38,34 @@ Route::middleware(['auth'])->group(function() {
 
 
     // temp route 
-    Route::resource('branches', 'BranchController');
-    Route::resource('positions', 'PositionController');
+    
+    
     Route::resource('organizations', 'OrganizationController');
-    Route::resource('streets', 'StreetController');
+
+    // role: hirer
+    // permissions : 
+    // - CRUD worker records 
+    // - CRUD branch records 
+    // - CRUD position records 
+    // - CRUD street records 
 
 
+    Route::group([
+        'namespace' => 'hirer',
+        'prefix' => 'hirer'
+    ], function () {
+        Route::resource('branches', 'BranchController');
+        Route::resource('positions', 'PositionController');
+        Route::resource('workers', 'WorkerController');
+        Route::resource('streets', 'StreetController');
+    });
 
-
-
-
+    
     
     // role: admin 
     // permissions : 
-    // - add users to app 
-    // - set roles for users 
+    // - CRUD user records 
+    // - CRUD user roles
     Route::group([
         'middleware' => 'admin', 
         'namespace' => 'Admin',

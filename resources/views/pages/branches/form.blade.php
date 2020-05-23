@@ -19,7 +19,7 @@
 
       <div class="form-group">
         <label for="name" class="bk-form__label mb-0">Отдел</label>
-        <input id="name" type="text" class="form-control bk-form__text" name="name" required value="@isset($branch) {{ $branch->name }} @endisset" placeholder="Введите наименование должности" autofocus>
+        <input id="name" type="text" class="form-control bk-form__input" name="name" required value="@isset($branch) {{ $branch->name }} @endisset" placeholder="Введите наименование должности" autofocus>
       </div>
 
       <button type="submit" class="btn btn-outline-success">Сохранить</button>

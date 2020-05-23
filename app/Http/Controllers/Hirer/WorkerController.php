@@ -1,8 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Hirer;
 
+use App\Http\Controllers\Controller;
 use App\Models\Worker;
+use App\Models\Street;
+use App\Models\Branch;
+use App\Models\Position;
 use Illuminate\Http\Request;
 
 class WorkerController extends Controller
@@ -14,7 +18,6 @@ class WorkerController extends Controller
      */
     public function index()
     {
-        // $workers = Worker::get();
         $workers = Worker::paginate(10);
         return view('pages.workers.index', compact('workers'));
     }
@@ -26,7 +29,13 @@ class WorkerController extends Controller
      */
     public function create()
     {
-        return view('pages.organizations.form');
+        $streets = Street::get();
+        $positions = Position::get();
+        $branches = Branch::get();
+        return view(
+            'pages.workers.create', 
+            compact('streets', 'positions', 'branches')
+        );
     }
 
     /**
@@ -37,7 +46,8 @@ class WorkerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Worker::create($request->all());
+        return redirect()->route('workers.index');
     }
 
     /**
@@ -59,7 +69,13 @@ class WorkerController extends Controller
      */
     public function edit(Worker $worker)
     {
-        //
+        $streets = Street::get();
+        $positions = Position::get();
+        $branches = Branch::get();
+        return view(
+            'pages.workers.edit',
+            compact('worker', 'streets', 'positions', 'branches')
+        );
     }
 
     /**
@@ -71,7 +87,8 @@ class WorkerController extends Controller
      */
     public function update(Request $request, Worker $worker)
     {
-        //
+        $worker->update($request->all());
+        return redirect()->route('workers.index');
     }
 
     /**
@@ -82,6 +99,7 @@ class WorkerController extends Controller
      */
     public function destroy(Worker $worker)
     {
-        //
+        $worker->delete();
+        return redirect()->route('workers.index');
     }
 }

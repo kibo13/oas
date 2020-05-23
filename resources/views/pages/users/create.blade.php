@@ -12,7 +12,7 @@
 			<div class="bk-form__wrap" data-info="Пользователь">
 				<div class="form-group mb-2">
 					<label for="name" class="bk-form__label mb-0">Логин</label>
-					<input id="name" type="text" class="form-control bk-form__text @error('name') is-invalid @enderror" name="name" placeholder="Введите логин" autocomplete="off" value="{{ old('name') }}">
+					<input id="name" type="text" class="form-control bk-form__input @error('name') is-invalid @enderror" name="name" placeholder="Введите логин" autocomplete="off" value="{{ old('name') }}">
 					@error('name')
 					<span class="invalid-feedback bk-alert-danger" role="alert">
 						<strong>{{ $message }}</strong>
@@ -22,7 +22,7 @@
 
 				<div class="form-group mb-2">
 					<label for="email" class="bk-form__label mb-0">E-mail</label>
-					<input id="email" type="text" class="form-control bk-form__text @error('email') is-invalid @enderror" name="email" placeholder="Введите E-mail" autocomplete="off" value="{{ old('email') }}">
+					<input id="email" type="text" class="form-control bk-form__input @error('email') is-invalid @enderror" name="email" placeholder="Введите E-mail" autocomplete="off" value="{{ old('email') }}">
 					@error('email')
 					<span class="invalid-feedback bk-alert-danger" role="alert">
 						<strong>{{ $message }}</strong>
@@ -32,7 +32,7 @@
 
 				<div class="form-group mb-2">
 					<label for="password" class="bk-form__label mb-0">Пароль</label>
-					<input id="password" type="password" class="form-control bk-form__text @error('password') is-invalid @enderror" name="password" autocomplete="off">
+					<input id="password" type="password" class="form-control bk-form__input @error('password') is-invalid @enderror" name="password" autocomplete="off">
 					@error('password')
 					<span class="invalid-feedback bk-alert-danger" role="alert">
 						<strong>{{ $message }}</strong>
@@ -42,7 +42,7 @@
 
 				<div class="form-group mb-0">
 					<label for="password" class="bk-form__label mb-0">Подтверждение</label>
-					<input id="password" type="password" class="form-control bk-form__text" name="password_confirmation" autocomplete="off">
+					<input id="password" type="password" class="form-control bk-form__input" name="password_confirmation" autocomplete="off">
 				</div>
 			</div>
 			<!-- .bk-form__wrappers  -->

@@ -8,6 +8,9 @@
     <a href="{{ route('positions.create') }}" class="btn btn-outline-primary">
       Новая должность
     </a>
+    <a href="{{ route('workers.index') }}" class="btn btn-outline-secondary">
+      Сотрудники
+    </a>
   </div>
 
   <div class="table-responsive">

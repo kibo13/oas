@@ -8,6 +8,9 @@
     <a href="{{ route('branches.create') }}" class="btn btn-outline-primary">
       Новый отдел
     </a>
+    <a href="{{ route('workers.index') }}" class="btn btn-outline-secondary">
+      Сотрудники
+    </a>
   </div>
 
   <div class="table-responsive">

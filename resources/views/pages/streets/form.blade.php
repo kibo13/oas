@@ -19,7 +19,7 @@
 
       <div class="form-group">
         <label for="name" class="bk-form__label mb-0">Улица</label>
-        <input id="name" type="text" class="form-control bk-form__text" name="name" required value="@isset($street) {{ $street->name }} @endisset" placeholder="Введите название улицы" autofocus>
+        <input id="name" type="text" class="form-control bk-form__input" name="name" required value="@isset($street) {{ $street->name }} @endisset" placeholder="Введите название улицы" autofocus>
       </div>
 
       <button type="submit" class="btn btn-outline-success">Сохранить</button>

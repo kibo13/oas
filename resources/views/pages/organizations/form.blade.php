@@ -19,7 +19,7 @@
 
       <div class="form-group">
         <label for="name" class="bk-form__label mb-0">Предприятие</label>
-        <input id="name" type="text" class="form-control bk-form__text" name="name" required value="@isset($organization) {{ $organization->name }} @endisset" placeholder="Введите наименование предприятия" autofocus>
+        <input id="name" type="text" class="form-control bk-form__input" name="name" required value="@isset($organization) {{ $organization->name }} @endisset" placeholder="Введите наименование предприятия" autofocus>
       </div>
 
       <button type="submit" class="btn btn-outline-success">Сохранить</button>

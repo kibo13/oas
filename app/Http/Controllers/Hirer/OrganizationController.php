@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Hirer;
 
 use App\Http\Controllers\Controller;
-use App\Models\Branch;
+use App\Models\Organization;
 use Illuminate\Http\Request;
 
-class BranchController extends Controller
+class OrganizationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class BranchController extends Controller
      */
     public function index()
     {
-        // $branches = Branch::get();
-        $branches = Branch::paginate(7);
-        return view('pages.branches.index', compact('branches'));
+        // $organizations = Position::get();
+        $organizations = Organization::paginate(7);
+        return view('pages.organizations.index', compact('organizations'));
     }
 
     /**
@@ -27,7 +27,7 @@ class BranchController extends Controller
      */
     public function create()
     {
-        return view('pages.branches.form');
+        return view('pages.organizations.form');
     }
 
     /**
@@ -38,17 +38,17 @@ class BranchController extends Controller
      */
     public function store(Request $request)
     {
-        Branch::create($request->all());
-        return redirect()->route('branches.index');
+        Organization::create($request->all());
+        return redirect()->route('organizations.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Branch  $branch
+     * @param  \App\Models\Organization  $organization
      * @return \Illuminate\Http\Response
      */
-    public function show(Branch $branch)
+    public function show(Organization $organization)
     {
         //
     }
@@ -56,36 +56,36 @@ class BranchController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Branch  $branch
+     * @param  \App\Models\Organization  $organization
      * @return \Illuminate\Http\Response
      */
-    public function edit(Branch $branch)
+    public function edit(Organization $organization)
     {
-        return view('pages.branches.form', compact('branch'));
+        return view('pages.organizations.form', compact('organization'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Branch  $branch
+     * @param  \App\Models\Organization  $organization
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Branch $branch)
+    public function update(Request $request, Organization $organization)
     {
-        $branch->update($request->all());
-        return redirect()->route('branches.index');
+        $organization->update($request->all());
+        return redirect()->route('organizations.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Branch  $branch
+     * @param  \App\Models\Organization  $organization
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Branch $branch)
+    public function destroy(Organization $organization)
     {
-        $branch->delete();
-        return redirect()->route('branches.index');
+        $organization->delete();
+        return redirect()->route('organizations.index');
     }
 }

@@ -11334,10 +11334,6 @@ a[data-toggle=collapse] {
   justify-content: flex-start;
 }
 
-.bk-form__group * {
-  border: 1px dashed #dc3545;
-}
-
 .bk-form__label {
   margin-bottom: 2px;
   font-size: 14px;
@@ -11351,30 +11347,30 @@ a[data-toggle=collapse] {
           user-select: none;
 }
 
-.bk-form__text {
+.bk-form__input {
   padding: 0 10px;
   height: 30px;
   font-size: 14px;
   border-radius: 0;
 }
 
-.bk-form__text::-webkit-input-placeholder {
+.bk-form__input::-webkit-input-placeholder {
   font-size: 14px;
 }
 
-.bk-form__text::-moz-placeholder {
+.bk-form__input::-moz-placeholder {
   font-size: 14px;
 }
 
-.bk-form__text:-ms-input-placeholder {
+.bk-form__input:-ms-input-placeholder {
   font-size: 14px;
 }
 
-.bk-form__text::-ms-input-placeholder {
+.bk-form__input::-ms-input-placeholder {
   font-size: 14px;
 }
 
-.bk-form__text::placeholder {
+.bk-form__input::placeholder {
   font-size: 14px;
 }
 
@@ -11388,7 +11384,7 @@ a[data-toggle=collapse] {
   width: 100% !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   #sidebar {
     margin-left: -250px;
     transform: rotateY(90deg);
