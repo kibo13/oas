@@ -11,67 +11,42 @@ Auth::routes([
 ]);
 
 Route::middleware(['auth'])->group(function() {
-    // guest 
-    Route::get('/', 'HomeController@index')->name('home');
 
-
-    // temp 
-    Route::get('/charts', function () {
-        return view('pages.charts.index');
-    })->name('charts.index');
-    
-    Route::get('/statements', function () {
-        return view('pages.statements.index');
-    })->name('statements.index');
-
-    Route::get('/workers', function () {
-        return view('pages.workers.index');
-    })->name('workers.index');
-    
-    Route::get('/works', function () {
-        return view('pages.works.index');
-    })->name('works.index');
-
-    Route::get('/subscribers', function () {
-        return view('pages.subscribers.index');
-    })->name('subscribers.index');
-
-
-    // temp route 
-    
-    
-    Route::resource('organizations', 'OrganizationController');
-
-    // role: hirer
-    // permissions : 
-    // - CRUD worker records 
-    // - CRUD branch records 
-    // - CRUD position records 
-    // - CRUD street records 
-
-
-    Route::group([
-        'namespace' => 'hirer',
-        'prefix' => 'hirer'
-    ], function () {
-        Route::resource('branches', 'BranchController');
-        Route::resource('positions', 'PositionController');
-        Route::resource('workers', 'WorkerController');
-        Route::resource('streets', 'StreetController');
-    });
-
-    
-    
     // role: admin 
     // permissions : 
     // - CRUD user records 
     // - CRUD user roles
     Route::group([
-        'middleware' => 'admin', 
+        'middleware' => 'role:admin',
         'namespace' => 'Admin',
         'prefix' => 'admin'
     ], function () {
         Route::resource('users', 'UserController');
         Route::resource('roles', 'RoleController');
     });
+    
+    // role: hirer
+    // permissions : 
+    // - CRUD worker records 
+    // - CRUD branch records 
+    // - CRUD position records 
+    // - CRUD street records 
+    Route::group([
+        'middleware' => 'role:hh',
+        
+    ], function () {
+        Route::resource('workers', 'WorkerController');
+        Route::resource('streets', 'StreetController');
+        Route::resource('positions', 'PositionController');
+        Route::resource('branches', 'BranchController');         
+    });
+
+    // role: guest 
+    // permissions : 
+    // - show all records  
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('workers', 'WorkerController@index')->name('workers.index');
+
+    // temp after rechange 
+    Route::resource('/organizations', 'OrganizationController');
 });

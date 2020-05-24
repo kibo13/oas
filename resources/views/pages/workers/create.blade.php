@@ -38,6 +38,7 @@
             <label for="branch_id" class="bk-form__label mb-0">Отдел</label>
 
             <select name="branch_id" id="branch_id" class="form-control bk-form__input">
+              <option disabled selected>Выберите отдел</option>
               @foreach($branches as $branch)
               <option value="{{ $branch->id }}">
                 {{ ucfirst($branch->name) }}
@@ -50,6 +51,7 @@
             <label for="position_id" class="bk-form__label mb-0">Должность</label>
 
             <select name="position_id" id="position_id" class="form-control bk-form__input">
+              <option disabled selected>Выберите должность</option>
               @foreach($positions as $position)
               <option value="{{ $position->id }}">
                 {{ ucfirst($position->name) }}
@@ -69,6 +71,7 @@
             <label for="street" class="bk-form__label mb-0">Улица</label>
 
             <select name="street_id" id="street" class="form-control bk-form__input">
+              <option disabled selected>Выберите улицу</option>
               @foreach($streets as $street)
               <option value="{{ $street->id }}">
                 {{ ucfirst($street->name) }}

@@ -25,11 +25,6 @@
           </div>
 
           <div class="col-md-4 form-group mb-2 pl-0">
-            <label for="last_name" class="bk-form__label mb-0">Фамилия</label>
-            <input id="last_name" type="text" class="form-control bk-form__input" name="last_name" required placeholder="Введите фамилию сотрудника" value="{{ old('last_name', isset($worker) ? $worker->last_name : null) }}">
-          </div>
-
-          <div class="col-md-4 form-group mb-2 pl-0">
             <label for="mid_name" class="bk-form__label mb-0">Отчество</label>
             <input id="mid_name" type="text" class="form-control bk-form__input" name="mid_name" placeholder="Введите отчество сотрудника" value="{{ old('mid_name', isset($worker) ? $worker->mid_name : null) }}">
           </div>

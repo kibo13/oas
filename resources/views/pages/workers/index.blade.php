@@ -4,7 +4,11 @@
 <div class="overflow-hidden pt-4 py-2">
 	<h2 class="mb-1">Сотрудники</h2>
 
-	@if(Auth::user()->roles()->pluck('slug')->contains('hh'))
+	@if(
+	Auth::user()->roles()->pluck('slug')->contains('hh')
+	||
+	Auth::user()->roles()->pluck('slug')->contains('admin')
+	)
 	<div class="py-2 mt-1">
 		<a href="{{ route('workers.create') }}" class="btn btn-outline-primary">
 			Новый сотрудник
@@ -31,7 +35,11 @@
 					<th scope="col">Должность</th>
 					<th scope="col">Адрес</th>
 					<th scope="col">Телефоны</th>
-					@if(Auth::user()->roles()->pluck('slug')->contains('hh'))
+					@if(
+					Auth::user()->roles()->pluck('slug')->contains('hh')
+					||
+					Auth::user()->roles()->pluck('slug')->contains('admin')
+					)
 					<th scope="col">Действие</th>
 					@endif
 				</tr>
@@ -60,7 +68,11 @@
 						Дом: {{ $worker->home_phone }}<br>
 						Сот: {{ $worker->mob_phone }}
 					</td>
-					@if(Auth::user()->roles()->pluck('slug')->contains('hh'))
+					@if(
+						Auth::user()->roles()->pluck('slug')->contains('hh')
+						||
+						Auth::user()->roles()->pluck('slug')->contains('admin')
+					)
 					<td>
 						<div>
 							<form action="{{ route('workers.destroy', $worker) }}" method="POST">

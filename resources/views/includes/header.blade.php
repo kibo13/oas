@@ -25,7 +25,7 @@
 			<ul class="bk-navbar__list navbar-nav d-flex justify-content-end w-100">
 				@if(Auth::user()->roles()->pluck('slug')->contains('admin'))
 
-				<li @nbactive('users.index')>
+				<li @nbactive('user*')>
 					<a class="nav-link" href="{{ route('users.index') }}">Пользователи</a>
 				</li>
 				@endif

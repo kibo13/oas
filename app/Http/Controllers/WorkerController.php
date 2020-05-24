@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Hirer;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Worker;
 use App\Models\Street;
 use App\Models\Branch;

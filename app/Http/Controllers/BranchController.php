@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Hirer;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Position;
+use App\Models\Branch;
 use Illuminate\Http\Request;
 
-class PositionController extends Controller
+class BranchController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,9 @@ class PositionController extends Controller
      */
     public function index()
     {
-        // $positions = Position::get();
-        $positions = Position::paginate(7);
-        return view('pages.positions.index', compact('positions'));
+        // $branches = Branch::get();
+        $branches = Branch::paginate(7);
+        return view('pages.branches.index', compact('branches'));
     }
 
     /**
@@ -27,7 +26,7 @@ class PositionController extends Controller
      */
     public function create()
     {
-        return view('pages.positions.form');
+        return view('pages.branches.form');
     }
 
     /**
@@ -38,54 +37,54 @@ class PositionController extends Controller
      */
     public function store(Request $request)
     {
-        Position::create($request->all());
-        return redirect()->route('positions.index');
+        Branch::create($request->all());
+        return redirect()->route('branches.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Position  $position
+     * @param  \App\Models\Branch  $branch
      * @return \Illuminate\Http\Response
      */
-    public function show(Position $position)
+    public function show(Branch $branch)
     {
-        
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Position  $position
+     * @param  \App\Models\Branch  $branch
      * @return \Illuminate\Http\Response
      */
-    public function edit(Position $position)
+    public function edit(Branch $branch)
     {
-        return view('pages.positions.form', compact('position'));
+        return view('pages.branches.form', compact('branch'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Position  $position
+     * @param  \App\Models\Branch  $branch
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Position $position)
+    public function update(Request $request, Branch $branch)
     {
-        $position->update($request->all());
-        return redirect()->route('positions.index');
+        $branch->update($request->all());
+        return redirect()->route('branches.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Position  $position
+     * @param  \App\Models\Branch  $branch
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Position $position)
+    public function destroy(Branch $branch)
     {
-        $position->delete();
-        return redirect()->route('positions.index');
+        $branch->delete();
+        return redirect()->route('branches.index');
     }
 }
