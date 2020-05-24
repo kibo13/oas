@@ -24,6 +24,15 @@ Route::middleware(['auth'])->group(function() {
         Route::resource('users', 'UserController');
         Route::resource('roles', 'RoleController');
     });
+
+    // role: audit 
+    // permissions : 
+    // - CRUD promiser records
+    Route::group([
+        'middleware' => 'role:audit'
+    ], function () {
+        Route::resource('promisers', 'PromiserController');
+    });
     
     // role: hirer
     // permissions : 
@@ -32,13 +41,27 @@ Route::middleware(['auth'])->group(function() {
     // - CRUD position records 
     // - CRUD street records 
     Route::group([
-        'middleware' => 'role:hh',
-        
+        'middleware' => 'role:hh'
     ], function () {
-        Route::resource('workers', 'WorkerController');
-        Route::resource('streets', 'StreetController');
+        Route::resource('workers', 'WorkerController');    
+    });
+
+    // role: arch
+    // permissions : 
+    // - CRUD street records 
+    // - CRUD organization records 
+    // - CRUD position records 
+    // - CRUD branch records 
+    // - CRUD type records 
+    Route::group([
+        'middleware' => 'role:arch',
+        'prefix' => 'info'
+    ], function () {
+        Route::resource('organizations', 'OrganizationController');
+        Route::resource('branches', 'BranchController');
         Route::resource('positions', 'PositionController');
-        Route::resource('branches', 'BranchController');         
+        Route::resource('types', 'TypeController');
+        Route::resource('streets', 'StreetController');        
     });
 
     // role: guest 
@@ -46,7 +69,5 @@ Route::middleware(['auth'])->group(function() {
     // - show all records  
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('workers', 'WorkerController@index')->name('workers.index');
-
-    // temp after rechange 
-    Route::resource('/organizations', 'OrganizationController');
+    Route::get('promisers', 'PromiserController@index')->name('promisers.index');
 });

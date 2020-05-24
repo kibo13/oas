@@ -3,7 +3,7 @@
 @section('content')
 <div class="overflow-hidden pt-4 py-2">
 
-	<h2 class="mb-3">Новая запись</h2>
+	<h2 class="mb-3">Добавление записи</h2>
 
 	<form method="POST" action="{{ route('users.store') }}" class="bk-form">
 		@csrf

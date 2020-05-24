@@ -3,7 +3,7 @@
 @section('content')
 <div class="overflow-hidden pt-4 py-2">
 
-  <h2 class="mb-3">Новая запись</h2>
+  <h2 class="mb-3">Добавление записи</h2>
 
   <form method="POST" class="bk-form" action="{{ route('workers.store') }}">
     @csrf
@@ -120,7 +120,10 @@
 
       </div>
 
-      <button type="submit" class="btn btn-outline-success">Сохранить</button>
+      <div class="form-group">
+        <button type="submit" class="btn btn-outline-success">Сохранить</button>
+        <a href="{{ route('workers.index') }}" class="btn btn-outline-secondary">Назад</a>
+      </div>
 
     </div>
   </form>

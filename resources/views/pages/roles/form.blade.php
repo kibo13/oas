@@ -6,7 +6,7 @@
 	@isset($role)
 	<h2>Редактирование записи</h2>
 	@else
-	<h2>Новая запись</h2>
+	<h2>Добавление записи</h2>
 	@endisset
 
 	<form method="POST" @isset($role) action="{{ route('roles.update', $role) }}" @else action="{{ route('roles.store') }}" @endisset class="bk-form">

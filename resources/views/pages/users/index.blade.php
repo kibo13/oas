@@ -6,7 +6,7 @@
 
 	<div class="py-2 mb-1">
 		<a href="{{ route('users.create') }}" class="btn btn-outline-primary">
-			Новый пользователь
+			Новая запись
 		</a>
 		<a href="{{ route('roles.index') }}" class="btn btn-outline-secondary">
 			Роли

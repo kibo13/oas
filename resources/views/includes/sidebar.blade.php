@@ -13,17 +13,17 @@
 
   <ul class="bk-sidebar__list list-unstyled components my-2">
 
-    <!-- START Subscribers -->
-    <li @sbactive('subscribers.index')>
+    <!-- START Statements -->
+    <li @sbactive('statements.index')>
       <a href="" class="bk-sidebar__link d-flex align-items-start">
         <span class="bk-sidebar__link--icon d-flex align-items-start mx-2">
-          <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="address-card" class="bk-sidebar__link--size svg-inline--fa fa-address-card fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-            <path fill="currentColor" d="M528 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm0 400H48V80h480v352zM208 256c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm-89.6 128h179.2c12.4 0 22.4-8.6 22.4-19.2v-19.2c0-31.8-30.1-57.6-67.2-57.6-10.8 0-18.7 8-44.8 8-26.9 0-33.4-8-44.8-8-37.1 0-67.2 25.8-67.2 57.6v19.2c0 10.6 10 19.2 22.4 19.2zM360 320h112c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H360c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8zm0-64h112c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H360c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8zm0-64h112c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H360c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8z"></path>
+          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="inbox" class="bk-sidebar__link--size svg-inline--fa fa-inbox fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+            <path fill="currentColor" d="M567.938 243.908L462.25 85.374A48.003 48.003 0 0 0 422.311 64H153.689a48 48 0 0 0-39.938 21.374L8.062 243.908A47.994 47.994 0 0 0 0 270.533V400c0 26.51 21.49 48 48 48h480c26.51 0 48-21.49 48-48V270.533a47.994 47.994 0 0 0-8.062-26.625zM162.252 128h251.497l85.333 128H376l-32 64H232l-32-64H76.918l85.334-128z"></path>
           </svg>
         </span>
-        <span class="bk-sidebar__link--icon">Абоненты</span></a>
+        <span class="bk-sidebar__link--icon">Заявки</span></a>
     </li>
-    <!-- START Subscribers -->
+    <!-- END Statements -->
 
     <!-- START Works -->
     <li @sbactive('works.index')>
@@ -37,8 +37,20 @@
     </li>
     <!-- START Works -->
 
+    <!-- START Promisers -->
+    <li @sbactive('promise*')>
+      <a href="{{ route('promisers.index') }}" class="bk-sidebar__link d-flex align-items-start">
+        <span class="bk-sidebar__link--icon d-flex align-items-start mx-2">
+          <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="address-card" class="bk-sidebar__link--size svg-inline--fa fa-address-card fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+            <path fill="currentColor" d="M528 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm0 400H48V80h480v352zM208 256c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm-89.6 128h179.2c12.4 0 22.4-8.6 22.4-19.2v-19.2c0-31.8-30.1-57.6-67.2-57.6-10.8 0-18.7 8-44.8 8-26.9 0-33.4-8-44.8-8-37.1 0-67.2 25.8-67.2 57.6v19.2c0 10.6 10 19.2 22.4 19.2zM360 320h112c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H360c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8zm0-64h112c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H360c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8zm0-64h112c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H360c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8z"></path>
+          </svg>
+        </span>
+        <span class="bk-sidebar__link--icon">Потребители</span></a>
+    </li>
+    <!-- START Promisers -->
+
     <!-- START Workers -->
-    <li @sbactive('worker*')>
+    <li @sbactive('worke*')>
       <a href="{{ route('workers.index') }}" class="bk-sidebar__link d-flex align-items-start">
         <span class="bk-sidebar__link--icon d-flex align-items-start mx-2">
           <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="users" class="bk-sidebar__link--size svg-inline--fa fa-users fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -49,18 +61,6 @@
       </a>
     </li>
     <!-- START Workers -->
-
-    <!-- START Statements -->
-    <li @sbactive('statements.index')>
-      <a href="" class="bk-sidebar__link d-flex align-items-start">
-        <span class="bk-sidebar__link--icon d-flex align-items-start mx-2">
-          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="inbox" class="bk-sidebar__link--size svg-inline--fa fa-inbox fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-            <path fill="currentColor" d="M567.938 243.908L462.25 85.374A48.003 48.003 0 0 0 422.311 64H153.689a48 48 0 0 0-39.938 21.374L8.062 243.908A47.994 47.994 0 0 0 0 270.533V400c0 26.51 21.49 48 48 48h480c26.51 0 48-21.49 48-48V270.533a47.994 47.994 0 0 0-8.062-26.625zM162.252 128h251.497l85.333 128H376l-32 64H232l-32-64H76.918l85.334-128z"></path>
-          </svg>
-        </span>
-        <span class="bk-sidebar__link--icon">Заявки</span></a>
-    </li>
-    <!-- END Statements -->
 
     <!-- START Charts -->
     <li @sbactive('charts.index')>

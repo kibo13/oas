@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Position;
+use App\Models\Promiser;
+use App\Models\Type;
+use App\Models\Street;
 use Illuminate\Http\Request;
 
-class PositionController extends Controller
+class PromiserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +16,8 @@ class PositionController extends Controller
      */
     public function index()
     {
-        $positions = Position::paginate(7);
-        return view('pages.positions.index', compact('positions'));
+        $promisers = Promiser::paginate(10);
+        return view('pages.promisers.index', compact('promisers'));
     }
 
     /**
@@ -25,7 +27,7 @@ class PositionController extends Controller
      */
     public function create()
     {
-        return view('pages.positions.form');
+        //
     }
 
     /**
@@ -36,54 +38,51 @@ class PositionController extends Controller
      */
     public function store(Request $request)
     {
-        Position::create($request->all());
-        return redirect()->route('positions.index');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Position  $position
+     * @param  \App\Models\Promiser  $promiser
      * @return \Illuminate\Http\Response
      */
-    public function show(Position $position)
+    public function show(Promiser $promiser)
     {
-        
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Position  $position
+     * @param  \App\Models\Promiser  $promiser
      * @return \Illuminate\Http\Response
      */
-    public function edit(Position $position)
+    public function edit(Promiser $promiser)
     {
-        return view('pages.positions.form', compact('position'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Position  $position
+     * @param  \App\Models\Promiser  $promiser
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Position $position)
+    public function update(Request $request, Promiser $promiser)
     {
-        $position->update($request->all());
-        return redirect()->route('positions.index');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Position  $position
+     * @param  \App\Models\Promiser  $promiser
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Position $position)
+    public function destroy(Promiser $promiser)
     {
-        $position->delete();
-        return redirect()->route('positions.index');
+        //
     }
 }

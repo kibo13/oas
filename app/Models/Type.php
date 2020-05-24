@@ -4,16 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Street extends Model
+class Type extends Model
 {
     protected $fillable = [
         'name',
+        'slug'
     ];
-
-    public function workers()
-    {
-        return $this->hasMany('App\Models\Worker');
-    }
 
     public function promisers()
     {

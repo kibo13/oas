@@ -4,23 +4,10 @@
 <div class="overflow-hidden pt-4 py-2">
 	<h2 class="mb-1">Сотрудники</h2>
 
-	@if(
-	Auth::user()->roles()->pluck('slug')->contains('hh')
-	||
-	Auth::user()->roles()->pluck('slug')->contains('admin')
-	)
+	@if(Auth::user()->roles()->pluck('slug')->contains('hh'))
 	<div class="py-2 mt-1">
 		<a href="{{ route('workers.create') }}" class="btn btn-outline-primary">
-			Новый сотрудник
-		</a>
-		<a href="{{ route('branches.index') }}" class="btn btn-outline-secondary">
-			Отделы
-		</a>
-		<a href="{{ route('positions.index') }}" class="btn btn-outline-secondary">
-			Должности
-		</a>
-		<a href="{{ route('streets.index') }}" class="btn btn-outline-secondary">
-			Улицы
+			Новая запись
 		</a>
 	</div>
 	@endif
@@ -35,11 +22,7 @@
 					<th scope="col">Должность</th>
 					<th scope="col">Адрес</th>
 					<th scope="col">Телефоны</th>
-					@if(
-					Auth::user()->roles()->pluck('slug')->contains('hh')
-					||
-					Auth::user()->roles()->pluck('slug')->contains('admin')
-					)
+					@if(Auth::user()->roles()->pluck('slug')->contains('hh'))
 					<th scope="col">Действие</th>
 					@endif
 				</tr>
@@ -68,11 +51,7 @@
 						Дом: {{ $worker->home_phone }}<br>
 						Сот: {{ $worker->mob_phone }}
 					</td>
-					@if(
-						Auth::user()->roles()->pluck('slug')->contains('hh')
-						||
-						Auth::user()->roles()->pluck('slug')->contains('admin')
-					)
+					@if(Auth::user()->roles()->pluck('slug')->contains('hh'))
 					<td>
 						<div>
 							<form action="{{ route('workers.destroy', $worker) }}" method="POST">

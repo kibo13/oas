@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Position;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
-class PositionController extends Controller
+class TypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class PositionController extends Controller
      */
     public function index()
     {
-        $positions = Position::paginate(7);
-        return view('pages.positions.index', compact('positions'));
+        $types = Type::get();
+        return view('pages.types.index', compact('types'));
     }
 
     /**
@@ -25,7 +25,7 @@ class PositionController extends Controller
      */
     public function create()
     {
-        return view('pages.positions.form');
+        return view('pages.types.form');
     }
 
     /**
@@ -36,54 +36,54 @@ class PositionController extends Controller
      */
     public function store(Request $request)
     {
-        Position::create($request->all());
-        return redirect()->route('positions.index');
+        Type::create($request->all());
+        return redirect()->route('types.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Position  $position
+     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function show(Position $position)
+    public function show(Type $type)
     {
-        
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Position  $position
+     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function edit(Position $position)
+    public function edit(Type $type)
     {
-        return view('pages.positions.form', compact('position'));
+        return view('pages.types.form', compact('type'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Position  $position
+     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Position $position)
+    public function update(Request $request, Type $type)
     {
-        $position->update($request->all());
-        return redirect()->route('positions.index');
+        $type->update($request->all());
+        return redirect()->route('types.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Position  $position
+     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Position $position)
+    public function destroy(Type $type)
     {
-        $position->delete();
-        return redirect()->route('positions.index');
+        $type->delete();
+        return redirect()->route('types.index');
     }
 }

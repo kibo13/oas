@@ -6,10 +6,7 @@
 
   <div class="py-2 mb-1">
     <a href="{{ route('streets.create') }}" class="btn btn-outline-primary">
-      Новая улица
-    </a>
-    <a href="{{ route('workers.index') }}" class="btn btn-outline-secondary">
-      Сотрудники
+      Новая запись
     </a>
   </div>
 

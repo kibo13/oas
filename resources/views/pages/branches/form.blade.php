@@ -6,7 +6,7 @@
   @isset($branch)
   <h2>Редактирование записи</h2>
   @else
-  <h2>Новая запись</h2>
+  <h2>Добавление записи</h2>
   @endisset
 
   <form method="POST" @isset($branch) action="{{ route('branches.update', $branch) }}" @else action="{{ route('branches.store') }}" @endisset class="bk-form">
@@ -22,7 +22,11 @@
         <input id="name" type="text" class="form-control bk-form__input" name="name" required value="@isset($branch) {{ $branch->name }} @endisset" placeholder="Введите наименование должности" autofocus>
       </div>
 
-      <button type="submit" class="btn btn-outline-success">Сохранить</button>
+      <div class="form-group">
+        <button type="submit" class="btn btn-outline-success">Сохранить</button>
+        <a href="{{ route('branches.index') }}" class="btn btn-outline-secondary">Назад</a>
+      </div>
+
 
     </div>
   </form>

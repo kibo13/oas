@@ -18,7 +18,7 @@
             <label for="last_name" class="bk-form__label mb-0">Фамилия</label>
             <input id="last_name" type="text" class="form-control bk-form__input" name="last_name" required placeholder="Введите фамилию сотрудника" value="{{ old('last_name', isset($worker) ? $worker->last_name : null) }}">
           </div>
-          
+
           <div class="col-md-4 form-group mb-2 pl-0">
             <label for="first_name" class="bk-form__label mb-0">Имя</label>
             <input id="first_name" type="text" class="form-control bk-form__input" name="first_name" required placeholder="Введите имя сотрудника" value="{{ old('first_name', isset($worker) ? $worker->first_name : null) }}">
@@ -41,12 +41,10 @@
 
             <select name="branch_id" id="branch_id" class="form-control bk-form__input">
               @foreach($branches as $branch)
-              <option 
-                value="{{ $branch->id }}"
-                @if($worker->branch_id == $branch->id)
-                  selected
+              <option value="{{ $branch->id }}" @if($worker->branch_id == $branch->id)
+                selected
                 @endif
-              >
+                >
                 {{ ucfirst($branch->name) }}
               </option>
               @endforeach
@@ -58,12 +56,10 @@
 
             <select name="position_id" id="position_id" class="form-control bk-form__input">
               @foreach($positions as $position)
-              <option 
-                value="{{ $position->id }}"
-                 @if($worker->position_id == $position->id)
-                  selected
+              <option value="{{ $position->id }}" @if($worker->position_id == $position->id)
+                selected
                 @endif
-              >
+                >
                 {{ ucfirst($position->name) }}
               </option>
               @endforeach
@@ -82,12 +78,10 @@
 
             <select name="street_id" id="street" class="form-control bk-form__input">
               @foreach($streets as $street)
-              <option 
-                value="{{ $street->id }}"
-                @if($worker->street_id == $street->id)
-                  selected
+              <option value="{{ $street->id }}" @if($worker->street_id == $street->id)
+                selected
                 @endif
-              >
+                >
                 {{ ucfirst($street->name) }}
               </option>
               @endforeach
@@ -134,7 +128,10 @@
 
       </div>
 
-      <button type="submit" class="btn btn-outline-success">Сохранить</button>
+      <div class="form-group">
+        <button type="submit" class="btn btn-outline-success">Сохранить</button>
+        <a href="{{ route('workers.index') }}" class="btn btn-outline-secondary">Назад</a>
+      </div>
 
     </div>
   </form>

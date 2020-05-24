@@ -11190,7 +11190,7 @@ a[data-toggle=collapse] {
 }
 
 .bk-navbar__dropitem {
-  min-width: 5rem;
+  min-width: 6rem;
 }
 
 .bk-navbar li:hover,
@@ -11205,8 +11205,7 @@ a[data-toggle=collapse] {
 
 .bk-navbar__link {
   display: block;
-  padding: 3px 5px;
-  padding-left: 10px;
+  padding: 5px 10px;
 }
 
 #content {
@@ -11423,6 +11422,10 @@ a[data-toggle=collapse] {
 @media (max-width: 576px) {
   .bk-navbar {
     padding-top: 10px;
+  }
+
+  .bk-navbar__info::after {
+    display: none;
   }
 }
 
