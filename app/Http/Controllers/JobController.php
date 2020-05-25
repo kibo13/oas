@@ -76,8 +76,9 @@ class JobController extends Controller
      */
     public function show(Job $job)
     {
-        $jobs = Job::paginate(10);
-        return view('pages.jobs.show', compact('jobs', 'job'));
+        $streets = Street::get();
+        $organizations = Organization::get();
+        return view('pages.jobs.show', compact('job', 'streets', 'organizations'));
     }
 
     /**

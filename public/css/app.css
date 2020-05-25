@@ -11387,6 +11387,23 @@ a[data-toggle=collapse] {
   width: 100% !important;
 }
 
+.bk-blank__item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.bk-blank__title {
+  min-width: 150px;
+  max-width: 150px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.bk-blank__text {
+  vertical-align: top;
+}
+
 @media (max-width: 992px) {
   #sidebar {
     margin-left: -250px;

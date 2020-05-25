@@ -30,25 +30,24 @@
           <td>{{ $role->name }}</td>
           <td>{{ $role->users()->pluck('name')->implode(', ') }}</td>
           <td>
-            <div>
-              <form action="{{ route('roles.destroy', $role) }}" method="POST">
-                <div class="d-flex">
+            <div class="d-flex">
 
-                  <div class="bk-crud__wrap mr-1">
-                    <a href="{{ route('roles.edit', $role) }}" class="bk-crud__btn btn btn-warning mr-1">
-                      Р
-                    </a>
-                    <span class="bk-crud__tip">Редактировать</span>
-                  </div>
+              <div class="bk-crud__wrap">
+                <a href="{{ route('roles.edit', $role) }}" class="bk-crud__btn btn btn-warning mr-1">
+                  Р
+                </a>
+                <span class="bk-crud__tip">Редактировать</span>
+              </div>
 
-                  <div class="bk-crud__wrap">
-                    @csrf
-                    @method('DELETE')
-                    <input class="bk-crud__btn btn btn-danger" type="submit" value="У">
-                    <span class="bk-crud__tip">Удалить</span>
-                  </div>
-                </div>
-              </form>
+              <div class="bk-crud__wrap">
+                <form action="{{ route('roles.destroy', $role) }}" method="POST">
+                  @csrf
+                  @method('DELETE')
+                  <input class="bk-crud__btn btn btn-danger" type="submit" value="У">
+                  <span class="bk-crud__tip">Удалить</span>
+                </form>
+              </div>
+
             </div>
           </td>
         </tr>
