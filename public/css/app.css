@@ -10950,6 +10950,10 @@ a:hover {
   perspective: 1500px;
 }
 
+textarea {
+  resize: none;
+}
+
 .bk-logo {
   -webkit-user-select: none;
      -moz-user-select: none;

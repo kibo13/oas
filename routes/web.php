@@ -25,6 +25,15 @@ Route::middleware(['auth'])->group(function() {
         Route::resource('roles', 'RoleController');
     });
 
+    // role: disp_oas 
+    // permissions : 
+    // - CRUD job records
+    Route::group([
+        'middleware' => 'role:disp_oas'
+    ], function () {
+        Route::resource('jobs', 'JobController');
+    });
+
     // role: audit 
     // permissions : 
     // - CRUD promiser records
@@ -68,6 +77,8 @@ Route::middleware(['auth'])->group(function() {
     // permissions : 
     // - show all records  
     Route::get('/', 'HomeController@index')->name('home');
+    Route::get('jobs', 'JobController@index')->name('jobs.index');
+    Route::get('jobs/{job}', 'JobController@show')->name('jobs.show');
     Route::get('workers', 'WorkerController@index')->name('workers.index');
     Route::get('promisers', 'PromiserController@index')->name('promisers.index');
 });
