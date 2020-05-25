@@ -27,7 +27,12 @@ class PromiserController extends Controller
      */
     public function create()
     {
-        //
+        $streets = Street::get();
+        $types = Type::get();
+        return view(
+            'pages.promisers.create',
+            compact('streets', 'types')
+        );
     }
 
     /**
@@ -38,7 +43,8 @@ class PromiserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Promiser::create($request->all());
+        return redirect()->route('promisers.index');
     }
 
     /**
@@ -60,7 +66,12 @@ class PromiserController extends Controller
      */
     public function edit(Promiser $promiser)
     {
-        //
+        $streets = Street::get();
+        $types = Type::get();
+        return view(
+            'pages.promisers.edit',
+            compact('promiser', 'streets', 'types')
+        );
     }
 
     /**
@@ -72,7 +83,8 @@ class PromiserController extends Controller
      */
     public function update(Request $request, Promiser $promiser)
     {
-        //
+        $promiser->update($request->all());
+        return redirect()->route('promisers.index');
     }
 
     /**
@@ -83,6 +95,7 @@ class PromiserController extends Controller
      */
     public function destroy(Promiser $promiser)
     {
-        //
+        $promiser->delete();
+        return redirect()->route('promisers.index');
     }
 }
