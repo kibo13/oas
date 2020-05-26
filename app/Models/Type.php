@@ -15,4 +15,9 @@ class Type extends Model
     {
         return $this->hasMany('App\Models\Promiser');
     }
+
+    public function defects()
+    {
+        return $this->hasMany('App\Models\Defect');
+    }
 }

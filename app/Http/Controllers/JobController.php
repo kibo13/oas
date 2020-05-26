@@ -27,27 +27,9 @@ class JobController extends Controller
      */
     public function create()
     {
-        $type_job = array(
-            '1' => array(
-                'name' => 'Плановая'
-            ),
-            '2' => array(
-                'name' => 'Аварийная'
-            )
-        );
 
-        $type_off = array(
-            '1' => array(
-                'name' => 'Горячая вода'
-            ),
-            '2' => array(
-                'name' => 'Холодная вода'
-            ),
-            '3' => array(
-                'name' => 'Отопление'
-            )
-        );
-
+        $type_job = config('constants.type_job');
+        $type_off = config('constants.type_off');
         $streets = Street::get();
         $organizations = Organization::get();
          return view(
@@ -89,27 +71,8 @@ class JobController extends Controller
      */
     public function edit(Job $job)
     {
-        $type_job = array(
-            '1' => array(
-                'name' => 'Плановая'
-            ),
-            '2' => array(
-                'name' => 'Аварийная'
-            )
-        );
-
-        $type_off = array(
-            '1' => array(
-                'name' => 'Горячая вода'
-            ),
-            '2' => array(
-                'name' => 'Холодная вода'
-            ),
-            '3' => array(
-                'name' => 'Отопление'
-            )
-        );
-
+        $type_job = config('constants.type_job');
+        $type_off = config('constants.type_off');
         $streets = Street::get();
         $organizations = Organization::get();
         return view(

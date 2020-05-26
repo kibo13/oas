@@ -42,7 +42,10 @@
 							Должности
 						</a>
 						<a class="dropdown-item bk-navbar__link" href="{{ route('types.index') }}">
-							Типы
+							Типы(э/с)
+						</a>
+						<a class="dropdown-item bk-navbar__link" href="{{ route('defects.index') }}">
+							Неисправности
 						</a>
 						<a class="dropdown-item bk-navbar__link" href="{{ route('streets.index') }}">
 							Улицы

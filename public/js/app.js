@@ -49833,60 +49833,61 @@ __webpack_require__.r(__webpack_exports__);
 $(document).ready(function () {
   $('.bk-crud__btn--del').on('click', function (e) {
     var data_id = $(e.target).data('id');
-    var data_tname = $(e.target).data('table-name'); // console.log(data_tname);
+    var data_tname = $(e.target).data('table-name'); // for checking 
+    // console.log(data_tname);
     // field for checking 
     // $('#bk-delete-input').val(data_id);
 
     switch (data_tname) {
+      // START namespace "info" 
       case 'type':
-        // set action to tag <form> 
         $('#bk-delete-form').attr('action', '/info/types/' + data_id);
         break;
 
       case 'position':
-        // set action to tag <form> 
         $('#bk-delete-form').attr('action', '/info/positions/' + data_id);
         break;
 
       case 'street':
-        // set action to tag <form> 
         $('#bk-delete-form').attr('action', '/info/streets/' + data_id);
         break;
 
       case 'branch':
-        // set action to tag <form> 
         $('#bk-delete-form').attr('action', '/info/branches/' + data_id);
         break;
 
       case 'organization':
-        // set action to tag <form> 
         $('#bk-delete-form').attr('action', '/info/organizations/' + data_id);
         break;
 
+      case 'defect':
+        $('#bk-delete-form').attr('action', '/info/defects/' + data_id);
+        break;
+      // END namespace "info" 
+      // START namespace "admin" 
+
       case 'role':
-        // set action to tag <form> 
         $('#bk-delete-form').attr('action', '/admin/roles/' + data_id);
         break;
 
       case 'user':
-        // set action to tag <form> 
         $('#bk-delete-form').attr('action', '/admin/users/' + data_id);
         break;
+      // END namespace "admin" 
+      // START namespace "pages" 
 
       case 'worker':
-        // set action to tag <form> 
         $('#bk-delete-form').attr('action', '/workers/' + data_id);
         break;
 
       case 'job':
-        // set action to tag <form> 
         $('#bk-delete-form').attr('action', '/jobs/' + data_id);
         break;
 
       case 'promiser':
-        // set action to tag <form> 
         $('#bk-delete-form').attr('action', '/promisers/' + data_id);
         break;
+      // END namespace "pages" 
 
       default:
         break;

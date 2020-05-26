@@ -70,7 +70,8 @@ Route::middleware(['auth'])->group(function() {
         Route::resource('branches', 'BranchController');
         Route::resource('positions', 'PositionController');
         Route::resource('types', 'TypeController');
-        Route::resource('streets', 'StreetController');        
+        Route::resource('streets', 'StreetController');
+        Route::resource('defects', 'DefectController');        
     });
 
     // role: guest 

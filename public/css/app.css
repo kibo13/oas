@@ -11308,11 +11308,29 @@ a[data-toggle=collapse] {
 
 .bk-crud__btn {
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 0;
   width: 25px;
   height: 25px;
   color: #ffffff !important;
   overflow: hidden;
+}
+
+.bk-crud__icon {
+  width: 16px;
+  height: 16px;
+}
+
+.bk-crud__icon--edit {
+  width: 15px;
+  height: 15px;
+}
+
+.bk-crud__icon--del {
+  width: 14px;
+  height: 14px;
 }
 
 .bk-confirm {
