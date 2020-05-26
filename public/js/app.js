@@ -49683,7 +49683,7 @@ module.exports = function(module) {
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-__webpack_require__(/*! ./index */ "./resources/js/index.js");
+__webpack_require__(/*! ./custom/index */ "./resources/js/custom/index.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
@@ -49823,23 +49823,125 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/index.js":
-/*!*******************************!*\
-  !*** ./resources/js/index.js ***!
-  \*******************************/
+/***/ "./resources/js/custom/components/modal.js":
+/*!*************************************************!*\
+  !*** ./resources/js/custom/components/modal.js ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-  $("#sidebarCollapse").on("click", function () {
-    $("#sidebar").toggleClass("active");
-    $(this).toggleClass("active");
+  $('.bk-crud__btn--del').on('click', function (e) {
+    var data_id = $(e.target).data('id');
+    var data_tname = $(e.target).data('table-name'); // console.log(data_tname);
+    // field for checking 
+    // $('#bk-delete-input').val(data_id);
+
+    switch (data_tname) {
+      case 'type':
+        // set action to tag <form> 
+        $('#bk-delete-form').attr('action', '/info/types/' + data_id);
+        break;
+
+      case 'position':
+        // set action to tag <form> 
+        $('#bk-delete-form').attr('action', '/info/positions/' + data_id);
+        break;
+
+      case 'street':
+        // set action to tag <form> 
+        $('#bk-delete-form').attr('action', '/info/streets/' + data_id);
+        break;
+
+      case 'branch':
+        // set action to tag <form> 
+        $('#bk-delete-form').attr('action', '/info/branches/' + data_id);
+        break;
+
+      case 'organization':
+        // set action to tag <form> 
+        $('#bk-delete-form').attr('action', '/info/organizations/' + data_id);
+        break;
+
+      case 'role':
+        // set action to tag <form> 
+        $('#bk-delete-form').attr('action', '/admin/roles/' + data_id);
+        break;
+
+      case 'user':
+        // set action to tag <form> 
+        $('#bk-delete-form').attr('action', '/admin/users/' + data_id);
+        break;
+
+      case 'worker':
+        // set action to tag <form> 
+        $('#bk-delete-form').attr('action', '/workers/' + data_id);
+        break;
+
+      case 'job':
+        // set action to tag <form> 
+        $('#bk-delete-form').attr('action', '/jobs/' + data_id);
+        break;
+
+      case 'promiser':
+        // set action to tag <form> 
+        $('#bk-delete-form').attr('action', '/promisers/' + data_id);
+        break;
+
+      default:
+        break;
+    }
   });
+});
+
+/***/ }),
+
+/***/ "./resources/js/custom/components/navbar.js":
+/*!**************************************************!*\
+  !*** ./resources/js/custom/components/navbar.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  // logout
   $("#logout-link").on("click", function (e) {
     e.preventDefault();
     $("#logout-form").submit();
   });
 });
+
+/***/ }),
+
+/***/ "./resources/js/custom/components/sidebar.js":
+/*!***************************************************!*\
+  !*** ./resources/js/custom/components/sidebar.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  // slidabar-toggle 
+  $("#sidebarCollapse").on("click", function () {
+    $("#sidebar").toggleClass("active");
+    $(this).toggleClass("active");
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/custom/index.js":
+/*!**************************************!*\
+  !*** ./resources/js/custom/index.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! ./components/sidebar */ "./resources/js/custom/components/sidebar.js");
+
+__webpack_require__(/*! ./components/navbar */ "./resources/js/custom/components/navbar.js");
+
+__webpack_require__(/*! ./components/modal */ "./resources/js/custom/components/modal.js");
 
 /***/ }),
 

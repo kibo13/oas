@@ -24,7 +24,7 @@
 
 			<div class="form-group">
 				<label for="slug" class="bk-form__label mb-0">Код</label>
-				<input id="slug" type="text" class="form-control bk-form__input" name="slug" required value="@isset($role) {{ $role->slug }} @endisset" placeholder="Введите обозначение роли" autofocus>
+				<input id="slug" type="text" class="form-control bk-form__input" name="slug" value="@isset($role) {{ $role->slug }} @endisset" placeholder="Введите обозначение роли" autofocus>
 			</div>
 
 			<button type="submit" class="btn btn-outline-success">Сохранить</button>

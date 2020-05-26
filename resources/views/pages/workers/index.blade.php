@@ -63,13 +63,18 @@
 							</div>
 
 							<div class="bk-crud__wrap">
-								<form action="{{ route('workers.destroy', $worker) }}" method="POST">
-									@csrf
-									@method('DELETE')
-									<input class="bk-crud__btn btn btn-danger" type="submit" value="У">
-									<span class="bk-crud__tip">Удалить</span>
-								</form>
-							</div>
+                <a 
+                  href="javascript:void(0)" 
+                  class="bk-crud__btn bk-crud__btn--del btn btn-danger" 
+                  data-toggle="modal" 
+                  data-target="#bk-delete-modal"
+                  data-id="{{ $worker->id }}"
+                  data-table-name="worker"
+                >
+                  У
+                </a>
+                <span class="bk-crud__tip">Удалить</span>
+              </div>
 							
 						</div>
 					</td>

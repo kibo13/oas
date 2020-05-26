@@ -41,8 +41,6 @@
 						{{ $job->num_home }}
 						{{ $job->num_corp }}
 					</td>
-
-
 					<td>
 						<div class="d-flex">
 							<div class="bk-crud__wrap">
@@ -61,13 +59,19 @@
 							</div>
 
 							<div class="bk-crud__wrap">
-								<form action="{{ route('jobs.destroy', $job) }}" method="POST">
-									@csrf
-									@method('DELETE')
-									<input class="bk-crud__btn btn btn-danger" type="submit" value="У">
-									<span class="bk-crud__tip">Удалить</span>
-								</form>
-							</div>
+                <a 
+                  href="javascript:void(0)" 
+                  class="bk-crud__btn bk-crud__btn--del btn btn-danger" 
+                  data-toggle="modal" 
+                  data-target="#bk-delete-modal"
+                  data-id="{{ $job->id }}"
+                  data-table-name="job"
+                >
+                  У
+                </a>
+                <span class="bk-crud__tip">Удалить</span>
+              </div>
+
 							@endif
 						</div>
 					</td>
@@ -78,6 +82,7 @@
 			</tbody>
 		</table>
 	</div>
+
 	{{ $jobs->links() }}
 </div>
 @endsection

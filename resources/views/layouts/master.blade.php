@@ -47,6 +47,10 @@
     <!-- /.bk-footer -->
   </div>
   <!-- /#app.app -->
+
+  <!-- START modal-confirm -->
+  @include('includes.modal')
+  <!-- END modal-confirm -->
 </body>
 
 </html>
