@@ -49831,7 +49831,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-  $('.bk-crud__btn--del').on('click', function (e) {
+  $('.bk-btn-del').on('click', function (e) {
     var data_id = $(e.target).data('id');
     var data_tname = $(e.target).data('table-name'); // for checking 
     // console.log(data_tname);

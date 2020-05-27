@@ -27,7 +27,11 @@
 				<input id="slug" type="text" class="form-control bk-form__input" name="slug" value="@isset($role) {{ $role->slug }} @endisset" placeholder="Введите обозначение роли" autofocus>
 			</div>
 
-			<button type="submit" class="btn btn-outline-success">Сохранить</button>
+			<div class="form-group">
+				<button type="submit" class="btn btn-outline-success">Сохранить</button>
+				<a href="{{ route('roles.index') }}" class="btn btn-outline-secondary">Назад</a>
+			</div>
+
 		</div>
 	</form>
 </div>

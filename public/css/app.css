@@ -11307,7 +11307,6 @@ a[data-toggle=collapse] {
 }
 
 .bk-crud__btn {
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11328,9 +11327,44 @@ a[data-toggle=collapse] {
   height: 15px;
 }
 
-.bk-crud__icon--del {
+.bk-crud__del {
+  position: relative;
+  width: 25px;
+  height: 25px;
+}
+
+.bk-crud__del:hover .bk-crud__tip {
+  visibility: visible;
+}
+
+.bk-crud__del--link,
+.bk-crud__del--icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.bk-crud__del--size {
   width: 14px;
   height: 14px;
+}
+
+.bk-crud__del--link {
+  z-index: 2;
+}
+
+.bk-crud__del--link a {
+  width: 100%;
+  height: 100%;
+}
+
+.bk-crud__del-icon {
+  z-index: 1;
 }
 
 .bk-confirm {

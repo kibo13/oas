@@ -33,7 +33,7 @@ class JobController extends Controller
         $streets = Street::get();
         $organizations = Organization::get();
          return view(
-            'pages.jobs.create',
+            'pages.jobs.form',
             compact('streets', 'organizations', 'type_job', 'type_off')
         );
     }
@@ -76,7 +76,7 @@ class JobController extends Controller
         $streets = Street::get();
         $organizations = Organization::get();
         return view(
-            'pages.jobs.edit',
+            'pages.jobs.form',
             compact('job', 'streets', 'organizations', 'type_job', 'type_off')
         );
     }

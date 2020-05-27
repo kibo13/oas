@@ -30,7 +30,7 @@ class PromiserController extends Controller
         $streets = Street::get();
         $types = Type::get();
         return view(
-            'pages.promisers.create',
+            'pages.promisers.form',
             compact('streets', 'types')
         );
     }
@@ -69,7 +69,7 @@ class PromiserController extends Controller
         $streets = Street::get();
         $types = Type::get();
         return view(
-            'pages.promisers.edit',
+            'pages.promisers.form',
             compact('promiser', 'streets', 'types')
         );
     }

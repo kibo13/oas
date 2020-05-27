@@ -13,7 +13,9 @@ class Job extends Model
         'type_off',
         'desc',
         'date_on',
+        'time_on',
         'date_off',
+        'time_off',
         'num_home',
         'num_corp'
     ];

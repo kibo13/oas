@@ -11,7 +11,7 @@
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 26/05/2020 23:53:52
+ Date: 27/05/2020 12:05:14
 */
 
 SET NAMES utf8mb4;
@@ -27,7 +27,7 @@ CREATE TABLE `branches`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of branches
@@ -42,7 +42,6 @@ INSERT INTO `branches` VALUES (7, 'ЖЭУ-7', '2020-05-22 18:12:16', '2020-05-22
 INSERT INTO `branches` VALUES (8, 'ЖЭУ-8', '2020-05-22 18:12:32', '2020-05-22 18:12:32');
 INSERT INTO `branches` VALUES (9, 'ОАС', '2020-05-22 18:12:40', '2020-05-22 18:12:40');
 INSERT INTO `branches` VALUES (10, 'Транспортный отдел', '2020-05-22 18:13:04', '2020-05-22 18:13:04');
-INSERT INTO `branches` VALUES (11, 'Производственно-технический отдел', '2020-05-22 18:13:42', '2020-05-22 18:13:42');
 INSERT INTO `branches` VALUES (12, 'Отдел главного энергетика', '2020-05-22 18:13:52', '2020-05-22 18:13:52');
 
 -- ----------------------------
@@ -57,7 +56,7 @@ CREATE TABLE `defects`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 44 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 45 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of defects
@@ -103,7 +102,6 @@ INSERT INTO `defects` VALUES (39, 2, 'Прочие по сантехнике', '
 INSERT INTO `defects` VALUES (40, 4, 'Элементы конструкции', 'Протекает кровля', '2020-05-26 18:27:28', '2020-05-26 18:27:28');
 INSERT INTO `defects` VALUES (41, 4, 'Элементы конструкции', 'Нарушен тепловой контур подъезда', '2020-05-26 18:27:40', '2020-05-26 18:27:40');
 INSERT INTO `defects` VALUES (42, 4, 'Элементы конструкции', 'Забит водосток', '2020-05-26 18:27:53', '2020-05-26 18:27:53');
-INSERT INTO `defects` VALUES (43, 4, 'Элементы конструкции', 'Прочие по конструкции', '2020-05-26 18:28:02', '2020-05-26 18:28:02');
 
 -- ----------------------------
 -- Table structure for failed_jobs
@@ -130,20 +128,23 @@ CREATE TABLE `jobs`  (
   `type_job` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `type_off` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `date_on` datetime(0) NOT NULL,
-  `date_off` datetime(0) NOT NULL,
+  `date_on` date NOT NULL,
+  `date_off` date NOT NULL,
   `num_home` int(11) NOT NULL,
   `num_corp` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `time_on` time(0) NULL DEFAULT NULL,
+  `time_off` time(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of jobs
 -- ----------------------------
-INSERT INTO `jobs` VALUES (1, 2, 3, 'Плановая', 'Горячая вода', 'Аварийно-восстановительные работы на водопроводных и канализационных сетях', '2020-03-11 10:00:00', '2020-03-11 15:00:00', 11, NULL, '2020-05-25 15:34:59', '2020-05-25 15:41:27');
-INSERT INTO `jobs` VALUES (2, 2, 23, 'Аварийная', 'Холодная вода', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '2020-02-13 10:00:00', '2020-02-13 12:30:00', 10, NULL, '2020-05-25 15:42:52', '2020-05-25 15:42:52');
+INSERT INTO `jobs` VALUES (5, 2, 4, 'Плановая', 'Холодная вода', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', '2019-08-10', '2019-08-10', 11, NULL, '2020-05-27 10:21:24', '2020-05-27 10:23:03', '10:00:00', '14:00:00');
+INSERT INTO `jobs` VALUES (6, 2, 19, 'Плановая', 'Холодная вода', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', '2020-03-11', '2020-03-11', 9, NULL, '2020-05-27 10:22:21', '2020-05-27 10:23:08', '15:00:00', '18:00:00');
+INSERT INTO `jobs` VALUES (7, 2, 29, 'Аварийная', 'Холодная вода', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', '2020-04-15', '2020-04-15', 7, NULL, '2020-05-27 10:22:55', '2020-05-27 10:22:55', '10:30:00', '12:00:00');
 
 -- ----------------------------
 -- Table structure for migrations
@@ -154,7 +155,7 @@ CREATE TABLE `migrations`  (
   `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 44 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 46 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of migrations
@@ -173,6 +174,7 @@ INSERT INTO `migrations` VALUES (39, '2020_05_24_165814_create_promisers_table',
 INSERT INTO `migrations` VALUES (40, '2020_05_24_165837_create_types_table', 2);
 INSERT INTO `migrations` VALUES (41, '2020_05_25_064953_create_jobs_table', 3);
 INSERT INTO `migrations` VALUES (43, '2020_05_26_171237_create_defects_table', 4);
+INSERT INTO `migrations` VALUES (45, '2020_05_27_095730_alter_table_jobs', 5);
 
 -- ----------------------------
 -- Table structure for organizations
@@ -185,7 +187,7 @@ CREATE TABLE `organizations`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of organizations
@@ -246,7 +248,7 @@ CREATE TABLE `promisers`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of promisers
@@ -255,7 +257,6 @@ INSERT INTO `promisers` VALUES (1, 8, 1, 7, NULL, 11, '2019-10-16', '2020-03-10'
 INSERT INTO `promisers` VALUES (2, 14, 1, 13, NULL, 51, '2019-11-05', '2020-03-04', '2020-05-25 15:16:11', '2020-05-25 15:16:11');
 INSERT INTO `promisers` VALUES (3, 29, 2, 7, NULL, 11, '2019-07-30', '2020-04-09', '2020-05-25 15:16:40', '2020-05-25 15:16:40');
 INSERT INTO `promisers` VALUES (4, 32, 2, 15, NULL, 37, '2019-07-17', '2020-02-18', '2020-05-25 15:17:24', '2020-05-25 15:17:24');
-INSERT INTO `promisers` VALUES (5, 5, 1, 17, NULL, 18, '2019-10-11', '2020-03-24', '2020-05-25 15:17:58', '2020-05-25 15:17:58');
 
 -- ----------------------------
 -- Table structure for role_user
@@ -368,7 +369,7 @@ CREATE TABLE `types`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of types
@@ -392,7 +393,7 @@ CREATE TABLE `users`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
@@ -424,7 +425,7 @@ CREATE TABLE `workers`  (
   `num_corp` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `num_flat` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of workers

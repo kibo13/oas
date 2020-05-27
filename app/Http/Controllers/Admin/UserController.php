@@ -17,9 +17,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('pages.users.index', [
-            'users' => User::get(),
-        ]);
+        $users = User::get();
+        return view('pages.users.index', compact('users'));
     }
 
     /**
@@ -28,14 +27,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
-    {   
-        return view(
-            'pages.users.create',
-            [
-                'user' => [],
-                'roles' => Role::get()
-            ]
-        );
+    {
+        $roles = Role::get();
+        return view('pages.users.form', compact('roles'));
     }
 
     /**
@@ -78,10 +72,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('pages.users.edit', [
-            'user' => $user,
-            'roles' => Role::get(),
-        ]);
+        $roles = Role::get();
+        return view('pages.users.form', compact('user', 'roles'));
     }
 
     /**

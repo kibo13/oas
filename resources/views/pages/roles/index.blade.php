@@ -41,21 +41,18 @@
                 <span class="bk-crud__tip">Редактировать</span>
               </div>
 
-              <div class="bk-crud__wrap">
-                <a 
-                  href="javascript:void(0)" 
-                  class="bk-crud__btn bk-crud__btn--del btn btn-danger" 
-                  data-toggle="modal" 
-                  data-target="#bk-delete-modal"
-                  data-id="{{ $role->id }}"
-                  data-table-name="role"
-                >
-                  <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trash-alt" class="bk-crud__icon bk-crud__icon--del svg-inline--fa fa-trash-alt fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <div class="bk-crud__del btn btn-danger">
+                <span class="bk-crud__del--link">
+                  <a href="javascript:void(0)" class="bk-btn-del" data-toggle="modal" data-target="#bk-delete-modal" data-id="{{ $role->id }}" data-table-name="role"></a>
+                </span>
+                <span class="bk-crud__del--icon">
+                  <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trash-alt" class="bk-crud__del--size svg-inline--fa fa-trash-alt fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                     <path fill="currentColor" d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"></path>
                   </svg>
-                </a>
+                </span>
                 <span class="bk-crud__tip">Удалить</span>
               </div>
+
 
             </div>
           </td>

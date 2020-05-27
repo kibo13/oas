@@ -32,7 +32,7 @@ class WorkerController extends Controller
         $positions = Position::get();
         $branches = Branch::get();
         return view(
-            'pages.workers.create', 
+            'pages.workers.form', 
             compact('streets', 'positions', 'branches')
         );
     }
@@ -72,7 +72,7 @@ class WorkerController extends Controller
         $positions = Position::get();
         $branches = Branch::get();
         return view(
-            'pages.workers.edit',
+            'pages.workers.form',
             compact('worker', 'streets', 'positions', 'branches')
         );
     }

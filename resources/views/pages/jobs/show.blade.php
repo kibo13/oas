@@ -29,12 +29,12 @@
 
 		<div class="bk-blank__item col-md-12">
 			<h4 class="bk-blank__title m-0">Начало работы</h4>
-			<p class="bk-blank__text m-0">{{ date('d.m.Y H:i', strtotime($job->date_on)) }}</p>
+			<p class="bk-blank__text m-0">{{ date('d.m.Y', strtotime($job->date_on)) }}</p>
 		</div>
 
 		<div class="bk-blank__item col-md-12">
 			<h4 class="bk-blank__title m-0">Окончание работы</h4>
-			<p class="bk-blank__text m-0">{{ date('d.m.Y H:i', strtotime($job->date_off)) }}</p>
+			<p class="bk-blank__text m-0">{{ date('d.m.Y', strtotime($job->date_off)) }}</p>
 		</div>
 
 		<div class="bk-blank__item col-md-12">
