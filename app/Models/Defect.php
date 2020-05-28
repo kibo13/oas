@@ -16,4 +16,9 @@ class Defect extends Model
     {
         return $this->belongsTo('App\Models\Type');
     }
+
+    public function bids()
+    {
+        return $this->hasMany('App\Models\Bid');
+    }
 }

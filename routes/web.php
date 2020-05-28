@@ -34,6 +34,15 @@ Route::middleware(['auth'])->group(function() {
         Route::resource('jobs', 'JobController');
     });
 
+    // role: disp_zheu 
+    // permissions : 
+    // - CRUD bid records
+    Route::group([
+        'middleware' => 'role:disp_zheu'
+    ], function () {
+        Route::resource('bids', 'BidController');
+    });
+
     // role: audit 
     // permissions : 
     // - CRUD promiser records
@@ -78,6 +87,7 @@ Route::middleware(['auth'])->group(function() {
     // permissions : 
     // - show all records  
     Route::get('/', 'HomeController@index')->name('home');
+    Route::get('bids', 'BidController@index')->name('bids.index');
     Route::get('jobs', 'JobController@index')->name('jobs.index');
     Route::get('jobs/{job}', 'JobController@show')->name('jobs.show');
     Route::get('workers', 'WorkerController@index')->name('workers.index');

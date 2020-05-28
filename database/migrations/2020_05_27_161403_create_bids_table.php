@@ -15,17 +15,24 @@ class CreateBidsTable extends Migration
     {
         Schema::create('bids', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('type_id')->unsigned();
             $table->bigInteger('branch_id')->unsigned();
-            $table->bigInteger('defect_id')->unsigned();
             $table->bigInteger('street_id')->unsigned();
-            $table->date('date_in');
-            $table->time('time_in');
-            $table->string('last_name');
-            $table->string('phone');
             $table->integer('num_home');
             $table->string('num_corp')->nullable();
             $table->integer('num_flat');
+            $table->date('date_in');
+            $table->time('time_in');
+            $table->string('last_name')->nullable();
+            $table->string('phone')->nullable();
+            $table->bigInteger('type_id')->unsigned();           
+            $table->bigInteger('defect_id')->unsigned();
+            $table->tinyInteger('state')->default(0);
+            $table->tinyInteger('home_hw')->default(0);
+            $table->tinyInteger('home_cw')->default(0);
+            $table->tinyInteger('home_h')->default(0);
+            $table->tinyInteger('crane_hw')->default(0);
+            $table->tinyInteger('crane_cw')->default(0);
+            $table->tinyInteger('crane_h')->default(0);
             $table->text('solution')->nullable();
             $table->date('date_on')->nullable();
             $table->time('time_on')->nullable();

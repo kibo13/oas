@@ -27,7 +27,6 @@ class JobController extends Controller
      */
     public function create()
     {
-
         $type_job = config('constants.type_job');
         $type_off = config('constants.type_off');
         $streets = Street::get();
