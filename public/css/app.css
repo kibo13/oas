@@ -10958,6 +10958,10 @@ textarea {
   z-index: 15 !important;
 }
 
+.bk-hidden {
+  display: none;
+}
+
 .bk-logo {
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -11437,6 +11441,22 @@ a[data-toggle=collapse] {
   font-size: 14px;
 }
 
+.bk-form__num {
+  width: 70px;
+}
+
+.bk-form__time {
+  width: 110px;
+}
+
+.bk-form__date {
+  width: 170px;
+}
+
+.bk-form__select {
+  width: 250px;
+}
+
 .bk-alert-auth {
   padding-left: 12px;
   width: 86% !important;
@@ -11507,6 +11527,22 @@ a[data-toggle=collapse] {
 
   .bk-navbar__info::after {
     display: none;
+  }
+
+  .bk-form__num {
+    width: 33%;
+  }
+
+  .bk-form__time {
+    width: 40%;
+  }
+
+  .bk-form__date {
+    width: 60%;
+  }
+
+  .bk-form__select {
+    width: 100%;
   }
 }
 

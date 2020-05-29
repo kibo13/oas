@@ -49823,6 +49823,31 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/custom/components/bid.js":
+/*!***********************************************!*\
+  !*** ./resources/js/custom/components/bid.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {// $('#bid-reg-btn').on('click', function (e) {
+  // 	e.preventDefault();
+  // 	$('#bid-disposal').addClass('bk-hidden');
+  // 	$('#bid-reg-btn').addClass('active');
+  // 	$('#bid-register').removeClass('bk-hidden');
+  // 	$('#bid-dis-btn').removeClass('active');
+  // });
+  // $('#bid-dis-btn').on('click', function (e) {
+  // 	e.preventDefault();
+  // 	$('#bid-register').addClass('bk-hidden');
+  // 	$('#bid-dis-btn').addClass('active');
+  // 	$('#bid-disposal').removeClass('bk-hidden');
+  // 	$('#bid-reg-btn').removeClass('active');
+  // });
+});
+
+/***/ }),
+
 /***/ "./resources/js/custom/components/modal.js":
 /*!*************************************************!*\
   !*** ./resources/js/custom/components/modal.js ***!
@@ -49878,6 +49903,10 @@ $(document).ready(function () {
 
       case 'worker':
         $('#bk-delete-form').attr('action', '/workers/' + data_id);
+        break;
+
+      case 'bid':
+        $('#bk-delete-form').attr('action', '/bids/' + data_id);
         break;
 
       case 'job':
@@ -49943,6 +49972,8 @@ __webpack_require__(/*! ./components/sidebar */ "./resources/js/custom/component
 __webpack_require__(/*! ./components/navbar */ "./resources/js/custom/components/navbar.js");
 
 __webpack_require__(/*! ./components/modal */ "./resources/js/custom/components/modal.js");
+
+__webpack_require__(/*! ./components/bid */ "./resources/js/custom/components/bid.js");
 
 /***/ }),
 

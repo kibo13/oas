@@ -27,9 +27,20 @@
 			transform: rotate(-45deg) translate(1px, -1px)
     
 @media (max-width: $breakpoint-sm) 
-	.bk-navbar 
-			padding-top: 10px
+	.bk
+			&-navbar 
+				padding-top: 10px
 
-			&__info 
-				&::after 
-					display: none
+				&__info 
+					&::after 
+						display: none
+
+			&-form
+				&__num 
+					width: 33%
+				&__time 
+					width: 40%
+				&__date 
+					width: 60%
+				&__select 
+					width: 100%

@@ -34,8 +34,8 @@
 					<td>{{ $job->organization->name }}</td>
 					<td>{{ $job->type_job }}</td>
 					<td>{{ $job->type_off }}</td>
-					<td>{{ date('d.m.Y H:i', strtotime($job->date_on)) }}</td>
-					<td>{{ date('d.m.Y H:i', strtotime($job->date_off)) }}</td>
+					<td>{{ date('d.m.Y', strtotime($job->date_on)) }} {{ date('H:i', strtotime($job->time_on)) }}</td>
+					<td>{{ date('d.m.Y', strtotime($job->date_off)) }} {{ date('H:i', strtotime($job->time_off)) }}</td>
 					<td class="address">
 						{{ $job->street->name }}
 						{{ $job->num_home }}
@@ -75,7 +75,7 @@
 								<span class="bk-crud__tip">Удалить</span>
 							</div>
 							@endif
-							
+
 						</div>
 					</td>
 

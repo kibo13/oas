@@ -26,11 +26,15 @@ class Bid extends Model
         'crane_cw',
         'crane_h',
         'solution',
-        'date_on',
-        'time_on',
         'date_off',
-        'time_off',
+        'time_off'
     ];
+
+
+    public function logs()
+    {
+        return $this->hasMany('App\Models\Log');
+    }
 
     public function street()
     {

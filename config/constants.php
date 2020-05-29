@@ -1,6 +1,18 @@
 <?php
   return [
 
+    // states of bids
+    'state' => [
+      '0' => [
+        'name' => 'В процессе'
+      ],
+
+      '1' => [
+        'name' => 'Устранено'
+      ]
+
+    ],
+
     // types of jobs
     'type_job' => [
 

@@ -34,8 +34,6 @@ class CreateBidsTable extends Migration
             $table->tinyInteger('crane_cw')->default(0);
             $table->tinyInteger('crane_h')->default(0);
             $table->text('solution')->nullable();
-            $table->date('date_on')->nullable();
-            $table->time('time_on')->nullable();
             $table->date('date_off')->nullable();
             $table->time('time_off')->nullable();
             $table->timestamps();

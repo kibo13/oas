@@ -17,60 +17,58 @@
       @method('PUT')
       @endisset
 
-      <div class=" bk-form__wrap pb-2" data-info="Тип и принадлежность">
+      <div class="bk-form__wrap pb-2" data-info="Общие сведения">
         <div class="row p-0 m-0">
 
-          <div class="col-md-3 form-group mb-2 pl-0">
-            <label for="type_id" class="bk-form__label mb-0">Тип неисправности</label>
+          <!-- START group type -->
+          <h6 class="w-100 border-bottom mr-3 py-1 pl-0">Тип неисправности</h6>
+          <div class="bk-form__select col-sm-auto form-group mb-2 pl-0">
 
             <select name="type_id" id="type_id" class="form-control bk-form__input">
               <option disabled selected>Выберите тип неисправности</option>
               @foreach($types as $type)
-              <option value="{{ $type->id }}" 
-                @isset($defect)
-                  @if($defect->type_id == $type->id)
-                    selected
-                  @endif
+              <option value="{{ $type->id }}" @isset($defect) @if($defect->type_id == $type->id)
+                selected
+                @endif
                 @endisset
-              >
+                >
                 {{ ucfirst($type->name) }}
               </option>
               @endforeach
             </select>
           </div>
+          <!-- END group type -->
 
-          <div class="col-md-3 form-group mb-2 pl-0">
-            <label for="attachments" class="bk-form__label mb-0">Принадлежность</label>
-
+          <!-- START group attachments -->
+          <h6 class="w-100 border-bottom mr-3 py-1 pl-0">Принадлежность</h6>
+          <div class="bk-form__select col-sm-auto form-group mb-2 pl-0">
             <select name="attachment" id="attachments" class="form-control bk-form__input">
               <option disabled selected>Выберите принадлежность</option>
               @foreach($attachments as $id)
-              <option value="{{ $id['name'] }}" 
-                @isset($defect)
-                  @if($defect->attachment == $id['name'])
-                    selected
-                  @endif
+              <option value="{{ $id['name'] }}" @isset($defect) @if($defect->attachment == $id['name'])
+                selected
+                @endif
                 @endisset
-              >
+                >
                 {{ $id['name'] }}
               </option>
               @endforeach
             </select>
           </div>
+          <!-- END group attachments -->
 
-        </div>
-      </div>
-
-      <div class="bk-form__wrap pb-2" data-info="Описание неисправности">
-        <div class="row p-0 m-0">
-
-          <div class="col-md-6 form-group mb-2 pl-0">
+          <!-- START group description -->
+          <h6 class="w-100 border-bottom mr-3 py-1 pl-0">Описание неисправности</h6>
+          <div class="w-100 form-group mb-2 pl-0 mr-3">
             <textarea class="form-control" name="desc" style="height:80px;" placeholder="Введите описание неисправности">{{ old('desc', isset($defect) ? $defect->desc : null) }}
-						</textarea>
+            </textarea>
           </div>
 
+          <!-- END group description -->
+
         </div>
       </div>
+
 
       <div class="form-group">
         <button type="submit" class="btn btn-outline-success">Сохранить</button>
