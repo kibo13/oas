@@ -22,10 +22,8 @@ class LogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+    public function create(Log $log)
+    { }
 
     /**
      * Store a newly created resource in storage.
@@ -47,7 +45,8 @@ class LogController extends Controller
      */
     public function show(Log $log)
     {
-        //
+        $logs = Log::findOrFail($log->id);
+        return $logs;
     }
 
     /**
@@ -58,7 +57,11 @@ class LogController extends Controller
      */
     public function edit(Log $log)
     {
-        //
+        $type_log = config('constants.type_log');
+        return view(
+            'pages.logs.edit',
+            compact('log', 'type_log')
+        );
     }
 
     /**
@@ -71,7 +74,7 @@ class LogController extends Controller
     public function update(Request $request, Log $log)
     {
         $log->update($request->all());
-        return redirect()->back();
+        return redirect()->route('bids.show', $log->bid->id);
     }
 
     /**
@@ -82,6 +85,7 @@ class LogController extends Controller
      */
     public function destroy(Log $log)
     {
-        //
+        $log->delete();
+        return redirect()->back();
     }
 }

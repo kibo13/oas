@@ -26,16 +26,20 @@
     </div>
     <!-- END group defect -->
 
+    <!-- START group form-add -->
+    @include('pages.logs.create')
+    <!-- END group form-add -->
+
     <!-- START group table -->
     @include('pages.logs.index')
     <!-- END group table -->
 
-    @include('pages.logs.form')
-
   </div>
 
   <div class="form-group">
+    @if(Auth::user()->roles()->pluck('slug')->contains('disp_zheu'))
     <a id="add-log" href="" class="btn btn-outline-primary">Новая запись</a>
+    @endif
     <a href="{{ route('bids.index') }}" class="btn btn-outline-secondary">Назад</a>
   </div>
 </div>

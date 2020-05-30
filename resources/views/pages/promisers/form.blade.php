@@ -3,11 +3,13 @@
 @section('content')
 <div class="overflow-hidden pt-4 py-2">
 
-	@isset($promiser)
-	<h2 class="mb-3">Редактирование записи</h2>
-	@else
-	<h2 class="mb-3">Добавление записи</h2>
-	@endisset
+	<h2 class="mb-3">
+		@isset($promiser)
+			Редактирование записи
+		@else 
+			Добавление записи
+		@endisset
+	</h2>
 
 	<form method="POST" class="bk-form" @isset($promiser) action="{{ route('promisers.update', $promiser) }}" @else action="{{ route('promisers.store') }}" @endisset>
 

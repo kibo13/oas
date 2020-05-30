@@ -3,11 +3,13 @@
 @section('content')
 <div class="overflow-hidden pt-4 py-2">
 
-	@isset($bid)
-	<h2 class="mb-3">Редактирование записи</h2>
-	@else
-	<h2 class="mb-3">Добавление записи</h2>
-	@endisset
+	<h2 class="mb-3">
+		@isset($bid)
+			Редактирование записи
+		@else 
+			Добавление записи
+		@endisset
+	</h2>
 
 	<form method="POST" class="bk-form" @isset($bid) action="{{ route('bids.update', $bid) }}" @else action="{{ route('bids.store') }}" @endisset>
 

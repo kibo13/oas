@@ -3,11 +3,13 @@
 @section('content')
 <div class="overflow-hidden pt-4 py-2">
 
-  @isset($defect)
-  <h2 class="mb-3">Редактирование записи</h2>
-  @else
-  <h2 class="mb-3">Добавление записи</h2>
-  @endisset
+  <h2 class="mb-3">
+		@isset($defect)
+			Редактирование записи
+		@else 
+			Добавление записи
+		@endisset
+	</h2>
 
   <form method="POST" @isset($defect) action="{{ route('defects.update', $defect) }}" @else action="{{ route('defects.store') }}" @endisset class="bk-form">
     @csrf

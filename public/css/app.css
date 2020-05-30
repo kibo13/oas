@@ -11364,6 +11364,7 @@ a[data-toggle=collapse] {
 .bk-crud__del--size {
   width: 14px;
   height: 14px;
+  color: #ffffff !important;
 }
 
 .bk-crud__del--link {

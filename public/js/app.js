@@ -49831,27 +49831,26 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
+  // add new record 
   $("#add-log").on("click", function (e) {
     e.preventDefault();
     $("#bk-log").hasClass("bk-hidden") ? $("#bk-log").removeClass("bk-hidden") : $("#bk-log").addClass("bk-hidden");
-  });
-  $("#edit-log").on("click", function (e) {
-    e.preventDefault();
-    $("#bk-log").hasClass("bk-hidden") ? $("#bk-log").removeClass("bk-hidden") : $("#bk-log").addClass("bk-hidden");
-  }); // $('#bid-loc-btn').on('click', function (e) {
-  // 	e.preventDefault();
-  // 	$('#bid-dis').addClass('bk-hidden');
-  // 	$('#bid-loc-btn').addClass('active');
-  // 	$('#bid-loc').removeClass('bk-hidden');
-  // 	$('#bid-dis-btn').removeClass('active');
-  // });
-  // $('#bid-dis-btn').on('click', function (e) {
-  // 	e.preventDefault();
-  // 	$('#bid-loc').addClass('bk-hidden');
-  // 	$('#bid-dis-btn').addClass('active');
-  // 	$("#bid-dis").removeClass("bk-hidden");
-  // 	$("#bid-loc-btn").removeClass("active");
-  // });
+  }); // edit current record 
+  // $(".bk-btn-edit").on("click", function(e) {
+  //     var data_id = $(e.target).data("id");
+  //     url = '/logs/' + data_id;
+  //     $.ajax({
+  //         url: url,
+  //         method: "get",
+  //     }).done(function(response) {
+  //         // $("input[name='editID']").val(id);
+  //         // $("input[name='company']").val(response.company);
+  //         // $("input[name='to']").val(response.to);
+  //         // $("input[name='from']").val(response.from);
+  //         // check response 
+  //         console.log(response.type_log);
+  //     });
+  // });   
 });
 
 /***/ }),
@@ -49915,6 +49914,10 @@ $(document).ready(function () {
 
       case 'bid':
         $('#bk-delete-form').attr('action', '/bids/' + data_id);
+        break;
+
+      case 'log':
+        $('#bk-delete-form').attr('action', '/bids/logs/' + data_id);
         break;
 
       case 'job':

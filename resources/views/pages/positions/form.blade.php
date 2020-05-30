@@ -3,11 +3,13 @@
 @section('content')
 <div class="overflow-hidden pt-4 py-2">
 
-	@isset($position)
-	<h2>Редактирование записи</h2>
-	@else
-	<h2>Добавление записи</h2>
-	@endisset
+	<h2 class="mb-3">
+		@isset($position)
+			Редактирование записи
+		@else
+			Добавление записи
+		@endisset
+	</h2>
 
 	<form method="POST" @isset($position) action="{{ route('positions.update', $position) }}" @else action="{{ route('positions.store') }}" @endisset class="bk-form">
 		@csrf

@@ -28,6 +28,11 @@ class CreateLogsTable extends Migration
             $table->tinyInteger('crane_cw')->default(0);
             $table->tinyInteger('crane_h')->default(0);
             $table->timestamps();
+            $table
+                ->foreign('bid_id')
+                ->references('id')
+                ->on('bids')
+                ->onDelete('cascade');
         });
     }
 

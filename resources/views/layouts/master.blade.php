@@ -48,9 +48,9 @@
   </div>
   <!-- /#app.app -->
 
-  <!-- START modal-confirm -->
+  <!-- START modal-general-confirm -->
   @include('includes.modal')
-  <!-- END modal-confirm -->
+  <!-- END modal-general-confirm -->
 </body>
 
 </html>

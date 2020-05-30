@@ -41,7 +41,11 @@ Route::middleware(['auth'])->group(function() {
         'middleware' => 'role:disp_zheu'
     ], function () {
         Route::resource('bids', 'BidController');
-        Route::resource('logs', 'LogController');
+        Route::group([
+            'prefix' => 'bids'
+        ], function () {
+            Route::resource('logs', 'LogController');
+        });
     });
 
     // role: audit 
@@ -89,6 +93,7 @@ Route::middleware(['auth'])->group(function() {
     // - show all records  
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('bids', 'BidController@index')->name('bids.index');
+    Route::get('bids/{bid}', 'BidController@show')->name('bids.show');
     Route::get('jobs', 'JobController@index')->name('jobs.index');
     Route::get('jobs/{job}', 'JobController@show')->name('jobs.show');
     Route::get('workers', 'WorkerController@index')->name('workers.index');

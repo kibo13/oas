@@ -49,7 +49,7 @@
 								<span class="bk-crud__tip">Просмотреть</span>
 							</div>
 
-							@if(Auth::user()->roles()->pluck('slug')->contains('disp_oas'))
+							@if(Auth::user()->roles()->pluck('slug')->contains('disp_zheu'))
 							<div class="bk-crud__wrap">
 								<a href="{{ route('bids.edit', $bid) }}" class="bk-crud__btn btn btn-warning mr-1">
 									<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="pen-nib" class="bk-crud__icon bk-crud__icon--edit  svg-inline--fa fa-pen-nib fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">

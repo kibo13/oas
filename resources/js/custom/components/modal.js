@@ -58,6 +58,10 @@ $(document).ready(function () {
 				$('#bk-delete-form').attr('action', '/bids/' + data_id);
 				break;
 
+			case 'log':
+				$('#bk-delete-form').attr('action', '/bids/logs/' + data_id);
+				break;
+
 			case 'job':
 				$('#bk-delete-form').attr('action', '/jobs/' + data_id);
 				break;
