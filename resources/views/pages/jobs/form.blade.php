@@ -3,11 +3,13 @@
 @section('content')
 <div class="overflow-hidden pt-4 py-2">
 
-	@isset($job)
-	<h2 class="mb-3">Редактирование записи</h2>
-	@else
-	<h2 class="mb-3">Добавление записи</h2>
-	@endisset
+	<h2 class="mb-3">
+		@isset($job)
+		Редактирование записи
+		@else
+		Добавление записи
+		@endisset
+	</h2>
 
 	<form method="POST" class="bk-form" @isset($job) action="{{ route('jobs.update', $job) }}" @else action="{{ route('jobs.store') }}" @endisset>
 

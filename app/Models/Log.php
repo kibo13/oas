@@ -8,10 +8,17 @@ class Log extends Model
 {
     protected $fillable = [
         'bid_id',
+        'date_log',
+        'time_log',
+        'type_log',
         'solution',
-        'date_loc',
-        'time_loc',
-        'prim'
+        'note',
+        'home_hw',
+        'home_cw',
+        'home_h',
+        'crane_hw',
+        'crane_cw',
+        'crane_h'
     ];
 
     public function bid()

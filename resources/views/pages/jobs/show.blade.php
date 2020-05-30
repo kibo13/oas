@@ -12,7 +12,7 @@
 				Предприятие
 			</p>
 
-			<p class="px-1">
+			<p class="px-1 text-muted">
 				{{ $job->organization->name }}
 			</p>
 		</div>
@@ -22,7 +22,7 @@
 				Вид работ
 			</p>
 
-			<p class="px-1">
+			<p class="px-1 text-muted">
 				{{ $job->type_job }}
 			</p>
 		</div>
@@ -32,7 +32,7 @@
 				Тип отключения
 			</p>
 
-			<p class="px-1">
+			<p class="px-1 text-muted">
 				{{ $job->type_off }}
 			</p>
 		</div>
@@ -42,8 +42,9 @@
 				Дата и время начало работы
 			</p>
 
-			<p class="px-1">
-				{{ date('d.m.Y', strtotime($job->date_on)) }}г. {{ date('H:s', strtotime($job->time_on)) }}ч.
+			<p class="px-1 text-muted">
+				{{ date('d.m.Y', strtotime($job->date_on)) }}г.
+				<span class="bk-text--small align-text-top">{{ date('H:i', strtotime($job->time_on)) }}</span>
 			</p>
 		</div>
 
@@ -52,8 +53,9 @@
 				Дата и время завершения работы
 			</p>
 
-			<p class="px-1">
-				{{ date('d.m.Y', strtotime($job->date_off)) }}г. {{ date('H:s', strtotime($job->time_off)) }}ч.
+			<p class="px-1 text-muted">
+				{{ date('d.m.Y', strtotime($job->date_off)) }}г.
+				<span class="bk-text--small align-text-top">{{ date('H:i', strtotime($job->time_off)) }}</span>
 			</p>
 		</div>
 
@@ -62,7 +64,7 @@
 				Место проведения работы
 			</p>
 
-			<p class="px-1">
+			<p class="px-1 text-muted">
 				{{ $job->street->name }} {{ $job->num_home }}{{ $job->num_corp }}
 			</p>
 		</div>
@@ -72,7 +74,7 @@
 				Описание работы
 			</p>
 
-			<p class="px-1">
+			<p class="px-1 text-muted">
 				{{ $job->desc }}
 			</p>
 		</div>

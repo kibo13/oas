@@ -16,10 +16,17 @@ class CreateLogsTable extends Migration
         Schema::create('logs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('bid_id')->unsigned();
-            $table->date('date_loc')->nullable();
-            $table->time('time_loc')->nullable();
-            $table->text('solution')->nullable();
-            $table->string('prim')->nullable();
+            $table->date('date_log');
+            $table->time('time_log');
+            $table->tinyInteger('type_log');
+            $table->text('solution');
+            $table->string('note')->nullable();
+            $table->tinyInteger('home_hw')->default(0);
+            $table->tinyInteger('home_cw')->default(0);
+            $table->tinyInteger('home_h')->default(0);
+            $table->tinyInteger('crane_hw')->default(0);
+            $table->tinyInteger('crane_cw')->default(0);
+            $table->tinyInteger('crane_h')->default(0);
             $table->timestamps();
         });
     }

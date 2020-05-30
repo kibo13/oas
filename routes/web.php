@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function() {
         'middleware' => 'role:disp_zheu'
     ], function () {
         Route::resource('bids', 'BidController');
+        Route::resource('logs', 'LogController');
     });
 
     // role: audit 

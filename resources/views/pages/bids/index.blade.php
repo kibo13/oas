@@ -32,14 +32,14 @@
 				<tr>
 					<td>{{ $id+=1 }}</td>
 					<td>{{ $bid->street->name }} {{ $bid->num_home }}{{ $bid->num_corp }} - {{ $bid->num_flat }} </td>
-					<td>{{ date('d.m.Y', strtotime($bid->date_in)) }} {{ date('H:i', strtotime($bid->time_in)) }}</td>
+					<td>{{ date('d.m.Y', strtotime($bid->date_in)) }}г. <small class="text-muted align-text-top">{{ date('H:i', strtotime($bid->time_in)) }}</small></td>
 					<td>{{ $bid->type->name }}</td>
 					<td>{{ $bid->defect->desc }}</td>
 					<td>{{ $bid->branch->name }}</td>
 					<td>@if($bid->state == 0) В процессе @else Устранено @endif</td>
 					<td>
 						<div class="d-flex">
-
+							
 							<div class="bk-crud__wrap">
 								<a href="{{ route('bids.show', $bid) }}" class="bk-crud__btn btn btn-info mr-1">
 									<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="eye" class="bk-crud__icon svg-inline--fa fa-eye fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">

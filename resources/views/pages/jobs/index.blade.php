@@ -34,8 +34,8 @@
 					<td>{{ $job->organization->name }}</td>
 					<td>{{ $job->type_job }}</td>
 					<td>{{ $job->type_off }}</td>
-					<td>{{ date('d.m.Y', strtotime($job->date_on)) }} {{ date('H:i', strtotime($job->time_on)) }}</td>
-					<td>{{ date('d.m.Y', strtotime($job->date_off)) }} {{ date('H:i', strtotime($job->time_off)) }}</td>
+					<td>{{ date('d.m.Y', strtotime($job->date_on)) }}г. <small class="text-muted align-text-top">{{ date('H:i', strtotime($job->time_on)) }}</small></td>
+					<td>{{ date('d.m.Y', strtotime($job->date_off)) }}г. <small class="text-muted align-text-top">{{ date('H:i', strtotime($job->time_off)) }}</small></td>
 					<td class="address">
 						{{ $job->street->name }}
 						{{ $job->num_home }}

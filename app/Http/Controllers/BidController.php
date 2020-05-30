@@ -29,14 +29,13 @@ class BidController extends Controller
      */
     public function create()
     {
-        $states = config('constants.state');
         $streets = Street::get();
         $branches = Branch::get();
         $defects = Defect::get();
         $types = Type::get();
         return view(
             'pages.bids.form',
-            compact('streets', 'branches', 'defects', 'types', 'states')
+            compact('streets', 'branches', 'defects', 'types')
         );
     }
 
@@ -60,9 +59,11 @@ class BidController extends Controller
      */
     public function show(Bid $bid)
     {
-        // $streets = Street::get();
-        // $organizations = Organization::get();
-        // return view('pages.jobs.show', compact('job', 'streets', 'organizations'));
+        $type_log = config('constants.type_log');
+        return view(
+            'pages.bids.show', 
+            compact('bid', 'type_log')
+        );
     }
 
     /**
@@ -71,16 +72,16 @@ class BidController extends Controller
      * @param  \App\Models\Bid  $bid
      * @return \Illuminate\Http\Response
      */
-    public function edit(Bid $bid)
+    public function edit(Request $request, Bid $bid)
     {
-        $states = config('constants.state');
         $streets = Street::get();
         $branches = Branch::get();
         $defects = Defect::get();
         $types = Type::get();
+
         return view(
             'pages.bids.form',
-            compact('bid', 'streets', 'branches', 'defects', 'types', 'states')
+            compact('bid', 'streets', 'branches', 'defects', 'types')
         );
     }
 

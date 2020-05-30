@@ -17,17 +17,7 @@ class Bid extends Model
         'last_name',
         'phone',
         'date_in',
-        'time_in',
-        'state',
-        'home_hw',
-        'home_cw',
-        'home_h',
-        'crane_hw',
-        'crane_cw',
-        'crane_h',
-        'solution',
-        'date_off',
-        'time_off'
+        'time_in'
     ];
 
 

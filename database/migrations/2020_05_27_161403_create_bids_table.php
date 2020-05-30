@@ -26,16 +26,6 @@ class CreateBidsTable extends Migration
             $table->string('phone')->nullable();
             $table->bigInteger('type_id')->unsigned();           
             $table->bigInteger('defect_id')->unsigned();
-            $table->tinyInteger('state')->default(0);
-            $table->tinyInteger('home_hw')->default(0);
-            $table->tinyInteger('home_cw')->default(0);
-            $table->tinyInteger('home_h')->default(0);
-            $table->tinyInteger('crane_hw')->default(0);
-            $table->tinyInteger('crane_cw')->default(0);
-            $table->tinyInteger('crane_h')->default(0);
-            $table->text('solution')->nullable();
-            $table->date('date_off')->nullable();
-            $table->time('time_off')->nullable();
             $table->timestamps();
         });
     }
