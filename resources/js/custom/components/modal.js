@@ -69,6 +69,10 @@ $(document).ready(function () {
 			case 'promiser':
 				$('#bk-delete-form').attr('action', '/promisers/' + data_id);
 				break;
+
+			case 'brief':
+				$('#bk-delete-form').attr('action', '/briefs/' + data_id);
+				break;
 			// END namespace "pages" 
 
 			default:

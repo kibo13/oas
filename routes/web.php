@@ -32,6 +32,7 @@ Route::middleware(['auth'])->group(function() {
         'middleware' => 'role:disp_oas'
     ], function () {
         Route::resource('jobs', 'JobController');
+        Route::resource('briefs', 'BriefController');
     });
 
     // role: disp_zheu 
@@ -96,6 +97,7 @@ Route::middleware(['auth'])->group(function() {
     Route::get('bids/{bid}', 'BidController@show')->name('bids.show');
     Route::get('jobs', 'JobController@index')->name('jobs.index');
     Route::get('jobs/{job}', 'JobController@show')->name('jobs.show');
+    Route::get('briefs', 'BriefController@index')->name('briefs.index');
     Route::get('workers', 'WorkerController@index')->name('workers.index');
     Route::get('promisers', 'PromiserController@index')->name('promisers.index');
 });

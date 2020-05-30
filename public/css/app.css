@@ -10970,6 +10970,10 @@ textarea {
   font-size: 12px;
 }
 
+.bk-line-height {
+  line-height: 12px;
+}
+
 .bk-logo {
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -11450,8 +11454,14 @@ a[data-toggle=collapse] {
   font-size: 14px;
 }
 
-.bk-form__num {
+.bk-form__num,
+.bk-form__phw,
+.bk-form__pcw {
   width: 70px;
+}
+
+.bk-form__tp {
+  width: 90px;
 }
 
 .bk-form__time {
@@ -11521,12 +11531,24 @@ a[data-toggle=collapse] {
     display: none;
   }
 
+  .bk-form__pcw {
+    width: 20%;
+  }
+
+  .bk-form__phw {
+    width: 25%;
+  }
+
   .bk-form__num {
     width: 33%;
   }
 
   .bk-form__time {
     width: 40%;
+  }
+
+  .bk-form__tp {
+    width: 50%;
   }
 
   .bk-form__date {
