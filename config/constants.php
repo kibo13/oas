@@ -1,5 +1,6 @@
 <?php
   return [
+    'date_now' => date("Y-m-d"),
 
     // states of bids
     'type_log' => [

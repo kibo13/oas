@@ -25,7 +25,8 @@ class BriefController extends Controller
      */
     public function create()
     {
-        return view('pages.briefs.form');
+        $now = config('constants.date_now');
+        return view('pages.briefs.form', compact('now'));
     }
 
     /**

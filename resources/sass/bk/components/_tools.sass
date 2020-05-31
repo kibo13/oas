@@ -1,0 +1,48 @@
+.bk
+  &-btn 
+    position: relative
+
+    &--sm 
+      width: 30px
+      height: 30px
+    
+    &:hover 
+      .bk-tip 
+        visibility: visible 
+    
+    &__wrap 
+      position: absolute
+      left: 0
+      top: 0
+      width: 100%
+      height: 100%
+      display: flex
+      align-items: center
+      justify-content: center
+
+  &-icon 
+    width: 14px
+    height: 14px
+    color: #ffffff !important
+    z-index: 10
+  
+  &-link 
+    z-index: 15
+
+  &-tip 
+    position: absolute
+    top: -20px
+    left: -30px
+    padding: 0 5px
+
+    text-align: center
+    font-size: $text-sm
+    color: $dark
+    background: #ffffff
+    box-shadow: 0 0 2px 	
+    border-radius: 4px	
+
+    visibility: hidden
+    z-index: 20
+ 
+  
