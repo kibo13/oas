@@ -4,66 +4,42 @@
 <div class="overflow-hidden pt-4 py-2">
   <h2 class="mb-1">Параметры воды</h2>
 
-  <form class="my-2" method="GET" action="{{ route('briefs.index') }}">
-    <div class="row p-0 m-0">
+  <!-- START group tools -->
+  @include('pages.briefs.tools')
+  <!-- END group tools -->
 
-
-
-      <div class="bk-form__datepicker">
-        <input type="date">
-      </div>
-      <div class="bk-form__datepicker">
-        <input type="date">
-      </div>
-
-
-      <div class="div">
-        <a href="" class="btn btn-outline-info py-0 d-flex align-items-center" style="height: 30px;">
-          Фильтр
-        </a>
-      </div>
-      <div class="div">
-        <a href="" class="btn btn-outline-primary py-0 d-flex align-items-center" style="height: 30px;">
-          Отчет
-        </a>
-      </div>
-
-      @if(Auth::user()->roles()->pluck('slug')->contains('disp_oas'))
-      <div class="order-last order-sm-first">
-        <a href="{{ route('briefs.create') }}" class="btn btn-outline-primary py-0 d-flex align-items-center" style="height: 30px;">
-          Новая запись
-        </a>
-      </div>
-      @endif
-    </div>
-  </form>
-
-
-
-
-  <ul class="nav nav-tabs">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-      <a id="bid-reg-btn" class="nav-link active" href="#">Регистрация</a>
+      <a class="nav-link px-2 px-sm-3 active" id="table-tab" data-toggle="tab" href="#table" role="tab" aria-controls="table" aria-selected="true">Таблица</a>
     </li>
     <li class="nav-item">
-      <a id="bid-dis-btn" class="nav-link" href="#">Устранение</a>
+      <a class="nav-link px-2 px-sm-3" id="chart_p-tab" data-toggle="tab" href="#chart_p" role="tab" aria-controls="chart_p" aria-selected="false">График <small class="text-muted align-top">Па</small></a>
     </li>
     <li class="nav-item">
-      <a id="bid-dis-btn" class="nav-link" href="#">Устранение</a>
+      <a class="nav-link px-2 px-sm-3" id="chart_t-tab" data-toggle="tab" href="#chart_t" role="tab" aria-controls="chart_t" aria-selected="false">График <small class="text-muted align-top">°C</small></a>
     </li>
   </ul>
+  <div class="tab-content" id="myTabContent">
 
-  <!-- START group table -->
-  @include('pages.briefs.table')
-  <!-- END group table -->
+    <!-- START group table -->
+    @include('pages.briefs.table')
+    <!-- END group table -->
 
-  <!-- START group table -->
+    <!-- START group chart_pressure -->
+    <div class="tab-pane fade" id="chart_p" role="tabpanel" aria-labelledby="chart_p-tab">
+      second tab
 
-  <!-- END group table -->
+    </div>
+    <!-- END group chart_pressure -->
 
-  <!-- START group table -->
+    <!-- START group chart_temp -->
+    <div class="tab-pane fade" id="chart_t" role="tabpanel" aria-labelledby="chart_t-tab">
+      third tab
 
-  <!-- END group table -->
+    </div>
+    <!-- END group chart_temp -->
+
+  </div>
 
 </div>
 @endsection

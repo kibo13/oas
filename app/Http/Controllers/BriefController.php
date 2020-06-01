@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brief;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class BriefController extends Controller
 {
@@ -12,9 +13,19 @@ class BriefController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $briefs = Brief::paginate(10);
+        $briefsQuery = Brief::query();
+
+        if ($request->filled('date_from')) {
+            $briefsQuery->where('date_brief', '>=', $request->date_from);
+        }
+
+        if ($request->filled('date_to')) {
+            $briefsQuery->where('date_brief', '<=', $request->date_to);
+        }
+
+        $briefs = $briefsQuery->paginate(10)->withPath("?".$request->getQueryString());
         return view('pages.briefs.index', compact('briefs'));
     }
 

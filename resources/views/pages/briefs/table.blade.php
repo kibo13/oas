@@ -1,4 +1,4 @@
-<div id="bk-brief-table">
+<div class="tab-pane fade show active" id="table" role="tabpanel" aria-labelledby="table-tab">
   <div class="table-responsive mt-1">
     <table class="bk-table table table-bordered">
       <thead class="thead-light">
@@ -77,7 +77,6 @@
       </tbody>
     </table>
   </div>
-
 
   {{ $briefs->links() }}
 </div>

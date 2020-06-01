@@ -10975,7 +10975,7 @@ textarea {
 }
 
 .bl-none {
-  border-left: none;
+  border-left: none !important;
 }
 
 .bk-logo {
@@ -11468,12 +11468,45 @@ a[data-toggle=collapse] {
   width: 90px;
 }
 
+.bk-form__btn {
+  width: 80px;
+}
+
+.bk-form__btn--link {
+  width: 100%;
+}
+
 .bk-form__time {
   width: 110px;
 }
 
 .bk-form__datepicker {
-  width: 150px;
+  position: relative;
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bk-form__datepicker--field {
+  padding-left: 10px;
+  height: 100%;
+  background: transparent;
+  outline: none;
+  border: 1px solid #e0e0e0;
+  z-index: 4;
+}
+
+.bk-form__datepicker--text {
+  position: absolute;
+  top: -5px;
+  left: 10px;
+  line-height: 10px;
+  background: #f8f9fa;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  z-index: 5;
 }
 
 .bk-form__date {
@@ -11597,7 +11630,8 @@ a[data-toggle=collapse] {
     width: 25%;
   }
 
-  .bk-form__num {
+  .bk-form__num,
+  .bk-form__btn {
     width: 33%;
   }
 

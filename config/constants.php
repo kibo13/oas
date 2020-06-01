@@ -1,6 +1,7 @@
 <?php
   return [
     'date_now' => date("Y-m-d"),
+    'date_week' => date("Y-m-d", strtotime("+10 days")),
 
     // states of bids
     'type_log' => [

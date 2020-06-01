@@ -47,12 +47,38 @@
 		&__tp
 			width: 90px
 		
+		&__btn
+			width: 80px
+
+			&--link
+				width: 100%
+		
 		&__time 
 			width: 110px	
-
-		&__datepicker 
-			width: 150px
+		
+		&__datepicker
+			position: relative
+			width: 140px
+			display: flex
+			flex-direction: column
 			
+			&--field 
+				padding-left: 10px
+				height: 100%
+				background: transparent
+				outline: none 
+				border: $b-gray
+				z-index: 4
+
+			&--text 
+				position: absolute
+				top: -5px
+				left: 10px
+				line-height: $text-xs
+				background: $light
+				user-select: none
+				z-index: 5
+		
 		&__date
 			width: 170px
 
