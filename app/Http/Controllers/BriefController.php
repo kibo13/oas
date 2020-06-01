@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brief;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
+use App\Charts\PressureTempChart; 
 
 class BriefController extends Controller
 {
@@ -25,8 +25,16 @@ class BriefController extends Controller
             $briefsQuery->where('date_brief', '<=', $request->date_to);
         }
 
-        $briefs = $briefsQuery->paginate(10)->withPath("?".$request->getQueryString());
-        return view('pages.briefs.index', compact('briefs'));
+        $briefs = $briefsQuery
+            ->paginate(10)
+            ->withPath("?".$request->getQueryString());
+
+        $chart = new PressureTempChart;
+        $chart->labels(['One', 'Two', 'Three', 'Four']);
+        $chart->dataset('My dataset', 'line', [1, 2, 3, 4]);
+        $chart->dataset('My dataset 2', 'line', [4, 3, 2, 1]);
+      
+        return view('pages.briefs.index', compact('briefs', 'chart'));
     }
 
     /**
@@ -60,7 +68,7 @@ class BriefController extends Controller
      */
     public function show(Brief $brief)
     {
-        //
+        // 
     }
 
     /**

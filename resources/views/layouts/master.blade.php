@@ -51,6 +51,9 @@
   <!-- START modal-general-confirm -->
   @include('includes.modal')
   <!-- END modal-general-confirm -->
+
+  {!! $chart->script() !!}
 </body>
+
 
 </html>
