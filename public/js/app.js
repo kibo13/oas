@@ -74530,17 +74530,11 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-$(document).ready(function () {// $("#brief-btn").on("click", function(e) {
-  //     e.preventDefault();
-  //     // var data_id = $(e.target).data("id");
-  //     url = "briefs/data";
-  //     $.ajax({
-  //         url: url,
-  //         method: "get",
-  //     }).done(function(response) {
-  //         console.log(response);
-  //     });
-  // });
+$(document).ready(function () {
+  $('#brief-print').on('click', function (e) {
+    e.preventDefault();
+    window.print();
+  });
 });
 
 /***/ }),

@@ -10,7 +10,7 @@
           <th colspan="4" class="text-center">Параметры гор.воды</th>
           <th colspan="5" class="text-center">Параметры хол.воды</th>
           @if(Auth::user()->roles()->pluck('slug')->contains('disp_oas'))
-          <th scope="col">Действие</th>
+          <th scope="col" class="print-hide">Действие</th>
           @endif
         </tr>
         <tr>
@@ -24,7 +24,7 @@
           <th scope="col" class="bk-line-height text-center">5,6<br><small class="text-muted align-bottom">мкр</small></th>
           <th scope="col" class="bk-line-height text-center">7<br><small class="text-muted align-bottom">мкр</small></th>
           @if(Auth::user()->roles()->pluck('slug')->contains('disp_oas'))
-          <th scope="col"></th>
+          <th scope="col" class="print-hide"></th>
           @endif
         </tr>
       </thead>
@@ -46,7 +46,7 @@
           <td>{{ $brief->cw_fs }}</td>
           <td>{{ $brief->cw_s }}</td>
           @if(Auth::user()->roles()->pluck('slug')->contains('disp_oas'))
-          <td>
+          <td class="print-hide">
             <div class="d-flex">
               <div class="bk-crud__wrap">
                 <a href="{{ route('briefs.edit', $brief) }}" class="bk-crud__btn btn btn-warning mr-1">

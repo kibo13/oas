@@ -11653,3 +11653,9 @@ a[data-toggle=collapse] {
   }
 }
 
+@media print {
+  .print-hide {
+    display: none;
+  }
+}
+

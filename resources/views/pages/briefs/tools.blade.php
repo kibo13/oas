@@ -43,7 +43,7 @@
 					</a>
 				</div>
 				<div class="bk-form__btn ml-1">
-					<a href="" class="bk-form__btn--link btn btn-sm btn-outline-primary">
+					<a id="brief-print" href="javascript:void(0);" class="bk-form__btn--link btn btn-sm btn-outline-primary">
 						Отчет
 					</a>
 				</div>

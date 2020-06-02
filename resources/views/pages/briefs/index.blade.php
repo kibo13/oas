@@ -10,13 +10,13 @@
 
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-      <a class="nav-link px-2 px-sm-3 active" id="table-tab" data-toggle="tab" href="#table" role="tab" aria-controls="table" aria-selected="true">Таблица</a>
+      <a class="brief-link nav-link px-2 px-sm-3 active" id="table-tab" data-toggle="tab" href="#table" role="tab" aria-controls="table" aria-selected="true">Таблица</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link px-2 px-sm-3" id="chart_p-tab" data-toggle="tab" href="#chart_p" role="tab" aria-controls="chart_p" aria-selected="false">График <small class="text-muted align-top">мм рт.ст.</small></a>
+      <a class="brief-link nav-link px-2 px-sm-3" id="chart_p-tab" data-toggle="tab" href="#chart_p" role="tab" aria-controls="chart_p" aria-selected="false">График <small class="text-muted align-top">мм рт.ст.</small></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link px-2 px-sm-3" id="chart_t-tab" data-toggle="tab" href="#chart_t" role="tab" aria-controls="chart_t" aria-selected="false">График <small class="text-muted align-top">°C</small></a>
+      <a class="brief-link nav-link px-2 px-sm-3" id="chart_t-tab" data-toggle="tab" href="#chart_t" role="tab" aria-controls="chart_t" aria-selected="false">График <small class="text-muted align-top">°C</small></a>
     </li>
   </ul>
   <div class="tab-content" id="myTabContent">
