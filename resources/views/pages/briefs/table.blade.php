@@ -1,4 +1,4 @@
-<div class="tab-pane fade show" id="table" role="tabpanel" aria-labelledby="table-tab">
+<div class="tab-pane fade show active" id="table" role="tabpanel" aria-labelledby="table-tab">
   <div class="table-responsive mt-1">
     <table class="bk-table table table-bordered">
       <thead class="thead-light">
@@ -34,8 +34,8 @@
         <tr>
           <td>{{ $id+=1 }}</td>
           <td>{{ date('d.m.Y', strtotime($brief->date_brief)) }}г. <small class="text-muted align-text-top">06:00</small></td>
-          <td>{{ $brief->temp }}</td>
-          <td>{{ $brief->pressure }}</td>
+          <td>{{ $brief->temp }} <small class="text-muted align-top">°C</small></td>
+          <td>{{ $brief->pressure }} <small class="text-muted align-top">мм рт.ст.</small></td>
           <td>{{ $brief->hw_pst }}</td>
           <td>{{ $brief->hw_tst }}</td>
           <td>{{ $brief->hw_pbk }}</td>

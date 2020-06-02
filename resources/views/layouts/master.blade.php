@@ -22,37 +22,34 @@
 </head>
 
 <body>
-  <div id="app">
-    <div class="wrapper">
 
-      @include('includes.sidebar')
-      <!-- /.sidebar -->
+  <div class="wrapper">
 
-      <div id="content" class="content">
+    @include('includes.sidebar')
+    <!-- /.sidebar -->
 
-        @include('includes.header')
-        <!-- /.header -->
+    <div id="content" class="content">
 
-        @yield('content')
-        <!-- /.content -->
+      @include('includes.header')
+      <!-- /.header -->
 
-      </div>
+      @yield('content')
       <!-- /.content -->
-    </div>
-    <!-- /.wrapper -->
 
-    <footer>
-      @include('includes.footer')
-    </footer>
-    <!-- /.bk-footer -->
+    </div>
+    <!-- /.content -->
   </div>
-  <!-- /#app.app -->
+  <!-- /.wrapper -->
+
+  <footer>
+    @include('includes.footer')
+  </footer>
+  <!-- /.bk-footer -->
 
   <!-- START modal-general-confirm -->
   @include('includes.modal')
   <!-- END modal-general-confirm -->
 
-  {!! $chart->script() !!}
 </body>
 
 

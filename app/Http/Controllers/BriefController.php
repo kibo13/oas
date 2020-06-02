@@ -15,6 +15,7 @@ class BriefController extends Controller
      */
     public function index(Request $request)
     {
+        // filters 
         $briefsQuery = Brief::query();
 
         if ($request->filled('date_from')) {
@@ -29,12 +30,88 @@ class BriefController extends Controller
             ->paginate(10)
             ->withPath("?".$request->getQueryString());
 
-        $chart = new PressureTempChart;
-        $chart->labels(['One', 'Two', 'Three', 'Four']);
-        $chart->dataset('My dataset', 'line', [1, 2, 3, 4]);
-        $chart->dataset('My dataset 2', 'line', [4, 3, 2, 1]);
-      
-        return view('pages.briefs.index', compact('briefs', 'chart'));
+        // parametrs for chart of temp 
+        $temp = $briefs->pluck('temp', 'date_brief');
+        $hw_tst = $briefs->pluck('hw_tst', 'date_brief');
+        $hw_tbk = $briefs->pluck('hw_tbk', 'date_brief');
+
+        // chart of temp 
+        $chart_t = new PressureTempChart;
+        $chart_t->labels($temp->keys());
+        $chart_t
+            ->dataset('Tнаружная', 'line', $temp->values())
+            ->options([
+                'borderColor' => '#ffbb33',
+                'backgroundColor' => 'transparent'
+            ]);
+        $chart_t
+            ->dataset('Тпр', 'line', $hw_tst->values())
+            ->options([
+                'borderColor' => '#4285F4',
+                'backgroundColor' => 'transparent'
+            ]);
+        $chart_t
+            ->dataset('Тобр', 'line', $hw_tbk->values())
+            ->options([
+                'borderColor' => '#aa66cc',
+                'backgroundColor' => 'transparent'
+            ]);
+
+        // parametrs for chart of pressure 
+        $hw_pst = $briefs->pluck('hw_pst', 'date_brief');
+        $hw_pbk = $briefs->pluck('hw_pbk', 'date_brief');
+        $cw_r = $briefs->pluck('cw_r', 'date_brief');
+        $cw_ot = $briefs->pluck('cw_ot', 'date_brief');
+        $cw_tf = $briefs->pluck('cw_tf', 'date_brief');
+        $cw_fs = $briefs->pluck('cw_fs', 'date_brief');
+        $cw_s = $briefs->pluck('cw_s', 'date_brief');
+
+        // chart of pressure 
+        $chart_p = new PressureTempChart;
+        $chart_p->labels($hw_pst->keys());
+        $chart_p
+            ->dataset('Рпр', 'line', $hw_pst->values())
+            ->options([
+                'borderColor' => '#ffbb33',
+                'backgroundColor' => 'transparent'
+            ]);
+        $chart_p
+            ->dataset('Робр', 'line', $hw_pbk->values())
+            ->options([
+                'borderColor' => '#4285F4',
+                'backgroundColor' => 'transparent'
+            ]);
+        $chart_p
+            ->dataset('Речная', 'line', $cw_r->values())
+            ->options([
+                'borderColor' => '#aa66cc',
+                'backgroundColor' => 'transparent'
+            ]);
+        $chart_p
+            ->dataset('1,2', 'line', $cw_ot->values())
+            ->options([
+                'borderColor' => '#8bc34a',
+                'backgroundColor' => 'transparent'
+            ]);
+        $chart_p
+            ->dataset('3,4', 'line', $cw_tf->values())
+            ->options([
+                'borderColor' => '#ffc107',
+                'backgroundColor' => 'transparent'
+            ]);
+        $chart_p
+            ->dataset('5,6', 'line', $cw_fs->values())
+            ->options([
+                'borderColor' => '#9e9e9e',
+                'backgroundColor' => 'transparent'
+            ]);
+        $chart_p
+            ->dataset('7', 'line', $cw_s->values())
+            ->options([
+                'borderColor' => '#795548',
+                'backgroundColor' => 'transparent'
+            ]);
+        return view('pages.briefs.index', compact('briefs', 'chart_t', 'chart_p'));
     }
 
     /**
