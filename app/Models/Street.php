@@ -10,6 +10,11 @@ class Street extends Model
         'name',
     ];
 
+    public function plots()
+    {
+        return $this->hasMany('App\Models\Plot');
+    }
+
     public function workers()
     {
         return $this->hasMany('App\Models\Worker');

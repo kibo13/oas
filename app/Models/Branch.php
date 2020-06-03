@@ -8,6 +8,11 @@ class Branch extends Model
 {
     protected $fillable = ['name'];
 
+    public function plots()
+    {
+        return $this->hasMany('App\Models\Plot');
+    }
+
     public function workers()
     {
         return $this->hasMany('App\Models\Worker');

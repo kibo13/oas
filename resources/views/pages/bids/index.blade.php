@@ -36,10 +36,16 @@
 					<td>{{ $bid->type->name }}</td>
 					<td>{{ $bid->defect->desc }}</td>
 					<td>{{ $bid->branch->name }}</td>
-					<td>@if($bid->state == 0) В процессе @else Устранено @endif</td>
+					<td>
+						@if($bid->logs->where('type_log')->count())
+							Устранено
+						@else 
+							В процессе
+						@endif
+					</td>
 					<td>
 						<div class="d-flex">
-							
+
 							<div class="bk-crud__wrap">
 								<a href="{{ route('bids.show', $bid) }}" class="bk-crud__btn btn btn-info mr-1">
 									<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="eye" class="bk-crud__icon svg-inline--fa fa-eye fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">

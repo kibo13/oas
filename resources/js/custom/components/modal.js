@@ -4,22 +4,16 @@ $(document).ready(function () {
 
 		var data_id = $(e.target).data('id');
 		var data_tname = $(e.target).data('table-name');
-		
-		// for checking 
-		// console.log(data_tname);
-
-		// field for checking 
-		// $('#bk-delete-input').val(data_id);
 
 		switch (data_tname) {
 
-			// START namespace "info" 
-			case 'type':
-				$('#bk-delete-form').attr('action', '/info/types/' + data_id);
-				break;
-			
+			// START namespace "info" 	
 			case 'position':
 				$('#bk-delete-form').attr('action', '/info/positions/' + data_id);
+				break;
+
+			case 'plot':
+				$('#bk-delete-form').attr('action', '/info/plots/' + data_id);
 				break;
 
 			case 'street':
@@ -40,10 +34,6 @@ $(document).ready(function () {
 			// END namespace "info" 
 
 			// START namespace "admin" 
-			case 'role':
-				$('#bk-delete-form').attr('action', '/admin/roles/' + data_id);
-				break;
-
 			case 'user':
 				$('#bk-delete-form').attr('action', '/admin/users/' + data_id);
 				break;

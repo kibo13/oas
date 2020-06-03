@@ -38,11 +38,11 @@
 						<a class="dropdown-item bk-navbar__link" href="{{ route('branches.index') }}">
 							Отделы
 						</a>
+						<a class="dropdown-item bk-navbar__link" href="{{ route('plots.index') }}">
+							Участки
+						</a>
 						<a class="dropdown-item bk-navbar__link" href="{{ route('positions.index') }}">
 							Должности
-						</a>
-						<a class="dropdown-item bk-navbar__link" href="{{ route('types.index') }}">
-							Типы(э/с)
 						</a>
 						<a class="dropdown-item bk-navbar__link" href="{{ route('defects.index') }}">
 							Неисправности
