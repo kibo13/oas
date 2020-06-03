@@ -27,15 +27,15 @@ class BidController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $streets = Street::get();
-        $branches = Branch::get();
-        $defects = Defect::get();
         $types = Type::get();
+        $branches = Branch::where('slug', '=', '1')->get();
+
         return view(
             'pages.bids.form',
-            compact('streets', 'branches', 'defects', 'types')
+            compact('streets', 'branches', 'types')
         );
     }
 
@@ -75,13 +75,12 @@ class BidController extends Controller
     public function edit(Request $request, Bid $bid)
     {
         $streets = Street::get();
-        $branches = Branch::get();
-        $defects = Defect::get();
         $types = Type::get();
+        $branches = Branch::where('slug', '=', '1')->get();
 
         return view(
             'pages.bids.form',
-            compact('bid', 'streets', 'branches', 'defects', 'types')
+            compact('streets', 'branches', 'types', 'bid')
         );
     }
 

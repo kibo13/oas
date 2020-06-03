@@ -111,6 +111,7 @@ class BriefController extends Controller
                 'borderColor' => '#795548',
                 'backgroundColor' => 'transparent'
             ]);
+
         return view('pages.briefs.index', compact('briefs', 'chart_t', 'chart_p'));
     }
 

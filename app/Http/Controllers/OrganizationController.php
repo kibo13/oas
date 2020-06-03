@@ -14,8 +14,7 @@ class OrganizationController extends Controller
      */
     public function index()
     {
-        // $organizations = Position::get();
-        $organizations = Organization::paginate(7);
+        $organizations = Organization::paginate(10);
         return view('pages.organizations.index', compact('organizations'));
     }
 

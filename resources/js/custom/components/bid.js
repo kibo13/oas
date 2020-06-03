@@ -9,28 +9,21 @@ $(document).ready(function() {
             : $("#bk-log").addClass("bk-hidden");
     });
 
-    // edit current record 
-    // $(".bk-btn-edit").on("click", function(e) {
+    // print defect depending on type
+    $('#type').on('change', e => {
 
-    //     var data_id = $(e.target).data("id");
-    //     url = '/logs/' + data_id;
+        $('#defect_id').empty();
+        var type_id = $(e.target).val();
 
-    //     $.ajax({
-    //         url: url,
-    //         method: "get",
-    //     }).done(function(response) {
-
-
-
-    //         // $("input[name='editID']").val(id);
-    //         // $("input[name='company']").val(response.company);
-    //         // $("input[name='to']").val(response.to);
-    //         // $("input[name='from']").val(response.from);
-
-  
-    //         // check response 
-    //         console.log(response.type_log);
-    //     });
-
-    // });   
+        $.ajax({
+            url: '/data/defects',
+            method: 'GET',
+        }).done(function (defects) {
+            for (let defect of defects) {
+                if (defect.type_id == type_id) {
+                    $('#defect_id').append(`<option value="${defect.id}">${defect.desc}</option>`);
+                }
+            }
+        })      
+    });
 });

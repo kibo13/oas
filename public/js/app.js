@@ -74498,27 +74498,44 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 $(document).ready(function () {
   // add new record 
   $("#add-log").on("click", function (e) {
     e.preventDefault();
     $("#bk-log").hasClass("bk-hidden") ? $("#bk-log").removeClass("bk-hidden") : $("#bk-log").addClass("bk-hidden");
-  }); // edit current record 
-  // $(".bk-btn-edit").on("click", function(e) {
-  //     var data_id = $(e.target).data("id");
-  //     url = '/logs/' + data_id;
-  //     $.ajax({
-  //         url: url,
-  //         method: "get",
-  //     }).done(function(response) {
-  //         // $("input[name='editID']").val(id);
-  //         // $("input[name='company']").val(response.company);
-  //         // $("input[name='to']").val(response.to);
-  //         // $("input[name='from']").val(response.from);
-  //         // check response 
-  //         console.log(response.type_log);
-  //     });
-  // });   
+  }); // print defect depending on type
+
+  $('#type').on('change', function (e) {
+    $('#defect_id').empty();
+    var type_id = $(e.target).val();
+    $.ajax({
+      url: '/data/defects',
+      method: 'GET'
+    }).done(function (defects) {
+      var _iterator = _createForOfIteratorHelper(defects),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var defect = _step.value;
+
+          if (defect.type_id == type_id) {
+            $('#defect_id').append("<option value=\"".concat(defect.id, "\">").concat(defect.desc, "</option>"));
+          }
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+    });
+  });
 });
 
 /***/ }),

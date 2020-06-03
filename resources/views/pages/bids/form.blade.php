@@ -5,9 +5,9 @@
 
 	<h2 class="mb-3">
 		@isset($bid)
-			Редактирование записи
-		@else 
-			Добавление записи
+		Редактирование записи
+		@else
+		Добавление записи
 		@endisset
 	</h2>
 
@@ -95,7 +95,7 @@
 
 				<div class="col-sm-auto form-group mb-2 pl-0">
 					<label for="phone" class="bk-form__label mb-0">Телефон</label>
-					<input id="phone" type="text" class="form-control bk-form__input" name="phone"placeholder="Введите телефон" value="{{ old('phone', isset($bid) ? $bid->phone : null) }}">
+					<input id="phone" type="text" class="form-control bk-form__input" name="phone" placeholder="Введите телефон" value="{{ old('phone', isset($bid) ? $bid->phone : null) }}">
 				</div>
 				<!-- END group user -->
 
@@ -124,18 +124,11 @@
 
 					<select name="defect_id" id="defect_id" class="form-control bk-form__input">
 						<option disabled selected>Выберите неисправность</option>
-
-						@foreach($defects as $defect)
-						<option value="{{ $defect->id }}" @isset($bid) @if($bid->defect_id == $defect->id)
-							selected
-							@endif
-							@endisset
-							>
-							{{ ucfirst($defect->desc) }}
-						</option>
-						@endforeach
-
-
+						@isset($bid)
+							<option value="{{ $bid->defect->id }}" selected>
+								{{ $bid->defect->desc	 }}
+							</option>
+						@endisset
 					</select>
 
 				</div>
