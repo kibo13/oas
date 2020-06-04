@@ -1,5 +1,9 @@
-require('./components/sidebar');
-require('./components/navbar');
-require('./components/modal');
-require('./components/bid');
-require('./components/brief');
+// includes 
+require('./includes/sidebar');
+require('./includes/navbar');
+require('./includes/modal');
+
+// pages 
+require('./pages/plot');
+require('./pages/bid');
+require('./pages/brief');

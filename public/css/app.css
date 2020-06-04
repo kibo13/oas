@@ -11510,6 +11510,10 @@ a[data-toggle=collapse] {
   z-index: 5;
 }
 
+.bk-form__address {
+  width: 160px;
+}
+
 .bk-form__date {
   width: 170px;
 }
@@ -11657,7 +11661,8 @@ a[data-toggle=collapse] {
     width: 70%;
   }
 
-  .bk-form__select {
+  .bk-form__select,
+  .bk-form__address {
     width: 100%;
   }
 }

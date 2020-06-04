@@ -46,11 +46,6 @@ Route::middleware(['auth'])->group(function() {
         ], function () {
             Route::resource('logs', 'LogController');
         });
-        Route::group([
-            'prefix' => 'data'
-        ], function () {
-            Route::get('defects', 'DataController@defects');
-        });
     });
 
     // role: audit 
@@ -92,6 +87,7 @@ Route::middleware(['auth'])->group(function() {
         Route::resource('addresses', 'AddressController');
         Route::resource('streets', 'StreetController');
         Route::resource('plots', 'PlotController');
+
     });
 
     // role: guest 
@@ -104,5 +100,13 @@ Route::middleware(['auth'])->group(function() {
     Route::get('jobs/{job}', 'JobController@show')->name('jobs.show');
     Route::get('briefs', 'BriefController@index')->name('briefs.index');
     Route::get('workers', 'WorkerController@index')->name('workers.index');
-    Route::get('promisers', 'PromiserController@index')->name('promisers.index');    
+    Route::get('promisers', 'PromiserController@index')->name('promisers.index');
+
+    // JSON 
+    Route::group([
+        'prefix' => 'data'
+    ], function () {
+        Route::get('defects', 'DataController@defects');
+        Route::get('addresses', 'DataController@addresses');
+    });
 });

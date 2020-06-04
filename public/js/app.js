@@ -74491,75 +74491,10 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/js/custom/components/bid.js":
+/***/ "./resources/js/custom/includes/modal.js":
 /*!***********************************************!*\
-  !*** ./resources/js/custom/components/bid.js ***!
+  !*** ./resources/js/custom/includes/modal.js ***!
   \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-$(document).ready(function () {
-  // add new record 
-  $("#add-log").on("click", function (e) {
-    e.preventDefault();
-    $("#bk-log").hasClass("bk-hidden") ? $("#bk-log").removeClass("bk-hidden") : $("#bk-log").addClass("bk-hidden");
-  }); // print defect depending on type
-
-  $('#type').on('change', function (e) {
-    $('#defect_id').empty();
-    var type_id = $(e.target).val();
-    $.ajax({
-      url: '/data/defects',
-      method: 'GET'
-    }).done(function (defects) {
-      var _iterator = _createForOfIteratorHelper(defects),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var defect = _step.value;
-
-          if (defect.type_id == type_id) {
-            $('#defect_id').append("<option value=\"".concat(defect.id, "\">").concat(defect.desc, "</option>"));
-          }
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-    });
-  });
-});
-
-/***/ }),
-
-/***/ "./resources/js/custom/components/brief.js":
-/*!*************************************************!*\
-  !*** ./resources/js/custom/components/brief.js ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-$(document).ready(function () {
-  $('#brief-print').on('click', function (e) {
-    e.preventDefault();
-    window.print();
-  });
-});
-
-/***/ }),
-
-/***/ "./resources/js/custom/components/modal.js":
-/*!*************************************************!*\
-  !*** ./resources/js/custom/components/modal.js ***!
-  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -74639,10 +74574,10 @@ $(document).ready(function () {
 
 /***/ }),
 
-/***/ "./resources/js/custom/components/navbar.js":
-/*!**************************************************!*\
-  !*** ./resources/js/custom/components/navbar.js ***!
-  \**************************************************/
+/***/ "./resources/js/custom/includes/navbar.js":
+/*!************************************************!*\
+  !*** ./resources/js/custom/includes/navbar.js ***!
+  \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -74656,10 +74591,10 @@ $(document).ready(function () {
 
 /***/ }),
 
-/***/ "./resources/js/custom/components/sidebar.js":
-/*!***************************************************!*\
-  !*** ./resources/js/custom/components/sidebar.js ***!
-  \***************************************************/
+/***/ "./resources/js/custom/includes/sidebar.js":
+/*!*************************************************!*\
+  !*** ./resources/js/custom/includes/sidebar.js ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -74680,15 +74615,128 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! ./components/sidebar */ "./resources/js/custom/components/sidebar.js");
+// includes 
+__webpack_require__(/*! ./includes/sidebar */ "./resources/js/custom/includes/sidebar.js");
 
-__webpack_require__(/*! ./components/navbar */ "./resources/js/custom/components/navbar.js");
+__webpack_require__(/*! ./includes/navbar */ "./resources/js/custom/includes/navbar.js");
 
-__webpack_require__(/*! ./components/modal */ "./resources/js/custom/components/modal.js");
+__webpack_require__(/*! ./includes/modal */ "./resources/js/custom/includes/modal.js"); // pages 
 
-__webpack_require__(/*! ./components/bid */ "./resources/js/custom/components/bid.js");
 
-__webpack_require__(/*! ./components/brief */ "./resources/js/custom/components/brief.js");
+__webpack_require__(/*! ./pages/plot */ "./resources/js/custom/pages/plot.js");
+
+__webpack_require__(/*! ./pages/bid */ "./resources/js/custom/pages/bid.js");
+
+__webpack_require__(/*! ./pages/brief */ "./resources/js/custom/pages/brief.js");
+
+/***/ }),
+
+/***/ "./resources/js/custom/pages/bid.js":
+/*!******************************************!*\
+  !*** ./resources/js/custom/pages/bid.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+$(document).ready(function () {
+  // add new record 
+  $("#add-log").on("click", function (e) {
+    e.preventDefault();
+    $("#bk-log").hasClass("bk-hidden") ? $("#bk-log").removeClass("bk-hidden") : $("#bk-log").addClass("bk-hidden");
+  }); // print defect depending on type
+
+  $('#type').on('change', function (e) {
+    $('#defect_id').empty();
+    var type_id = $(e.target).val();
+    $.ajax({
+      url: '/data/defects',
+      method: 'GET'
+    }).done(function (defects) {
+      var _iterator = _createForOfIteratorHelper(defects),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var defect = _step.value;
+
+          if (defect.type_id == type_id) {
+            $('#defect_id').append("<option value=\"".concat(defect.id, "\">").concat(defect.desc, "</option>"));
+          }
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+    });
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/custom/pages/brief.js":
+/*!********************************************!*\
+  !*** ./resources/js/custom/pages/brief.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  $('#brief-print').on('click', function (e) {
+    e.preventDefault();
+    window.print();
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/custom/pages/plot.js":
+/*!*******************************************!*\
+  !*** ./resources/js/custom/pages/plot.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  // print defect depending on type
+  $('#plot-street').on('change', function (e) {// const elem = $('#home-list');
+    // const street_id = $(e.target).val();
+    // elem.empty();
+    // $.ajax({
+    // 	url: '/data/addresses',
+    // 	method: 'GET',
+    // }).done(addresses => {
+    // 	let temp = addresses.sort((a, b) => a.num_home - b.num_home);
+    // 	for (let address of temp) {
+    // 		if (address.street_id == street_id) {
+    // 			elem.append(`
+    // 				<div class="bk-form__num col-sm-auto custom-control custom-checkbox mb-2">
+    // 					<input 
+    // 						id="${address.id}"
+    // 						name="addresses[]"
+    // 						type="checkbox"
+    // 						class="custom-control-input" 
+    // 						value="${address.num_home}"
+    // 					>
+    // 					<label 
+    // 						class="custom-control-label bk-form__label--checkbox" 
+    // 						for="${address.id}"
+    // 					>
+    // 						д.${address.num_home}
+    // 					</label>
+    // 				</div>
+    // 			`);
+    // 		}
+    // 	}
+    // })
+  });
+});
 
 /***/ }),
 

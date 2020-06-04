@@ -41,29 +41,35 @@
 					</div>
 					<!-- END group plot -->
 
-					<!-- START group plot -->
-					<h6 class="w-100 border-bottom mr-3 py-1 pl-0">Улица</h6>
-					<div class="bk-form__select col-sm-auto form-group mb-2 pl-0">
-						<select class="form-control bk-form__input">
-							<option disabled selected>Выберите улицу</option>
-							@foreach($streets as $street)
-							<option value="{{ $street->id }}" @isset($plot) @if($plot->street_id == $street->id)
-								selected
-								@endif
+					<!-- START group addresses -->
+					<h6 class="w-100 border-bottom mr-3 py-1 pl-0">Список адресов</h6>
+					<div id="home-list" class="d-flex flex-wrap pl-2 mr-3" style="height: 250px; overflow-y: auto;">
+
+					
+						@foreach($addresses as $id => $address)
+						<div class="bk-form__address col-sm-auto custom-control custom-checkbox mb-2">
+							<input 
+								id="{{ $id }}" 
+								name="addresses[]" 
+								type="checkbox" 
+								class="custom-control-input" 
+								value="{{ $address->id }}" 
+								@isset($plot) 
+									@if($plot->addresses->where('id', $address->id)->count())
+										checked="checked"
+									@endif
 								@endisset
-								>
-								{{ ucfirst($street->name) }}
-							</option>
-							@endforeach
-						</select>
+							>
+							<label class="custom-control-label bk-form__label--checkbox" for="{{ $id }}">
+								{{ ucfirst($address->street->name) }} {{ ucfirst($address->num_home) }}
+							</label>
+						</div>
+						@endforeach
 					</div>
-					<!-- END group plot -->
+					<!-- END group addresses -->
 
 				</div>
 			</div>
-
-
-
 
 			<div class="form-group">
 				<button type="submit" class="btn btn-outline-success">Сохранить</button>

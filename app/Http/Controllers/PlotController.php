@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Plot;
 use App\Models\Branch;
-use App\Models\Street;
 use App\Models\Address;
+use App\Models\Street;
 use Illuminate\Http\Request;
 
 class PlotController extends Controller
@@ -16,9 +16,10 @@ class PlotController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        $streets = Street::get();
         $plots = Plot::get();
-        return view('pages.plots.index', compact('plots'));
+        return view('pages.plots.index', compact('plots', 'streets'));
     }
 
     /**
@@ -28,10 +29,12 @@ class PlotController extends Controller
      */
     public function create()
     {
-        $streets = Street::get();
-        $branches = Branch::get();
-        $addresses = Address::get();
-        return view('pages.plots.form', compact('addresses', 'branches', 'streets'));
+        $branches = Branch::where('slug', '=', '1')->get();
+        $addresses = Address::with('street')
+            ->join('streets', 'addresses.street_id', '=', 'streets.id')
+            ->orderBy('streets.name', 'ASC')->orderBy('num_home', 'ASC')->get();
+        
+        return view('pages.plots.form', compact('addresses', 'branches'));
     }
 
     /**
@@ -73,10 +76,9 @@ class PlotController extends Controller
      */
     public function edit(Plot $plot)
     {
-        $streets = Street::get();
-        $branches = Branch::get();
+        $branches = Branch::where('slug', '=', '1')->get();
         $addresses = Address::get();
-        return view('pages.plots.form', compact('addresses', 'branches', 'streets', 'plot'));
+        return view('pages.plots.form', compact('addresses', 'branches', 'plot'));
     }
 
     /**
