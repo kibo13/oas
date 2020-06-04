@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
 use App\Models\Street;
 use Illuminate\Http\Request;
 
-class StreetController extends Controller
+class AddressController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class StreetController extends Controller
      */
     public function index()
     {
-        $streets = Street::orderBy('name', 'ASC')->paginate(10);
-        return view('pages.addresses.streets.index', compact('streets'));
+        $addresses = Address::paginate(20);
+        return view('pages.addresses.index', compact('addresses'));
     }
 
     /**
@@ -25,7 +26,8 @@ class StreetController extends Controller
      */
     public function create()
     {
-        return view('pages.addresses.streets.form');
+        $streets = Street::get();
+        return view('pages.addresses.form', compact('streets'));
     }
 
     /**
@@ -36,54 +38,55 @@ class StreetController extends Controller
      */
     public function store(Request $request)
     {
-        Street::create($request->all());
-        return redirect()->route('streets.index');
+        Address::create($request->all());
+        return redirect()->route('addresses.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Street  $street
+     * @param  \App\Models\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function show(Street $street)
+    public function show(Address $address)
     {
-        // 
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Street  $street
+     * @param  \App\Models\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function edit(Street $street)
+    public function edit(Address $address)
     {
-        return view('pages.addresses.streets.form', compact('street'));
+        $streets = Street::get();
+        return view('pages.addresses.form', compact('streets', 'address'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Street  $street
+     * @param  \App\Models\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Street $street)
+    public function update(Request $request, Address $address)
     {
-        $street->update($request->all());
-        return redirect()->route('streets.index');
+        $address->update($request->all());
+        return redirect()->route('addresses.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Street  $street
+     * @param  \App\Models\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Street $street)
+    public function destroy(Address $address)
     {
-        $street->delete();
-        return redirect()->route('streets.index');
+        $address->delete();
+        return redirect()->route('addresses.index');
     }
 }

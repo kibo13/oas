@@ -86,10 +86,11 @@ Route::middleware(['auth'])->group(function() {
         'prefix' => 'info'
     ], function () {
         Route::resource('organizations', 'OrganizationController');
-        Route::resource('branches', 'BranchController');
         Route::resource('positions', 'PositionController');
-        Route::resource('streets', 'StreetController');
         Route::resource('defects', 'DefectController');
+        Route::resource('branches', 'BranchController');
+        Route::resource('addresses', 'AddressController');
+        Route::resource('streets', 'StreetController');
         Route::resource('plots', 'PlotController');
     });
 

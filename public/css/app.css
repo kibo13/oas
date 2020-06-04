@@ -11464,7 +11464,8 @@ a[data-toggle=collapse] {
   width: 70px;
 }
 
-.bk-form__tp {
+.bk-form__tp,
+.bk-form__home {
   width: 90px;
 }
 
@@ -11630,6 +11631,10 @@ a[data-toggle=collapse] {
     width: 25%;
   }
 
+  .bk-form__home {
+    width: 30%;
+  }
+
   .bk-form__num,
   .bk-form__btn {
     width: 33%;
@@ -11646,6 +11651,10 @@ a[data-toggle=collapse] {
 
   .bk-form__date {
     width: 60%;
+  }
+
+  .bk-form__street {
+    width: 70%;
   }
 
   .bk-form__select {

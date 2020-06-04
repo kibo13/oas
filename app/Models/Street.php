@@ -10,9 +10,9 @@ class Street extends Model
         'name',
     ];
 
-    public function plots()
+    public function addresses()
     {
-        return $this->hasMany('App\Models\Plot');
+        return $this->hasMany('App\Models\Address');
     }
 
     public function workers()

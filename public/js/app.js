@@ -74578,6 +74578,10 @@ $(document).ready(function () {
         $('#bk-delete-form').attr('action', '/info/plots/' + data_id);
         break;
 
+      case 'address':
+        $('#bk-delete-form').attr('action', '/info/addresses/' + data_id);
+        break;
+
       case 'street':
         $('#bk-delete-form').attr('action', '/info/streets/' + data_id);
         break;

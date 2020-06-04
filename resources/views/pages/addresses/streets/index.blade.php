@@ -8,6 +8,9 @@
     <a href="{{ route('streets.create') }}" class="btn btn-outline-primary">
       Новая запись
     </a>
+    <a href="{{ route('addresses.index') }}" class="btn btn-outline-secondary">
+      Адреса
+    </a>
   </div>
 
   <div class="table-responsive">

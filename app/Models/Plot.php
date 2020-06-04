@@ -6,16 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Plot extends Model
 {
-    protected $fillable = [
-        'branch_id',
-        'street_id',
-        'num_home',
-        'num_corp'
-    ];
-    
-    public function street()
+    protected $fillable = ['branch_id'];
+
+    public function addresses()
     {
-        return $this->belongsTo('App\Models\Street');
+        return $this->belongsToMany('App\Models\Address');
     }
 
     public function branch()

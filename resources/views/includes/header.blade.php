@@ -30,10 +30,9 @@
 						Информация
 					</a>
 					<!-- /.show-user -->
-
 					<div class="bk-navbar__dropitem dropdown-menu dropdown-menu-right p-0" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item bk-navbar__link" href="{{ route('organizations.index') }}">
-							Предприятия
+						<a class="dropdown-item bk-navbar__link" href="{{ route('addresses.index') }}">
+							Адреса
 						</a>
 						<a class="dropdown-item bk-navbar__link" href="{{ route('branches.index') }}">
 							Отделы
@@ -41,14 +40,11 @@
 						<a class="dropdown-item bk-navbar__link" href="{{ route('plots.index') }}">
 							Участки
 						</a>
-						<a class="dropdown-item bk-navbar__link" href="{{ route('positions.index') }}">
-							Должности
-						</a>
 						<a class="dropdown-item bk-navbar__link" href="{{ route('defects.index') }}">
 							Неисправности
 						</a>
-						<a class="dropdown-item bk-navbar__link" href="{{ route('streets.index') }}">
-							Улицы
+						<a class="dropdown-item bk-navbar__link" href="{{ route('organizations.index') }}">
+							Предприятия
 						</a>
 				</li>
 				@endif

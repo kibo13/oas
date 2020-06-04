@@ -8,6 +8,9 @@
     <a href="{{ route('branches.create') }}" class="btn btn-outline-primary">
       Новая запись
     </a>
+    <a href="{{ route('positions.index') }}" class="btn btn-outline-secondary">
+      Должности
+    </a>
   </div>
 
   <div class="table-responsive">

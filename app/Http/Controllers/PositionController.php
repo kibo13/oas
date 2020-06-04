@@ -15,7 +15,7 @@ class PositionController extends Controller
     public function index()
     {
         $positions = Position::paginate(10);
-        return view('pages.positions.index', compact('positions'));
+        return view('pages.branches.positions.index', compact('positions'));
     }
 
     /**
@@ -25,7 +25,7 @@ class PositionController extends Controller
      */
     public function create()
     {
-        return view('pages.positions.form');
+        return view('pages.branches.positions.form');
     }
 
     /**
@@ -59,7 +59,7 @@ class PositionController extends Controller
      */
     public function edit(Position $position)
     {
-        return view('pages.positions.form', compact('position'));
+        return view('pages.branches.positions.form', compact('position'));
     }
 
     /**

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Plot;
-use App\Models\Street;
 use App\Models\Branch;
+use App\Models\Street;
+use App\Models\Address;
 use Illuminate\Http\Request;
 
 class PlotController extends Controller
@@ -16,11 +17,7 @@ class PlotController extends Controller
      */
     public function index()
     {
-        $plots = Plot::orderBy('branch_id', 'ASC')
-            ->orderBy('street_id', 'ASC')
-            ->orderBy('num_home', 'ASC')
-            ->orderBy('num_corp', 'ASC')
-            ->paginate(15);
+        $plots = Plot::get();
         return view('pages.plots.index', compact('plots'));
     }
 
@@ -32,11 +29,9 @@ class PlotController extends Controller
     public function create()
     {
         $streets = Street::get();
-        $branches = Branch::where('slug', '=', '1')->get();
-        return view(
-            'pages.plots.form',
-            compact('streets', 'branches')
-        );
+        $branches = Branch::get();
+        $addresses = Address::get();
+        return view('pages.plots.form', compact('addresses', 'branches', 'streets'));
     }
 
     /**
@@ -47,7 +42,15 @@ class PlotController extends Controller
      */
     public function store(Request $request)
     {
-        Plot::create($request->all());
+        $plot = Plot::create([
+            'branch_id' => $request['branch_id'],
+        ]);
+
+        // addresses 
+        if ($request->input('addresses')) :
+            $plot->addresses()->attach($request->input('addresses'));
+        endif;
+
         return redirect()->route('plots.index');
     }
 
@@ -71,11 +74,9 @@ class PlotController extends Controller
     public function edit(Plot $plot)
     {
         $streets = Street::get();
-        $branches = Branch::where('slug', '=', '1')->get();
-        return view(
-            'pages.plots.form',
-            compact('streets', 'branches', 'plot')
-        );
+        $branches = Branch::get();
+        $addresses = Address::get();
+        return view('pages.plots.form', compact('addresses', 'branches', 'streets', 'plot'));
     }
 
     /**
@@ -87,7 +88,15 @@ class PlotController extends Controller
      */
     public function update(Request $request, Plot $plot)
     {
-        $plot->update($request->all());
+        $plot->branch_id = $request['branch_id'];
+        
+        // addresses 
+        $plot->addresses()()->detach();
+        if ($request->input('addresses')) :
+            $plot->addresses()->attach($request->input('addresses'));
+        endif;
+
+        $plot->save();
         return redirect()->route('plots.index');
     }
 
@@ -99,7 +108,10 @@ class PlotController extends Controller
      */
     public function destroy(Plot $plot)
     {
+        // addresses 
+        $plot->addresses()->detach();
         $plot->delete();
+
         return redirect()->route('plots.index');
     }
 }

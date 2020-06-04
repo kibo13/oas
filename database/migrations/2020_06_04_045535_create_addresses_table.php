@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePlotsTable extends Migration
+class CreateAddressesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreatePlotsTable extends Migration
      */
     public function up()
     {
-        Schema::create('plots', function (Blueprint $table) {
+        Schema::create('addresses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('branch_id')->unsigned();
             $table->bigInteger('street_id')->unsigned();
-            $table->integer('num_home');
-            $table->string('num_corp')->nullable();
+            $table->string('num_home');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreatePlotsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plots');
+        Schema::dropIfExists('addresses');
     }
 }
