@@ -28,7 +28,17 @@
 					<td>{{ $plot->branch->name }}</td>
 					<td>
 
-						{{ $plot->addresses()->pluck('num_home')->implode(', ') }}
+					@foreach($streets as $street) 
+						{{ $street->name }}
+
+						@foreach($plot->addresses as $address) 
+							@if($street->id == $address->street_id)
+								д.{{ $address->num_home }}, 
+							@endif
+						@endforeach
+						<br>
+					@endforeach
+
 
 					</td>
 					<td>

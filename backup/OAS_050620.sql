@@ -11,7 +11,7 @@
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 04/06/2020 14:04:43
+ Date: 05/06/2020 00:45:57
 */
 
 SET NAMES utf8mb4;
@@ -1075,7 +1075,6 @@ INSERT INTO `plots` VALUES (6, 2, '2020-06-04 12:09:44', '2020-06-04 12:09:44');
 INSERT INTO `plots` VALUES (7, 3, '2020-06-04 12:09:50', '2020-06-04 12:09:50');
 INSERT INTO `plots` VALUES (8, 4, '2020-06-04 12:09:54', '2020-06-04 12:09:54');
 INSERT INTO `plots` VALUES (9, 5, '2020-06-04 12:09:59', '2020-06-04 12:09:59');
-INSERT INTO `plots` VALUES (10, 9, '2020-06-04 12:10:06', '2020-06-04 12:10:06');
 
 -- ----------------------------
 -- Table structure for positions
