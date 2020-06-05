@@ -17,30 +17,29 @@
 			<thead class="thead-light">
 				<tr>
 					<th scope="col">#</th>
+					<th scope="col">Участок</th>
 					<th scope="col">Адрес</th>
 					<th scope="col">Поступила</th>
 					<th scope="col">Тип(э/с)</th>
 					<th scope="col">Неисправность</th>
-					<th scope="col">Отдел</th>
 					<th scope="col">Статус</th>
 					<th scope="col">Действие</th>
 				</tr>
 			</thead>
 			<tbody>
-
 				@foreach($bids as $id => $bid)
 				<tr>
 					<td>{{ $id+=1 }}</td>
+					<td>{{ $bid->branch->name }}</td>
 					<td>{{ $bid->street->name }} {{ $bid->num_home }}{{ $bid->num_corp }} - {{ $bid->num_flat }} </td>
 					<td>{{ date('d.m.Y', strtotime($bid->date_in)) }}г. <small class="text-muted align-text-top">{{ date('H:i', strtotime($bid->time_in)) }}</small></td>
 					<td>{{ $bid->type->name }}</td>
 					<td>{{ $bid->defect->desc }}</td>
-					<td>{{ $bid->branch->name }}</td>
 					<td>
 						@if($bid->logs->where('type_log')->count())
-							Устранено
-						@else 
-							В процессе
+						Устранено
+						@else
+						В процессе
 						@endif
 					</td>
 					<td>

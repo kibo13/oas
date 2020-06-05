@@ -33,10 +33,10 @@
 				</div>
 				<!-- END group date and time income -->
 
-				<!-- START group branch -->
-				<h6 class="w-100 border-bottom mr-3 py-1 pl-0">Отдел</h6>
+				<!-- START group plots -->
+				<h6 class="w-100 border-bottom mr-3 py-1 pl-0">Участок</h6>
 				<div class="col-sm-auto form-group mb-2 pl-0">
-					<select name="branch_id" id="branch_id" class="form-control bk-form__input">
+					<select name="branch_id" id="bid-plot" class="form-control bk-form__input">
 						<option disabled selected>Выберите отдел</option>
 						@foreach($branches as $branch)
 						<option value="{{ $branch->id }}" @isset($bid) @if($bid->branch_id == $branch->id)
@@ -49,24 +49,18 @@
 						@endforeach
 					</select>
 				</div>
-				<!-- END group branch -->
 
-				<!-- START group address -->
-				<h6 class="w-100 border-bottom mr-3 py-1 pl-0">Адрес</h6>
+				<h6 class="w-100 mr-3 py-0 my-0 pl-0"></h6>
 				<div class="col-sm-auto form-group mb-2 pl-0">
 
-					<label for="street" class="bk-form__label mb-0">Улица</label>
-					<select name="street_id" id="street" class="form-control bk-form__input">
+					<label for="street_id" class="bk-form__label mb-0">Улица</label>
+					<select name="street_id" id="street_id" class="form-control bk-form__input">
 						<option disabled selected>Выберите улицу</option>
-						@foreach($streets as $street)
-						<option value="{{ $street->id }}" @isset($bid) @if($bid->street_id == $street->id)
-							selected
-							@endif
-							@endisset
-							>
-							{{ ucfirst($street->name) }}
+						@isset($bid)
+						<option value="{{ $bid->street->id }}" selected>
+							{{ $bid->street->name	 }}
 						</option>
-						@endforeach
+						@endisset
 					</select>
 				</div>
 
@@ -76,15 +70,10 @@
 				</div>
 
 				<div class="bk-form__num col-sm-auto form-group mb-2 pl-0">
-					<label for="num_corp" class="bk-form__label mb-0">Корпус</label>
-					<input id="num_corp" type="text" class="form-control bk-form__input" name="num_corp" value="{{ old('num_corp', isset($bid) ? $bid->num_corp : null) }}">
-				</div>
-
-				<div class="bk-form__num col-sm-auto form-group mb-2 pl-0">
 					<label for="num_flat" class="bk-form__label mb-0">Квартира</label>
 					<input id="num_flat" min="1" max="150" type="number" class="form-control bk-form__input" name="num_flat" required value="{{ old('num_flat', isset($bid) ? $bid->num_flat : null) }}">
 				</div>
-				<!-- END group address -->
+				<!-- END group plots -->
 
 				<!-- START group user -->
 				<h6 class="w-100 border-bottom mr-3 py-1 pl-0">Потребитель</h6>
@@ -103,7 +92,7 @@
 				<h6 class="w-100 border-bottom mr-3 py-1 pl-0">Тип (э/с)</h6>
 				<div class="col-sm-auto form-group mb-2 pl-0">
 
-					<select name="type_id" id="type" class="form-control bk-form__input">
+					<select name="type_id" id="bid-type" class="form-control bk-form__input">
 						<option disabled selected>Выберите тип</option>
 						@foreach($types as $type)
 						<option value="{{ $type->id }}" @isset($bid) @if($bid->type_id == $type->id)
@@ -125,9 +114,9 @@
 					<select name="defect_id" id="defect_id" class="form-control bk-form__input">
 						<option disabled selected>Выберите неисправность</option>
 						@isset($bid)
-							<option value="{{ $bid->defect->id }}" selected>
-								{{ $bid->defect->desc	 }}
-							</option>
+						<option value="{{ $bid->defect->id }}" selected>
+							{{ $bid->defect->desc	 }}
+						</option>
 						@endisset
 					</select>
 

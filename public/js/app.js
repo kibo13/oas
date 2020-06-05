@@ -74649,15 +74649,30 @@ $(document).ready(function () {
   $("#add-log").on("click", function (e) {
     e.preventDefault();
     $("#bk-log").hasClass("bk-hidden") ? $("#bk-log").removeClass("bk-hidden") : $("#bk-log").addClass("bk-hidden");
+  }); // print streets depending on plot
+
+  $('#bid-plot').on('change', function (e) {
+    // $('#street_id').empty();
+    var plot_id = $(e.target).val();
+    $.ajax({
+      url: '/data/defects',
+      method: 'GET'
+    }).done(function (streets) {
+      $('#street_id').append("<option disabled selected>\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0443\u043B\u0438\u0446\u0443</option>");
+    }); // checking 
+
+    console.log(plot_id);
   }); // print defect depending on type
 
-  $('#type').on('change', function (e) {
+  $('#bid-type').on('change', function (e) {
     $('#defect_id').empty();
     var type_id = $(e.target).val();
     $.ajax({
       url: '/data/defects',
       method: 'GET'
     }).done(function (defects) {
+      $('#defect_id').append("<option disabled selected>\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u043D\u0435\u0438\u0441\u043F\u0440\u0430\u0432\u043D\u043E\u0441\u0442\u044C</option>");
+
       var _iterator = _createForOfIteratorHelper(defects),
           _step;
 
