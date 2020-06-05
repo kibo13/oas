@@ -30,7 +30,7 @@ class PlotController extends Controller
      */
     public function create()
     {
-        $branches = Branch::where('slug', '=', '1')->get();
+        $branches = Branch::where('slug', '!=', null)->get();
         $addresses = Address::get();
         return view('pages.plots.form', compact('addresses', 'branches'));
     }
@@ -74,7 +74,7 @@ class PlotController extends Controller
      */
     public function edit(Plot $plot)
     {
-        $branches = Branch::where('slug', '=', '1')->get();
+        $branches = Branch::where('slug', '!=', null)->get();
         $addresses = Address::get();
         return view('pages.plots.form', compact('addresses', 'branches', 'plot'));
     }

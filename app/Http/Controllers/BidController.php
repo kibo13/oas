@@ -31,7 +31,7 @@ class BidController extends Controller
     {
         $streets = Street::get();
         $types = Type::get();
-        $branches = Branch::where('slug', '=', '1')->get();
+        $branches = Branch::where('slug', '!=', null)->get();
 
         return view(
             'pages.bids.form',
@@ -76,7 +76,7 @@ class BidController extends Controller
     {
         $streets = Street::get();
         $types = Type::get();
-        $branches = Branch::where('slug', '=', '1')->get();
+        $branches = Branch::where('slug', '!=', null)->get();
 
         return view(
             'pages.bids.form',

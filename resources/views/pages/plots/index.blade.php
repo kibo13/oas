@@ -23,6 +23,7 @@
 			<tbody>
 
 				@foreach($plots as $id => $plot)
+				@if($plot->branch->slug != 2)
 				<tr>
 					<td>{{ $id+=1 }}</td>
 					<td>{{ $plot->branch->name }}</td>
@@ -34,10 +35,11 @@
 						@endif
 
 						@foreach($plot->addresses as $address) 
+							<small class="bk-text--small text-muted align-top">
 							@if($street->id == $address->street_id)
 								д.{{ $address->num_home }}, 
 							@endif
-							
+							</small>
 						@endforeach
 
 						@if($plot->addresses->where('street_id', $street->id)->count())
@@ -46,8 +48,6 @@
 	
 					@endforeach
 				
-
-
 					</td>
 					<td>
 						<div class="d-flex">
@@ -76,6 +76,7 @@
 						</div>
 					</td>
 				</tr>
+				@endif
 				@endforeach
 
 			</tbody>
