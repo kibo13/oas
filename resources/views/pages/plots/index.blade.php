@@ -29,15 +29,23 @@
 					<td>
 
 					@foreach($streets as $street) 
-						{{ $street->name }}
+						@if($plot->addresses->where('street_id', $street->id)->count())
+							{{ $street->name }}
+						@endif
 
 						@foreach($plot->addresses as $address) 
 							@if($street->id == $address->street_id)
 								д.{{ $address->num_home }}, 
 							@endif
+							
 						@endforeach
-						<br>
+
+						@if($plot->addresses->where('street_id', $street->id)->count())
+							<br>
+						@endif
+	
 					@endforeach
+				
 
 
 					</td>

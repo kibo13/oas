@@ -26,7 +26,18 @@
 					<!-- START group plot -->
 					<h6 class="w-100 border-bottom mr-3 py-1 pl-0">Участок</h6>
 					<div class="bk-form__select col-sm-auto form-group mb-2 pl-0">
-						<select name="branch_id" class="form-control bk-form__input">
+
+						@isset($plot)
+							<input type="hidden" name="branch_id" value="{{ $plot->branch->id }}">
+						@endisset
+
+						<select 
+							name="branch_id" 
+							class="form-control bk-form__input @error('branch_id') is-invalid @enderror"
+							@isset($plot)
+								disabled
+							@endisset
+						>
 							<option disabled selected>Выберите участок</option>
 							@foreach($branches as $branch)
 							<option value="{{ $branch->id }}" @isset($plot) @if($plot->branch_id == $branch->id)
@@ -38,6 +49,12 @@
 							</option>
 							@endforeach
 						</select>
+
+						@error('branch_id')
+						<span class="invalid-feedback bk-alert-danger" role="alert">
+							<strong>{{ $message }}</strong>
+						</span>
+						@enderror
 					</div>
 					<!-- END group plot -->
 
@@ -45,20 +62,12 @@
 					<h6 class="w-100 border-bottom mr-3 py-1 pl-0">Список адресов</h6>
 					<div id="home-list" class="d-flex flex-wrap pl-2 mr-3" style="height: 250px; overflow-y: auto;">
 
-					
 						@foreach($addresses as $id => $address)
 						<div class="bk-form__address col-sm-auto custom-control custom-checkbox mb-2">
-							<input 
-								id="{{ $id }}" 
-								name="addresses[]" 
-								type="checkbox" 
-								class="custom-control-input" 
-								value="{{ $address->id }}" 
-								@isset($plot) 
-									@if($plot->addresses->where('id', $address->id)->count())
-										checked="checked"
-									@endif
-								@endisset
+							<input id="{{ $id }}" name="addresses[]" type="checkbox" class="custom-control-input" value="{{ $address->id }}" @isset($plot) @if($plot->addresses->where('id', $address->id)->count())
+							checked="checked"
+							@endif
+							@endisset
 							>
 							<label class="custom-control-label bk-form__label--checkbox" for="{{ $id }}">
 								{{ ucfirst($address->street->name) }} {{ ucfirst($address->num_home) }}

@@ -6,6 +6,7 @@ use App\Models\Plot;
 use App\Models\Branch;
 use App\Models\Address;
 use App\Models\Street;
+use App\Http\Requests\PlotRequest;
 use Illuminate\Http\Request;
 
 class PlotController extends Controller
@@ -30,10 +31,7 @@ class PlotController extends Controller
     public function create()
     {
         $branches = Branch::where('slug', '=', '1')->get();
-        $addresses = Address::with('street')
-            ->join('streets', 'addresses.street_id', '=', 'streets.id')
-            ->orderBy('streets.name', 'ASC')->orderBy('num_home', 'ASC')->get();
-        
+        $addresses = Address::get();
         return view('pages.plots.form', compact('addresses', 'branches'));
     }
 
@@ -43,7 +41,7 @@ class PlotController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PlotRequest $request)
     {
         $plot = Plot::create([
             'branch_id' => $request['branch_id'],
@@ -88,12 +86,12 @@ class PlotController extends Controller
      * @param  \App\Models\Plot  $plot
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Plot $plot)
+    public function update(PlotRequest $request, Plot $plot)
     {
         $plot->branch_id = $request['branch_id'];
         
         // addresses 
-        $plot->addresses()()->detach();
+        $plot->addresses()->detach();
         if ($request->input('addresses')) :
             $plot->addresses()->attach($request->input('addresses'));
         endif;
