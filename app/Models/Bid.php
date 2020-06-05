@@ -12,7 +12,6 @@ class Bid extends Model
         'street_id',
         'defect_id',
         'num_home',
-        'num_corp',
         'num_flat',
         'last_name',
         'phone',

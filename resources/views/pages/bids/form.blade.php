@@ -51,10 +51,10 @@
 				</div>
 
 				<h6 class="w-100 mr-3 py-0 my-0 pl-0"></h6>
-				<div class="col-sm-auto form-group mb-2 pl-0">
+				<div class="bk-form__street col-sm-auto form-group mb-2 pl-0">
 
-					<label for="street_id" class="bk-form__label mb-0">Улица</label>
-					<select name="street_id" id="street_id" class="form-control bk-form__input">
+					<label for="bid-street" class="bk-form__label mb-0">Адрес</label>
+					<select name="street_id" id="bid-street" class="form-control bk-form__input">
 						<option disabled selected>Выберите улицу</option>
 						@isset($bid)
 						<option value="{{ $bid->street->id }}" selected>
@@ -64,12 +64,9 @@
 					</select>
 				</div>
 
-				<div class="bk-form__num col-sm-auto form-group mb-2 pl-0">
-					<label for="num_home" class="bk-form__label mb-0">Дом</label>
-					<input id="num_home" min="1" max="150" type="number" class="form-control bk-form__input" name="num_home" required value="{{ old('num_home', isset($bid) ? $bid->num_home : null) }}">
-				</div>
+				<input id="bid-home" type="hidden" name="num_home" value="{{ old('num_home', isset($bid) ? $bid->num_home : null) }}">
 
-				<div class="bk-form__num col-sm-auto form-group mb-2 pl-0">
+				<div class="bk-form__home col-sm-auto form-group mb-2 pl-0">
 					<label for="num_flat" class="bk-form__label mb-0">Квартира</label>
 					<input id="num_flat" min="1" max="150" type="number" class="form-control bk-form__input" name="num_flat" required value="{{ old('num_flat', isset($bid) ? $bid->num_flat : null) }}">
 				</div>

@@ -108,5 +108,6 @@ Route::middleware(['auth'])->group(function() {
     ], function () {
         Route::get('defects', 'DataController@defects');
         Route::get('addresses', 'DataController@addresses');
+        Route::get('plots', 'DataController@plots');
     });
 });

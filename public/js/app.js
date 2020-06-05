@@ -74649,19 +74649,39 @@ $(document).ready(function () {
   $("#add-log").on("click", function (e) {
     e.preventDefault();
     $("#bk-log").hasClass("bk-hidden") ? $("#bk-log").removeClass("bk-hidden") : $("#bk-log").addClass("bk-hidden");
+  }); // print home depending on street
+
+  $('#bid-street').on('change', function (e) {
+    var num_home = $("#bid-street option:selected").data("home");
+    $("#bid-home").val(num_home);
   }); // print streets depending on plot
 
   $('#bid-plot').on('change', function (e) {
-    // $('#street_id').empty();
+    $('#bid-street').empty();
     var plot_id = $(e.target).val();
     $.ajax({
-      url: '/data/defects',
+      url: '/data/plots',
       method: 'GET'
     }).done(function (streets) {
-      $('#street_id').append("<option disabled selected>\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0443\u043B\u0438\u0446\u0443</option>");
-    }); // checking 
+      $('#bid-street').append("<option disabled selected>\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0443\u043B\u0438\u0446\u0443</option>");
 
-    console.log(plot_id);
+      var _iterator = _createForOfIteratorHelper(streets),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var street = _step.value;
+
+          if (street.branch_id == plot_id) {
+            $("#bid-street").append("<option value=\"".concat(street.street_id, "\" data-home=\"").concat(street.num_home, "\">\n                            ").concat(street.name, " \u0434.").concat(street.num_home, "\n                        </option>"));
+          }
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+    });
   }); // print defect depending on type
 
   $('#bid-type').on('change', function (e) {
@@ -74673,21 +74693,21 @@ $(document).ready(function () {
     }).done(function (defects) {
       $('#defect_id').append("<option disabled selected>\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u043D\u0435\u0438\u0441\u043F\u0440\u0430\u0432\u043D\u043E\u0441\u0442\u044C</option>");
 
-      var _iterator = _createForOfIteratorHelper(defects),
-          _step;
+      var _iterator2 = _createForOfIteratorHelper(defects),
+          _step2;
 
       try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var defect = _step.value;
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          var defect = _step2.value;
 
           if (defect.type_id == type_id) {
             $('#defect_id').append("<option value=\"".concat(defect.id, "\">").concat(defect.desc, "</option>"));
           }
         }
       } catch (err) {
-        _iterator.e(err);
+        _iterator2.e(err);
       } finally {
-        _iterator.f();
+        _iterator2.f();
       }
     });
   });

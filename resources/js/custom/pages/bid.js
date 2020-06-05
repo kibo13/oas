@@ -9,23 +9,34 @@ $(document).ready(function() {
             : $("#bk-log").addClass("bk-hidden");
     });
 
+    // print home depending on street
+    $('#bid-street').on('change', e => {
+        let num_home = $("#bid-street option:selected").data("home");
+        $("#bid-home").val(num_home);
+    });
+
     // print streets depending on plot
     $('#bid-plot').on('change', e => {
 
-        // $('#street_id').empty();
+        $('#bid-street').empty();
         var plot_id = $(e.target).val();
 
         $.ajax({
-            url: '/data/defects',
+            url: '/data/plots',
             method: 'GET',
         }).done(function (streets) {
-            $('#street_id').append(`<option disabled selected>Выберите улицу</option>`);
+            $('#bid-street').append(`<option disabled selected>Выберите улицу</option>`);
 
-            
+            for (let street of streets) {
+                if (street.branch_id == plot_id) {
+                    $("#bid-street").append(
+                        `<option value="${street.street_id}" data-home="${street.num_home}">
+                            ${street.name} д.${street.num_home}
+                        </option>`
+                    );
+                }
+            }
         });
-
-        // checking 
-        console.log(plot_id);
     });
 
 

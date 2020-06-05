@@ -12,7 +12,7 @@
     <!-- START group address -->
     <h6 class="w-100 border-bottom mb-0 mr-3 py-1 pl-0 font-weight-bold">Адрес</h6>
     <div data-type="{{ $bid->type_id }}" class="w-100 form-group mb-1 pl-0 mr-3">
-      <span class="text-muted">{{ $bid->street->name }} {{ $bid->num_home }}{{ $bid->num_corp }} - {{ $bid->num_flat }}</span>
+      <span class="text-muted">{{ $bid->street->name }} {{ $bid->num_home }} - {{ $bid->num_flat }}</span>
     </div>
     <!-- END group address -->
 

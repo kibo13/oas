@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Defect;
 use App\Models\Address;
+use Illuminate\Support\Facades\DB;
 
 class DataController extends Controller
 {
@@ -29,18 +30,37 @@ class DataController extends Controller
      */
     public function plots(Request $request)
     {
-        // $id = $request->input('id');
-        // $rez['rez'] = 0;
-        // if($id)
-        
-        // SELECT
-        // addresses.num_home,
-        // streets.`name`,
-        // address_plot.plot_id
-        // FROM
-        // addresses
-        // INNER JOIN address_plot ON address_plot.address_id = addresses.id
-        // INNER JOIN streets ON streets.id = addresses.street_id
+        $plots = DB::table('addresses')
+            ->join(
+                'address_plot', 
+                'address_plot.address_id', 
+                '=', 
+                'addresses.id'
+            )
 
+            ->join(
+                'plots',
+                'address_plot.plot_id',
+                '=',
+                'plots.id'
+            )
+
+            ->join(
+                'streets',
+                'streets.id',
+                '=',
+                'addresses.street_id'
+            )
+
+            ->select(
+                'streets.name',
+                'addresses.street_id', 
+                'addresses.num_home', 
+                'plots.branch_id'
+            )
+
+            ->get();
+
+        return $plots;
     }
 }
