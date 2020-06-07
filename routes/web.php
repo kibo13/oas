@@ -98,6 +98,7 @@ Route::middleware(['auth'])->group(function() {
     Route::get('bids/{bid}', 'BidController@show')->name('bids.show');
     Route::get('jobs', 'JobController@index')->name('jobs.index');
     Route::get('jobs/{job}', 'JobController@show')->name('jobs.show');
+    Route::get('jobs/report/{job}', 'ReportController@jobToReport')->name('jobs.report');
     Route::get('briefs', 'BriefController@index')->name('briefs.index');
     Route::get('workers', 'WorkerController@index')->name('workers.index');
     Route::get('promisers', 'PromiserController@index')->name('promisers.index');
