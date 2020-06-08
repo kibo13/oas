@@ -24,28 +24,38 @@
 				@endif
 				<!-- /.admin-panel -->
 
-				@if(Auth::user()->roles()->pluck('slug')->contains('arch'))
+				@if(Auth::user()->roles()->pluck('info')->contains('1'))
 				<li class="nav-item dropdown mr-2">
 					<a id="navbarDropdown" class="nav-link dropdown-toggle bk-navbar__info pr-3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 						Информация
 					</a>
 					<!-- /.show-user -->
 					<div class="bk-navbar__dropitem dropdown-menu dropdown-menu-right p-0" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item bk-navbar__link" href="{{ route('addresses.index') }}">
-							Адреса
-						</a>
+
+						@if(Auth::user()->roles()->pluck('slug')->contains('hh'))
 						<a class="dropdown-item bk-navbar__link" href="{{ route('branches.index') }}">
 							Отделы
 						</a>
+						@endif
+
+						@if(Auth::user()->roles()->pluck('slug')->contains('disp_zheu'))
 						<a class="dropdown-item bk-navbar__link" href="{{ route('plots.index') }}">
 							Участки
+						</a>
+						@endif
+
+						@if(Auth::user()->roles()->pluck('slug')->contains('pts'))
+						<a class="dropdown-item bk-navbar__link" href="{{ route('organizations.index') }}">
+							Предприятия
+						</a>
+						<a class="dropdown-item bk-navbar__link" href="{{ route('addresses.index') }}">
+							Адреса
 						</a>
 						<a class="dropdown-item bk-navbar__link" href="{{ route('defects.index') }}">
 							Неисправности
 						</a>
-						<a class="dropdown-item bk-navbar__link" href="{{ route('organizations.index') }}">
-							Предприятия
-						</a>
+						@endif
+
 				</li>
 				@endif
 				<!-- /.info -->

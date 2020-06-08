@@ -74504,45 +74504,41 @@ $(document).ready(function () {
     var data_tname = $(e.target).data('table-name');
 
     switch (data_tname) {
-      // START namespace "info" 	
-      case 'position':
-        $('#bk-delete-form').attr('action', '/info/positions/' + data_id);
-        break;
-
-      case 'plot':
-        $('#bk-delete-form').attr('action', '/info/plots/' + data_id);
+      // START namespace "pts" 	
+      case 'organization':
+        $('#bk-delete-form').attr('action', '/organizations/' + data_id);
         break;
 
       case 'address':
-        $('#bk-delete-form').attr('action', '/info/addresses/' + data_id);
+        $('#bk-delete-form').attr('action', '/addresses/' + data_id);
         break;
 
       case 'street':
-        $('#bk-delete-form').attr('action', '/info/streets/' + data_id);
-        break;
-
-      case 'branch':
-        $('#bk-delete-form').attr('action', '/info/branches/' + data_id);
-        break;
-
-      case 'organization':
-        $('#bk-delete-form').attr('action', '/info/organizations/' + data_id);
+        $('#bk-delete-form').attr('action', '/streets/' + data_id);
         break;
 
       case 'defect':
-        $('#bk-delete-form').attr('action', '/info/defects/' + data_id);
+        $('#bk-delete-form').attr('action', '/defects/' + data_id);
         break;
-      // END namespace "info" 
-      // START namespace "admin" 
-
-      case 'user':
-        $('#bk-delete-form').attr('action', '/admin/users/' + data_id);
-        break;
-      // END namespace "admin" 
-      // START namespace "pages" 
+      // END namespace "pts" 
+      // START namespace "hh" 	
 
       case 'worker':
         $('#bk-delete-form').attr('action', '/workers/' + data_id);
+        break;
+
+      case 'branch':
+        $('#bk-delete-form').attr('action', '/branches/' + data_id);
+        break;
+
+      case 'position':
+        $('#bk-delete-form').attr('action', '/positions/' + data_id);
+        break;
+      // END namespace "hh"
+      // START namespace "disp_zheu" 
+
+      case 'plot':
+        $('#bk-delete-form').attr('action', '/plots/' + data_id);
         break;
 
       case 'bid':
@@ -74552,19 +74548,29 @@ $(document).ready(function () {
       case 'log':
         $('#bk-delete-form').attr('action', '/bids/logs/' + data_id);
         break;
+      // END namespace "disp_zheu"
+      // START namespace "disp_oas" 
 
       case 'job':
         $('#bk-delete-form').attr('action', '/jobs/' + data_id);
         break;
 
-      case 'promiser':
-        $('#bk-delete-form').attr('action', '/promisers/' + data_id);
-        break;
-
       case 'brief':
         $('#bk-delete-form').attr('action', '/briefs/' + data_id);
         break;
-      // END namespace "pages" 
+      // END namespace "disp_oas" 
+      // START namespace "audit" 				
+
+      case 'promiser':
+        $('#bk-delete-form').attr('action', '/promisers/' + data_id);
+        break;
+      // END namespace "audit"
+      // START namespace "admin" 
+
+      case 'user':
+        $('#bk-delete-form').attr('action', '/admin/users/' + data_id);
+        break;
+      // END namespace "admin" 
 
       default:
         break;

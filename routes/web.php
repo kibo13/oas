@@ -7,7 +7,7 @@ Auth::routes([
     'reset' => false,
     'verify' => false,
     'confirm' => false,
-    // 'register' => false
+    'register' => false
 ]);
 
 Route::middleware(['auth'])->group(function() {
@@ -40,6 +40,7 @@ Route::middleware(['auth'])->group(function() {
     Route::group([
         'middleware' => 'role:disp_zheu'
     ], function () {
+        Route::resource('plots', 'PlotController');
         Route::resource('bids', 'BidController');
         Route::group([
             'prefix' => 'bids'
@@ -62,32 +63,27 @@ Route::middleware(['auth'])->group(function() {
     // - CRUD worker records 
     // - CRUD branch records 
     // - CRUD position records 
-    // - CRUD street records 
     Route::group([
         'middleware' => 'role:hh'
     ], function () {
-        Route::resource('workers', 'WorkerController');    
+        Route::resource('workers', 'WorkerController');
+        Route::resource('branches', 'BranchController');
+        Route::resource('positions', 'PositionController');
     });
 
-    // role: arch
+    // role: pts
     // permissions : 
-    // - CRUD street records 
     // - CRUD organization records 
-    // - CRUD position records 
-    // - CRUD branch records 
-    // - CRUD plot records 
+    // - CRUD address records 
+    // - CRUD street records 
+    // - CRUD defect records 
     Route::group([
-        'middleware' => 'role:arch',
-        'prefix' => 'info'
+        'middleware' => 'role:pts'
     ], function () {
         Route::resource('organizations', 'OrganizationController');
-        Route::resource('positions', 'PositionController');
-        Route::resource('defects', 'DefectController');
-        Route::resource('branches', 'BranchController');
         Route::resource('addresses', 'AddressController');
         Route::resource('streets', 'StreetController');
-        Route::resource('plots', 'PlotController');
-
+        Route::resource('defects', 'DefectController');
     });
 
     // role: guest 
