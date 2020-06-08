@@ -28,6 +28,7 @@
 			</thead>
 			<tbody>
 				@foreach($bids as $id => $bid)
+				@if($bid->branch->id == $user || $user == 9)
 				<tr>
 					<td>{{ $id+=1 }}</td>
 					<td>{{ $bid->branch->name }}</td>
@@ -81,6 +82,7 @@
 					</td>
 
 				</tr>
+				@endif
 				@endforeach
 
 			</tbody>

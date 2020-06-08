@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
 use App\Models\Street;
 use App\Models\Branch;
 use App\Models\Defect;
 use App\Models\Type;
 use App\Models\Bid;
+use Auth;
 use Illuminate\Http\Request;
 
 class BidController extends Controller
@@ -18,8 +20,9 @@ class BidController extends Controller
      */
     public function index()
     {
+        $user = Auth::user()->num;
         $bids = Bid::paginate(10);
-        return view('pages.bids.index', compact('bids'));
+        return view('pages.bids.index', compact('bids', 'user'));
     }
 
     /**
@@ -29,13 +32,17 @@ class BidController extends Controller
      */
     public function create(Request $request)
     {
+        $user = Auth::user()->num;
         $streets = Street::get();
         $types = Type::get();
         $branches = Branch::where('slug', '!=', null)->get();
 
+        // $addresses = Address::get();
+        // return $streets = Address::plots()->where('branch_id', '=', $user);
+
         return view(
             'pages.bids.form',
-            compact('streets', 'branches', 'types')
+            compact('streets', 'branches', 'types', 'user')
         );
     }
 

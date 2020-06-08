@@ -11,7 +11,7 @@
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 08/06/2020 11:40:49
+ Date: 08/06/2020 14:13:35
 */
 
 SET NAMES utf8mb4;
@@ -996,7 +996,7 @@ CREATE TABLE `migrations`  (
   `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 63 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 65 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of migrations
@@ -1025,6 +1025,7 @@ INSERT INTO `migrations` VALUES (58, '2020_06_04_065722_create_plots_table', 11)
 INSERT INTO `migrations` VALUES (59, '2020_06_04_070402_create_address_plot_table', 11);
 INSERT INTO `migrations` VALUES (60, '2020_06_05_135338_alter_table_bids', 12);
 INSERT INTO `migrations` VALUES (62, '2020_06_08_100716_alter_table_roles', 13);
+INSERT INTO `migrations` VALUES (64, '2020_06_08_113205_alter_table_users', 14);
 
 -- ----------------------------
 -- Table structure for organizations
@@ -1156,8 +1157,12 @@ INSERT INTO `role_user` VALUES (5, 4);
 INSERT INTO `role_user` VALUES (6, 9);
 INSERT INTO `role_user` VALUES (3, 11);
 INSERT INTO `role_user` VALUES (4, 11);
-INSERT INTO `role_user` VALUES (3, 12);
 INSERT INTO `role_user` VALUES (8, 13);
+INSERT INTO `role_user` VALUES (3, 12);
+INSERT INTO `role_user` VALUES (3, 15);
+INSERT INTO `role_user` VALUES (3, 16);
+INSERT INTO `role_user` VALUES (3, 17);
+INSERT INTO `role_user` VALUES (3, 18);
 
 -- ----------------------------
 -- Table structure for roles
@@ -1263,6 +1268,7 @@ CREATE TABLE `users`  (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `num` tinyint(4) NULL DEFAULT NULL,
   `email_verified_at` timestamp(0) NULL DEFAULT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
@@ -1270,18 +1276,22 @@ CREATE TABLE `users`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'admin', 'admin@oas.ru', NULL, '$2y$10$2kJ10MtH68pwfCJNjM2O7uOXBs3vrdnkhM0wdNL4OFrF2GpPt4J7C', NULL, '2020-05-22 17:58:25', '2020-05-24 19:25:55');
-INSERT INTO `users` VALUES (4, 'headhunter', 'headhunter@oas.ru', NULL, '$2y$10$ofadG64yIYQAV/Ud0bNo7OmsfSNUF3s6nb4VB3MHMgdWxcn95UieW', NULL, '2020-05-22 18:02:11', '2020-05-24 19:13:58');
-INSERT INTO `users` VALUES (9, 'auditor', 'auditor@oas.ru', NULL, '$2y$10$A4seYpMqV/R6HTo1TcwpqOasEJlmKBcao063vOSBod7DVfnvNWoem', NULL, '2020-05-24 19:26:39', '2020-05-24 19:26:39');
-INSERT INTO `users` VALUES (10, 'user', 'user@oas.ru', NULL, '$2y$10$6M0meACiwGIh1cPvitFwNur4PS/RacB0C1XEPviaRudhZlod3GtsS', NULL, '2020-05-24 19:31:16', '2020-05-24 19:31:16');
-INSERT INTO `users` VALUES (11, 'operator_oas', 'operator_oas@oas.ru', NULL, '$2y$10$ZPvfIkVpVfFjxzNB.AArj.cBJFdtAXoKTlnm1zZQ/Vir/4ORI6sZi', NULL, '2020-05-25 15:00:20', '2020-05-25 15:00:20');
-INSERT INTO `users` VALUES (12, 'operator_zheu', 'operator_zheu@oas.ru', NULL, '$2y$10$T9G1OxExAg2Qmjh5s1AvMOkxPVnoCelNS2jAtZBiwkaX6T3cqV2De', NULL, '2020-05-30 12:56:40', '2020-05-30 12:56:40');
-INSERT INTO `users` VALUES (13, 'pts', 'pts@oas.ru', NULL, '$2y$10$O4k0xc4/PSXylEHQ86CpsOCwJ0scZaG5eA33yo1yZOalkouc9VBfS', NULL, '2020-06-08 10:16:56', '2020-06-08 10:16:56');
+INSERT INTO `users` VALUES (1, 'admin', 'admin@oas.ru', 9, NULL, '$2y$10$2kJ10MtH68pwfCJNjM2O7uOXBs3vrdnkhM0wdNL4OFrF2GpPt4J7C', NULL, '2020-05-22 17:58:25', '2020-05-24 19:25:55');
+INSERT INTO `users` VALUES (4, 'headhunter', 'headhunter@oas.ru', 9, NULL, '$2y$10$ofadG64yIYQAV/Ud0bNo7OmsfSNUF3s6nb4VB3MHMgdWxcn95UieW', NULL, '2020-05-22 18:02:11', '2020-05-24 19:13:58');
+INSERT INTO `users` VALUES (9, 'auditor', 'auditor@oas.ru', 9, NULL, '$2y$10$A4seYpMqV/R6HTo1TcwpqOasEJlmKBcao063vOSBod7DVfnvNWoem', NULL, '2020-05-24 19:26:39', '2020-05-24 19:26:39');
+INSERT INTO `users` VALUES (10, 'user', 'user@oas.ru', 9, NULL, '$2y$10$6M0meACiwGIh1cPvitFwNur4PS/RacB0C1XEPviaRudhZlod3GtsS', NULL, '2020-05-24 19:31:16', '2020-05-24 19:31:16');
+INSERT INTO `users` VALUES (11, 'operator_oas', 'operator_oas@oas.ru', 9, NULL, '$2y$10$ZPvfIkVpVfFjxzNB.AArj.cBJFdtAXoKTlnm1zZQ/Vir/4ORI6sZi', NULL, '2020-05-25 15:00:20', '2020-05-25 15:00:20');
+INSERT INTO `users` VALUES (12, 'zheu_01', 'zheu_01@oas.ru', 1, NULL, '$2y$10$psCHQFbp99tNTHLnFU5HOefGZaUi2YPleU.G7mIFz.gIdlmVfN2pG', NULL, '2020-05-30 12:56:40', '2020-06-08 10:52:04');
+INSERT INTO `users` VALUES (13, 'pts', 'pts@oas.ru', 9, NULL, '$2y$10$O4k0xc4/PSXylEHQ86CpsOCwJ0scZaG5eA33yo1yZOalkouc9VBfS', NULL, '2020-06-08 10:16:56', '2020-06-08 10:16:56');
+INSERT INTO `users` VALUES (15, 'zheu_02', 'zheu_02@oas.ru', 2, NULL, '$2y$10$l9Tq73LrsdM60n09N8p/zudE1P90Qy8AC9D2Y0RVXKsszZxrHal1y', NULL, '2020-06-08 10:53:26', '2020-06-08 10:53:26');
+INSERT INTO `users` VALUES (16, 'zheu_03', 'zheu_03@oas.ru', 3, NULL, '$2y$10$zM405rAlYMB8DfHU8cJDBuHWGrav2qwHaJBYauMDs/gKA0mXJco7q', NULL, '2020-06-08 10:53:48', '2020-06-08 10:53:48');
+INSERT INTO `users` VALUES (17, 'zheu_04', 'zheu_04@oas.ru', 4, NULL, '$2y$10$WYLIPDyteU2CYqeEUe.kEeQsLatXEyLXaOzKzahDOyZEPYmZan2c.', NULL, '2020-06-08 10:54:10', '2020-06-08 10:54:10');
+INSERT INTO `users` VALUES (18, 'zheu_05', 'zheu_05@oas.ru', 5, NULL, '$2y$10$ZcyPBIB6RHdeYiOEzqCw5.0CrVL/GFMOGFuHv9FlEFIgZhHV.O0Q2', NULL, '2020-06-08 10:54:29', '2020-06-08 10:54:29');
 
 -- ----------------------------
 -- Table structure for workers

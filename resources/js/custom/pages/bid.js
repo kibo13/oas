@@ -14,7 +14,7 @@ $(document).ready(function() {
         let num_home = $("#bid-street option:selected").data("home");
         $("#bid-home").val(num_home);
     });
-
+    
     // print streets depending on plot
     $('#bid-plot').on('change', e => {
 
