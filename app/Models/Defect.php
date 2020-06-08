@@ -11,14 +11,14 @@ class Defect extends Model
         'attachment',
         'desc'
     ];
-    
+
+    public function logs()
+    {
+        return $this->hasMany('App\Models\Log');
+    }
+
     public function type()
     {
         return $this->belongsTo('App\Models\Type');
-    }
-
-    public function bids()
-    {
-        return $this->hasMany('App\Models\Bid');
     }
 }

@@ -5,9 +5,9 @@
 
 	<h2 class="mb-3">
 		@isset($promiser)
-			Редактирование записи
-		@else 
-			Добавление записи
+		Редактирование записи
+		@else
+		Добавление записи
 		@endisset
 	</h2>
 
@@ -24,34 +24,19 @@
 				<div class="row p-0 m-0">
 
 					<!-- START group type -->
-					<h6 class="w-100 border-bottom mr-3 py-1 pl-0">Тип(э/с)</h6>
-					<div class="bk-form__select col-sm-auto form-group mb-2 pl-0">
-
-						<select name="type_id" id="type" class="form-control bk-form__input">
-							<option disabled selected>Выберите тип</option>
-							@foreach($types as $type)
-							<option value="{{ $type->id }}" @isset($promiser) @if($promiser->type_id == $type->id)
-								selected
-								@endif
-								@endisset
-								>
-								{{ ucfirst($type->name) }}
-							</option>
-							@endforeach
-						</select>
-
-					</div>
+					<input type="hidden" name="type_id" value="{{ $type->id }}">
 					<!-- END group type -->
 
 					<!-- START group dates -->
-					<h6 class="w-100 border-bottom mr-3 py-1 pl-0">Дата подключения и отключения</h6>
-					<div class="col-sm-auto form-group mb-2 pl-0">
-						<label for="date_on" class="bk-form__label mb-0">Подключение</label>
-						<input id="date_on" type="date" class="form-control bk-form__input" name="date_on" value="{{ old('date_on', isset($promiser) ? $promiser->date_on : null) }}" required>
-					</div>
+					<h6 class="w-100 border-bottom mr-3 py-1 pl-0">Дата отключения и подключения</h6>
 					<div class="col-sm-auto form-group mb-2 pl-0">
 						<label for="date_off" class="bk-form__label mb-0">Отключение</label>
 						<input id="date_off" type="date" class="form-control bk-form__input" name="date_off" value="{{ old('date_off', isset($promiser) ? $promiser->date_off : null) }}" required>
+					</div>
+
+					<div class="col-sm-auto form-group mb-2 pl-0">
+						<label for="date_on" class="bk-form__label mb-0">Подключение</label>
+						<input id="date_on" type="date" class="form-control bk-form__input" name="date_on" value="{{ old('date_on', isset($promiser) ? $promiser->date_on : null) }}" required>
 					</div>
 					<!-- END group dates -->
 

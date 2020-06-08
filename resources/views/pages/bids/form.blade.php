@@ -34,28 +34,18 @@
 				<!-- END group date and time income -->
 
 				<!-- START group plots -->
-				<h6 class="w-100 border-bottom mr-3 py-1 pl-0">Участок</h6>
-				<div class="col-sm-auto form-group mb-2 pl-0">
-					<select name="branch_id" id="bid-plot" class="form-control bk-form__input">
-						<option disabled selected>Выберите отдел</option>
-						@foreach($branches as $branch)
-						<option value="{{ $branch->id }}" @isset($bid) @if($bid->branch_id == $branch->id)
-							selected
-							@endif
-							@endisset
-							>
-							{{ ucfirst($branch->name) }}
-						</option>
-						@endforeach
-					</select>
-				</div>
+				<h6 class="w-100 border-bottom mr-3 py-1 pl-0">
+					Участок
+					<small class="text-muted align-top">
+						@isset($bid)
+						{{ $bid->branch->name }}
+						@else
+						{{ $branch->name }}
+						@endisset
+					</small>
+				</h6>
 
-				<input 
-					id="my-num" 
-					type="text" 
-					name="branch_id" 
-					value="{{ old('branch_id', isset($bid) ? $bid->branch_id : $user) }}"
-				>
+				<input id="my-num" type="hidden" name="branch_id" value="{{ old('branch_id', isset($bid) ? $bid->branch_id : $user) }}">
 
 				<h6 class="w-100 mr-3 py-0 my-0 pl-0"></h6>
 				<div class="bk-form__street col-sm-auto form-group mb-2 pl-0">
@@ -63,11 +53,17 @@
 					<label for="bid-street" class="bk-form__label mb-0">Адрес</label>
 					<select name="street_id" id="bid-street" class="form-control bk-form__input">
 						<option disabled selected>Выберите улицу</option>
-						@isset($bid)
-						<option value="{{ $bid->street->id }}" selected>
-							{{ $bid->street->name	 }}
+						@foreach($streets as $street)
+						<option value="{{ $street->street_id }}" data-home="{{ $street->num_home }}" @isset($bid) @if($bid->street_id == $street->street_id && $bid->num_home == $street->num_home)
+							selected
+							@endif
+							@endisset
+							>
+							{{ ucfirst($street->street->name) }}
+							д.{{ ucfirst($street->num_home) }}
 						</option>
-						@endisset
+						@endforeach
+
 					</select>
 				</div>
 
@@ -96,7 +92,7 @@
 				<h6 class="w-100 border-bottom mr-3 py-1 pl-0">Тип (э/с)</h6>
 				<div class="col-sm-auto form-group mb-2 pl-0">
 
-					<select name="type_id" id="bid-type" class="form-control bk-form__input">
+					<select name="type_id" class="form-control bk-form__input">
 						<option disabled selected>Выберите тип</option>
 						@foreach($types as $type)
 						<option value="{{ $type->id }}" @isset($bid) @if($bid->type_id == $type->id)
@@ -113,17 +109,8 @@
 
 				<!-- START group description -->
 				<h6 class="w-100 border-bottom mr-3 py-1 pl-0">Характер неисправности</h6>
-				<div class="col-sm-auto form-group mb-2 pl-0">
-
-					<select name="defect_id" id="defect_id" class="form-control bk-form__input">
-						<option disabled selected>Выберите неисправность</option>
-						@isset($bid)
-						<option value="{{ $bid->defect->id }}" selected>
-							{{ $bid->defect->desc	 }}
-						</option>
-						@endisset
-					</select>
-
+				<div class="w-100 form-group mb-2 pl-0 mr-3">
+					<textarea class="form-control" name="desc" style="height:80px;" placeholder="Введите описание неисправности">{{ old('desc', isset($bid) ? $bid->desc : null) }}</textarea>
 				</div>
 				<!-- END group description -->
 

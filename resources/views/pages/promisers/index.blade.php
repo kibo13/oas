@@ -17,10 +17,9 @@
       <thead class="thead-light">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Тип (э/с)</th>
           <th scope="col">Адрес</th>
-          <th scope="col">Дата подключения</th>
           <th scope="col">Дата отключения</th>
+          <th scope="col">Дата подключения</th>
           @if(Auth::user()->roles()->pluck('slug')->contains('audit'))
           <th scope="col">Действие</th>
           @endif
@@ -31,7 +30,6 @@
         @foreach($promisers as $id => $promiser)
         <tr>
           <td>{{ $id+=1 }}</td>
-          <td>{{ $promiser->type->name }}</td>
           <td class="address">
             {{ $promiser->street->name }}
             {{ $promiser->num_home }}
@@ -39,9 +37,8 @@
             -
             {{ $promiser->num_flat }}
           </td>
-
-          <td>{{ date('d.m.Y', strtotime($promiser->date_on)) }}г.</td>
           <td>{{ date('d.m.Y', strtotime($promiser->date_off)) }}г.</td>
+          <td>{{ date('d.m.Y', strtotime($promiser->date_on)) }}г.</td>
           @if(Auth::user()->roles()->pluck('slug')->contains('audit'))
           <td>
             <div class="d-flex">

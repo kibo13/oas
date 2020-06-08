@@ -28,10 +28,10 @@ class PromiserController extends Controller
     public function create()
     {
         $streets = Street::get();
-        $types = Type::get();
+        $type = Type::where('slug', 'elc')->first();
         return view(
             'pages.promisers.form',
-            compact('streets', 'types')
+            compact('streets', 'type')
         );
     }
 
@@ -67,10 +67,10 @@ class PromiserController extends Controller
     public function edit(Promiser $promiser)
     {
         $streets = Street::get();
-        $types = Type::get();
+        $type = Type::where('slug', 'elc')->first();
         return view(
             'pages.promisers.form',
-            compact('promiser', 'streets', 'types')
+            compact('promiser', 'streets', 'type')
         );
     }
 

@@ -22,7 +22,7 @@
       <small class="bk-text text-muted align-text-top text-lowercase">{{ $bid->type->name }}</small>
     </h6>
     <div data-type="{{ $bid->type_id }}" class="w-100 form-group mb-1 pl-0 mr-3">
-      <span class="text-muted align-baseline">{{ $bid->defect->desc }}</span>
+      <span class="text-muted align-baseline">{{ $bid->desc }}</span>
     </div>
     <!-- END group defect -->
 

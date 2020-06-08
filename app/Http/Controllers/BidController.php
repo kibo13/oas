@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Address;
-use App\Models\Street;
 use App\Models\Branch;
 use App\Models\Defect;
 use App\Models\Type;
@@ -32,17 +31,16 @@ class BidController extends Controller
      */
     public function create(Request $request)
     {
-        $user = Auth::user()->num;
-        $streets = Street::get();
         $types = Type::get();
-        $branches = Branch::where('slug', '!=', null)->get();
-
-        // $addresses = Address::get();
-        // return $streets = Address::plots()->where('branch_id', '=', $user);
+        $user = Auth::user()->num;
+        $branch = Branch::where('id', $user)->first();
+        $streets = Address::whereHas('plots', function($q) use($user) {
+            $q->where('branch_id', '=', $user);
+        })->get();
 
         return view(
             'pages.bids.form',
-            compact('streets', 'branches', 'types', 'user')
+            compact('streets', 'types', 'user', 'branch')
         );
     }
 
@@ -67,9 +65,11 @@ class BidController extends Controller
     public function show(Bid $bid)
     {
         $type_log = config('constants.type_log');
+        $user_sign = Auth::user()->name;
+        $defects = Defect::where('type_id', $bid->type->id)->get();
         return view(
             'pages.bids.show', 
-            compact('bid', 'type_log')
+            compact('bid', 'type_log', 'defects', 'user_sign')
         );
     }
 
@@ -81,13 +81,16 @@ class BidController extends Controller
      */
     public function edit(Request $request, Bid $bid)
     {
-        $streets = Street::get();
         $types = Type::get();
-        $branches = Branch::where('slug', '!=', null)->get();
+        $user = Auth::user()->num;
+        $branch = Branch::where('id', $user)->first();
+        $streets = Address::whereHas('plots', function ($q) use ($user) {
+            $q->where('branch_id', '=', $user);
+        })->get();
 
         return view(
             'pages.bids.form',
-            compact('streets', 'branches', 'types', 'bid')
+            compact('streets', 'types', 'user', 'branch', 'bid')
         );
     }
 

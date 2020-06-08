@@ -10,15 +10,14 @@ class Bid extends Model
         'branch_id',
         'type_id',
         'street_id',
-        'defect_id',
         'num_home',
         'num_flat',
         'last_name',
         'phone',
         'date_in',
-        'time_in'
+        'time_in',
+        'desc'
     ];
-
 
     public function logs()
     {
@@ -38,10 +37,5 @@ class Bid extends Model
     public function branch()
     {
         return $this->belongsTo('App\Models\Branch');
-    }
-
-    public function defect()
-    {
-        return $this->belongsTo('App\Models\Defect');
     }
 }

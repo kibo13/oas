@@ -111,6 +111,35 @@
         @endif
         <!-- END group home_crane -->
 
+        <!-- START group receiver -->
+        <input type="hidden" name="receiver" value="{{ $user_sign }}">
+        <!-- END group receiver -->
+
+        <!-- START group type -->
+        <input type="hidden" name="type_id" value="{{ $log->type_id }}">
+        <!-- END group type -->
+
+        <!-- START group defect -->
+        <h6 class="w-100 border-bottom mr-3 py-1 pl-0">Вид неисправности</h6>
+        <div class="col-sm-auto form-group mb-2 pl-0">
+          <select name="defect_id" class="form-control bk-form__input">
+            <option disabled selected>Выберите вид неисправности</option>
+            @foreach($defects as $defect)
+            <option 
+              value="{{ $defect->id }}"
+              @isset($log) 
+                @if($log->defect_id == $defect->id)
+								  selected
+								@endif
+              @endisset
+            >
+              {{ ucfirst($defect->desc) }}
+            </option>
+            @endforeach
+          </select>
+        </div>
+        <!-- END group defect -->
+
         <!-- START group solution -->
         <h6 class="w-100 border-bottom mr-3 py-1 pl-0">Принятые меры</h6>
         <div class="w-100 form-group mb-2 pl-0 mr-3">

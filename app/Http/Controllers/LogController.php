@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Log;
+use App\Models\Defect;
 use Illuminate\Http\Request;
+use Auth;
 
 class LogController extends Controller
 {
@@ -58,9 +60,12 @@ class LogController extends Controller
     public function edit(Log $log)
     {
         $type_log = config('constants.type_log');
+        $user_sign = Auth::user()->name;
+        $defects = Defect::where('type_id', $log->type_id)->get();
+        
         return view(
             'pages.logs.edit',
-            compact('log', 'type_log')
+            compact('log', 'type_log', 'user_sign', 'defects')
         );
     }
 

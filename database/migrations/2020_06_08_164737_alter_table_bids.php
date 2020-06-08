@@ -15,7 +15,8 @@ class AlterTableBids extends Migration
     {
         Schema::table('bids', function (Blueprint $table) {
             $table->string('num_home')->change();
-            $table->dropColumn('num_corp');
+            $table->text('desc');
+            $table->dropColumn(['num_corp', 'defect_id']);
         });
     }
 
@@ -29,6 +30,8 @@ class AlterTableBids extends Migration
         Schema::table('bids', function (Blueprint $table) {
             $table->integer('num_home')->change();
             $table->string('num_corp')->nullable();
+            $table->bigInteger('defect_id')->unsigned();
+            $table->dropColumn('desc');
         });
     }
 }

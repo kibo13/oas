@@ -25,4 +25,9 @@ class Type extends Model
     {
         return $this->hasMany('App\Models\Bid');
     }
+
+    public function logs()
+    {
+        return $this->hasMany('App\Models\Log');
+    }
 }

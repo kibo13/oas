@@ -11,7 +11,7 @@
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 08/06/2020 14:13:35
+ Date: 08/06/2020 23:45:02
 */
 
 SET NAMES utf8mb4;
@@ -386,6 +386,359 @@ INSERT INTO `address_plot` VALUES (323, 5);
 INSERT INTO `address_plot` VALUES (324, 5);
 INSERT INTO `address_plot` VALUES (325, 5);
 INSERT INTO `address_plot` VALUES (326, 5);
+INSERT INTO `address_plot` VALUES (1, 10);
+INSERT INTO `address_plot` VALUES (2, 10);
+INSERT INTO `address_plot` VALUES (3, 10);
+INSERT INTO `address_plot` VALUES (4, 10);
+INSERT INTO `address_plot` VALUES (5, 10);
+INSERT INTO `address_plot` VALUES (6, 10);
+INSERT INTO `address_plot` VALUES (7, 10);
+INSERT INTO `address_plot` VALUES (8, 10);
+INSERT INTO `address_plot` VALUES (9, 10);
+INSERT INTO `address_plot` VALUES (10, 10);
+INSERT INTO `address_plot` VALUES (11, 10);
+INSERT INTO `address_plot` VALUES (12, 10);
+INSERT INTO `address_plot` VALUES (13, 10);
+INSERT INTO `address_plot` VALUES (14, 10);
+INSERT INTO `address_plot` VALUES (15, 10);
+INSERT INTO `address_plot` VALUES (16, 10);
+INSERT INTO `address_plot` VALUES (17, 10);
+INSERT INTO `address_plot` VALUES (18, 10);
+INSERT INTO `address_plot` VALUES (19, 10);
+INSERT INTO `address_plot` VALUES (20, 10);
+INSERT INTO `address_plot` VALUES (21, 10);
+INSERT INTO `address_plot` VALUES (22, 10);
+INSERT INTO `address_plot` VALUES (23, 10);
+INSERT INTO `address_plot` VALUES (24, 10);
+INSERT INTO `address_plot` VALUES (25, 10);
+INSERT INTO `address_plot` VALUES (26, 10);
+INSERT INTO `address_plot` VALUES (27, 10);
+INSERT INTO `address_plot` VALUES (28, 10);
+INSERT INTO `address_plot` VALUES (29, 10);
+INSERT INTO `address_plot` VALUES (30, 10);
+INSERT INTO `address_plot` VALUES (31, 10);
+INSERT INTO `address_plot` VALUES (32, 10);
+INSERT INTO `address_plot` VALUES (33, 10);
+INSERT INTO `address_plot` VALUES (34, 10);
+INSERT INTO `address_plot` VALUES (35, 10);
+INSERT INTO `address_plot` VALUES (36, 10);
+INSERT INTO `address_plot` VALUES (37, 10);
+INSERT INTO `address_plot` VALUES (38, 10);
+INSERT INTO `address_plot` VALUES (39, 10);
+INSERT INTO `address_plot` VALUES (42, 10);
+INSERT INTO `address_plot` VALUES (43, 10);
+INSERT INTO `address_plot` VALUES (44, 10);
+INSERT INTO `address_plot` VALUES (45, 10);
+INSERT INTO `address_plot` VALUES (46, 10);
+INSERT INTO `address_plot` VALUES (47, 10);
+INSERT INTO `address_plot` VALUES (56, 10);
+INSERT INTO `address_plot` VALUES (57, 10);
+INSERT INTO `address_plot` VALUES (58, 10);
+INSERT INTO `address_plot` VALUES (59, 10);
+INSERT INTO `address_plot` VALUES (60, 10);
+INSERT INTO `address_plot` VALUES (61, 10);
+INSERT INTO `address_plot` VALUES (190, 10);
+INSERT INTO `address_plot` VALUES (191, 10);
+INSERT INTO `address_plot` VALUES (192, 10);
+INSERT INTO `address_plot` VALUES (193, 10);
+INSERT INTO `address_plot` VALUES (196, 10);
+INSERT INTO `address_plot` VALUES (197, 10);
+INSERT INTO `address_plot` VALUES (198, 10);
+INSERT INTO `address_plot` VALUES (199, 10);
+INSERT INTO `address_plot` VALUES (217, 10);
+INSERT INTO `address_plot` VALUES (218, 10);
+INSERT INTO `address_plot` VALUES (219, 10);
+INSERT INTO `address_plot` VALUES (220, 10);
+INSERT INTO `address_plot` VALUES (221, 10);
+INSERT INTO `address_plot` VALUES (222, 10);
+INSERT INTO `address_plot` VALUES (223, 10);
+INSERT INTO `address_plot` VALUES (224, 10);
+INSERT INTO `address_plot` VALUES (225, 10);
+INSERT INTO `address_plot` VALUES (226, 10);
+INSERT INTO `address_plot` VALUES (227, 10);
+INSERT INTO `address_plot` VALUES (228, 10);
+INSERT INTO `address_plot` VALUES (229, 10);
+INSERT INTO `address_plot` VALUES (230, 10);
+INSERT INTO `address_plot` VALUES (231, 10);
+INSERT INTO `address_plot` VALUES (292, 10);
+INSERT INTO `address_plot` VALUES (293, 10);
+INSERT INTO `address_plot` VALUES (294, 10);
+INSERT INTO `address_plot` VALUES (295, 10);
+INSERT INTO `address_plot` VALUES (296, 10);
+INSERT INTO `address_plot` VALUES (297, 10);
+INSERT INTO `address_plot` VALUES (298, 10);
+INSERT INTO `address_plot` VALUES (299, 10);
+INSERT INTO `address_plot` VALUES (300, 10);
+INSERT INTO `address_plot` VALUES (301, 10);
+INSERT INTO `address_plot` VALUES (302, 10);
+INSERT INTO `address_plot` VALUES (303, 10);
+INSERT INTO `address_plot` VALUES (304, 10);
+INSERT INTO `address_plot` VALUES (305, 10);
+INSERT INTO `address_plot` VALUES (327, 10);
+INSERT INTO `address_plot` VALUES (328, 10);
+INSERT INTO `address_plot` VALUES (329, 10);
+INSERT INTO `address_plot` VALUES (330, 10);
+INSERT INTO `address_plot` VALUES (331, 10);
+INSERT INTO `address_plot` VALUES (332, 10);
+INSERT INTO `address_plot` VALUES (333, 10);
+INSERT INTO `address_plot` VALUES (334, 10);
+INSERT INTO `address_plot` VALUES (336, 10);
+INSERT INTO `address_plot` VALUES (337, 10);
+INSERT INTO `address_plot` VALUES (338, 10);
+INSERT INTO `address_plot` VALUES (339, 10);
+INSERT INTO `address_plot` VALUES (340, 10);
+INSERT INTO `address_plot` VALUES (341, 10);
+INSERT INTO `address_plot` VALUES (342, 10);
+INSERT INTO `address_plot` VALUES (343, 10);
+INSERT INTO `address_plot` VALUES (344, 10);
+INSERT INTO `address_plot` VALUES (345, 10);
+INSERT INTO `address_plot` VALUES (346, 10);
+INSERT INTO `address_plot` VALUES (347, 10);
+INSERT INTO `address_plot` VALUES (127, 10);
+INSERT INTO `address_plot` VALUES (128, 10);
+INSERT INTO `address_plot` VALUES (129, 10);
+INSERT INTO `address_plot` VALUES (130, 10);
+INSERT INTO `address_plot` VALUES (131, 10);
+INSERT INTO `address_plot` VALUES (133, 10);
+INSERT INTO `address_plot` VALUES (134, 10);
+INSERT INTO `address_plot` VALUES (135, 10);
+INSERT INTO `address_plot` VALUES (136, 10);
+INSERT INTO `address_plot` VALUES (138, 10);
+INSERT INTO `address_plot` VALUES (139, 10);
+INSERT INTO `address_plot` VALUES (141, 10);
+INSERT INTO `address_plot` VALUES (142, 10);
+INSERT INTO `address_plot` VALUES (143, 10);
+INSERT INTO `address_plot` VALUES (144, 10);
+INSERT INTO `address_plot` VALUES (145, 10);
+INSERT INTO `address_plot` VALUES (146, 10);
+INSERT INTO `address_plot` VALUES (147, 10);
+INSERT INTO `address_plot` VALUES (152, 10);
+INSERT INTO `address_plot` VALUES (153, 10);
+INSERT INTO `address_plot` VALUES (154, 10);
+INSERT INTO `address_plot` VALUES (155, 10);
+INSERT INTO `address_plot` VALUES (156, 10);
+INSERT INTO `address_plot` VALUES (157, 10);
+INSERT INTO `address_plot` VALUES (158, 10);
+INSERT INTO `address_plot` VALUES (159, 10);
+INSERT INTO `address_plot` VALUES (160, 10);
+INSERT INTO `address_plot` VALUES (162, 10);
+INSERT INTO `address_plot` VALUES (163, 10);
+INSERT INTO `address_plot` VALUES (171, 10);
+INSERT INTO `address_plot` VALUES (174, 10);
+INSERT INTO `address_plot` VALUES (175, 10);
+INSERT INTO `address_plot` VALUES (176, 10);
+INSERT INTO `address_plot` VALUES (177, 10);
+INSERT INTO `address_plot` VALUES (179, 10);
+INSERT INTO `address_plot` VALUES (180, 10);
+INSERT INTO `address_plot` VALUES (181, 10);
+INSERT INTO `address_plot` VALUES (182, 10);
+INSERT INTO `address_plot` VALUES (183, 10);
+INSERT INTO `address_plot` VALUES (184, 10);
+INSERT INTO `address_plot` VALUES (185, 10);
+INSERT INTO `address_plot` VALUES (186, 10);
+INSERT INTO `address_plot` VALUES (188, 10);
+INSERT INTO `address_plot` VALUES (189, 10);
+INSERT INTO `address_plot` VALUES (209, 10);
+INSERT INTO `address_plot` VALUES (210, 10);
+INSERT INTO `address_plot` VALUES (211, 10);
+INSERT INTO `address_plot` VALUES (212, 10);
+INSERT INTO `address_plot` VALUES (213, 10);
+INSERT INTO `address_plot` VALUES (214, 10);
+INSERT INTO `address_plot` VALUES (215, 10);
+INSERT INTO `address_plot` VALUES (241, 10);
+INSERT INTO `address_plot` VALUES (242, 10);
+INSERT INTO `address_plot` VALUES (243, 10);
+INSERT INTO `address_plot` VALUES (244, 10);
+INSERT INTO `address_plot` VALUES (245, 10);
+INSERT INTO `address_plot` VALUES (246, 10);
+INSERT INTO `address_plot` VALUES (247, 10);
+INSERT INTO `address_plot` VALUES (248, 10);
+INSERT INTO `address_plot` VALUES (249, 10);
+INSERT INTO `address_plot` VALUES (250, 10);
+INSERT INTO `address_plot` VALUES (251, 10);
+INSERT INTO `address_plot` VALUES (252, 10);
+INSERT INTO `address_plot` VALUES (253, 10);
+INSERT INTO `address_plot` VALUES (254, 10);
+INSERT INTO `address_plot` VALUES (255, 10);
+INSERT INTO `address_plot` VALUES (256, 10);
+INSERT INTO `address_plot` VALUES (257, 10);
+INSERT INTO `address_plot` VALUES (335, 10);
+INSERT INTO `address_plot` VALUES (348, 10);
+INSERT INTO `address_plot` VALUES (349, 10);
+INSERT INTO `address_plot` VALUES (350, 10);
+INSERT INTO `address_plot` VALUES (351, 10);
+INSERT INTO `address_plot` VALUES (352, 10);
+INSERT INTO `address_plot` VALUES (353, 10);
+INSERT INTO `address_plot` VALUES (40, 10);
+INSERT INTO `address_plot` VALUES (41, 10);
+INSERT INTO `address_plot` VALUES (48, 10);
+INSERT INTO `address_plot` VALUES (49, 10);
+INSERT INTO `address_plot` VALUES (50, 10);
+INSERT INTO `address_plot` VALUES (51, 10);
+INSERT INTO `address_plot` VALUES (52, 10);
+INSERT INTO `address_plot` VALUES (53, 10);
+INSERT INTO `address_plot` VALUES (54, 10);
+INSERT INTO `address_plot` VALUES (55, 10);
+INSERT INTO `address_plot` VALUES (62, 10);
+INSERT INTO `address_plot` VALUES (63, 10);
+INSERT INTO `address_plot` VALUES (64, 10);
+INSERT INTO `address_plot` VALUES (65, 10);
+INSERT INTO `address_plot` VALUES (66, 10);
+INSERT INTO `address_plot` VALUES (67, 10);
+INSERT INTO `address_plot` VALUES (68, 10);
+INSERT INTO `address_plot` VALUES (69, 10);
+INSERT INTO `address_plot` VALUES (70, 10);
+INSERT INTO `address_plot` VALUES (71, 10);
+INSERT INTO `address_plot` VALUES (72, 10);
+INSERT INTO `address_plot` VALUES (73, 10);
+INSERT INTO `address_plot` VALUES (74, 10);
+INSERT INTO `address_plot` VALUES (75, 10);
+INSERT INTO `address_plot` VALUES (76, 10);
+INSERT INTO `address_plot` VALUES (77, 10);
+INSERT INTO `address_plot` VALUES (78, 10);
+INSERT INTO `address_plot` VALUES (79, 10);
+INSERT INTO `address_plot` VALUES (80, 10);
+INSERT INTO `address_plot` VALUES (81, 10);
+INSERT INTO `address_plot` VALUES (82, 10);
+INSERT INTO `address_plot` VALUES (83, 10);
+INSERT INTO `address_plot` VALUES (84, 10);
+INSERT INTO `address_plot` VALUES (85, 10);
+INSERT INTO `address_plot` VALUES (86, 10);
+INSERT INTO `address_plot` VALUES (87, 10);
+INSERT INTO `address_plot` VALUES (88, 10);
+INSERT INTO `address_plot` VALUES (89, 10);
+INSERT INTO `address_plot` VALUES (90, 10);
+INSERT INTO `address_plot` VALUES (91, 10);
+INSERT INTO `address_plot` VALUES (92, 10);
+INSERT INTO `address_plot` VALUES (93, 10);
+INSERT INTO `address_plot` VALUES (94, 10);
+INSERT INTO `address_plot` VALUES (95, 10);
+INSERT INTO `address_plot` VALUES (96, 10);
+INSERT INTO `address_plot` VALUES (97, 10);
+INSERT INTO `address_plot` VALUES (98, 10);
+INSERT INTO `address_plot` VALUES (99, 10);
+INSERT INTO `address_plot` VALUES (100, 10);
+INSERT INTO `address_plot` VALUES (101, 10);
+INSERT INTO `address_plot` VALUES (102, 10);
+INSERT INTO `address_plot` VALUES (103, 10);
+INSERT INTO `address_plot` VALUES (104, 10);
+INSERT INTO `address_plot` VALUES (105, 10);
+INSERT INTO `address_plot` VALUES (106, 10);
+INSERT INTO `address_plot` VALUES (107, 10);
+INSERT INTO `address_plot` VALUES (108, 10);
+INSERT INTO `address_plot` VALUES (109, 10);
+INSERT INTO `address_plot` VALUES (110, 10);
+INSERT INTO `address_plot` VALUES (111, 10);
+INSERT INTO `address_plot` VALUES (112, 10);
+INSERT INTO `address_plot` VALUES (113, 10);
+INSERT INTO `address_plot` VALUES (114, 10);
+INSERT INTO `address_plot` VALUES (115, 10);
+INSERT INTO `address_plot` VALUES (116, 10);
+INSERT INTO `address_plot` VALUES (117, 10);
+INSERT INTO `address_plot` VALUES (118, 10);
+INSERT INTO `address_plot` VALUES (119, 10);
+INSERT INTO `address_plot` VALUES (120, 10);
+INSERT INTO `address_plot` VALUES (121, 10);
+INSERT INTO `address_plot` VALUES (122, 10);
+INSERT INTO `address_plot` VALUES (123, 10);
+INSERT INTO `address_plot` VALUES (124, 10);
+INSERT INTO `address_plot` VALUES (125, 10);
+INSERT INTO `address_plot` VALUES (126, 10);
+INSERT INTO `address_plot` VALUES (132, 10);
+INSERT INTO `address_plot` VALUES (137, 10);
+INSERT INTO `address_plot` VALUES (140, 10);
+INSERT INTO `address_plot` VALUES (148, 10);
+INSERT INTO `address_plot` VALUES (149, 10);
+INSERT INTO `address_plot` VALUES (150, 10);
+INSERT INTO `address_plot` VALUES (151, 10);
+INSERT INTO `address_plot` VALUES (161, 10);
+INSERT INTO `address_plot` VALUES (164, 10);
+INSERT INTO `address_plot` VALUES (165, 10);
+INSERT INTO `address_plot` VALUES (166, 10);
+INSERT INTO `address_plot` VALUES (167, 10);
+INSERT INTO `address_plot` VALUES (168, 10);
+INSERT INTO `address_plot` VALUES (169, 10);
+INSERT INTO `address_plot` VALUES (170, 10);
+INSERT INTO `address_plot` VALUES (172, 10);
+INSERT INTO `address_plot` VALUES (173, 10);
+INSERT INTO `address_plot` VALUES (178, 10);
+INSERT INTO `address_plot` VALUES (187, 10);
+INSERT INTO `address_plot` VALUES (194, 10);
+INSERT INTO `address_plot` VALUES (195, 10);
+INSERT INTO `address_plot` VALUES (200, 10);
+INSERT INTO `address_plot` VALUES (201, 10);
+INSERT INTO `address_plot` VALUES (202, 10);
+INSERT INTO `address_plot` VALUES (203, 10);
+INSERT INTO `address_plot` VALUES (204, 10);
+INSERT INTO `address_plot` VALUES (205, 10);
+INSERT INTO `address_plot` VALUES (206, 10);
+INSERT INTO `address_plot` VALUES (207, 10);
+INSERT INTO `address_plot` VALUES (208, 10);
+INSERT INTO `address_plot` VALUES (216, 10);
+INSERT INTO `address_plot` VALUES (232, 10);
+INSERT INTO `address_plot` VALUES (233, 10);
+INSERT INTO `address_plot` VALUES (234, 10);
+INSERT INTO `address_plot` VALUES (235, 10);
+INSERT INTO `address_plot` VALUES (236, 10);
+INSERT INTO `address_plot` VALUES (237, 10);
+INSERT INTO `address_plot` VALUES (238, 10);
+INSERT INTO `address_plot` VALUES (239, 10);
+INSERT INTO `address_plot` VALUES (240, 10);
+INSERT INTO `address_plot` VALUES (258, 10);
+INSERT INTO `address_plot` VALUES (259, 10);
+INSERT INTO `address_plot` VALUES (260, 10);
+INSERT INTO `address_plot` VALUES (261, 10);
+INSERT INTO `address_plot` VALUES (262, 10);
+INSERT INTO `address_plot` VALUES (263, 10);
+INSERT INTO `address_plot` VALUES (264, 10);
+INSERT INTO `address_plot` VALUES (265, 10);
+INSERT INTO `address_plot` VALUES (266, 10);
+INSERT INTO `address_plot` VALUES (267, 10);
+INSERT INTO `address_plot` VALUES (268, 10);
+INSERT INTO `address_plot` VALUES (269, 10);
+INSERT INTO `address_plot` VALUES (270, 10);
+INSERT INTO `address_plot` VALUES (271, 10);
+INSERT INTO `address_plot` VALUES (272, 10);
+INSERT INTO `address_plot` VALUES (273, 10);
+INSERT INTO `address_plot` VALUES (274, 10);
+INSERT INTO `address_plot` VALUES (275, 10);
+INSERT INTO `address_plot` VALUES (276, 10);
+INSERT INTO `address_plot` VALUES (277, 10);
+INSERT INTO `address_plot` VALUES (278, 10);
+INSERT INTO `address_plot` VALUES (279, 10);
+INSERT INTO `address_plot` VALUES (280, 10);
+INSERT INTO `address_plot` VALUES (281, 10);
+INSERT INTO `address_plot` VALUES (282, 10);
+INSERT INTO `address_plot` VALUES (283, 10);
+INSERT INTO `address_plot` VALUES (284, 10);
+INSERT INTO `address_plot` VALUES (285, 10);
+INSERT INTO `address_plot` VALUES (286, 10);
+INSERT INTO `address_plot` VALUES (287, 10);
+INSERT INTO `address_plot` VALUES (288, 10);
+INSERT INTO `address_plot` VALUES (289, 10);
+INSERT INTO `address_plot` VALUES (290, 10);
+INSERT INTO `address_plot` VALUES (291, 10);
+INSERT INTO `address_plot` VALUES (306, 10);
+INSERT INTO `address_plot` VALUES (307, 10);
+INSERT INTO `address_plot` VALUES (308, 10);
+INSERT INTO `address_plot` VALUES (309, 10);
+INSERT INTO `address_plot` VALUES (310, 10);
+INSERT INTO `address_plot` VALUES (311, 10);
+INSERT INTO `address_plot` VALUES (312, 10);
+INSERT INTO `address_plot` VALUES (313, 10);
+INSERT INTO `address_plot` VALUES (314, 10);
+INSERT INTO `address_plot` VALUES (315, 10);
+INSERT INTO `address_plot` VALUES (316, 10);
+INSERT INTO `address_plot` VALUES (317, 10);
+INSERT INTO `address_plot` VALUES (318, 10);
+INSERT INTO `address_plot` VALUES (319, 10);
+INSERT INTO `address_plot` VALUES (320, 10);
+INSERT INTO `address_plot` VALUES (321, 10);
+INSERT INTO `address_plot` VALUES (322, 10);
+INSERT INTO `address_plot` VALUES (323, 10);
+INSERT INTO `address_plot` VALUES (324, 10);
+INSERT INTO `address_plot` VALUES (325, 10);
+INSERT INTO `address_plot` VALUES (326, 10);
 
 -- ----------------------------
 -- Table structure for addresses
@@ -772,18 +1125,18 @@ CREATE TABLE `bids`  (
   `last_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `type_id` bigint(20) UNSIGNED NOT NULL,
-  `defect_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of bids
 -- ----------------------------
-INSERT INTO `bids` VALUES (3, 2, 23, '9', 44, '2020-05-13', '14:50:00', 'Красюков', '6-45-41', 2, 27, '2020-05-29 21:47:06', '2020-05-29 21:47:15');
-INSERT INTO `bids` VALUES (5, 5, 4, '21', 51, '2020-05-11', '10:24:00', 'Шпатенко', '7-01-51', 1, 14, '2020-05-30 06:14:16', '2020-06-03 10:28:24');
-INSERT INTO `bids` VALUES (6, 2, 2, '18', 23, '2020-05-21', '10:11:00', 'Левин', '7-99-72', 1, 6, '2020-06-02 04:12:33', '2020-06-02 04:12:33');
+INSERT INTO `bids` VALUES (11, 4, 11, '12', 15, '2020-05-14', '15:01:00', 'Степанова', '5-14-15', 1, '2020-06-08 17:02:59', '2020-06-08 17:03:37', 'Выбивает автомат в щите 380В');
+INSERT INTO `bids` VALUES (12, 4, 12, '34', 51, '2020-04-15', '11:08:00', 'Батраков', '6-16-08', 2, '2020-06-08 17:06:11', '2020-06-08 17:06:11', 'Протекает кран х/в');
+INSERT INTO `bids` VALUES (13, 1, 2, '11', 24, '2020-05-20', '09:17:00', 'Трифанов', '7-07-43', 1, '2020-06-08 18:39:38', '2020-06-08 18:39:38', 'Скачет напряжение в сети');
 
 -- ----------------------------
 -- Table structure for branches
@@ -806,7 +1159,7 @@ INSERT INTO `branches` VALUES (2, 'ЖЭУ-2', '2020-05-22 18:11:43', '2020-05-22
 INSERT INTO `branches` VALUES (3, 'ЖЭУ-3', '2020-05-22 18:11:49', '2020-05-22 18:11:49', 1);
 INSERT INTO `branches` VALUES (4, 'ЖЭУ-4', '2020-05-22 18:11:54', '2020-05-22 18:11:54', 1);
 INSERT INTO `branches` VALUES (5, 'ЖЭУ-5', '2020-05-22 18:12:00', '2020-05-22 18:12:00', 1);
-INSERT INTO `branches` VALUES (9, 'ОАС', '2020-05-22 18:12:40', '2020-05-22 18:12:40', 1);
+INSERT INTO `branches` VALUES (9, 'ОАС', '2020-05-22 18:12:40', '2020-05-22 18:12:40', 2);
 INSERT INTO `branches` VALUES (10, 'Транспортный отдел', '2020-05-22 18:13:04', '2020-05-22 18:13:04', NULL);
 INSERT INTO `branches` VALUES (12, 'Отдел главного энергетика', '2020-05-22 18:13:52', '2020-05-22 18:13:52', NULL);
 
@@ -973,19 +1326,19 @@ CREATE TABLE `logs`  (
   `crane_h` tinyint(4) NOT NULL DEFAULT 0,
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `type_id` bigint(20) UNSIGNED NOT NULL,
+  `defect_id` bigint(20) UNSIGNED NOT NULL,
+  `receiver` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `logs_bid_id_foreign`(`bid_id`) USING BTREE,
   CONSTRAINT `logs_bid_id_foreign` FOREIGN KEY (`bid_id`) REFERENCES `bids` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of logs
 -- ----------------------------
-INSERT INTO `logs` VALUES (3, 5, '2020-05-11', '12:16:00', 0, 'Связка проводов', NULL, 0, 0, 0, 0, 0, 0, '2020-05-30 06:14:53', '2020-05-30 11:54:51');
-INSERT INTO `logs` VALUES (5, 5, '2020-05-20', '10:00:00', 1, 'Заменили автомат', NULL, 0, 0, 0, 0, 0, 0, '2020-05-30 08:29:48', '2020-05-30 11:55:12');
-INSERT INTO `logs` VALUES (6, 3, '2020-05-07', '14:37:00', 0, 'Тестовая запись', NULL, 1, 1, 0, 0, 0, 0, '2020-05-30 11:56:47', '2020-05-30 13:00:04');
-INSERT INTO `logs` VALUES (7, 6, '2020-05-22', '09:25:00', 0, 'Проверка схемы подключения', NULL, 0, 0, 0, 0, 0, 0, '2020-06-02 04:13:15', '2020-06-02 04:13:26');
-INSERT INTO `logs` VALUES (8, 6, '2020-05-22', '15:40:00', 1, 'Заменили вторичную проводку', NULL, 0, 0, 0, 0, 0, 0, '2020-06-02 04:14:43', '2020-06-02 04:14:43');
+INSERT INTO `logs` VALUES (10, 11, '2020-05-14', '17:11:00', 0, 'Подтянули контакт в автомате РЩ', NULL, 0, 0, 0, 0, 0, 0, '2020-06-08 18:08:00', '2020-06-08 18:40:09', 1, 17, 'ЖЭУ-4');
+INSERT INTO `logs` VALUES (11, 11, '2020-05-15', '10:16:00', 1, 'Заменили вторичную проводку', NULL, 0, 0, 0, 0, 0, 0, '2020-06-08 18:12:07', '2020-06-08 18:40:11', 1, 17, 'ЖЭУ-4');
 
 -- ----------------------------
 -- Table structure for migrations
@@ -996,7 +1349,7 @@ CREATE TABLE `migrations`  (
   `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 65 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 70 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of migrations
@@ -1023,9 +1376,10 @@ INSERT INTO `migrations` VALUES (54, '2020_06_03_050255_alter_table_branches', 9
 INSERT INTO `migrations` VALUES (56, '2020_06_04_045535_create_addresses_table', 10);
 INSERT INTO `migrations` VALUES (58, '2020_06_04_065722_create_plots_table', 11);
 INSERT INTO `migrations` VALUES (59, '2020_06_04_070402_create_address_plot_table', 11);
-INSERT INTO `migrations` VALUES (60, '2020_06_05_135338_alter_table_bids', 12);
-INSERT INTO `migrations` VALUES (62, '2020_06_08_100716_alter_table_roles', 13);
-INSERT INTO `migrations` VALUES (64, '2020_06_08_113205_alter_table_users', 14);
+INSERT INTO `migrations` VALUES (65, '2020_06_08_100716_alter_table_roles', 12);
+INSERT INTO `migrations` VALUES (66, '2020_06_08_113205_alter_table_users', 12);
+INSERT INTO `migrations` VALUES (67, '2020_06_08_164737_alter_table_bids', 13);
+INSERT INTO `migrations` VALUES (69, '2020_06_08_165210_alter_table_logs', 14);
 
 -- ----------------------------
 -- Table structure for organizations
@@ -1067,7 +1421,7 @@ CREATE TABLE `plots`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of plots
@@ -1077,6 +1431,7 @@ INSERT INTO `plots` VALUES (6, 2, '2020-06-04 12:09:44', '2020-06-04 12:09:44');
 INSERT INTO `plots` VALUES (7, 3, '2020-06-04 12:09:50', '2020-06-04 12:09:50');
 INSERT INTO `plots` VALUES (8, 4, '2020-06-04 12:09:54', '2020-06-04 12:09:54');
 INSERT INTO `plots` VALUES (9, 5, '2020-06-04 12:09:59', '2020-06-04 12:09:59');
+INSERT INTO `plots` VALUES (10, 9, '2020-06-08 15:22:02', '2020-06-08 15:22:02');
 
 -- ----------------------------
 -- Table structure for positions
@@ -1120,7 +1475,7 @@ CREATE TABLE `promisers`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of promisers
@@ -1130,6 +1485,7 @@ INSERT INTO `promisers` VALUES (2, 14, 1, 13, NULL, 51, '2019-11-05', '2020-03-0
 INSERT INTO `promisers` VALUES (3, 29, 2, 7, NULL, 11, '2019-07-30', '2020-04-09', '2020-05-25 15:16:40', '2020-05-25 15:16:40');
 INSERT INTO `promisers` VALUES (4, 32, 2, 15, NULL, 37, '2019-07-17', '2020-02-18', '2020-05-25 15:17:24', '2020-05-25 15:17:24');
 INSERT INTO `promisers` VALUES (5, 19, 1, 22, NULL, 11, '2020-06-03', '2020-06-19', '2020-06-03 11:15:58', '2020-06-03 11:15:58');
+INSERT INTO `promisers` VALUES (6, 18, 1, 14, 'В', 11, '2020-06-19', '2020-06-11', '2020-06-08 18:30:12', '2020-06-08 18:30:18');
 
 -- ----------------------------
 -- Table structure for role_user
@@ -1153,11 +1509,17 @@ INSERT INTO `role_user` VALUES (4, 1);
 INSERT INTO `role_user` VALUES (5, 1);
 INSERT INTO `role_user` VALUES (6, 1);
 INSERT INTO `role_user` VALUES (8, 1);
-INSERT INTO `role_user` VALUES (5, 4);
 INSERT INTO `role_user` VALUES (6, 9);
+INSERT INTO `role_user` VALUES (1, 19);
+INSERT INTO `role_user` VALUES (3, 19);
+INSERT INTO `role_user` VALUES (4, 19);
+INSERT INTO `role_user` VALUES (5, 19);
+INSERT INTO `role_user` VALUES (6, 19);
+INSERT INTO `role_user` VALUES (8, 19);
+INSERT INTO `role_user` VALUES (8, 13);
 INSERT INTO `role_user` VALUES (3, 11);
 INSERT INTO `role_user` VALUES (4, 11);
-INSERT INTO `role_user` VALUES (8, 13);
+INSERT INTO `role_user` VALUES (5, 4);
 INSERT INTO `role_user` VALUES (3, 12);
 INSERT INTO `role_user` VALUES (3, 15);
 INSERT INTO `role_user` VALUES (3, 16);
@@ -1276,22 +1638,23 @@ CREATE TABLE `users`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
 INSERT INTO `users` VALUES (1, 'admin', 'admin@oas.ru', 9, NULL, '$2y$10$2kJ10MtH68pwfCJNjM2O7uOXBs3vrdnkhM0wdNL4OFrF2GpPt4J7C', NULL, '2020-05-22 17:58:25', '2020-05-24 19:25:55');
-INSERT INTO `users` VALUES (4, 'headhunter', 'headhunter@oas.ru', 9, NULL, '$2y$10$ofadG64yIYQAV/Ud0bNo7OmsfSNUF3s6nb4VB3MHMgdWxcn95UieW', NULL, '2020-05-22 18:02:11', '2020-05-24 19:13:58');
-INSERT INTO `users` VALUES (9, 'auditor', 'auditor@oas.ru', 9, NULL, '$2y$10$A4seYpMqV/R6HTo1TcwpqOasEJlmKBcao063vOSBod7DVfnvNWoem', NULL, '2020-05-24 19:26:39', '2020-05-24 19:26:39');
-INSERT INTO `users` VALUES (10, 'user', 'user@oas.ru', 9, NULL, '$2y$10$6M0meACiwGIh1cPvitFwNur4PS/RacB0C1XEPviaRudhZlod3GtsS', NULL, '2020-05-24 19:31:16', '2020-05-24 19:31:16');
-INSERT INTO `users` VALUES (11, 'operator_oas', 'operator_oas@oas.ru', 9, NULL, '$2y$10$ZPvfIkVpVfFjxzNB.AArj.cBJFdtAXoKTlnm1zZQ/Vir/4ORI6sZi', NULL, '2020-05-25 15:00:20', '2020-05-25 15:00:20');
-INSERT INTO `users` VALUES (12, 'zheu_01', 'zheu_01@oas.ru', 1, NULL, '$2y$10$psCHQFbp99tNTHLnFU5HOefGZaUi2YPleU.G7mIFz.gIdlmVfN2pG', NULL, '2020-05-30 12:56:40', '2020-06-08 10:52:04');
-INSERT INTO `users` VALUES (13, 'pts', 'pts@oas.ru', 9, NULL, '$2y$10$O4k0xc4/PSXylEHQ86CpsOCwJ0scZaG5eA33yo1yZOalkouc9VBfS', NULL, '2020-06-08 10:16:56', '2020-06-08 10:16:56');
-INSERT INTO `users` VALUES (15, 'zheu_02', 'zheu_02@oas.ru', 2, NULL, '$2y$10$l9Tq73LrsdM60n09N8p/zudE1P90Qy8AC9D2Y0RVXKsszZxrHal1y', NULL, '2020-06-08 10:53:26', '2020-06-08 10:53:26');
-INSERT INTO `users` VALUES (16, 'zheu_03', 'zheu_03@oas.ru', 3, NULL, '$2y$10$zM405rAlYMB8DfHU8cJDBuHWGrav2qwHaJBYauMDs/gKA0mXJco7q', NULL, '2020-06-08 10:53:48', '2020-06-08 10:53:48');
-INSERT INTO `users` VALUES (17, 'zheu_04', 'zheu_04@oas.ru', 4, NULL, '$2y$10$WYLIPDyteU2CYqeEUe.kEeQsLatXEyLXaOzKzahDOyZEPYmZan2c.', NULL, '2020-06-08 10:54:10', '2020-06-08 10:54:10');
-INSERT INTO `users` VALUES (18, 'zheu_05', 'zheu_05@oas.ru', 5, NULL, '$2y$10$ZcyPBIB6RHdeYiOEzqCw5.0CrVL/GFMOGFuHv9FlEFIgZhHV.O0Q2', NULL, '2020-06-08 10:54:29', '2020-06-08 10:54:29');
+INSERT INTO `users` VALUES (4, 'СПиУП', 'headhunter@oas.ru', 9, NULL, '$2y$10$ofadG64yIYQAV/Ud0bNo7OmsfSNUF3s6nb4VB3MHMgdWxcn95UieW', NULL, '2020-05-22 18:02:11', '2020-06-08 18:35:11');
+INSERT INTO `users` VALUES (9, 'Энергосбыт', 'auditor@oas.ru', 9, NULL, '$2y$10$A4seYpMqV/R6HTo1TcwpqOasEJlmKBcao063vOSBod7DVfnvNWoem', NULL, '2020-05-24 19:26:39', '2020-06-08 18:31:04');
+INSERT INTO `users` VALUES (10, 'Пользователь', 'user@oas.ru', 9, NULL, '$2y$10$6M0meACiwGIh1cPvitFwNur4PS/RacB0C1XEPviaRudhZlod3GtsS', NULL, '2020-05-24 19:31:16', '2020-06-08 18:34:06');
+INSERT INTO `users` VALUES (11, 'ОАС', 'operator_oas@oas.ru', 9, NULL, '$2y$10$ZPvfIkVpVfFjxzNB.AArj.cBJFdtAXoKTlnm1zZQ/Vir/4ORI6sZi', NULL, '2020-05-25 15:00:20', '2020-06-08 18:33:46');
+INSERT INTO `users` VALUES (12, 'ЖЭУ-1', 'zheu_01@oas.ru', 1, NULL, '$2y$10$psCHQFbp99tNTHLnFU5HOefGZaUi2YPleU.G7mIFz.gIdlmVfN2pG', NULL, '2020-05-30 12:56:40', '2020-06-08 18:35:23');
+INSERT INTO `users` VALUES (13, 'ПТС', 'pts@oas.ru', 9, NULL, '$2y$10$O4k0xc4/PSXylEHQ86CpsOCwJ0scZaG5eA33yo1yZOalkouc9VBfS', NULL, '2020-06-08 10:16:56', '2020-06-08 18:33:24');
+INSERT INTO `users` VALUES (15, 'ЖЭУ-2', 'zheu_02@oas.ru', 2, NULL, '$2y$10$l9Tq73LrsdM60n09N8p/zudE1P90Qy8AC9D2Y0RVXKsszZxrHal1y', NULL, '2020-06-08 10:53:26', '2020-06-08 18:35:29');
+INSERT INTO `users` VALUES (16, 'ЖЭУ-3', 'zheu_03@oas.ru', 3, NULL, '$2y$10$zM405rAlYMB8DfHU8cJDBuHWGrav2qwHaJBYauMDs/gKA0mXJco7q', NULL, '2020-06-08 10:53:48', '2020-06-08 18:35:37');
+INSERT INTO `users` VALUES (17, 'ЖЭУ-4', 'zheu_04@oas.ru', 4, NULL, '$2y$10$WYLIPDyteU2CYqeEUe.kEeQsLatXEyLXaOzKzahDOyZEPYmZan2c.', NULL, '2020-06-08 10:54:10', '2020-06-08 18:35:42');
+INSERT INTO `users` VALUES (18, 'ЖЭУ-5', 'zheu_05@oas.ru', 5, NULL, '$2y$10$ZcyPBIB6RHdeYiOEzqCw5.0CrVL/GFMOGFuHv9FlEFIgZhHV.O0Q2', NULL, '2020-06-08 10:54:29', '2020-06-08 18:35:48');
+INSERT INTO `users` VALUES (19, 'Администратор', 'general@oas.ru', NULL, NULL, '$2y$10$93g2BSm32u4PxkhxLuGRN./cx6Mm0o7njqksyseA9oinfckORJR8.', NULL, '2020-06-08 18:33:11', '2020-06-08 18:33:11');
 
 -- ----------------------------
 -- Table structure for workers
