@@ -22,14 +22,18 @@
 </head>
 
 <body>
-  <div id="app">
+  <div 
+    id="app" 
+    class="d-flex flex-column justify-content-between" 
+    style="height: 100vh;"
+  >
+
     @yield('content')
     <!-- /.main -->
 
-    <footer class="fixed-bottom w-100">
-      @include('includes.footer')
-    </footer>
+    @include('includes.footer')
     <!-- /.footer -->
+    
   </div>
 </body>
 

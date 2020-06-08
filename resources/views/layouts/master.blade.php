@@ -41,9 +41,7 @@
   </div>
   <!-- /.wrapper -->
 
-  <footer>
-    @include('includes.footer')
-  </footer>
+  @include('includes.footer')
   <!-- /.bk-footer -->
 
   <!-- START modal-general-confirm -->
