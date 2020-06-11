@@ -1,6 +1,6 @@
 <div class="d-flex flex-column flex-md-row justify-content-between mt-2 mb-3">
 
-	@if(Auth::user()->roles()->pluck('slug')->contains('disp_oas'))
+	@if(Auth::user()->roles()->pluck('slug')->contains('oas'))
 	<div class="mb-4 mb-md-0">
 		<a href="{{ route('briefs.create') }}" class="btn btn-sm btn-outline-primary">
 			Новая запись

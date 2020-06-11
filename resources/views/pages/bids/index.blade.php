@@ -4,7 +4,7 @@
 <div class="overflow-hidden pt-4 py-2">
 	<h2 class="mb-1">Заявки</h2>
 
-	@if(Auth::user()->roles()->pluck('slug')->contains('disp_zheu'))
+	@if(Auth::user()->roles()->pluck('slug')->contains('disp'))
 	<div class="py-2 mt-1">
 		<a href="{{ route('bids.create') }}" class="btn btn-outline-primary">
 			Новая запись
@@ -27,7 +27,7 @@
 			</thead>
 			<tbody>
 				@foreach($bids as $id => $bid)
-				@if($bid->branch->id == $user || $user == 9)
+				@if($bid->branch->id == $user_id || $user_id == 9)
 				<tr>
 					<td>{{ $bid->branch->name }}</td>
 					<td>{{ $bid->street->name }} {{ $bid->num_home }} - {{ $bid->num_flat }} </td>
@@ -53,7 +53,7 @@
 								<span class="bk-crud__tip">Просмотреть</span>
 							</div>
 
-							@if(Auth::user()->roles()->pluck('slug')->contains('disp_zheu'))
+							@if(Auth::user()->roles()->pluck('slug')->contains('disp'))
 							<div class="bk-crud__wrap">
 								<a href="{{ route('bids.edit', $bid) }}" class="bk-crud__btn btn btn-warning mr-1">
 									<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="pen-nib" class="bk-crud__icon bk-crud__icon--edit  svg-inline--fa fa-pen-nib fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">

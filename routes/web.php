@@ -13,9 +13,6 @@ Auth::routes([
 Route::middleware(['auth'])->group(function() {
 
     // role: admin 
-    // permissions : 
-    // - CRUD user records 
-    // - CRUD user roles
     Route::group([
         'middleware' => 'role:admin',
         'namespace' => 'Admin',
@@ -24,21 +21,17 @@ Route::middleware(['auth'])->group(function() {
         Route::resource('users', 'UserController');
     });
 
-    // role: disp_oas 
-    // permissions : 
-    // - CRUD job records
+    // role: oas
     Route::group([
-        'middleware' => 'role:disp_oas'
+        'middleware' => 'role:oas'
     ], function () {
         Route::resource('jobs', 'JobController');
         Route::resource('briefs', 'BriefController');
     });
 
-    // role: disp_zheu 
-    // permissions : 
-    // - CRUD bid records
+    // role: disp
     Route::group([
-        'middleware' => 'role:disp_zheu'
+        'middleware' => 'role:disp'
     ], function () {
         Route::resource('plots', 'PlotController');
         Route::resource('bids', 'BidController');
@@ -50,19 +43,13 @@ Route::middleware(['auth'])->group(function() {
     });
 
     // role: audit 
-    // permissions : 
-    // - CRUD promiser records
     Route::group([
         'middleware' => 'role:audit'
     ], function () {
         Route::resource('promisers', 'PromiserController');
     });
     
-    // role: hirer
-    // permissions : 
-    // - CRUD worker records 
-    // - CRUD branch records 
-    // - CRUD position records 
+    // role: hh
     Route::group([
         'middleware' => 'role:hh'
     ], function () {
@@ -72,11 +59,6 @@ Route::middleware(['auth'])->group(function() {
     });
 
     // role: pts
-    // permissions : 
-    // - CRUD organization records 
-    // - CRUD address records 
-    // - CRUD street records 
-    // - CRUD defect records 
     Route::group([
         'middleware' => 'role:pts'
     ], function () {
@@ -87,8 +69,6 @@ Route::middleware(['auth'])->group(function() {
     });
 
     // role: guest 
-    // permissions : 
-    // - show all records  
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('bids', 'BidController@index')->name('bids.index');
     Route::get('bids/{bid}', 'BidController@show')->name('bids.show');

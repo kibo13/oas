@@ -19,9 +19,10 @@ class BidController extends Controller
      */
     public function index()
     {
-        $user = Auth::user()->num;
+        // getRole - custom fn from Helpers
+        $user_id = getRole();
         $bids = Bid::paginate(10);
-        return view('pages.bids.index', compact('bids', 'user'));
+        return view('pages.bids.index', compact('bids', 'user_id'));
     }
 
     /**
@@ -32,15 +33,17 @@ class BidController extends Controller
     public function create(Request $request)
     {
         $types = Type::get();
-        $user = Auth::user()->num;
-        $branch = Branch::where('id', $user)->first();
-        $streets = Address::whereHas('plots', function($q) use($user) {
-            $q->where('branch_id', '=', $user);
+
+        // getRole - custom fn from Helpers
+        $user_id = getRole();
+        $branch = Branch::where('id', $user_id)->first();
+        $streets = Address::whereHas('plots', function($q) use($user_id) {
+            $q->where('branch_id', '=', $user_id);
         })->get();
 
         return view(
             'pages.bids.form',
-            compact('streets', 'types', 'user', 'branch')
+            compact('streets', 'types', 'user_id', 'branch')
         );
     }
 
@@ -82,15 +85,16 @@ class BidController extends Controller
     public function edit(Request $request, Bid $bid)
     {
         $types = Type::get();
-        $user = Auth::user()->num;
-        $branch = Branch::where('id', $user)->first();
-        $streets = Address::whereHas('plots', function ($q) use ($user) {
-            $q->where('branch_id', '=', $user);
+        // getRole - custom fn from Helpers
+        $user_id = getRole();
+        $branch = Branch::where('id', $user_id)->first();
+        $streets = Address::whereHas('plots', function ($q) use ($user_id) {
+            $q->where('branch_id', '=', $user_id);
         })->get();
 
         return view(
             'pages.bids.form',
-            compact('streets', 'types', 'user', 'branch', 'bid')
+            compact('streets', 'types', 'user_id', 'branch', 'bid')
         );
     }
 

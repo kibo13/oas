@@ -24,7 +24,7 @@
 				@endif
 				<!-- /.admin-panel -->
 
-				@if(Auth::user()->roles()->pluck('info')->contains('1'))
+				@if(Auth::user()->roles()->pluck('slug')->contains('info'))
 				<li class="nav-item dropdown mr-2">
 					<a id="navbarDropdown" class="nav-link dropdown-toggle bk-navbar__info pr-3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 						Информация
@@ -38,7 +38,7 @@
 						</a>
 						@endif
 
-						@if(Auth::user()->roles()->pluck('slug')->contains('disp_zheu'))
+						@if(Auth::user()->roles()->pluck('slug')->contains('disp'))
 						<a class="dropdown-item bk-navbar__link" href="{{ route('plots.index') }}">
 							Участки
 						</a>

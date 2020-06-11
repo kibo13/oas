@@ -45,7 +45,7 @@
 					</small>
 				</h6>
 
-				<input id="my-num" type="hidden" name="branch_id" value="{{ old('branch_id', isset($bid) ? $bid->branch_id : $user) }}">
+				<input id="my-num" type="hidden" name="branch_id" value="{{ old('branch_id', isset($bid) ? $bid->branch_id : $user_id) }}">
 
 				<h6 class="w-100 mr-3 py-0 my-0 pl-0"></h6>
 				<div class="bk-form__street col-sm-auto form-group mb-2 pl-0">

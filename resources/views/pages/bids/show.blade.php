@@ -37,7 +37,7 @@
   </div>
 
   <div class="form-group">
-    @if(Auth::user()->roles()->pluck('slug')->contains('disp_zheu'))
+    @if(Auth::user()->roles()->pluck('slug')->contains('disp'))
     <a id="add-log" href="" class="btn btn-outline-primary">Новая запись</a>
     @endif
     <a href="{{ route('bids.index') }}" class="btn btn-outline-secondary">Назад</a>

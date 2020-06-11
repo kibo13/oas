@@ -18,7 +18,7 @@
           <th scope="col">Вид неисправности</th>
           <th scope="col">Принятые меры</th>
           <th scope="col">Принял</th>
-          @if(Auth::user()->roles()->pluck('slug')->contains('disp_zheu'))
+          @if(Auth::user()->roles()->pluck('slug')->contains('disp'))
           <th scope="col">Действие</th>
           @endif
         </tr>
@@ -49,7 +49,7 @@
           <td>{{ $log->defect->desc }}</td>
           <td>{{ $log->solution }}</td>
           <td>{{ $log->receiver }}</td>
-          @if(Auth::user()->roles()->pluck('slug')->contains('disp_zheu'))
+          @if(Auth::user()->roles()->pluck('slug')->contains('disp'))
           <td>
             <div class="d-flex">
               <div class="bk-crud__wrap">
