@@ -10,6 +10,8 @@ Auth::routes([
     'register' => false
 ]);
 
+Route::get('/', 'HomeController@index')->name('home');
+
 Route::middleware(['auth'])->group(function() {
 
     // role: admin 
@@ -69,7 +71,6 @@ Route::middleware(['auth'])->group(function() {
     });
 
     // role: guest 
-    Route::get('/', 'HomeController@index')->name('home');
     Route::get('bids', 'BidController@index')->name('bids.index');
     Route::get('bids/{bid}', 'BidController@show')->name('bids.show');
     Route::get('jobs', 'JobController@index')->name('jobs.index');
@@ -78,13 +79,4 @@ Route::middleware(['auth'])->group(function() {
     Route::get('briefs', 'BriefController@index')->name('briefs.index');
     Route::get('workers', 'WorkerController@index')->name('workers.index');
     Route::get('promisers', 'PromiserController@index')->name('promisers.index');
-
-    // JSON 
-    Route::group([
-        'prefix' => 'data'
-    ], function () {
-        Route::get('defects', 'DataController@defects');
-        Route::get('addresses', 'DataController@addresses');
-        Route::get('plots', 'DataController@plots');
-    });
 });

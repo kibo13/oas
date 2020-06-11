@@ -76,7 +76,7 @@
 							@csrf
 						</form>
 						<!-- /.logout -->
-
+					</div>
 				</li>
 				<!-- /.btn-logout -->
 			</ul>
