@@ -25,11 +25,6 @@ class Street extends Model
         return $this->hasMany('App\Models\Promiser');
     }
 
-    public function jobs()
-    {
-        return $this->hasMany('App\Models\Job');
-    }
-
     public function bids()
     {
         return $this->hasMany('App\Models\Bid');

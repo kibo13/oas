@@ -31,7 +31,7 @@
 				<tr>
 					<td>{{ $bid->branch->name }}</td>
 					<td>{{ $bid->street->name }} {{ $bid->num_home }} - {{ $bid->num_flat }} </td>
-					<td>{{ date('d.m.Y', strtotime($bid->date_in)) }}г. <small class="text-muted align-text-top">{{ date('H:i', strtotime($bid->time_in)) }}</small></td>
+					<td>{{ getDMY($bid->date_in) }}г. <small class="text-muted align-text-top">{{ getHI($bid->time_in) }}</small></td>
 					<td>{{ $bid->type->name }}</td>
 					<td>{{ $bid->desc }}</td>
 					<td>

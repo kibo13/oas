@@ -10978,6 +10978,24 @@ textarea {
   border-left: none !important;
 }
 
+.bk-title {
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.bk-title:before {
+  content: attr(data-desc);
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  width: 100%;
+  font-size: 14px;
+  color: #6c757d;
+}
+
 .bk-logo {
   -webkit-user-select: none;
      -moz-user-select: none;

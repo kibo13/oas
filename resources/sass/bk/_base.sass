@@ -32,5 +32,17 @@ textarea
 .bl-none
   border-left: none !important
 
+.bk-title 
+  position: relative
+  user-select: none
 
+  &:before
+   content: attr(data-desc)
+   position: absolute
+   bottom: -15px
+   left: 0
+   width: 100%
+   font-size: $text-base-size
+   color: $secondary
+   
 

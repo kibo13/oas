@@ -2,7 +2,9 @@
 
 @section('content')
 <div class="overflow-hidden pt-4 py-2">
-  <h2 class="mb-1">Отключенные потребители</h2>
+  <h2 class="bk-title mb-4" data-desc="(откл. квартиросъемщики)">
+    Потребители
+  </h2>
 
   @if(Auth::user()->roles()->pluck('slug')->contains('audit'))
   <div class="py-2 mt-1">
@@ -37,8 +39,8 @@
             -
             {{ $promiser->num_flat }}
           </td>
-          <td>{{ date('d.m.Y', strtotime($promiser->date_off)) }}г.</td>
-          <td>{{ date('d.m.Y', strtotime($promiser->date_on)) }}г.</td>
+          <td>{{ getDMY($promiser->date_off) }}г.</td>
+          <td>{{ getDMY($promiser->date_on) }}г.</td>
           @if(Auth::user()->roles()->pluck('slug')->contains('audit'))
           <td>
             <div class="d-flex">

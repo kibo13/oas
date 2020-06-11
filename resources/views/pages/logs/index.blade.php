@@ -28,7 +28,7 @@
         @foreach($bid->logs as $id => $log)
         <tr>
           <td>{{ $id+=1 }}</td>
-          <td>{{ date('d.m.Y', strtotime($log->date_log)) }}г. <small class="text-muted align-text-top">{{ date('H:i', strtotime($log->time_log)) }}</small></td>
+          <td>{{ getDMY($log->date_log) }}г. <small class="text-muted align-text-top">{{ getHI($log->time_log) }}</small></td>
           <td>
             @if($log->type_log == 0) Локализация @else Устранение @endif
           </td>

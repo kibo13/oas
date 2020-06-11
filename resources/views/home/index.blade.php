@@ -1,23 +1,38 @@
 @extends('home.layouts.master')
 
 @section('content')
+<div class="container-fluid pt-5">
+  <div class="row ">
+    <div class="col-md-10 offset-md-1">
 
-<div class="jumbotron py-5">
+      <div id="posts" class="">
 
-  <h2 class="m-0">Добро пожаловать</h2>
-  <p class="lead m-0">
-    Автоматизированная информационная система диспетчера отдела аварийной службы ГУП ЖХ
-  </p>
+        <input type="text" id="search-posts" class="form-control rounded-0 bg-transparent mb-2 " placeholder="Поиск...">
 
-</div>
+        <!-- START table -->
+        <div class="table-responsive">
+          <table class="bk-table table table-bordered">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Период проведения работ</th>
+                <th scope="col">Адрес</th>
+                <th scope="col">Вид работ</th>
+              </tr>
+            </thead>
+            <tbody>
 
-<div class="container-fluid">
+           
 
 
+            </tbody>
+          </table>
+        </div>
+        <!-- END table   -->
 
-  <div class="py-4">
-    <h2 class="mb-0">Главная страницы</h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit quia dolor laudantium magnam necessitatibus nihil possimus, obcaecati quod suscipit officiis, reiciendis tempore iure vel asperiores ipsum minus sapiente deserunt aut recusandae totam illum eum! Repellendus delectus quis maiores maxime aperiam voluptatibus quia nihil ipsa sapiente deserunt architecto, accusantium accusamus error obcaecati quisquam consequatur quidem dolorum sed recusandae corrupti voluptatem quibusdam! Ex soluta accusantium ratione, sint modi, ipsam ad a, atque maiores nemo mollitia esse rerum quis accusamus est excepturi? Laborum eveniet nisi eius esse alias eos molestiae hic omnis similique doloribus modi voluptatem repellat quam, nihil vel itaque fugit iure.</p>
+      </div>
+
+    </div>
   </div>
 </div>
 @endsection

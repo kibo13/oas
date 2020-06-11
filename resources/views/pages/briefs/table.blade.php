@@ -10,7 +10,7 @@
           <th colspan="4" class="text-center">Параметры гор.воды</th>
           <th colspan="5" class="text-center">Параметры хол.воды</th>
           @if(Auth::user()->roles()->pluck('slug')->contains('oas'))
-          <th scope="col" class="print-hide">Действие</th>
+          <th rowspan="2" class="align-top print-hide">Действие</th>
           @endif
         </tr>
         <tr>
@@ -23,9 +23,6 @@
           <th scope="col" class="bk-line-height text-center">3,4<br><small class="text-muted align-bottom">мкр</small></th>
           <th scope="col" class="bk-line-height text-center">5,6<br><small class="text-muted align-bottom">мкр</small></th>
           <th scope="col" class="bk-line-height text-center">7<br><small class="text-muted align-bottom">мкр</small></th>
-          @if(Auth::user()->roles()->pluck('slug')->contains('oas'))
-          <th scope="col" class="print-hide"></th>
-          @endif
         </tr>
       </thead>
       <tbody>
@@ -33,7 +30,7 @@
         @foreach($briefs as $id => $brief)
         <tr>
           <td>{{ $id+=1 }}</td>
-          <td>{{ date('d.m.Y', strtotime($brief->date_brief)) }}г. <small class="text-muted align-text-top">06:00</small></td>
+          <td>{{ getDMY($brief->date_brief) }}г. <small class="text-muted align-text-top">06:00</small></td>
           <td>{{ $brief->temp }} <small class="text-muted align-top">°C</small></td>
           <td>{{ $brief->pressure }} <small class="text-muted align-top">мм рт.ст.</small></td>
           <td>{{ $brief->hw_pst }}</td>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Job;
 use App\Models\Street;
+use App\Models\Address;
 use App\Models\Organization;
 use Illuminate\Http\Request;
 
@@ -16,8 +17,9 @@ class JobController extends Controller
      */
     public function index()
     {
-        $jobs = Job::paginate(10);
-        return view('pages.jobs.index', compact('jobs'));
+        $streets = Street::get();
+        $jobs = Job::orderBy('date_on', 'DESC')->paginate(10);
+        return view('pages.jobs.index', compact('jobs', 'streets'));
     }
 
     /**
@@ -29,11 +31,11 @@ class JobController extends Controller
     {
         $type_job = config('constants.type_job');
         $type_off = config('constants.type_off');
-        $streets = Street::get();
         $organizations = Organization::get();
+        $addresses = Address::get();
          return view(
             'pages.jobs.form',
-            compact('streets', 'organizations', 'type_job', 'type_off')
+            compact('addresses', 'organizations', 'type_job', 'type_off')
         );
     }
 
@@ -45,7 +47,13 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-        Job::create($request->all());
+        $job = Job::create($request->all());
+
+        // addresses 
+        if ($request->input('addresses')) :
+            $job->addresses()->attach($request->input('addresses'));
+        endif;
+
         return redirect()->route('jobs.index');
     }
 
@@ -58,8 +66,7 @@ class JobController extends Controller
     public function show(Job $job)
     {
         $streets = Street::get();
-        $organizations = Organization::get();
-        return view('pages.jobs.show', compact('job', 'streets', 'organizations'));
+        return view('pages.jobs.show', compact('job', 'streets'));
     }
 
     /**
@@ -72,11 +79,11 @@ class JobController extends Controller
     {
         $type_job = config('constants.type_job');
         $type_off = config('constants.type_off');
-        $streets = Street::get();
         $organizations = Organization::get();
+        $addresses = Address::get();
         return view(
             'pages.jobs.form',
-            compact('job', 'streets', 'organizations', 'type_job', 'type_off')
+            compact('addresses', 'organizations', 'job', 'type_job', 'type_off')
         );
     }
 
@@ -90,6 +97,15 @@ class JobController extends Controller
     public function update(Request $request, Job $job)
     {
         $job->update($request->all());
+
+        // addresses 
+        $job->addresses()->detach();
+        if ($request->input('addresses')) :
+            $job->addresses()->attach($request->input('addresses'));
+        endif;
+
+        $job->save();
+
         return redirect()->route('jobs.index');
     }
 
@@ -101,7 +117,10 @@ class JobController extends Controller
      */
     public function destroy(Job $job)
     {
+        // addresses 
+        $job->addresses()->detach();
         $job->delete();
+
         return redirect()->route('jobs.index');
     }
 }

@@ -23,6 +23,26 @@
 			<div class="bk-form__wrap pb-2" data-info="Общие сведения">
 				<div class="row p-0 m-0">
 
+					<!-- START group period -->
+					<h6 class="w-100 border-bottom mr-3 py-1 pl-0">Дата и время начала работы</h6>
+					<div class="bk-form__date col-sm-auto form-group mb-2 pl-0">
+						<input name="date_on" type="date" class="form-control bk-form__input" value="{{ old('date_on', isset($job) ? $job->date_on : null) }}" required>
+					</div>
+
+					<div class="bk-form__time col-sm-auto form-group mb-2 pl-0">
+						<input name="time_on" type="time" class="form-control bk-form__input" value="{{ old('time_on', isset($job) ? $job->time_on : null) }}" required>
+					</div>
+
+					<h6 class="w-100 border-bottom mr-3 py-1 pl-0">Дата и время окончания работы</h6>
+					<div class="bk-form__date col-sm-auto form-group mb-2 pl-0">
+						<input name="date_off" type="date" class="form-control bk-form__input" value="{{ old('date_off', isset($job) ? $job->date_off : null) }}" required>
+					</div>
+
+					<div class="bk-form__time col-sm-auto form-group mb-2 pl-0">
+						<input name="time_off" type="time" class="form-control bk-form__input" value="{{ old('time_off', isset($job) ? $job->time_off : null) }}" required>
+					</div>
+					<!-- END group period -->
+
 					<!-- START group organizations -->
 					<h6 class="w-100 border-bottom mr-3 py-1 pl-0">Предприятие</h6>
 					<div class="bk-form__select col-sm-auto form-group mb-2 pl-0">
@@ -76,60 +96,7 @@
 							@endforeach
 						</select>
 					</div>
-
 					<!-- END group type_off -->
-
-					<!-- START group period -->
-					<h6 class="w-100 border-bottom mr-3 py-1 pl-0">Дата и время начала работы</h6>
-					<div class="bk-form__date col-sm-auto form-group mb-2 pl-0">
-						<input name="date_on" type="date" class="form-control bk-form__input" value="{{ old('date_on', isset($job) ? $job->date_on : null) }}" required>
-					</div>
-
-					<div class="bk-form__time col-sm-auto form-group mb-2 pl-0">
-						<input name="time_on" type="time" class="form-control bk-form__input" value="{{ old('time_on', isset($job) ? $job->time_on : null) }}" required>
-					</div>
-
-					<h6 class="w-100 border-bottom mr-3 py-1 pl-0">Дата и время окончания работы</h6>
-					<div class="bk-form__date col-sm-auto form-group mb-2 pl-0">
-						<input name="date_off" type="date" class="form-control bk-form__input" value="{{ old('date_off', isset($job) ? $job->date_off : null) }}" required>
-					</div>
-
-					<div class="bk-form__time col-sm-auto form-group mb-2 pl-0">
-						<input name="time_off" type="time" class="form-control bk-form__input" value="{{ old('time_off', isset($job) ? $job->time_off : null) }}" required>
-					</div>
-					<!-- END group period -->
-
-
-					<!-- START group location -->
-					<h6 class="w-100 border-bottom mr-3 py-1 pl-0">Место проведения работы</h6>
-					<div class="col-sm-auto form-group mb-2 pl-0">
-
-						<label for="street" class="bk-form__label mb-0">Улица</label>
-						<select name="street_id" id="street" class="form-control bk-form__input">
-							<option disabled selected>Выберите улицу</option>
-							@foreach($streets as $street)
-							<option value="{{ $street->id }}" @isset($job) @if($job->street_id == $street->id)
-								selected
-								@endif
-								@endisset
-								>
-								{{ ucfirst($street->name) }}
-							</option>
-							@endforeach
-						</select>
-					</div>
-
-					<div class="bk-form__num col-sm-auto form-group mb-2 pl-0">
-						<label for="num_home" class="bk-form__label mb-0">Дом</label>
-						<input id="num_home" min="1" max="150" type="number" class="form-control bk-form__input" name="num_home" required value="{{ old('num_home', isset($job) ? $job->num_home : null) }}">
-					</div>
-
-					<div class="bk-form__num col-sm-auto form-group mb-2 pl-0">
-						<label for="num_corp" class="bk-form__label mb-0">Корпус</label>
-						<input id="num_corp" type="text" class="form-control bk-form__input" name="num_corp" value="{{ old('num_corp', isset($job) ? $job->num_corp : null) }}">
-					</div>
-					<!-- END group location -->
-
 
 					<!-- START group description -->
 					<h6 class="w-100 border-bottom mr-3 py-1 pl-0">Описание работы</h6>
@@ -137,6 +104,25 @@
 						<textarea class="form-control" name="desc" style="height:80px;" placeholder="Введите описание работы">{{ old('desc', isset($job) ? $job->desc : null) }}</textarea>
 					</div>
 					<!-- END group description -->
+
+					<!-- START group addresses -->
+					<h6 class="w-100 border-bottom mr-3 py-1 pl-0">Список адресов</h6>
+					<div id="home-list" class="d-flex flex-wrap pl-2 mr-3" style="height: 250px; overflow-y: auto;">
+
+						@foreach($addresses as $id => $address)
+						<div class="bk-form__address col-sm-auto custom-control custom-checkbox mb-2">
+							<input id="{{ $id }}" name="addresses[]" type="checkbox" class="custom-control-input" value="{{ $address->id }}" @isset($job) @if($job->addresses->where('id', $address->id)->count())
+							checked="checked"
+							@endif
+							@endisset
+							>
+							<label class="custom-control-label bk-form__label--checkbox" for="{{ $id }}">
+								{{ ucfirst($address->street->name) }} {{ ucfirst($address->num_home) }}
+							</label>
+						</div>
+						@endforeach
+					</div>
+					<!-- END group addresses -->
 
 				</div>
 			</div>

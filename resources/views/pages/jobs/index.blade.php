@@ -16,14 +16,18 @@
 		<table class="bk-table table table-bordered">
 			<thead class="thead-light">
 				<tr>
-					<th scope="col">#</th>
-					<th scope="col">Предприятие</th>
-					<th scope="col">Вид работ</th>
-					<th scope="col">Тип откл.</th>
-					<th scope="col">Начало работ</th>
-					<th scope="col">Окончание работ</th>
-					<th scope="col">Адрес</th>
-					<th scope="col">Действие</th>
+					<th rowspan="2" class="align-top">#</th>
+					<th rowspan="2" class="align-top">Вид работ</th>
+					<th rowspan="2" class="align-top">Тип откл.</th>
+					<th colspan="2" class="text-center">Период проведения работ</th>
+					<th rowspan="2" class="align-top">Адреса</th>
+					@if(Auth::user()->roles()->pluck('slug')->contains('oas'))
+					<th rowspan="2" class="align-top print-hide">Действие</th>
+					@endif
+				</tr>
+				<tr>
+					<th scope="col" class="text-center">Начало</th>
+					<th scope="col" class="text-center">Заверш.</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -31,15 +35,31 @@
 				@foreach($jobs as $id => $job)
 				<tr>
 					<td>{{ $id+=1 }}</td>
-					<td>{{ $job->organization->name }}</td>
 					<td>{{ $job->type_job }}</td>
 					<td>{{ $job->type_off }}</td>
-					<td>{{ date('d.m.Y', strtotime($job->date_on)) }}г. <small class="text-muted align-text-top">{{ date('H:i', strtotime($job->time_on)) }}</small></td>
-					<td>{{ date('d.m.Y', strtotime($job->date_off)) }}г. <small class="text-muted align-text-top">{{ date('H:i', strtotime($job->time_off)) }}</small></td>
-					<td class="address">
-						{{ $job->street->name }}
-						{{ $job->num_home }}
-						{{ $job->num_corp }}
+					<td>{{ getDMY($job->date_on) }}г. <small class="text-muted align-text-top">{{ getHI($job->time_on) }}</small></td>
+					<td>{{ getDMY($job->date_off) }}г. <small class="text-muted align-text-top">{{ getHI($job->time_off) }}</small></td>
+					<td>
+
+						@foreach($streets as $street)
+						@if($job->addresses->where('street_id', $street->id)->count())
+						{{ $street->name }}
+						@endif
+
+						@foreach($job->addresses as $address)
+						<small class="bk-text--small text-muted align-top">
+							@if($street->id == $address->street_id)
+							д.{{ $address->num_home }},
+							@endif
+						</small>
+						@endforeach
+
+						@if($job->addresses->where('street_id', $street->id)->count())
+						<br>
+						@endif
+
+						@endforeach
+
 					</td>
 					<td>
 						<div class="d-flex">
@@ -78,7 +98,6 @@
 
 						</div>
 					</td>
-
 				</tr>
 				@endforeach
 

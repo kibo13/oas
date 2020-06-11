@@ -5,7 +5,7 @@
 
   <h4 class="mb-3">
     Статус по заявке №{{ $bid->id }}<br>
-    <small class="bk-text text-muted">от {{ date('d.m.Y', strtotime($bid->date_in)) }}г. <span class="bk-text--small align-text-top">{{ date('H:i', strtotime($bid->time_in)) }}</span></small>
+    <small class="bk-text text-muted">от {{ getDMY($bid->date_in) }}г. <span class="bk-text--small align-text-top">{{ getHI($bid->time_in) }}</span></small>
   </h4>
 
   <div class="row p-0 m-0">
