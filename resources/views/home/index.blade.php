@@ -16,15 +16,15 @@
             {{ $street->name }}
             @endif
 
-            @foreach($job->addresses as $address)
-            <small class="bk-text--small text-muted align-top">
-              @if($street->id == $address->street_id)
-              д.{{ $address->num_home }},
-              @endif
-            </small>
-            @endforeach
 
-            @endforeach.
+            @foreach($job->addresses as $key => $address)
+            @if($street->id == $address->street_id)
+            <small class="bk-text--small text-muted align-top">
+              д.{{ $address->num_home }}
+            </small>
+            @endif
+            @endforeach
+            @endforeach
           </p>
           <p class="card-text">
             <small class="font-weight-bold">Предприятие: </small>
@@ -44,7 +44,6 @@
 
       {{ $jobs->links() }}
     </div>
-
   </div>
 </div>
 @endsection

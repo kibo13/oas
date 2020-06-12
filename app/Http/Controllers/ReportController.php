@@ -9,20 +9,25 @@ use PhpOffice\PhpWord\TemplateProcessor;
 
 class ReportController extends Controller
 {
-    public function jobToReport(Job $job)
+    public function index()
     {
-        $addresses = null; 
+        return view('pages.reports.index');
+    }
+
+    // test report for job 
+    public function job(Job $job)
+    {
+        $addresses = null;
         $streets = Street::get();
 
         foreach ($streets as $street) {
-            if($job->addresses->where('street_id', $street->id)->count())
-            {
+            if ($job->addresses->where('street_id', $street->id)->count()) {
                 $addresses .= $street->name;
             }
 
             foreach ($job->addresses as $address) {
                 if ($street->id == $address->street->id) {
-                    $addresses .= ' д.'. $address->num_home.',';
+                    $addresses .= ' д.' . $address->num_home . ',';
                 }
             }
 
@@ -42,7 +47,7 @@ class ReportController extends Controller
         $templateProcessor->setValue('date_off', $job->date_off);
         $templateProcessor->setValue('time_off', $job->time_off);
         $templateProcessor->setValue('desc', $job->desc);
-        $fileName = 'Сведения по работе №' . $job->id . ' от ' . $job->date_on; 
+        $fileName = 'Сведения по работе №' . $job->id . ' от ' . $job->date_on;
         $templateProcessor->saveAs($fileName . '.docx');
 
         return response()

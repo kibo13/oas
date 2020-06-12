@@ -74629,11 +74629,9 @@ __webpack_require__(/*! ./includes/navbar */ "./resources/js/custom/includes/nav
 __webpack_require__(/*! ./includes/modal */ "./resources/js/custom/includes/modal.js"); // pages 
 
 
-__webpack_require__(/*! ./pages/plot */ "./resources/js/custom/pages/plot.js");
-
 __webpack_require__(/*! ./pages/bid */ "./resources/js/custom/pages/bid.js");
 
-__webpack_require__(/*! ./pages/log */ "./resources/js/custom/pages/log.js");
+__webpack_require__(/*! ./pages/report */ "./resources/js/custom/pages/report.js");
 
 __webpack_require__(/*! ./pages/brief */ "./resources/js/custom/pages/brief.js");
 
@@ -74677,78 +74675,18 @@ $(document).ready(function () {
 
 /***/ }),
 
-/***/ "./resources/js/custom/pages/log.js":
-/*!******************************************!*\
-  !*** ./resources/js/custom/pages/log.js ***!
-  \******************************************/
+/***/ "./resources/js/custom/pages/report.js":
+/*!*********************************************!*\
+  !*** ./resources/js/custom/pages/report.js ***!
+  \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-$(document).ready(function () {// print receiver
-  // $
-  // $("#bid-type").on("change", e => {
-  //     $("#defect_id").empty();
-  //     var type_id = $(e.target).val();
-  //     $.ajax({
-  //         url: "/data/defects",
-  //         method: "GET"
-  //     }).done(function(defects) {
-  //         $("#defect_id").append(
-  //             `<option disabled selected>Выберите неисправность</option>`
-  //         );
-  //         for (let defect of defects) {
-  //             if (defect.type_id == type_id) {
-  //                 $("#defect_id").append(
-  //                     `<option value="${defect.id}">${defect.desc}</option>`
-  //                 );
-  //             }
-  //         }
-  //     });
-  // });
-});
-
-/***/ }),
-
-/***/ "./resources/js/custom/pages/plot.js":
-/*!*******************************************!*\
-  !*** ./resources/js/custom/pages/plot.js ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-$(document).ready(function () {
-  // print defect depending on type
-  $('#plot-street').on('change', function (e) {// const elem = $('#home-list');
-    // const street_id = $(e.target).val();
-    // elem.empty();
-    // $.ajax({
-    // 	url: '/data/addresses',
-    // 	method: 'GET',
-    // }).done(addresses => {
-    // 	let temp = addresses.sort((a, b) => a.num_home - b.num_home);
-    // 	for (let address of temp) {
-    // 		if (address.street_id == street_id) {
-    // 			elem.append(`
-    // 				<div class="bk-form__num col-sm-auto custom-control custom-checkbox mb-2">
-    // 					<input 
-    // 						id="${address.id}"
-    // 						name="addresses[]"
-    // 						type="checkbox"
-    // 						class="custom-control-input" 
-    // 						value="${address.num_home}"
-    // 					>
-    // 					<label 
-    // 						class="custom-control-label bk-form__label--checkbox" 
-    // 						for="${address.id}"
-    // 					>
-    // 						д.${address.num_home}
-    // 					</label>
-    // 				</div>
-    // 			`);
-    // 		}
-    // 	}
-    // })
-  });
+$(document).ready(function () {// if ($('input[name="report"]').is(":checked")) {
+  //     alert("Включен");
+  // } else {
+  //     alert("Выключен");
+  // }
 });
 
 /***/ }),

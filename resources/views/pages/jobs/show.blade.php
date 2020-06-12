@@ -81,7 +81,7 @@
 		</table>
 	</div>
 
-	<a href="{{ route('jobs.report', $job) }}" class="btn btn-outline-primary">Отчет</a>
+	<a href="{{ route('report.job', $job) }}" class="btn btn-outline-primary">Отчет</a>
 	<a href="{{ route('jobs.index') }}" class="btn btn-outline-secondary">Назад</a>
 
 
