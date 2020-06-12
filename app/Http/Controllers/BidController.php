@@ -19,10 +19,18 @@ class BidController extends Controller
      */
     public function index()
     {
-        // getRole - custom fn from Helpers
-        $user_id = getRole();
-        $bids = Bid::paginate(10);
-        return view('pages.bids.index', compact('bids', 'user_id'));
+        // getBranch - custom fn from Helpers
+        $branch = getBranch();
+
+        if ($branch >= 1 || $branch <= 5) {
+            $bids = Bid::where('branch_id', $branch)->paginate(10);
+        } 
+
+        if ($branch == 9) {
+            $bids = Bid::paginate(10);
+        }
+        
+        return view('pages.bids.index', compact('bids'));
     }
 
     /**
@@ -34,8 +42,8 @@ class BidController extends Controller
     {
         $types = Type::get();
 
-        // getRole - custom fn from Helpers
-        $user_id = getRole();
+        // getBranch - custom fn from Helpers
+        $user_id = getBranch();
         $branch = Branch::where('id', $user_id)->first();
         $streets = Address::whereHas('plots', function($q) use($user_id) {
             $q->where('branch_id', '=', $user_id);
@@ -85,8 +93,8 @@ class BidController extends Controller
     public function edit(Request $request, Bid $bid)
     {
         $types = Type::get();
-        // getRole - custom fn from Helpers
-        $user_id = getRole();
+        // getBranch - custom fn from Helpers
+        $user_id = getBranch();
         $branch = Branch::where('id', $user_id)->first();
         $streets = Address::whereHas('plots', function ($q) use ($user_id) {
             $q->where('branch_id', '=', $user_id);

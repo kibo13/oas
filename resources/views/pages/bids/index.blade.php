@@ -16,6 +16,7 @@
 		<table class="bk-table table table-bordered">
 			<thead class="thead-light">
 				<tr>
+					<th scope="col">#</th>
 					<th scope="col">Участок</th>
 					<th scope="col">Адрес</th>
 					<th scope="col">Поступила</th>
@@ -27,8 +28,8 @@
 			</thead>
 			<tbody>
 				@foreach($bids as $id => $bid)
-				@if($bid->branch->id == $user_id || $user_id == 9)
 				<tr>
+					<td>{{ $id+=1 }}</td>
 					<td>{{ $bid->branch->name }}</td>
 					<td>{{ $bid->street->name }} {{ $bid->num_home }} - {{ $bid->num_flat }} </td>
 					<td>{{ getDMY($bid->date_in) }}г. <small class="text-muted align-text-top">{{ getHI($bid->time_in) }}</small></td>
@@ -80,7 +81,6 @@
 					</td>
 
 				</tr>
-				@endif
 				@endforeach
 
 			</tbody>

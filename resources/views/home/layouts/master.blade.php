@@ -22,7 +22,7 @@
 </head>
 
 <body>
-	<div class="wrapper d-flex flex-column" style="height: 100vh;">
+	<div class="wrapper d-flex flex-column">
 		
 		@include('home.header')
 		<!-- /.sidebar -->
