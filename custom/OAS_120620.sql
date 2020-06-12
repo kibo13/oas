@@ -11,11 +11,94 @@
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 11/06/2020 12:55:30
+ Date: 12/06/2020 20:46:31
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for address_job
+-- ----------------------------
+DROP TABLE IF EXISTS `address_job`;
+CREATE TABLE `address_job`  (
+  `address_id` bigint(20) UNSIGNED NOT NULL,
+  `job_id` bigint(20) UNSIGNED NOT NULL,
+  INDEX `address_job_address_id_foreign`(`address_id`) USING BTREE,
+  INDEX `address_job_job_id_foreign`(`job_id`) USING BTREE,
+  CONSTRAINT `address_job_address_id_foreign` FOREIGN KEY (`address_id`) REFERENCES `addresses` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
+  CONSTRAINT `address_job_job_id_foreign` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of address_job
+-- ----------------------------
+INSERT INTO `address_job` VALUES (2, 9);
+INSERT INTO `address_job` VALUES (3, 9);
+INSERT INTO `address_job` VALUES (4, 9);
+INSERT INTO `address_job` VALUES (5, 9);
+INSERT INTO `address_job` VALUES (153, 8);
+INSERT INTO `address_job` VALUES (154, 8);
+INSERT INTO `address_job` VALUES (155, 8);
+INSERT INTO `address_job` VALUES (170, 8);
+INSERT INTO `address_job` VALUES (175, 8);
+INSERT INTO `address_job` VALUES (90, 10);
+INSERT INTO `address_job` VALUES (91, 10);
+INSERT INTO `address_job` VALUES (92, 10);
+INSERT INTO `address_job` VALUES (93, 10);
+INSERT INTO `address_job` VALUES (94, 10);
+INSERT INTO `address_job` VALUES (95, 10);
+INSERT INTO `address_job` VALUES (166, 15);
+INSERT INTO `address_job` VALUES (167, 15);
+INSERT INTO `address_job` VALUES (168, 15);
+INSERT INTO `address_job` VALUES (252, 14);
+INSERT INTO `address_job` VALUES (253, 14);
+INSERT INTO `address_job` VALUES (254, 14);
+INSERT INTO `address_job` VALUES (255, 14);
+INSERT INTO `address_job` VALUES (141, 13);
+INSERT INTO `address_job` VALUES (142, 13);
+INSERT INTO `address_job` VALUES (143, 13);
+INSERT INTO `address_job` VALUES (144, 13);
+INSERT INTO `address_job` VALUES (145, 13);
+INSERT INTO `address_job` VALUES (249, 12);
+INSERT INTO `address_job` VALUES (250, 12);
+INSERT INTO `address_job` VALUES (251, 12);
+INSERT INTO `address_job` VALUES (2, 11);
+INSERT INTO `address_job` VALUES (3, 11);
+INSERT INTO `address_job` VALUES (7, 11);
+INSERT INTO `address_job` VALUES (8, 11);
+INSERT INTO `address_job` VALUES (13, 11);
+INSERT INTO `address_job` VALUES (327, 7);
+INSERT INTO `address_job` VALUES (328, 7);
+INSERT INTO `address_job` VALUES (329, 7);
+INSERT INTO `address_job` VALUES (330, 7);
+INSERT INTO `address_job` VALUES (292, 6);
+INSERT INTO `address_job` VALUES (293, 6);
+INSERT INTO `address_job` VALUES (294, 6);
+INSERT INTO `address_job` VALUES (295, 6);
+INSERT INTO `address_job` VALUES (296, 6);
+INSERT INTO `address_job` VALUES (297, 6);
+INSERT INTO `address_job` VALUES (319, 5);
+INSERT INTO `address_job` VALUES (320, 5);
+INSERT INTO `address_job` VALUES (323, 5);
+INSERT INTO `address_job` VALUES (325, 5);
+INSERT INTO `address_job` VALUES (152, 4);
+INSERT INTO `address_job` VALUES (153, 4);
+INSERT INTO `address_job` VALUES (154, 4);
+INSERT INTO `address_job` VALUES (155, 4);
+INSERT INTO `address_job` VALUES (156, 4);
+INSERT INTO `address_job` VALUES (157, 4);
+INSERT INTO `address_job` VALUES (226, 3);
+INSERT INTO `address_job` VALUES (227, 3);
+INSERT INTO `address_job` VALUES (228, 3);
+INSERT INTO `address_job` VALUES (229, 3);
+INSERT INTO `address_job` VALUES (285, 2);
+INSERT INTO `address_job` VALUES (286, 2);
+INSERT INTO `address_job` VALUES (287, 2);
+INSERT INTO `address_job` VALUES (322, 1);
+INSERT INTO `address_job` VALUES (323, 1);
+INSERT INTO `address_job` VALUES (324, 1);
+INSERT INTO `address_job` VALUES (325, 1);
 
 -- ----------------------------
 -- Table structure for address_plot
@@ -1129,7 +1212,7 @@ CREATE TABLE `bids`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   `desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of bids
@@ -1139,6 +1222,7 @@ INSERT INTO `bids` VALUES (16, 1, 5, '2', 44, '2020-06-04', '13:14:00', 'Арб�
 INSERT INTO `bids` VALUES (17, 9, 2, '43', 43, '2020-05-14', '11:46:00', 'Колчанов', '5-55-55', 1, '2020-06-11 05:46:32', '2020-06-11 05:46:32', 'Выбивает автомат');
 INSERT INTO `bids` VALUES (19, 2, 7, '30', 16, '2020-06-03', '12:02:00', 'Раков', '7-05-11', 1, '2020-06-11 06:03:00', '2020-06-11 06:03:00', 'Проблема с электрикой');
 INSERT INTO `bids` VALUES (20, 3, 24, '1', 51, '2020-06-05', '12:06:00', 'Утегенов', '7-44-33', 2, '2020-06-11 06:07:03', '2020-06-11 06:07:03', 'Проблема с водопроводом');
+INSERT INTO `bids` VALUES (21, 3, 4, '15', 36, '2020-06-08', '09:33:00', 'Громов', '7-42-56', 1, '2020-06-12 15:30:44', '2020-06-12 15:32:45', 'Выбивает автомат');
 
 -- ----------------------------
 -- Table structure for branches
@@ -1287,27 +1371,36 @@ DROP TABLE IF EXISTS `jobs`;
 CREATE TABLE `jobs`  (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `organization_id` bigint(20) UNSIGNED NOT NULL,
-  `street_id` bigint(20) UNSIGNED NOT NULL,
   `type_job` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `type_off` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
   `date_on` date NOT NULL,
   `date_off` date NOT NULL,
-  `num_home` int(11) NOT NULL,
-  `num_corp` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   `time_on` time(0) NULL DEFAULT NULL,
   `time_off` time(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of jobs
 -- ----------------------------
-INSERT INTO `jobs` VALUES (5, 2, 4, 'Плановая', 'Холодная вода', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', '2019-08-10', '2019-08-10', 11, NULL, '2020-05-27 10:21:24', '2020-05-27 10:23:03', '10:00:00', '14:00:00');
-INSERT INTO `jobs` VALUES (6, 2, 19, 'Плановая', 'Холодная вода', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', '2020-03-11', '2020-03-11', 9, NULL, '2020-05-27 10:22:21', '2020-05-29 20:00:53', '15:05:00', '17:43:00');
-INSERT INTO `jobs` VALUES (7, 2, 29, 'Аварийная', 'Холодная вода', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', '2020-04-15', '2020-04-15', 7, NULL, '2020-05-27 10:22:55', '2020-05-27 10:22:55', '10:30:00', '12:00:00');
+INSERT INTO `jobs` VALUES (1, 1, 'Плановая', 'Электричество', 'техническое обслуживание на ТП', '2020-06-04', '2020-06-04', NULL, NULL, '09:00:00', '12:30:00');
+INSERT INTO `jobs` VALUES (2, 1, 'Плановая', 'Электричество', 'техническое обслуживание на ТП', '2020-06-05', '2020-06-05', NULL, NULL, '09:00:00', '12:30:00');
+INSERT INTO `jobs` VALUES (3, 1, 'Плановая', 'Электричество', 'техническое обслуживание на ТП', '2020-06-06', '2020-06-06', NULL, NULL, '09:00:00', '12:30:00');
+INSERT INTO `jobs` VALUES (4, 1, 'Плановая', 'Электричество', 'техническое обслуживание на ТП', '2020-06-07', '2020-06-07', NULL, NULL, '09:00:00', '12:30:00');
+INSERT INTO `jobs` VALUES (5, 1, 'Плановая', 'Электричество', 'техническое обслуживание на ТП', '2020-06-08', '2020-06-08', NULL, NULL, '09:00:00', '12:30:00');
+INSERT INTO `jobs` VALUES (6, 1, 'Аварийная', 'Электричество', 'ремонтно-восстановительные работы', '2020-06-09', '2020-06-09', NULL, NULL, '10:00:00', '11:30:00');
+INSERT INTO `jobs` VALUES (7, 1, 'Плановая', 'Электричество', 'техническое обслуживание на ТП', '2020-06-10', '2020-06-10', NULL, NULL, '09:00:00', '12:30:00');
+INSERT INTO `jobs` VALUES (8, 1, 'Плановая', 'Электричество', 'техническое обслуживание на ТП-55', '2020-06-10', '2020-06-10', '2020-06-11 20:36:08', '2020-06-12 07:50:34', '10:00:00', '13:00:00');
+INSERT INTO `jobs` VALUES (9, 2, 'Плановая', 'Холодная вода', 'дезинфекция распределительной сети', '2020-06-11', '2020-06-11', '2020-06-11 21:49:45', '2020-06-12 07:50:01', '09:30:00', '14:00:00');
+INSERT INTO `jobs` VALUES (10, 1, 'Аварийная', 'Электричество', 'повреждение кабельной линии', '2020-06-11', '2020-06-11', '2020-06-12 08:06:38', '2020-06-12 08:06:38', '11:10:00', '15:00:00');
+INSERT INTO `jobs` VALUES (11, 1, 'Плановая', 'Электричество', 'техническое обслуживание на ТП', '2020-06-11', '2020-06-11', NULL, NULL, '09:00:00', '12:30:00');
+INSERT INTO `jobs` VALUES (12, 1, 'Плановая', 'Электричество', 'техническое обслуживание на ТП', '2020-06-12', '2020-06-12', NULL, NULL, '09:00:00', '12:30:00');
+INSERT INTO `jobs` VALUES (13, 1, 'Плановая', 'Электричество', 'техническое обслуживание на ТП', '2020-06-13', '2020-06-13', NULL, NULL, '09:00:00', '12:30:00');
+INSERT INTO `jobs` VALUES (14, 1, 'Плановая', 'Электричество', 'техническое обслуживание на ТП', '2020-06-14', '2020-06-14', NULL, NULL, '09:00:00', '12:30:00');
+INSERT INTO `jobs` VALUES (15, 1, 'Аварийная', 'Электричество', 'ремонтно-восстановительные работы', '2020-06-15', '2020-06-15', NULL, NULL, '10:00:00', '11:30:00');
 
 -- ----------------------------
 -- Table structure for logs
@@ -1354,7 +1447,7 @@ CREATE TABLE `migrations`  (
   `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 73 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 75 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of migrations
@@ -1383,6 +1476,8 @@ INSERT INTO `migrations` VALUES (58, '2020_06_04_065722_create_plots_table', 11)
 INSERT INTO `migrations` VALUES (59, '2020_06_04_070402_create_address_plot_table', 11);
 INSERT INTO `migrations` VALUES (70, '2020_06_08_164737_alter_table_bids', 12);
 INSERT INTO `migrations` VALUES (71, '2020_06_08_165210_alter_table_logs', 12);
+INSERT INTO `migrations` VALUES (73, '2020_06_11_194944_update_table_jobs', 13);
+INSERT INTO `migrations` VALUES (74, '2020_06_11_200430_create_address_job_table', 14);
 
 -- ----------------------------
 -- Table structure for organizations
@@ -1545,6 +1640,7 @@ INSERT INTO `role_user` VALUES (14, 32);
 INSERT INTO `role_user` VALUES (3, 33);
 INSERT INTO `role_user` VALUES (13, 33);
 INSERT INTO `role_user` VALUES (14, 33);
+INSERT INTO `role_user` VALUES (15, 34);
 
 -- ----------------------------
 -- Table structure for roles
@@ -1557,7 +1653,7 @@ CREATE TABLE `roles`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of roles
@@ -1574,6 +1670,7 @@ INSERT INTO `roles` VALUES (11, 'ЖЭУ-3', 'zheu3', NULL, NULL);
 INSERT INTO `roles` VALUES (12, 'ЖЭУ-4', 'zheu4', NULL, NULL);
 INSERT INTO `roles` VALUES (13, 'ЖЭУ-5', 'zheu5', NULL, NULL);
 INSERT INTO `roles` VALUES (14, 'Справочник', 'info', NULL, NULL);
+INSERT INTO `roles` VALUES (15, 'Пользователь', 'user', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for streets
@@ -1662,7 +1759,7 @@ CREATE TABLE `users`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
@@ -1679,6 +1776,7 @@ INSERT INTO `users` VALUES (29, 'Платонов', 'platonov_zheu2@oas.ru', NUL
 INSERT INTO `users` VALUES (31, 'Шукиров', 'shukirov_zheu3@oas.ru', NULL, '$2y$10$bxbTtrYjKgVCR8ofgsQyN.6BkliqTyeclBOLmvkmv044UdQpvZZQu', NULL, '2020-06-11 06:05:05', '2020-06-11 06:05:05');
 INSERT INTO `users` VALUES (32, 'Уайсов', 'yaisov_zheu4@oas.ru', NULL, '$2y$10$nrc4e/LteDUAtceODP9i6eL0KLCdY6Oy05hTn38WqzqND/w2DuI0G', NULL, '2020-06-11 06:08:37', '2020-06-11 06:08:37');
 INSERT INTO `users` VALUES (33, 'Ромашкин', 'romashka_zheu5@oas.ru', NULL, '$2y$10$79rj1qA6d37i5NfIHI1p.eNGDlzsbzE4ugO6miKc8xZuz.E9gAOnu', NULL, '2020-06-11 06:10:03', '2020-06-11 06:10:03');
+INSERT INTO `users` VALUES (34, 'Смолин', 'user@oas.ru', NULL, '$2y$10$oSr.YLfCXshU0GidYRqeDO3P3HB/wn/boKEBR6tAgNoCsZvYkpwwS', NULL, '2020-06-12 15:44:28', '2020-06-12 15:44:47');
 
 -- ----------------------------
 -- Table structure for workers

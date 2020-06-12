@@ -14,6 +14,7 @@ function getBranch()
   $why->contains('hh')    ? $branch_id = 9 : '';
   $why->contains('audit') ? $branch_id = 9 : '';
   $why->contains('pts')   ? $branch_id = 9 : '';
+  $why->contains('user')  ? $branch_id = 9 : '';
 
   return $branch_id;
 }

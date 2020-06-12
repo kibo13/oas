@@ -21,9 +21,7 @@
 					<th rowspan="2" class="align-top">Тип откл.</th>
 					<th colspan="2" class="text-center">Период проведения работ</th>
 					<th rowspan="2" class="align-top">Адреса</th>
-					@if(Auth::user()->roles()->pluck('slug')->contains('oas'))
 					<th rowspan="2" class="align-top print-hide">Действие</th>
-					@endif
 				</tr>
 				<tr>
 					<th scope="col" class="text-center">Начало</th>
