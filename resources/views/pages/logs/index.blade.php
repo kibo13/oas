@@ -48,7 +48,10 @@
 
           <td>{{ $log->defect->desc }}</td>
           <td>{{ $log->solution }}</td>
-          <td>{{ $log->receiver }}</td>
+          <td>
+            {{ $log->receiver }}
+            <small class="text-muted align-top">{{ $log->plot }}</small>
+          </td>
           @if(Auth::user()->roles()->pluck('slug')->contains('disp'))
           <td>
             <div class="d-flex">

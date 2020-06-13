@@ -111,6 +111,10 @@
         @endif
         <!-- END group home_crane -->
 
+        <!-- START group plot -->
+        <input type="hidden" name="plot" value="{{ $plot->name }}">
+        <!-- END group plot -->
+
         <!-- START group receiver -->
         <input type="hidden" name="receiver" value="{{ $user_sign }}">
         <!-- END group receiver -->
@@ -125,14 +129,11 @@
           <select name="defect_id" class="form-control bk-form__input">
             <option disabled selected>Выберите вид неисправности</option>
             @foreach($defects as $defect)
-            <option 
-              value="{{ $defect->id }}"
-              @isset($log) 
-                @if($log->defect_id == $defect->id)
-								  selected
-								@endif
+            <option value="{{ $defect->id }}" @isset($log) @if($log->defect_id == $defect->id)
+              selected
+              @endif
               @endisset
-            >
+              >
               {{ ucfirst($defect->desc) }}
             </option>
             @endforeach

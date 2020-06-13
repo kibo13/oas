@@ -77,6 +77,10 @@
         @endif
         <!-- END group home_crane -->
 
+        <!-- START group plot -->
+        <input type="hidden" name="plot" value="{{ $plot->name }}">
+        <!-- END group plot -->
+
         <!-- START group receiver -->
         <input type="hidden" name="receiver" value="{{ $user_sign }}">
         <!-- END group receiver -->

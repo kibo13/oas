@@ -21,6 +21,7 @@ class Log extends Model
         'crane_cw',
         'crane_h',
         'receiver',
+        'plot',
         'type_id'
     ];
 

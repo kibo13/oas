@@ -76,11 +76,14 @@ class BidController extends Controller
     public function show(Bid $bid)
     {
         $type_log = config('constants.type_log');
+        // getBranch - custom fn from Helpers
+        $branch = getBranch();
+        $plot = Branch::where('id', $branch)->first();
         $user_sign = Auth::user()->name;
         $defects = Defect::where('type_id', $bid->type->id)->get();
         return view(
             'pages.bids.show', 
-            compact('bid', 'type_log', 'defects', 'user_sign')
+            compact('bid', 'type_log', 'defects', 'user_sign', 'plot')
         );
     }
 

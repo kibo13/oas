@@ -74682,11 +74682,84 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-$(document).ready(function () {// if ($('input[name="report"]').is(":checked")) {
-  //     alert("Включен");
-  // } else {
-  //     alert("Выключен");
-  // }
+function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+$(document).ready(function () {
+  // forms
+  var forms = document.querySelectorAll(".bk-repo");
+  var radio = document.querySelectorAll(".bk-radio"); // repo buttons
+
+  var repo2 = document.getElementById("repo2");
+  var repo3 = document.getElementById("repo3");
+  var repo4 = document.getElementById("repo4");
+  var repo5 = document.getElementById("repo5"); // added events for radiobuttons
+
+  var _iterator = _createForOfIteratorHelper(radio),
+      _step;
+
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var rad = _step.value;
+      rad.addEventListener("click", function (e) {
+        var ElemID = e.target.id;
+
+        var _iterator2 = _createForOfIteratorHelper(forms),
+            _step2;
+
+        try {
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var form = _step2.value;
+            var attr = form.dataset.id;
+
+            if (attr == ElemID) {
+              form.classList.remove("bk-hidden");
+            } else {
+              form.classList.add("bk-hidden");
+            }
+          }
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
+        }
+      });
+    } // actions for report #1
+
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+
+  var r1_from = document.getElementById("repo1_from");
+  var r1_to = document.getElementById("repo1_to"); // plus day
+
+  r1_from.onchange = function (e) {
+    var date = new Date(r1_from.value);
+    date.setDate(date.getDate() + 1);
+    r1_to.valueAsDate = date;
+  }; // minus day
+
+
+  r1_to.onchange = function (e) {
+    var date = new Date(r1_to.value);
+    date.setDate(date.getDate() - 1);
+    r1_from.valueAsDate = date;
+  }; // compare dates
+
+
+  function compareDates(d1, d2) {
+    var from = new Date(d1);
+    var to = new Date(d2);
+
+    if (from > to) {
+      alert("Дата начала периода должно быть датой меньше дате конца периода");
+    }
+  }
 });
 
 /***/ }),

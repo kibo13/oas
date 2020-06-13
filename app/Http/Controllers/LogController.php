@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Log;
 use App\Models\Defect;
+use App\Models\Branch;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -60,12 +61,15 @@ class LogController extends Controller
     public function edit(Log $log)
     {
         $type_log = config('constants.type_log');
+        // getBranch - custom fn from Helpers
+        $branch = getBranch();
+        $plot = Branch::where('id', $branch)->first();
         $user_sign = Auth::user()->name;
         $defects = Defect::where('type_id', $log->type_id)->get();
         
         return view(
             'pages.logs.edit',
-            compact('log', 'type_log', 'user_sign', 'defects')
+            compact('log', 'type_log', 'user_sign', 'defects', 'plot')
         );
     }
 

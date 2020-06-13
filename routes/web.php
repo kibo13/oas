@@ -84,6 +84,7 @@ Route::middleware(['auth'])->group(function() {
         'prefix' => 'report'
     ], function () {
         Route::get('/', 'ReportController@index')->name('report.index');
+        Route::get('/brief', 'ReportController@brief')->name('report.brief');
         Route::get('/{job}', 'ReportController@job')->name('report.job');
     });
 });

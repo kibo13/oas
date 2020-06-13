@@ -11501,13 +11501,13 @@ a[data-toggle=collapse] {
 
 .bk-form__datepicker {
   position: relative;
-  width: 140px;
+  width: 155px;
   display: flex;
   flex-direction: column;
 }
 
 .bk-form__datepicker--field {
-  padding-left: 10px;
+  padding-left: 10px !important;
   height: 100%;
   background: transparent;
   outline: none;
