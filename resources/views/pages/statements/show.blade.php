@@ -99,6 +99,14 @@
       @endif
       <!-- END group home_crane -->
 
+      <!-- START group plot -->
+      <input type="hidden" name="plot" value="{{ $branch->name }}">
+      <!-- END group plot -->
+
+      <!-- START group receiver -->
+      <input type="hidden" name="receiver" value="{{ $user }}">
+      <!-- END group receiver -->
+
       <!-- START group action -->
       <h6 class="w-100 border-bottom mr-3 py-1 pl-0 font-weight-bold">Действие</h6>
       <div class="col-sm-auto form-group mb-2 pl-0">
@@ -120,11 +128,11 @@
       <!-- START group date_action -->
       <h6 class="w-100 border-bottom mr-3 py-1 pl-0 font-weight-bold">Дата и время действия</h6>
       <div class="bk-form__date col-sm-auto form-group mb-2 pl-0">
-        <input name="date_off" type="date" class="form-control bk-form__input" value="{{ old('date_off', isset($statement) ? $statement->date_off : null) }}" required>
+        <input name="date_off" type="date" class="form-control bk-form__input" value="{{ old('date_off', $statement->date_off != null ? $statement->date_off : $statement->date_in) }}" required>
       </div>
 
       <div class="bk-form__time col-sm-auto form-group mb-2 pl-0">
-        <input name="time_off" type="time" class="form-control bk-form__input" value="{{ old('time_off', isset($statement) ? $statement->time_off : null) }}" required>
+        <input name="time_off" type="time" class="form-control bk-form__input" value="{{ old('time_off', $statement->time_off != null ? $statement->time_off : $statement->time_in) }}" required>
       </div>
       <!-- END group date_action -->
 

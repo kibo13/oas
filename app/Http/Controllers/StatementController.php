@@ -77,14 +77,13 @@ class StatementController extends Controller
     public function show(Statement $statement)
     {
         $actions = config('constants.actions');
-        // getBranch - custom fn from Helpers
-        $branch = getBranch();
-        $plot = Branch::where('id', $branch)->first();
-        $user_sign = Auth::user()->name;
+        $user = Auth::user()->name;
+        $branch_id = getBranch();
+        $branch = Branch::where('id', $branch_id)->first();
         $defects = Defect::where('type_id', $statement->type->id)->get();
         return view(
             'pages.statements.show',
-            compact('statement', 'actions', 'defects', 'user_sign', 'plot')
+            compact('statement', 'actions', 'defects', 'user', 'branch')
         );
     }
 

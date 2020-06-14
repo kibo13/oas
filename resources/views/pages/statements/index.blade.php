@@ -24,7 +24,9 @@
           <th scope="col">Неисправность</th>
           <th scope="col">Статус</th>
           <th scope="col">Принял</th>
+          @if(Auth::user()->roles()->pluck('slug')->contains('disp'))
           <th scope="col">Действие</th>
+          @endif
         </tr>
       </thead>
       <tbody>

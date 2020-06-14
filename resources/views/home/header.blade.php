@@ -19,7 +19,7 @@
 
 			@if (Auth::check())
 			<li>
-				<a class="nav-link" href="{{ route('bids.index') }}">Панель управления</a>
+				<a class="nav-link" href="{{ route('statements.index') }}">Панель управления</a>
 			</li>
 			<li class="nav-item dropdown">
 				<a id="navbarDropdown" class="nav-link dropdown-toggle bk-navbar__info pr-3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

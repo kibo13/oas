@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\Street;
 use App\Models\Brief;
-use App\Models\Bid;
+use App\Models\Statement;
+
+use PhpOffice\PhpWord\Element\AbstractContainer;
+use PhpOffice\PhpWord\Element\Table;
+use PhpOffice\PhpWord\Element\Row;
 use PhpOffice\PhpWord\TemplateProcessor;
 
 class ReportController extends Controller
@@ -20,16 +24,48 @@ class ReportController extends Controller
     // report for work of day 
     public function work(Request $request)
     {
+
+        $crane_hw = 0;
+        $crane_cw = 0;
+        $crane_h  = 0;
+
+        $oas_elc = 0;
+        $oas_san = 0;
+
+        $zhe_elc = 0;
+        $zhe_san = 0;
+
+        $done_elc = 0;
+        $done_san = 0;
+
         // date 
         $from = $request->repo1_from;
 
-        // bids 
-        $bids = Bid::get();
+        $statements = Statement::where('date_in', $from)->get();
 
-        // foreach ($bids as $bid) {
-            
-        // }
-        
+       
+
+        foreach ($statements as $stat) {
+
+            $stat->crane_hw == 1 ? $crane_hw++ : $crane_cw;
+            $stat->crane_cw == 1 ? $crane_cw++ : $crane_cw;
+            $stat->crane_h  == 1 ? $crane_h++  : $crane_h;
+
+            // if oas receive statements 
+            if ($stat->branch->id == 9) {
+                $stat->type->id == 1 ? $oas_elc++ : $oas_san++;
+            } 
+            // if zheu receive statements
+            else {
+                $stat->type->id == 1 ? $zhe_elc++ : $zhe_san++;
+            }
+
+            if ($stat->state == 2 && $stat->branch->id != 9) {
+                $stat->type->id == 1 ? $done_elc++ : $done_san++;
+            }
+
+        }
+         
         // another info 
         $garb = $request['garbage'];
         $fire = $request['fire'];
@@ -38,10 +74,46 @@ class ReportController extends Controller
 
         $templateProcessor = new TemplateProcessor('reports/work.docx');
         $templateProcessor->setValue('date', getDMY($from) . 'г.');
-        $templateProcessor->setValue('garbage',  $garb);
-        $templateProcessor->setValue('fire',     $fire);
-        $templateProcessor->setValue('city',     $city);
-        $templateProcessor->setValue('auto',     $auto);
+
+        $my = new Table();
+        $my->addRow();
+        $my->addCell(150)->addText('Cell A1');
+        $my->addCell(150)->addText('Cell A2');
+        $my->addCell(150)->addText('Cell A3');
+        $my->addRow();
+        $my->addCell(150)->addText('Cell B1');
+        $my->addCell(150)->addText('Cell B2');
+        $my->addCell(150)->addText('Cell B3');
+        $templateProcessor->setComplexBlock('table', $my);
+
+        // 1 
+        $templateProcessor->setValue('crane_hw',  $crane_hw);
+        $templateProcessor->setValue('crane_cw',  $crane_cw);
+        $templateProcessor->setValue('crane_h',   $crane_h);
+
+        // 2
+        // receive 
+        $templateProcessor->setValue('zhe_total', $zhe_elc + $zhe_san);
+        $templateProcessor->setValue('zhe_elc',   $zhe_elc);
+        $templateProcessor->setValue('zhe_san',   $zhe_san);
+        // complete
+        $templateProcessor->setValue('done_total', $done_elc + $done_san);
+        $templateProcessor->setValue('done_elc',   $done_elc);
+        $templateProcessor->setValue('done_san',   $done_san);
+
+        // 3 
+        $templateProcessor->setValue('oas_total', $oas_elc + $oas_san);
+        $templateProcessor->setValue('oas_elc',   $oas_elc);
+        $templateProcessor->setValue('oas_san',   $oas_san);
+
+        // 4 
+        $templateProcessor->setValue('garbage',   $garb);
+        // 5 
+        $templateProcessor->setValue('fire',      $fire);
+        // 6 
+        $templateProcessor->setValue('city',      $city);
+        // 7
+        $templateProcessor->setValue('auto',      $auto);
 
         $fileName = 'Сведения по работ ГУПЖХ на ' . getDMY($from);
         $templateProcessor->saveAs($fileName . '.docx');
@@ -62,32 +134,31 @@ class ReportController extends Controller
         $crane_h  = null;
 
         $from = $request->repo2_from;
-
-        $waters = waters()->where('date_log', '<=', $from);
+        $waters = Statement::where('date_off', '<=', $from)->get();
 
         foreach ($waters as $water) {
             $water->home_hw == 1
-                ? $home_hw .= $water->branch . "<w:br />" . $water->street . ' д.' . $water->num_home . '-' . $water->num_flat . "<w:br />"
+                ? $home_hw .= $water->branch->name . "<w:br />" . $water->street->name . ' д.' . $water->num_home . '-' . $water->num_flat . "<w:br />"
                 : null;
 
             $water->home_cw == 1
-                ? $home_cw .= $water->branch . "<w:br />" . $water->street . ' д.' . $water->num_home . '-' . $water->num_flat . "<w:br />"
+                ? $home_cw .= $water->branch->name . "<w:br />" . $water->street->name . ' д.' . $water->num_home . '-' . $water->num_flat . "<w:br />"
                 : null;
 
             $water->home_h == 1
-                ? $home_h .= $water->branch . "<w:br />" . $water->street . ' д.' . $water->num_home . '-' . $water->num_flat . "<w:br />"
+                ? $home_h .= $water->branch->name . "<w:br />" . $water->street->name . ' д.' . $water->num_home . '-' . $water->num_flat . "<w:br />"
                 : null;
 
             $water->crane_hw == 1
-                ? $crane_hw .= $water->branch . "<w:br />" . $water->street . ' д.' . $water->num_home . '-' . $water->num_flat . "<w:br />"
+                ? $crane_hw .= $water->branch->name . "<w:br />" . $water->street->name . ' д.' . $water->num_home . '-' . $water->num_flat . "<w:br />"
                 : null;
 
             $water->crane_cw == 1
-                ? $crane_cw .= $water->branch . "<w:br />" . $water->street . ' д.' . $water->num_home . '-' . $water->num_flat . "<w:br />"
+                ? $crane_cw .= $water->branch->name . "<w:br />" . $water->street->name . ' д.' . $water->num_home . '-' . $water->num_flat . "<w:br />"
                 : null;
 
             $water->crane_h == 1
-                ? $crane_h .= $water->branch . "<w:br />" . $water->street . ' д.' . $water->num_home . '-' . $water->num_flat . "<w:br />"
+                ? $crane_h .= $water->branch->name . "<w:br />" . $water->street->name . ' д.' . $water->num_home . '-' . $water->num_flat . "<w:br />"
                 : null;
         }
 
