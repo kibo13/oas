@@ -8,13 +8,47 @@ use App\Models\Street;
 use App\Models\Brief;
 use App\Models\Bid;
 use PhpOffice\PhpWord\TemplateProcessor;
-use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
 {
     public function index()
     {
-        return view('pages.reports.index');
+        $reports = config('constants.reports');
+        return view('pages.reports.index', compact('reports'));
+    }
+
+    // report for work of day 
+    public function work(Request $request)
+    {
+        // date 
+        $from = $request->repo1_from;
+
+        // bids 
+        $bids = Bid::get();
+
+        // foreach ($bids as $bid) {
+            
+        // }
+        
+        // another info 
+        $garb = $request['garbage'];
+        $fire = $request['fire'];
+        $city = $request['city'];
+        $auto = $request['auto'];
+
+        $templateProcessor = new TemplateProcessor('reports/work.docx');
+        $templateProcessor->setValue('date', getDMY($from) . 'г.');
+        $templateProcessor->setValue('garbage',  $garb);
+        $templateProcessor->setValue('fire',     $fire);
+        $templateProcessor->setValue('city',     $city);
+        $templateProcessor->setValue('auto',     $auto);
+
+        $fileName = 'Сведения по работ ГУПЖХ на ' . getDMY($from);
+        $templateProcessor->saveAs($fileName . '.docx');
+
+        return response()
+            ->download($fileName . '.docx')
+            ->deleteFileAfterSend(true);
     }
 
     // report for brief
@@ -25,15 +59,14 @@ class ReportController extends Controller
         $home_h   = null;
         $crane_hw = null;
         $crane_cw = null;
-        $crane_h  = null; 
+        $crane_h  = null;
 
-        $from = $request->repo1_from;
-        // $to = $request->repo1_to;
+        $from = $request->repo2_from;
 
         $waters = waters()->where('date_log', '<=', $from);
 
         foreach ($waters as $water) {
-            $water->home_hw == 1 
+            $water->home_hw == 1
                 ? $home_hw .= $water->branch . "<w:br />" . $water->street . ' д.' . $water->num_home . '-' . $water->num_flat . "<w:br />"
                 : null;
 

@@ -36,6 +36,7 @@ Route::middleware(['auth'])->group(function() {
         'middleware' => 'role:disp'
     ], function () {
         Route::resource('plots', 'PlotController');
+        Route::resource('statements', 'StatementController');
         Route::resource('bids', 'BidController');
         Route::group([
             'prefix' => 'bids'
@@ -73,6 +74,11 @@ Route::middleware(['auth'])->group(function() {
     // role: guest 
     Route::get('bids', 'BidController@index')->name('bids.index');
     Route::get('bids/{bid}', 'BidController@show')->name('bids.show');
+
+    // testing 
+    Route::get('statements', 'StatementController@index')
+            ->name('statements.index');
+
     Route::get('jobs', 'JobController@index')->name('jobs.index');
     Route::get('jobs/{job}', 'JobController@show')->name('jobs.show');
     Route::get('briefs', 'BriefController@index')->name('briefs.index');
@@ -84,6 +90,7 @@ Route::middleware(['auth'])->group(function() {
         'prefix' => 'report'
     ], function () {
         Route::get('/', 'ReportController@index')->name('report.index');
+        Route::get('/work', 'ReportController@work')->name('report.work');
         Route::get('/brief', 'ReportController@brief')->name('report.brief');
         Route::get('/{job}', 'ReportController@job')->name('report.job');
     });

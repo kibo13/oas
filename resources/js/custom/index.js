@@ -5,5 +5,6 @@ require('./includes/modal');
 
 // pages 
 require('./pages/bid');
+require('./pages/statement');
 require("./pages/report");
 require('./pages/brief');

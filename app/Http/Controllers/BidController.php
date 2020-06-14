@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Address;
 use App\Models\Branch;
 use App\Models\Defect;
 use App\Models\Type;
 use App\Models\Bid;
 use Auth;
-use Illuminate\Http\Request;
 
 class BidController extends Controller
 {

@@ -39,7 +39,7 @@ $(document).ready(function () {
 				break;
 			// END namespace "hh"
 
-			// START namespace "disp_zheu" 
+			// START namespace "disp" 
 			case 'plot':
 				$('#bk-delete-form').attr('action', '/plots/' + data_id);
 				break;
@@ -51,9 +51,13 @@ $(document).ready(function () {
 			case 'log':
 				$('#bk-delete-form').attr('action', '/bids/logs/' + data_id);
 				break;
-			// END namespace "disp_zheu"
+			
+			case 'statement':
+				$('#bk-delete-form').attr('action', '/statements/' + data_id);
+				break;
+			// END namespace "disp"
 
-			// START namespace "disp_oas" 
+			// START namespace "oas" 
 			case 'job':
 				$('#bk-delete-form').attr('action', '/jobs/' + data_id);
 				break;
@@ -61,7 +65,7 @@ $(document).ready(function () {
 			case 'brief':
 				$('#bk-delete-form').attr('action', '/briefs/' + data_id);
 				break;
-			// END namespace "disp_oas" 
+			// END namespace "oas" 
 
 			// START namespace "audit" 				
 			case 'promiser':

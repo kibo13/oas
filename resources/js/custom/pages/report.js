@@ -1,18 +1,17 @@
 $(document).ready(function() {
-    // forms
+    // wrapper
+    const wrepo = document.getElementById("repo-wrap");
+
+    // collectiions
     const forms = document.querySelectorAll(".bk-repo");
-    const radio = document.querySelectorAll(".bk-radio");
 
-    // repo buttons
-    const repo2 = document.getElementById("repo2");
-    const repo3 = document.getElementById("repo3");
-    const repo4 = document.getElementById("repo4");
-    const repo5 = document.getElementById("repo5");
+    // repo-menu
+    const rmenu = document.getElementById("repo-menu");
 
-    // added events for radiobuttons
-    for (let rad of radio) {
-        rad.addEventListener("click", e => {
-            let ElemID = e.target.id;
+    if (wrepo) {
+        // added event for repo-menu
+        rmenu.onchange = e => {
+            let ElemID = e.target.options[rmenu.selectedIndex].value;
 
             for (let form of forms) {
                 let attr = form.dataset.id;
@@ -22,36 +21,46 @@ $(document).ready(function() {
                     form.classList.add("bk-hidden");
                 }
             }
-        });
-    }
+        };
 
-    // actions for report #1
-    const r1_from = document.getElementById("repo1_from");
-    const r1_to = document.getElementById("repo1_to");
+        // actions for report #1
+        const repo1_from = document.getElementById("repo1_from");
+        const repo1_to = document.getElementById("repo1_to");
 
-    // plus day
-    r1_from.onchange = e => {
-        var date = new Date(r1_from.value);
-        date.setDate(date.getDate() + 1);
-        r1_to.valueAsDate = date;
-    };
+        repo1_from.onchange = e => plusDay(repo1_from, repo1_to);
+        repo1_to.onchange = e => minusDay(repo1_from, repo1_to);
 
-    // minus day
-    r1_to.onchange = e => {
-        var date = new Date(r1_to.value);
-        date.setDate(date.getDate() - 1);
-        r1_from.valueAsDate = date;
-    };
+        // actions for report #2
+        const repo2_from = document.getElementById("repo2_from");
+        const repo2_to = document.getElementById("repo2_to");
 
-    // compare dates
-    function compareDates(d1, d2) {
-        let from = new Date(d1);
-        let to = new Date(d2);
+        repo2_from.onchange = e => plusDay(repo2_from, repo2_to);
+        repo2_to.onchange = e => minusDay(repo2_from, repo2_to);
 
-        if (from > to) {
-            alert(
-                "Дата начала периода должно быть датой меньше дате конца периода"
-            );
+        // plus day
+        function plusDay(d1, d2) {
+            let date = new Date(d1.value);
+            date.setDate(date.getDate() + 1);
+            d2.valueAsDate = date;
+        }
+
+        // minus day
+        function minusDay(d1, d2) {
+            let date = new Date(d2.value);
+            date.setDate(date.getDate() - 1);
+            d1.valueAsDate = date;
+        }
+
+        // compare dates
+        function compareDates(d1, d2) {
+            let from = new Date(d1);
+            let to = new Date(d2);
+
+            if (from > to) {
+                alert(
+                    "Дата начала периода должно быть датой меньше дате конца периода"
+                );
+            }
         }
     }
 });

@@ -74535,7 +74535,7 @@ $(document).ready(function () {
         $('#bk-delete-form').attr('action', '/positions/' + data_id);
         break;
       // END namespace "hh"
-      // START namespace "disp_zheu" 
+      // START namespace "disp" 
 
       case 'plot':
         $('#bk-delete-form').attr('action', '/plots/' + data_id);
@@ -74548,8 +74548,12 @@ $(document).ready(function () {
       case 'log':
         $('#bk-delete-form').attr('action', '/bids/logs/' + data_id);
         break;
-      // END namespace "disp_zheu"
-      // START namespace "disp_oas" 
+
+      case 'statement':
+        $('#bk-delete-form').attr('action', '/statements/' + data_id);
+        break;
+      // END namespace "disp"
+      // START namespace "oas" 
 
       case 'job':
         $('#bk-delete-form').attr('action', '/jobs/' + data_id);
@@ -74558,7 +74562,7 @@ $(document).ready(function () {
       case 'brief':
         $('#bk-delete-form').attr('action', '/briefs/' + data_id);
         break;
-      // END namespace "disp_oas" 
+      // END namespace "oas" 
       // START namespace "audit" 				
 
       case 'promiser':
@@ -74631,6 +74635,8 @@ __webpack_require__(/*! ./includes/modal */ "./resources/js/custom/includes/moda
 
 __webpack_require__(/*! ./pages/bid */ "./resources/js/custom/pages/bid.js");
 
+__webpack_require__(/*! ./pages/statement */ "./resources/js/custom/pages/statement.js");
+
 __webpack_require__(/*! ./pages/report */ "./resources/js/custom/pages/report.js");
 
 __webpack_require__(/*! ./pages/brief */ "./resources/js/custom/pages/brief.js");
@@ -74689,77 +74695,104 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 $(document).ready(function () {
-  // forms
-  var forms = document.querySelectorAll(".bk-repo");
-  var radio = document.querySelectorAll(".bk-radio"); // repo buttons
+  // wrapper
+  var wrepo = document.getElementById("repo-wrap"); // collectiions
 
-  var repo2 = document.getElementById("repo2");
-  var repo3 = document.getElementById("repo3");
-  var repo4 = document.getElementById("repo4");
-  var repo5 = document.getElementById("repo5"); // added events for radiobuttons
+  var forms = document.querySelectorAll(".bk-repo"); // repo-menu
 
-  var _iterator = _createForOfIteratorHelper(radio),
-      _step;
+  var rmenu = document.getElementById("repo-menu");
 
-  try {
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var rad = _step.value;
-      rad.addEventListener("click", function (e) {
-        var ElemID = e.target.id;
+  if (wrepo) {
+    // plus day
+    var plusDay = function plusDay(d1, d2) {
+      var date = new Date(d1.value);
+      date.setDate(date.getDate() + 1);
+      d2.valueAsDate = date;
+    }; // minus day
 
-        var _iterator2 = _createForOfIteratorHelper(forms),
-            _step2;
 
-        try {
-          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-            var form = _step2.value;
-            var attr = form.dataset.id;
+    var minusDay = function minusDay(d1, d2) {
+      var date = new Date(d2.value);
+      date.setDate(date.getDate() - 1);
+      d1.valueAsDate = date;
+    }; // compare dates
 
-            if (attr == ElemID) {
-              form.classList.remove("bk-hidden");
-            } else {
-              form.classList.add("bk-hidden");
-            }
+
+    var compareDates = function compareDates(d1, d2) {
+      var from = new Date(d1);
+      var to = new Date(d2);
+
+      if (from > to) {
+        alert("Дата начала периода должно быть датой меньше дате конца периода");
+      }
+    };
+
+    // added event for repo-menu
+    rmenu.onchange = function (e) {
+      var ElemID = e.target.options[rmenu.selectedIndex].value;
+
+      var _iterator = _createForOfIteratorHelper(forms),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var form = _step.value;
+          var attr = form.dataset.id;
+
+          if (attr == ElemID) {
+            form.classList.remove("bk-hidden");
+          } else {
+            form.classList.add("bk-hidden");
           }
-        } catch (err) {
-          _iterator2.e(err);
-        } finally {
-          _iterator2.f();
         }
-      });
-    } // actions for report #1
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+    }; // actions for report #1
 
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
+
+    var repo1_from = document.getElementById("repo1_from");
+    var repo1_to = document.getElementById("repo1_to");
+
+    repo1_from.onchange = function (e) {
+      return plusDay(repo1_from, repo1_to);
+    };
+
+    repo1_to.onchange = function (e) {
+      return minusDay(repo1_from, repo1_to);
+    }; // actions for report #2
+
+
+    var repo2_from = document.getElementById("repo2_from");
+    var repo2_to = document.getElementById("repo2_to");
+
+    repo2_from.onchange = function (e) {
+      return plusDay(repo2_from, repo2_to);
+    };
+
+    repo2_to.onchange = function (e) {
+      return minusDay(repo2_from, repo2_to);
+    };
   }
+});
 
-  var r1_from = document.getElementById("repo1_from");
-  var r1_to = document.getElementById("repo1_to"); // plus day
+/***/ }),
 
-  r1_from.onchange = function (e) {
-    var date = new Date(r1_from.value);
-    date.setDate(date.getDate() + 1);
-    r1_to.valueAsDate = date;
-  }; // minus day
+/***/ "./resources/js/custom/pages/statement.js":
+/*!************************************************!*\
+  !*** ./resources/js/custom/pages/statement.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-
-  r1_to.onchange = function (e) {
-    var date = new Date(r1_to.value);
-    date.setDate(date.getDate() - 1);
-    r1_from.valueAsDate = date;
-  }; // compare dates
-
-
-  function compareDates(d1, d2) {
-    var from = new Date(d1);
-    var to = new Date(d2);
-
-    if (from > to) {
-      alert("Дата начала периода должно быть датой меньше дате конца периода");
-    }
-  }
+$(document).ready(function () {
+  // print home depending on street
+  $("#statement-street").on("change", function (e) {
+    var num_home = $("#statement-street option:selected").data("home");
+    $("#statement-home").val(num_home);
+  });
 });
 
 /***/ }),
