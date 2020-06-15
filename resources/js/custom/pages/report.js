@@ -44,6 +44,54 @@ $(document).ready(function() {
 
         repo3_btn.onclick = () => compareDates(repo3_from, repo3_to);
 
+        // actions for report #4
+        const repo4_from = document.getElementById("repo4_from");
+        const repo4_to = document.getElementById("repo4_to");
+        const repo4_btn = document.getElementById("repo4");
+        const repo4_plot = document.getElementById("repo4-plot");
+        const repo4_type = document.getElementById("repo4-type");
+
+        repo4_btn.onclick = () => {
+            // compare dates
+            compareDates(repo4_from, repo4_to);
+
+            // check field plot is empty
+            if (repo4_plot.selectedIndex == 0) {
+                alert("Выберите участок");
+                return false;
+            }
+
+            // check field type is empty
+            if (repo4_type.selectedIndex == 0) {
+                alert("Выберите тип заявки");
+                return false;
+            }
+        };
+
+        // actions for report #5
+        const repo5_from = document.getElementById("repo5_from");
+        const repo5_to = document.getElementById("repo5_to");
+        const repo5_btn = document.getElementById("repo5");
+        const repo5_home = document.getElementById("repo5-home");
+        const repo5_type = document.getElementById("repo5-type");
+
+        // repo5_btn.onclick = () => {
+        //     // compare dates
+        //     compareDates(repo5_from, repo5_to);
+
+        //     // check field plot is empty
+        //     if (repo5_home.selectedIndex == 0) {
+        //         alert("Выберите адрес");
+        //         return false;
+        //     }
+
+        //     // check field type is empty
+        //     if (repo5_type.selectedIndex == 0) {
+        //         alert("Выберите тип заявки");
+        //         return false;
+        //     }
+        // };
+
         // plus day
         function plusDay(d1, d2) {
             let date = new Date(d1.value);

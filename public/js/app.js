@@ -74703,6 +74703,20 @@ $(document).ready(function () {
   var rmenu = document.getElementById("repo-menu");
 
   if (wrepo) {
+    // repo5_btn.onclick = () => {
+    //     // compare dates
+    //     compareDates(repo5_from, repo5_to);
+    //     // check field plot is empty
+    //     if (repo5_home.selectedIndex == 0) {
+    //         alert("Выберите адрес");
+    //         return false;
+    //     }
+    //     // check field type is empty
+    //     if (repo5_type.selectedIndex == 0) {
+    //         alert("Выберите тип заявки");
+    //         return false;
+    //     }
+    // };
     // plus day
     var plusDay = function plusDay(d1, d2) {
       var date = new Date(d1.value);
@@ -74784,7 +74798,37 @@ $(document).ready(function () {
 
     repo3_btn.onclick = function () {
       return compareDates(repo3_from, repo3_to);
-    };
+    }; // actions for report #4
+
+
+    var repo4_from = document.getElementById("repo4_from");
+    var repo4_to = document.getElementById("repo4_to");
+    var repo4_btn = document.getElementById("repo4");
+    var repo4_plot = document.getElementById("repo4-plot");
+    var repo4_type = document.getElementById("repo4-type");
+
+    repo4_btn.onclick = function () {
+      // compare dates
+      compareDates(repo4_from, repo4_to); // check field plot is empty
+
+      if (repo4_plot.selectedIndex == 0) {
+        alert("Выберите участок");
+        return false;
+      } // check field type is empty
+
+
+      if (repo4_type.selectedIndex == 0) {
+        alert("Выберите тип заявки");
+        return false;
+      }
+    }; // actions for report #5
+
+
+    var repo5_from = document.getElementById("repo5_from");
+    var repo5_to = document.getElementById("repo5_to");
+    var repo5_btn = document.getElementById("repo5");
+    var repo5_home = document.getElementById("repo5-home");
+    var repo5_type = document.getElementById("repo5-type");
   }
 });
 
