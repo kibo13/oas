@@ -11532,7 +11532,9 @@ a[data-toggle=collapse] {
   width: 160px;
 }
 
-.bk-form__date {
+.bk-form__date,
+.bk-form__street,
+.bk-form__plot {
   width: 170px;
 }
 
@@ -11735,7 +11737,8 @@ a[data-toggle=collapse] {
   }
 
   .bk-form__select,
-  .bk-form__address {
+  .bk-form__address,
+  .bk-form__plot {
     width: 100%;
   }
 }

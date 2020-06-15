@@ -94,4 +94,11 @@ Route::middleware(['auth'])->group(function() {
         Route::get('/brief', 'ReportController@brief')->name('report.brief');
         Route::get('/{job}', 'ReportController@job')->name('report.job');
     });
+
+    // JSON 
+    Route::group([
+        'prefix' => 'data'
+    ], function () {
+        Route::get('/plots', 'DataController@plots');
+    });
 });

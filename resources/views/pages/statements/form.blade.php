@@ -48,29 +48,69 @@
             @isset($statement)
             {{ $statement->branch->name }}
             @else
-            {{ $branch->name }}
+            {{ $branch->id != 9 ? $branch->name : null}}
             @endisset
           </small>
         </h6>
 
-        <input id="my-num" type="hidden" name="branch_id" value="{{ old('branch_id', isset($statement) ? $statement->branch_id : $branch->id) }}">
-
-        <h6 class="w-100 mr-3 py-0 my-0 pl-0"></h6>
-        <div class="bk-form__street col-sm-auto form-group mb-2 pl-0">
-
-          <label for="statement-street" class="bk-form__label mb-0">Адрес</label>
-          <select name="street_id" id="statement-street" class="form-control bk-form__input">
-            <option disabled selected>Выберите улицу</option>
-            @foreach($streets as $street)
-            <option value="{{ $street->street_id }}" data-home="{{ $street->num_home }}" @isset($statement) @if($statement->street_id == $street->street_id && $statement->num_home == $street->num_home)
-              selected
-              @endif
+        @if($branch->id == 9)
+        <div class="bk-form__plot col-sm-auto form-group mb-2 pl-0">
+          <select id="statement-plot" name="branch_id" class="form-control bk-form__input">
+            <option disabled selected>Выберите участок</option>
+            @foreach($plots as $plot)
+            <option 
+              value="{{ $plot->id }}" 
+              @isset($statement) 
+                @if($statement->branch_id == $plot->id)
+                  selected
+                @endif
               @endisset
-              >
-              {{ ucfirst($street->street->name) }}
-              д.{{ ucfirst($street->num_home) }}
+            >
+              {{ ucfirst($plot->name) }}
             </option>
             @endforeach
+          </select>
+        </div>
+        <h6 class="w-100 m-0 p-0"></h6>
+        @else
+        <input id="my-num" type="hidden" name="branch_id" value="{{ old('branch_id', isset($statement) ? $statement->branch_id : $branch->id) }}">
+        @endif
+
+        <div class="bk-form__street col-sm-auto form-group mb-2 pl-0">
+          <label for="statement-street" class="bk-form__label mb-0">Адрес</label>
+          <select name="street_id" id="statement-street" class="form-control bk-form__input">
+            <option disabled selected>Выберите адрес</option>
+            @if($branch->id == 9)
+              @isset($statement) 
+                @foreach($stedit as $street)
+                <option 
+                  value="{{ $street->street_id }}" 
+                  data-home="{{ $street->num_home }}" 
+                    @if($statement->street_id == $street->street_id && $statement->num_home == $street->num_home)
+                      selected
+                    @endif
+                >
+                  {{ ucfirst($street->street->name) }}
+                  д.{{ ucfirst($street->num_home) }}
+                </option>
+                @endforeach
+              @endisset
+            @else
+              @foreach($streets as $street)
+              <option 
+                value="{{ $street->street_id }}" 
+                data-home="{{ $street->num_home }}" 
+                @isset($statement) 
+                  @if($statement->street_id == $street->street_id && $statement->num_home == $street->num_home)
+                    selected
+                  @endif
+                @endisset
+              >
+                {{ ucfirst($street->street->name) }}
+                д.{{ ucfirst($street->num_home) }}
+              </option>
+              @endforeach
+            @endif
 
           </select>
         </div>

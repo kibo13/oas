@@ -24,7 +24,7 @@ class ReportController extends Controller
     // report for work of day 
     public function work(Request $request)
     {
-
+        // counters 
         $crane_hw = 0;
         $crane_cw = 0;
         $crane_h  = 0;
@@ -41,9 +41,11 @@ class ReportController extends Controller
         // date 
         $from = $request->repo1_from;
 
-        $statements = Statement::where('date_in', $from)->get();
+        // tables
+        $table = new Table();
 
-       
+        // data 
+        $statements = Statement::where('date_in', $from)->get();     
 
         foreach ($statements as $stat) {
 
@@ -54,6 +56,11 @@ class ReportController extends Controller
             // if oas receive statements 
             if ($stat->branch->id == 9) {
                 $stat->type->id == 1 ? $oas_elc++ : $oas_san++;
+
+                $table->addRow();
+                $table->addCell(150)->addText($stat->branch->name);
+                $table->addCell(150)->addText($stat->time_in);
+                $table->addCell(150)->addText($stat->street->name);
             } 
             // if zheu receive statements
             else {
@@ -63,6 +70,12 @@ class ReportController extends Controller
             if ($stat->state == 2 && $stat->branch->id != 9) {
                 $stat->type->id == 1 ? $done_elc++ : $done_san++;
             }
+
+
+            // test 
+           //  if ($stat)
+
+
 
         }
          
@@ -74,18 +87,16 @@ class ReportController extends Controller
 
         $templateProcessor = new TemplateProcessor('reports/work.docx');
         $templateProcessor->setValue('date', getDMY($from) . 'г.');
-
-        $my = new Table();
-        $my->addRow();
-        $my->addCell(150)->addText('Cell A1');
-        $my->addCell(150)->addText('Cell A2');
-        $my->addCell(150)->addText('Cell A3');
-        $my->addRow();
-        $my->addCell(150)->addText('Cell B1');
-        $my->addCell(150)->addText('Cell B2');
-        $my->addCell(150)->addText('Cell B3');
-        $templateProcessor->setComplexBlock('table', $my);
-
+        
+        // $table->addRow();
+        // $table->addCell(150)->addText('Cell A1');
+        // $table->addCell(150)->addText('Cell A2');
+        // $table->addCell(150)->addText('Cell A3');
+        // $table->addRow();
+        // $table->addCell(150)->addText('Cell B1');
+        // $table->addCell(150)->addText('Cell B2');
+        // $table->addCell(150)->addText('Cell B3');
+        
         // 1 
         $templateProcessor->setValue('crane_hw',  $crane_hw);
         $templateProcessor->setValue('crane_cw',  $crane_cw);
@@ -114,6 +125,9 @@ class ReportController extends Controller
         $templateProcessor->setValue('city',      $city);
         // 7
         $templateProcessor->setValue('auto',      $auto);
+
+        // tables
+        $templateProcessor->setComplexBlock('table', $table);
 
         $fileName = 'Сведения по работ ГУПЖХ на ' . getDMY($from);
         $templateProcessor->saveAs($fileName . '.docx');

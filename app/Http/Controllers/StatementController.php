@@ -43,6 +43,7 @@ class StatementController extends Controller
     public function create()
     {
         $types = Type::get();
+        $plots = Branch::where('slug', 1)->get();
         $user = Auth::user()->name;
         $branch_id = getBranch();
         $branch = Branch::where('id', $branch_id)->first();
@@ -52,7 +53,7 @@ class StatementController extends Controller
 
         return view(
             'pages.statements.form',
-            compact('streets', 'types', 'user', 'branch')
+            compact('streets', 'types', 'user', 'branch', 'plots')
         );
     }
 
@@ -96,6 +97,7 @@ class StatementController extends Controller
     public function edit(Statement $statement)
     {
         $types = Type::get();
+        $plots = Branch::where('slug', 1)->get();
         $user = Auth::user()->name;
         $branch_id = getBranch();
         $branch = Branch::where('id', $branch_id)->first();
@@ -103,9 +105,14 @@ class StatementController extends Controller
             $q->where('branch_id', '=', $branch_id);
         })->get();
 
+        $current_id = $statement->branch_id;
+        $stedit = Address::whereHas('plots', function ($q) use ($current_id) {
+            $q->where('branch_id', '=', $current_id);
+        })->get();
+
         return view(
             'pages.statements.form',
-            compact('streets', 'types', 'user', 'branch', 'statement')
+            compact('streets', 'types', 'user', 'branch', 'plots', 'statement', 'stedit')
         );
     }
 
