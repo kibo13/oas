@@ -91,6 +91,7 @@ Route::middleware(['auth'])->group(function() {
     ], function () {
         Route::get('/', 'ReportController@index')->name('report.index');
         Route::get('/work', 'ReportController@work')->name('report.work');
+        Route::get('/crash', 'ReportController@crash')->name('report.crash');
         Route::get('/brief', 'ReportController@brief')->name('report.brief');
         Route::get('/{job}', 'ReportController@job')->name('report.job');
     });

@@ -37,6 +37,13 @@ $(document).ready(function() {
         repo2_from.onchange = e => plusDay(repo2_from, repo2_to);
         repo2_to.onchange = e => minusDay(repo2_from, repo2_to);
 
+        // actions for report #3
+        const repo3_from = document.getElementById("repo3_from");
+        const repo3_to = document.getElementById("repo3_to");
+        const repo3_btn = document.getElementById("repo3");
+
+        repo3_btn.onclick = () => compareDates(repo3_from, repo3_to);
+
         // plus day
         function plusDay(d1, d2) {
             let date = new Date(d1.value);
@@ -53,13 +60,14 @@ $(document).ready(function() {
 
         // compare dates
         function compareDates(d1, d2) {
-            let from = new Date(d1);
-            let to = new Date(d2);
+            let from = new Date(d1.value);
+            let to = new Date(d2.value);
 
             if (from > to) {
                 alert(
                     "Дата начала периода должно быть датой меньше дате конца периода"
                 );
+                return false;
             }
         }
     }

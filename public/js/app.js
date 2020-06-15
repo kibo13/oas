@@ -74719,11 +74719,12 @@ $(document).ready(function () {
 
 
     var compareDates = function compareDates(d1, d2) {
-      var from = new Date(d1);
-      var to = new Date(d2);
+      var from = new Date(d1.value);
+      var to = new Date(d2.value);
 
       if (from > to) {
         alert("Дата начала периода должно быть датой меньше дате конца периода");
+        return false;
       }
     };
 
@@ -74774,6 +74775,15 @@ $(document).ready(function () {
 
     repo2_to.onchange = function (e) {
       return minusDay(repo2_from, repo2_to);
+    }; // actions for report #3
+
+
+    var repo3_from = document.getElementById("repo3_from");
+    var repo3_to = document.getElementById("repo3_to");
+    var repo3_btn = document.getElementById("repo3");
+
+    repo3_btn.onclick = function () {
+      return compareDates(repo3_from, repo3_to);
     };
   }
 });

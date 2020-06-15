@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\Street;
 use App\Models\Brief;
+use App\Models\Type;
+use App\Models\Defect;
 use App\Models\Statement;
 
 use PhpOffice\PhpWord\Element\AbstractContainer;
-use PhpOffice\PhpWord\Element\Table;
 use PhpOffice\PhpWord\Element\Row;
+use PhpOffice\PhpWord\Element\Table;
 use PhpOffice\PhpWord\TemplateProcessor;
 
 class ReportController extends Controller
@@ -19,6 +21,105 @@ class ReportController extends Controller
     {
         $reports = config('constants.reports');
         return view('pages.reports.index', compact('reports'));
+    }
+
+    // report for crash 
+    public function crash(Request $request)
+    {
+        // dates 
+        $from = $request->repo3_from;
+        $to   = $request->repo3_to;
+
+        // tables
+        $t_defect = new Table(array('borderSize' => 10));
+        $t_defect->addRow();
+        $t_defect->addCell(100)->addText('№', array('bold' => true));
+        $t_defect->addCell(3000)->addText('Неисправности', array('bold' => true));
+        $t_defect->addCell(1000)->addText('Всего', array('bold' => true));
+        $t_defect->addCell(1000)->addText('ЖЭУ-1', array('bold' => true));
+        $t_defect->addCell(1000)->addText('ЖЭУ-2', array('bold' => true));
+        $t_defect->addCell(1000)->addText('ЖЭУ-3', array('bold' => true));
+        $t_defect->addCell(1000)->addText('ЖЭУ-4', array('bold' => true));
+        $t_defect->addCell(1000)->addText('ЖЭУ-5', array('bold' => true));
+
+        $t_type = new Table(array('borderSize' => 10));
+        $t_type->addRow();
+        $t_type->addCell(100)->addText('');
+        $t_type->addCell(3000)->addText('');
+        $t_type->addCell(1000)->addText('');
+        $t_type->addCell(1000)->addText('');
+        $t_type->addCell(1000)->addText('');
+        $t_type->addCell(1000)->addText('');
+        $t_type->addCell(1000)->addText('');
+        $t_type->addCell(1000)->addText('');
+
+        // data 
+        $defects    = Defect::get();
+        $types      = Type::get();
+        $statements = Statement::where('defect_id', '!=', null)->whereBetween('date_in', [$from, $to])->get();
+
+        // counters 
+        $num = 1;
+
+        foreach ($defects as $defect) {
+
+            $defect_total = $statements->where('defect_id', $defect->id)->count();
+            $defect_zh1 = $statements->where('branch_id', 1)->where('defect_id', $defect->id)->count();
+            $defect_zh2 = $statements->where('branch_id', 2)->where('defect_id', $defect->id)->count();
+            $defect_zh3 = $statements->where('branch_id', 3)->where('defect_id', $defect->id)->count();
+            $defect_zh4 = $statements->where('branch_id', 4)->where('defect_id', $defect->id)->count();
+            $defect_zh5 = $statements->where('branch_id', 5)->where('defect_id', $defect->id)->count();
+
+            if ($defect_total) {
+                $t_defect->addRow();
+                $t_defect->addCell(100)->addText($num++);
+                $t_defect->addCell(3000)->addText($defect->desc);
+                $t_defect->addCell(1000)->addText($defect_total, array('bold' => true));
+                $t_defect->addCell(1000)->addText($defect_zh1);
+                $t_defect->addCell(1000)->addText($defect_zh2);
+                $t_defect->addCell(1000)->addText($defect_zh3);
+                $t_defect->addCell(1000)->addText($defect_zh4);
+                $t_defect->addCell(1000)->addText($defect_zh5);
+            }
+
+        }
+
+        foreach ($types as $type) {
+
+            $type_total = $statements->where('type_id', $type->id)->count();
+            $type_zh1 = $statements->where('branch_id', 1)->where('type_id', $type->id)->count();
+            $type_zh2 = $statements->where('branch_id', 2)->where('type_id', $type->id)->count();
+            $type_zh3 = $statements->where('branch_id', 3)->where('type_id', $type->id)->count();
+            $type_zh4 = $statements->where('branch_id', 4)->where('type_id', $type->id)->count();
+            $type_zh5 = $statements->where('branch_id', 5)->where('type_id', $type->id)->count();
+
+            if ($type_total) {
+                $t_type->addRow();
+                $t_type->addCell(100)->addText('');
+                $t_type->addCell(3000)->addText($type->name, array('bold' => true));
+                $t_type->addCell(1000)->addText($type_total, array('bold' => true));
+                $t_type->addCell(1000)->addText($type_zh1);
+                $t_type->addCell(1000)->addText($type_zh2);
+                $t_type->addCell(1000)->addText($type_zh3);
+                $t_type->addCell(1000)->addText($type_zh4);
+                $t_type->addCell(1000)->addText($type_zh5);
+            }
+        }
+
+        $templateProcessor = new TemplateProcessor('reports/crash.docx');
+        $templateProcessor->setValue('date_from', getDMY($from) . 'г.');
+        $templateProcessor->setValue('date_to',   getDMY($to) . 'г.');
+
+        // tables
+        $templateProcessor->setComplexBlock('t_defect', $t_defect);
+        $templateProcessor->setComplexBlock('t_type',   $t_type);
+       
+        $fileName = 'Анализ зарегистрированных аварий с ' . getDMY($from) . 'г. по ' . getDMY($to) . 'г.';
+        $templateProcessor->saveAs($fileName . '.docx');
+
+        return response()
+            ->download($fileName . '.docx')
+            ->deleteFileAfterSend(true);
     }
 
     // report for work of day 
@@ -38,11 +139,32 @@ class ReportController extends Controller
         $done_elc = 0;
         $done_san = 0;
 
+        $num = 1;
+
         // date 
         $from = $request->repo1_from;
 
-        // tables
-        $table = new Table();
+        // table of elc
+        $t_elc = new Table(array('borderSize' => 10));
+        $t_elc->addRow();
+        $t_elc->addCell(100)->addText('№', array('bold' => true));
+        $t_elc->addCell(1000)->addText('ЖЭУ', array('bold' => true));
+        $t_elc->addCell(400)->addText('Время', array('bold' => true));
+        $t_elc->addCell(2000)->addText('Адрес', array('bold' => true));
+        $t_elc->addCell(3000)->addText('Характер неисправности', array('bold' => true));
+        $t_elc->addCell(3000)->addText('Принятые меры', array('bold' => true));
+        $t_elc->addCell(400)->addText('Время', array('bold' => true));
+
+        // table of san
+        $t_san = new Table(array('borderSize' => 10));
+        $t_san->addRow();
+        $t_san->addCell(100)->addText('№', array('bold' => true));
+        $t_san->addCell(1000)->addText('ЖЭУ', array('bold' => true));
+        $t_san->addCell(400)->addText('Время', array('bold' => true));
+        $t_san->addCell(2000)->addText('Адрес', array('bold' => true));
+        $t_san->addCell(3000)->addText('Характер неисправности', array('bold' => true));
+        $t_san->addCell(3000)->addText('Принятые меры', array('bold' => true));
+        $t_san->addCell(400)->addText('Время', array('bold' => true));
 
         // data 
         $statements = Statement::where('date_in', $from)->get();     
@@ -53,29 +175,47 @@ class ReportController extends Controller
             $stat->crane_cw == 1 ? $crane_cw++ : $crane_cw;
             $stat->crane_h  == 1 ? $crane_h++  : $crane_h;
 
-            // if oas receive statements 
-            if ($stat->branch->id == 9) {
+            // if zheu receive statements 
+            if ($stat->plot != "ОАС") {
+
+                // total statements dont 
+                if ($stat->state != 2) {
+                    $stat->type->id == 1 ? $zhe_elc++ : $zhe_san++;
+                } 
+
+                // total statements done 
+                if ($stat->state == 2) {
+                    $stat->type->id == 1 ? $done_elc++ : $done_san++;
+                }
+               
+            }    
+
+            if ($stat->plot == "ОАС") {
                 $stat->type->id == 1 ? $oas_elc++ : $oas_san++;
 
-                $table->addRow();
-                $table->addCell(150)->addText($stat->branch->name);
-                $table->addCell(150)->addText($stat->time_in);
-                $table->addCell(150)->addText($stat->street->name);
+                if ($stat->type->slug == "elc") {
+                    $t_elc->addRow();
+                    $t_elc->addCell(100)->addText($num++);
+                    $t_elc->addCell(1000)->addText($stat->branch->name);
+                    $t_elc->addCell(400)->addText(getHI($stat->time_in));
+                    $t_elc->addCell(2000)->addText($stat->street->name . ' д.' . $stat->num_home . '-' . $stat->num_flat);
+                    $t_elc->addCell(3000)->addText($stat->desc);
+                    $t_elc->addCell(3000)->addText($stat->solution);
+                    $t_elc->addCell(400)->addText(getHI($stat->time_off));
+                }
+
+                if ($stat->type->slug == "san") {
+                    $t_san->addRow();
+                    $t_san->addCell(100)->addText($num++);
+                    $t_san->addCell(1000)->addText($stat->branch->name);
+                    $t_san->addCell(400)->addText(getHI($stat->time_in));
+                    $t_san->addCell(2000)->addText($stat->street->name . ' д.' . $stat->num_home . '-' . $stat->num_flat);
+                    $t_san->addCell(3000)->addText($stat->desc);
+                    $t_san->addCell(3000)->addText($stat->solution);
+                    $t_san->addCell(400)->addText(getHI($stat->time_off));
+                }
+               
             } 
-            // if zheu receive statements
-            else {
-                $stat->type->id == 1 ? $zhe_elc++ : $zhe_san++;
-            }
-
-            if ($stat->state == 2 && $stat->branch->id != 9) {
-                $stat->type->id == 1 ? $done_elc++ : $done_san++;
-            }
-
-
-            // test 
-           //  if ($stat)
-
-
 
         }
          
@@ -87,16 +227,7 @@ class ReportController extends Controller
 
         $templateProcessor = new TemplateProcessor('reports/work.docx');
         $templateProcessor->setValue('date', getDMY($from) . 'г.');
-        
-        // $table->addRow();
-        // $table->addCell(150)->addText('Cell A1');
-        // $table->addCell(150)->addText('Cell A2');
-        // $table->addCell(150)->addText('Cell A3');
-        // $table->addRow();
-        // $table->addCell(150)->addText('Cell B1');
-        // $table->addCell(150)->addText('Cell B2');
-        // $table->addCell(150)->addText('Cell B3');
-        
+                
         // 1 
         $templateProcessor->setValue('crane_hw',  $crane_hw);
         $templateProcessor->setValue('crane_cw',  $crane_cw);
@@ -127,7 +258,8 @@ class ReportController extends Controller
         $templateProcessor->setValue('auto',      $auto);
 
         // tables
-        $templateProcessor->setComplexBlock('table', $table);
+        $templateProcessor->setComplexBlock('t_elc', $t_elc);
+        $templateProcessor->setComplexBlock('t_san', $t_san);
 
         $fileName = 'Сведения по работ ГУПЖХ на ' . getDMY($from);
         $templateProcessor->saveAs($fileName . '.docx');
