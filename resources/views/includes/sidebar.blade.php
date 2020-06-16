@@ -75,6 +75,7 @@
     <!-- START Workers -->
 
     <!-- START Reports -->
+    @if(Auth::user()->roles()->pluck('slug')->contains('repo'))
     <li @sbactive('repo*')>
       <a href="{{ route('report.index') }}" class="bk-sidebar__link d-flex align-items-start">
         <span class="bk-sidebar__link--icon d-flex align-items-start mx-2">
@@ -85,6 +86,7 @@
         <span class="bk-sidebar__link--icon">Отчеты</span>
       </a>
     </li>
+    @endif
     <!-- END Reports -->
 
     <!-- START Briefs -->

@@ -11,7 +11,7 @@
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 16/06/2020 09:08:24
+ Date: 16/06/2020 22:34:09
 */
 
 SET NAMES utf8mb4;
@@ -1460,7 +1460,7 @@ CREATE TABLE `migrations`  (
   `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 81 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 83 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of migrations
@@ -1493,6 +1493,7 @@ INSERT INTO `migrations` VALUES (73, '2020_06_11_194944_update_table_jobs', 13);
 INSERT INTO `migrations` VALUES (74, '2020_06_11_200430_create_address_job_table', 14);
 INSERT INTO `migrations` VALUES (75, '2020_06_13_054822_update_table_logs', 15);
 INSERT INTO `migrations` VALUES (80, '2020_06_14_092313_create_statements_table', 16);
+INSERT INTO `migrations` VALUES (82, '2020_06_16_153221_alter_table_promisers', 17);
 
 -- ----------------------------
 -- Table structure for organizations
@@ -1579,26 +1580,119 @@ DROP TABLE IF EXISTS `promisers`;
 CREATE TABLE `promisers`  (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `street_id` bigint(20) UNSIGNED NOT NULL,
-  `type_id` bigint(20) UNSIGNED NOT NULL,
-  `num_home` int(11) NOT NULL,
+  `num_home` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `num_corp` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `num_flat` int(11) NOT NULL,
-  `date_on` date NOT NULL,
+  `date_on` date NULL DEFAULT NULL,
   `date_off` date NOT NULL,
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 101 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of promisers
 -- ----------------------------
-INSERT INTO `promisers` VALUES (1, 8, 1, 7, NULL, 11, '2019-10-16', '2020-03-10', '2020-05-25 15:02:09', '2020-05-25 15:02:09');
-INSERT INTO `promisers` VALUES (2, 14, 1, 13, NULL, 51, '2019-11-05', '2020-03-04', '2020-05-25 15:16:11', '2020-05-25 15:16:11');
-INSERT INTO `promisers` VALUES (3, 29, 2, 7, NULL, 11, '2019-07-30', '2020-04-09', '2020-05-25 15:16:40', '2020-05-25 15:16:40');
-INSERT INTO `promisers` VALUES (4, 32, 2, 15, NULL, 37, '2019-07-17', '2020-02-18', '2020-05-25 15:17:24', '2020-05-25 15:17:24');
-INSERT INTO `promisers` VALUES (5, 19, 1, 22, NULL, 11, '2020-06-03', '2020-06-19', '2020-06-03 11:15:58', '2020-06-03 11:15:58');
-INSERT INTO `promisers` VALUES (6, 17, 1, 14, 'В', 11, '2020-06-19', '2020-06-11', '2020-06-08 18:30:12', '2020-06-09 15:41:01');
+INSERT INTO `promisers` VALUES (1, 2, '11', NULL, 11, NULL, '2020-06-10', NULL, NULL);
+INSERT INTO `promisers` VALUES (2, 2, '14', NULL, 13, NULL, '2020-06-11', NULL, NULL);
+INSERT INTO `promisers` VALUES (3, 2, '14', 'а', 15, NULL, '2020-06-12', NULL, NULL);
+INSERT INTO `promisers` VALUES (4, 2, '30', NULL, 16, NULL, '2020-06-13', NULL, NULL);
+INSERT INTO `promisers` VALUES (5, 2, '39', 'а', 17, NULL, '2020-06-14', NULL, NULL);
+INSERT INTO `promisers` VALUES (6, 3, '1', NULL, 21, NULL, '2020-06-15', NULL, NULL);
+INSERT INTO `promisers` VALUES (7, 3, '1', 'а', 33, NULL, '2020-06-16', NULL, NULL);
+INSERT INTO `promisers` VALUES (8, 3, '2', NULL, 32, NULL, '2020-06-17', NULL, NULL);
+INSERT INTO `promisers` VALUES (9, 3, '3', NULL, 12, NULL, '2020-06-18', NULL, NULL);
+INSERT INTO `promisers` VALUES (10, 3, '4', NULL, 15, NULL, '2020-06-19', NULL, NULL);
+INSERT INTO `promisers` VALUES (11, 4, '12', NULL, 17, NULL, '2020-06-20', NULL, NULL);
+INSERT INTO `promisers` VALUES (12, 4, '14', NULL, 44, NULL, '2020-06-10', NULL, NULL);
+INSERT INTO `promisers` VALUES (13, 4, '18', 'а', 45, NULL, '2020-06-11', NULL, NULL);
+INSERT INTO `promisers` VALUES (14, 4, '19', NULL, 41, NULL, '2020-06-12', NULL, NULL);
+INSERT INTO `promisers` VALUES (15, 4, '21', 'а', 5, NULL, '2020-06-13', NULL, NULL);
+INSERT INTO `promisers` VALUES (16, 5, '2', NULL, 6, NULL, '2020-06-14', NULL, NULL);
+INSERT INTO `promisers` VALUES (17, 5, '3', NULL, 7, NULL, '2020-06-15', NULL, NULL);
+INSERT INTO `promisers` VALUES (18, 5, '4', NULL, 14, NULL, '2020-06-16', NULL, NULL);
+INSERT INTO `promisers` VALUES (19, 5, '7', NULL, 15, NULL, '2020-06-17', NULL, NULL);
+INSERT INTO `promisers` VALUES (20, 5, '9', NULL, 21, NULL, '2020-06-18', NULL, NULL);
+INSERT INTO `promisers` VALUES (21, 6, '4', 'а', 18, NULL, '2020-06-19', NULL, NULL);
+INSERT INTO `promisers` VALUES (22, 6, '5', NULL, 24, NULL, '2020-06-20', NULL, NULL);
+INSERT INTO `promisers` VALUES (23, 6, '5', 'а', 25, NULL, '2020-06-10', NULL, NULL);
+INSERT INTO `promisers` VALUES (24, 6, '6', NULL, 21, NULL, '2020-06-11', NULL, NULL);
+INSERT INTO `promisers` VALUES (25, 6, '7', NULL, 55, NULL, '2020-06-12', NULL, NULL);
+INSERT INTO `promisers` VALUES (26, 7, '22', NULL, 56, NULL, '2020-06-13', NULL, NULL);
+INSERT INTO `promisers` VALUES (27, 7, '24', NULL, 57, NULL, '2020-06-14', NULL, NULL);
+INSERT INTO `promisers` VALUES (28, 7, '26', NULL, 9, NULL, '2020-06-15', NULL, NULL);
+INSERT INTO `promisers` VALUES (29, 7, '26', 'а', 8, NULL, '2020-06-16', NULL, NULL);
+INSERT INTO `promisers` VALUES (30, 7, '26', 'б', 7, NULL, '2020-06-17', NULL, NULL);
+INSERT INTO `promisers` VALUES (31, 8, '10', NULL, 5, NULL, '2020-06-18', NULL, NULL);
+INSERT INTO `promisers` VALUES (32, 8, '13', NULL, 13, NULL, '2020-06-19', NULL, NULL);
+INSERT INTO `promisers` VALUES (33, 8, '15', NULL, 12, NULL, '2020-06-20', NULL, NULL);
+INSERT INTO `promisers` VALUES (34, 8, '19', NULL, 11, NULL, '2020-06-10', NULL, NULL);
+INSERT INTO `promisers` VALUES (35, 8, '21', NULL, 9, NULL, '2020-06-11', NULL, NULL);
+INSERT INTO `promisers` VALUES (36, 10, '12', NULL, 8, NULL, '2020-06-12', NULL, NULL);
+INSERT INTO `promisers` VALUES (37, 10, '13', NULL, 6, NULL, '2020-06-13', NULL, NULL);
+INSERT INTO `promisers` VALUES (38, 10, '14', NULL, 2, NULL, '2020-06-14', NULL, NULL);
+INSERT INTO `promisers` VALUES (39, 10, '15', NULL, 3, NULL, '2020-06-15', NULL, NULL);
+INSERT INTO `promisers` VALUES (40, 10, '16', NULL, 7, NULL, '2020-06-16', NULL, NULL);
+INSERT INTO `promisers` VALUES (41, 11, '14', NULL, 15, NULL, '2020-06-17', NULL, NULL);
+INSERT INTO `promisers` VALUES (42, 11, '17', NULL, 16, NULL, '2020-06-18', NULL, NULL);
+INSERT INTO `promisers` VALUES (43, 11, '18', NULL, 17, NULL, '2020-06-19', NULL, NULL);
+INSERT INTO `promisers` VALUES (44, 11, '9/1', NULL, 22, NULL, '2020-06-20', NULL, NULL);
+INSERT INTO `promisers` VALUES (45, 11, '9/3', NULL, 23, NULL, '2020-06-10', NULL, NULL);
+INSERT INTO `promisers` VALUES (46, 12, '17', NULL, 24, NULL, '2020-06-11', NULL, NULL);
+INSERT INTO `promisers` VALUES (47, 12, '18', NULL, 25, NULL, '2020-06-12', NULL, NULL);
+INSERT INTO `promisers` VALUES (48, 12, '19', NULL, 27, NULL, '2020-06-13', NULL, NULL);
+INSERT INTO `promisers` VALUES (49, 12, '21', NULL, 28, NULL, '2020-06-14', NULL, NULL);
+INSERT INTO `promisers` VALUES (50, 12, '22', NULL, 29, NULL, '2020-06-15', NULL, NULL);
+INSERT INTO `promisers` VALUES (51, 13, '21', NULL, 30, NULL, '2020-06-16', NULL, NULL);
+INSERT INTO `promisers` VALUES (52, 13, '22', NULL, 31, NULL, '2020-06-17', NULL, NULL);
+INSERT INTO `promisers` VALUES (53, 13, '23', NULL, 32, NULL, '2020-06-18', NULL, NULL);
+INSERT INTO `promisers` VALUES (54, 13, '24', NULL, 33, NULL, '2020-06-19', NULL, NULL);
+INSERT INTO `promisers` VALUES (55, 13, '25', NULL, 15, NULL, '2020-06-20', NULL, NULL);
+INSERT INTO `promisers` VALUES (56, 14, '11', NULL, 16, NULL, '2020-06-10', NULL, NULL);
+INSERT INTO `promisers` VALUES (57, 14, '12', NULL, 17, NULL, '2020-06-11', NULL, NULL);
+INSERT INTO `promisers` VALUES (58, 14, '13', NULL, 21, NULL, '2020-06-12', NULL, NULL);
+INSERT INTO `promisers` VALUES (59, 14, '14', NULL, 22, NULL, '2020-06-13', NULL, NULL);
+INSERT INTO `promisers` VALUES (60, 14, '15', NULL, 23, NULL, '2020-06-14', NULL, NULL);
+INSERT INTO `promisers` VALUES (61, 17, '27', NULL, 24, NULL, '2020-06-15', NULL, NULL);
+INSERT INTO `promisers` VALUES (62, 17, '31', NULL, 20, NULL, '2020-06-16', NULL, NULL);
+INSERT INTO `promisers` VALUES (63, 17, '33', NULL, 19, NULL, '2020-06-17', NULL, NULL);
+INSERT INTO `promisers` VALUES (64, 17, '35', NULL, 18, NULL, '2020-06-18', NULL, NULL);
+INSERT INTO `promisers` VALUES (65, 17, '37', NULL, 17, NULL, '2020-06-19', NULL, NULL);
+INSERT INTO `promisers` VALUES (66, 18, '10', NULL, 15, '2020-06-27', '2020-06-20', NULL, '2020-06-16 17:27:17');
+INSERT INTO `promisers` VALUES (67, 18, '12', NULL, 14, NULL, '2020-06-10', NULL, NULL);
+INSERT INTO `promisers` VALUES (68, 18, '14', NULL, 13, NULL, '2020-06-11', NULL, NULL);
+INSERT INTO `promisers` VALUES (69, 18, '15', NULL, 8, NULL, '2020-06-12', NULL, NULL);
+INSERT INTO `promisers` VALUES (70, 18, '17', NULL, 7, NULL, '2020-06-13', NULL, NULL);
+INSERT INTO `promisers` VALUES (71, 19, '3', NULL, 6, NULL, '2020-06-14', NULL, NULL);
+INSERT INTO `promisers` VALUES (72, 19, '4', NULL, 5, NULL, '2020-06-15', NULL, NULL);
+INSERT INTO `promisers` VALUES (73, 19, '5', NULL, 4, NULL, '2020-06-16', NULL, NULL);
+INSERT INTO `promisers` VALUES (74, 19, '6', NULL, 22, NULL, '2020-06-17', NULL, NULL);
+INSERT INTO `promisers` VALUES (75, 19, '7', NULL, 23, NULL, '2020-06-18', NULL, NULL);
+INSERT INTO `promisers` VALUES (76, 23, '2', NULL, 24, NULL, '2020-06-19', NULL, NULL);
+INSERT INTO `promisers` VALUES (77, 23, '3', NULL, 25, NULL, '2020-06-20', NULL, NULL);
+INSERT INTO `promisers` VALUES (78, 23, '4', NULL, 26, NULL, '2020-06-10', NULL, NULL);
+INSERT INTO `promisers` VALUES (79, 23, '5', NULL, 11, NULL, '2020-06-11', NULL, NULL);
+INSERT INTO `promisers` VALUES (80, 23, '5', 'а', 19, NULL, '2020-06-12', NULL, NULL);
+INSERT INTO `promisers` VALUES (81, 24, '10', NULL, 14, NULL, '2020-06-13', NULL, NULL);
+INSERT INTO `promisers` VALUES (82, 24, '11', NULL, 15, NULL, '2020-06-14', NULL, NULL);
+INSERT INTO `promisers` VALUES (83, 24, '12', NULL, 13, NULL, '2020-06-15', NULL, NULL);
+INSERT INTO `promisers` VALUES (84, 24, '12', 'а', 43, NULL, '2020-06-16', NULL, NULL);
+INSERT INTO `promisers` VALUES (85, 24, '12', 'б', 44, NULL, '2020-06-17', NULL, NULL);
+INSERT INTO `promisers` VALUES (86, 27, '1', NULL, 42, NULL, '2020-06-18', NULL, NULL);
+INSERT INTO `promisers` VALUES (87, 27, '14', NULL, 37, NULL, '2020-06-19', NULL, NULL);
+INSERT INTO `promisers` VALUES (88, 27, '15', NULL, 38, NULL, '2020-06-20', NULL, NULL);
+INSERT INTO `promisers` VALUES (89, 27, '16', NULL, 39, NULL, '2020-06-10', NULL, NULL);
+INSERT INTO `promisers` VALUES (90, 27, '18', NULL, 56, NULL, '2020-06-11', NULL, NULL);
+INSERT INTO `promisers` VALUES (91, 28, '17', NULL, 57, NULL, '2020-06-12', NULL, NULL);
+INSERT INTO `promisers` VALUES (92, 28, '19', NULL, 58, NULL, '2020-06-13', NULL, NULL);
+INSERT INTO `promisers` VALUES (93, 28, '20', NULL, 11, NULL, '2020-06-14', NULL, NULL);
+INSERT INTO `promisers` VALUES (94, 28, '21', NULL, 12, NULL, '2020-06-15', NULL, NULL);
+INSERT INTO `promisers` VALUES (95, 28, '22', NULL, 13, NULL, '2020-06-16', NULL, NULL);
+INSERT INTO `promisers` VALUES (96, 29, '4', NULL, 14, NULL, '2020-06-17', NULL, NULL);
+INSERT INTO `promisers` VALUES (97, 29, '5', NULL, 15, NULL, '2020-06-18', NULL, NULL);
+INSERT INTO `promisers` VALUES (98, 29, '6', NULL, 22, NULL, '2020-06-19', NULL, NULL);
+INSERT INTO `promisers` VALUES (99, 29, '7', NULL, 23, NULL, '2020-06-20', NULL, NULL);
+INSERT INTO `promisers` VALUES (100, 29, '8', NULL, 24, NULL, '2020-06-21', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for role_user
@@ -1628,34 +1722,49 @@ INSERT INTO `role_user` VALUES (11, 1);
 INSERT INTO `role_user` VALUES (12, 1);
 INSERT INTO `role_user` VALUES (13, 1);
 INSERT INTO `role_user` VALUES (14, 1);
-INSERT INTO `role_user` VALUES (1, 22);
-INSERT INTO `role_user` VALUES (5, 24);
-INSERT INTO `role_user` VALUES (14, 24);
-INSERT INTO `role_user` VALUES (8, 26);
-INSERT INTO `role_user` VALUES (14, 26);
-INSERT INTO `role_user` VALUES (3, 27);
-INSERT INTO `role_user` VALUES (9, 27);
-INSERT INTO `role_user` VALUES (14, 27);
-INSERT INTO `role_user` VALUES (3, 28);
-INSERT INTO `role_user` VALUES (9, 28);
-INSERT INTO `role_user` VALUES (14, 28);
-INSERT INTO `role_user` VALUES (3, 25);
-INSERT INTO `role_user` VALUES (4, 25);
-INSERT INTO `role_user` VALUES (14, 25);
-INSERT INTO `role_user` VALUES (3, 29);
-INSERT INTO `role_user` VALUES (10, 29);
-INSERT INTO `role_user` VALUES (14, 29);
-INSERT INTO `role_user` VALUES (6, 21);
-INSERT INTO `role_user` VALUES (3, 31);
-INSERT INTO `role_user` VALUES (11, 31);
-INSERT INTO `role_user` VALUES (14, 31);
-INSERT INTO `role_user` VALUES (3, 32);
-INSERT INTO `role_user` VALUES (12, 32);
-INSERT INTO `role_user` VALUES (14, 32);
-INSERT INTO `role_user` VALUES (3, 33);
-INSERT INTO `role_user` VALUES (13, 33);
-INSERT INTO `role_user` VALUES (14, 33);
-INSERT INTO `role_user` VALUES (15, 34);
+INSERT INTO `role_user` VALUES (16, 1);
+INSERT INTO `role_user` VALUES (1, 2);
+INSERT INTO `role_user` VALUES (3, 3);
+INSERT INTO `role_user` VALUES (4, 3);
+INSERT INTO `role_user` VALUES (14, 3);
+INSERT INTO `role_user` VALUES (16, 3);
+INSERT INTO `role_user` VALUES (3, 4);
+INSERT INTO `role_user` VALUES (9, 4);
+INSERT INTO `role_user` VALUES (14, 4);
+INSERT INTO `role_user` VALUES (3, 5);
+INSERT INTO `role_user` VALUES (9, 5);
+INSERT INTO `role_user` VALUES (14, 5);
+INSERT INTO `role_user` VALUES (3, 6);
+INSERT INTO `role_user` VALUES (10, 6);
+INSERT INTO `role_user` VALUES (14, 6);
+INSERT INTO `role_user` VALUES (3, 7);
+INSERT INTO `role_user` VALUES (10, 7);
+INSERT INTO `role_user` VALUES (14, 7);
+INSERT INTO `role_user` VALUES (3, 8);
+INSERT INTO `role_user` VALUES (11, 8);
+INSERT INTO `role_user` VALUES (14, 8);
+INSERT INTO `role_user` VALUES (3, 9);
+INSERT INTO `role_user` VALUES (11, 9);
+INSERT INTO `role_user` VALUES (14, 9);
+INSERT INTO `role_user` VALUES (3, 10);
+INSERT INTO `role_user` VALUES (12, 10);
+INSERT INTO `role_user` VALUES (14, 10);
+INSERT INTO `role_user` VALUES (3, 11);
+INSERT INTO `role_user` VALUES (12, 11);
+INSERT INTO `role_user` VALUES (14, 11);
+INSERT INTO `role_user` VALUES (3, 12);
+INSERT INTO `role_user` VALUES (13, 12);
+INSERT INTO `role_user` VALUES (14, 12);
+INSERT INTO `role_user` VALUES (3, 13);
+INSERT INTO `role_user` VALUES (13, 13);
+INSERT INTO `role_user` VALUES (14, 13);
+INSERT INTO `role_user` VALUES (8, 14);
+INSERT INTO `role_user` VALUES (14, 14);
+INSERT INTO `role_user` VALUES (16, 14);
+INSERT INTO `role_user` VALUES (5, 15);
+INSERT INTO `role_user` VALUES (14, 15);
+INSERT INTO `role_user` VALUES (6, 16);
+INSERT INTO `role_user` VALUES (15, 17);
 
 -- ----------------------------
 -- Table structure for roles
@@ -1668,7 +1777,7 @@ CREATE TABLE `roles`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of roles
@@ -1686,6 +1795,7 @@ INSERT INTO `roles` VALUES (12, 'ЖЭУ-4', 'zheu4', NULL, NULL);
 INSERT INTO `roles` VALUES (13, 'ЖЭУ-5', 'zheu5', NULL, NULL);
 INSERT INTO `roles` VALUES (14, 'Справочник', 'info', NULL, NULL);
 INSERT INTO `roles` VALUES (15, 'Пользователь', 'user', NULL, NULL);
+INSERT INTO `roles` VALUES (16, 'Отчеты', 'repo', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for statements
@@ -1926,24 +2036,28 @@ CREATE TABLE `users`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 51 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
 INSERT INTO `users` VALUES (1, 'admin', 'admin@oas.com', NULL, '$2y$10$kas1ukOVl1kyTkp6D16Vve4IFg8CisTj5WLIHmCLosDVuqBDEbmf6', NULL, '2020-06-09 15:25:35', '2020-06-09 15:25:35');
-INSERT INTO `users` VALUES (21, 'Васильев', 'audit@oas.ru', NULL, '$2y$10$A9GYter7dH6T.KTlEA6kPOKE87L5S/PYhhOhXwUNYivVeEYEP4ffe', NULL, '2020-06-09 15:40:16', '2020-06-09 15:40:16');
-INSERT INTO `users` VALUES (22, 'Администратор', 'admin@oas.ru', NULL, '$2y$10$HfTZf7jwV69kSEEHqQ1HLuFWCgHuCE57fYhlZvQjvO6uMahN3rA2O', NULL, '2020-06-09 15:43:24', '2020-06-09 15:43:24');
-INSERT INTO `users` VALUES (24, 'Петрова', 'hh@oas.ru', NULL, '$2y$10$AD2sjSmj8IvBG0RlZJA9tOHSKRrhLHH4uohwc0nIemrvCDGmswoSu', NULL, '2020-06-09 15:48:24', '2020-06-09 15:48:24');
-INSERT INTO `users` VALUES (25, 'Репин', 'oas@oas.ru', NULL, '$2y$10$fIePfo.7xMqHTPjXZi04/uCcvVtx4iiSa6VCTz99vRWYpQyQ5W8ea', NULL, '2020-06-09 16:08:44', '2020-06-09 16:08:44');
-INSERT INTO `users` VALUES (26, 'Головин', 'pts@oas.ru', NULL, '$2y$10$qGVl3oId2A4IFgEtLs7xW.DA.lJ2hMxrKFMShcUA1jKJ1jF0kyJK6', NULL, '2020-06-09 16:27:15', '2020-06-09 16:27:15');
-INSERT INTO `users` VALUES (27, 'Крикун', 'krikun@oas.ru', NULL, '$2y$10$cWcUxs72Mn/lAHzJteQmLulS/394wwSnk9rabKp.SQS76eYY2MM0K', NULL, '2020-06-09 17:57:11', '2020-06-09 17:57:11');
-INSERT INTO `users` VALUES (28, 'Тен', 'ten_zheu1@oas.ru', NULL, '$2y$10$x3oVVhWkAQO7JvcXYyTApeI8eOfghtiHOiuSBrSZXEEx3Lcpkg.Ca', NULL, '2020-06-11 05:41:38', '2020-06-11 05:41:38');
-INSERT INTO `users` VALUES (29, 'Платонов', 'platonov_zheu2@oas.ru', NULL, '$2y$10$oR72SsV9EBvd8bK5LMifa.lUXmOKrah3AW/r1NdvWox9mr5QETyF.', NULL, '2020-06-11 05:53:16', '2020-06-11 05:53:16');
-INSERT INTO `users` VALUES (31, 'Шукиров', 'shukirov_zheu3@oas.ru', NULL, '$2y$10$bxbTtrYjKgVCR8ofgsQyN.6BkliqTyeclBOLmvkmv044UdQpvZZQu', NULL, '2020-06-11 06:05:05', '2020-06-11 06:05:05');
-INSERT INTO `users` VALUES (32, 'Уайсов', 'yaisov_zheu4@oas.ru', NULL, '$2y$10$nrc4e/LteDUAtceODP9i6eL0KLCdY6Oy05hTn38WqzqND/w2DuI0G', NULL, '2020-06-11 06:08:37', '2020-06-11 06:08:37');
-INSERT INTO `users` VALUES (33, 'Ромашкин', 'romashka_zheu5@oas.ru', NULL, '$2y$10$79rj1qA6d37i5NfIHI1p.eNGDlzsbzE4ugO6miKc8xZuz.E9gAOnu', NULL, '2020-06-11 06:10:03', '2020-06-11 06:10:03');
-INSERT INTO `users` VALUES (34, 'Смолин', 'user@oas.ru', NULL, '$2y$10$oSr.YLfCXshU0GidYRqeDO3P3HB/wn/boKEBR6tAgNoCsZvYkpwwS', NULL, '2020-06-12 15:44:28', '2020-06-12 15:44:47');
+INSERT INTO `users` VALUES (2, 'Админ', 'admin@oas.info', NULL, '$2y$10$JaKnfU59LB3DYfOULKubI.SJ.INL/WULFtiokhn6KPsU4CqWCzLY.', NULL, '2020-06-16 14:59:14', '2020-06-16 14:59:14');
+INSERT INTO `users` VALUES (3, 'Репин', 'oas@oas.info', NULL, '$2y$10$wPbOZXqeJgNHgv3Qo8ebLOIEyFU3zkisu4VKRrjKt0juIkXOnfzJW', NULL, '2020-06-16 15:03:26', '2020-06-16 15:03:26');
+INSERT INTO `users` VALUES (4, 'Крикун', 'krikun_oas@oas.info', NULL, '$2y$10$6wJF0xAmONZMkqUX26AFDe8T3PPqHFuTFqjqF7FDAI4SNs5p2TgOG', NULL, '2020-06-16 15:06:37', '2020-06-16 15:06:37');
+INSERT INTO `users` VALUES (5, 'Тен', 'ten_oas@oas.info', NULL, '$2y$10$QIXsP/DuxFAFUzw/.hcm.eU/jvZc1MSNdMRJ6mt52MVQmp8Qjguvy', NULL, '2020-06-16 15:07:54', '2020-06-16 15:07:54');
+INSERT INTO `users` VALUES (6, 'Громов', 'gromov_oas@oas.info', NULL, '$2y$10$4qmyERwdMFaX9mHChIxBEOPQw/5YnpFCutv.a97ZqKLLs9D5a3uNO', NULL, '2020-06-16 15:09:40', '2020-06-16 15:09:40');
+INSERT INTO `users` VALUES (7, 'Платонов', 'plat_oas@oas.info', NULL, '$2y$10$V5DLX1HeDkBEQ8WUiBqKNuiXWBOhy2egfJooO9b.sW3zyUoGO9Gr.', NULL, '2020-06-16 15:12:01', '2020-06-16 15:12:01');
+INSERT INTO `users` VALUES (8, 'Бакин', 'bakin_oas@oas.info', NULL, '$2y$10$9XLXAptUL7jn8BVUVz3bbeItK35S9BqzMVn7gRdzOCDNyVA3QvFXW', NULL, '2020-06-16 15:14:32', '2020-06-16 15:14:32');
+INSERT INTO `users` VALUES (9, 'Шукиров', 'shuk_oas@oas.info', NULL, '$2y$10$g41OVQXHql6WMwLhc1iNwOebWdQ51fdcpdxoZDT.6jEorp4Ve1gH2', NULL, '2020-06-16 15:13:26', '2020-06-16 15:13:26');
+INSERT INTO `users` VALUES (10, 'Кенжегулов', 'keng_oas@oas.info', NULL, '$2y$10$prsxCinuow4H8BhFVhppYe4/KkLBP9O6wXxbqwmOnrdhVsiZTg.P2', NULL, '2020-06-16 15:17:03', '2020-06-16 15:17:03');
+INSERT INTO `users` VALUES (11, 'Уайсов', 'yaisov_oas@oas.info', NULL, '$2y$10$wXX.KR7Qhlkyf.irQ3jKietXTaPhXeM.WR5HQ9HCn91.eL63wFGme', NULL, '2020-06-16 15:16:10', '2020-06-16 15:16:10');
+INSERT INTO `users` VALUES (12, 'Ромашкин', 'romashka_oas@oas.info', NULL, '$2y$10$qkQq6b5KaNj5CAZ2C3tPE.eqh4kRtxVP0htUa.EGcLbDbyiPEJb9O', NULL, '2020-06-16 15:18:56', '2020-06-16 15:18:56');
+INSERT INTO `users` VALUES (13, 'Цветков', 'cvetkov_oas@oas.info', NULL, '$2y$10$h91bEn3jM62LYd7jvCPjS.IL3EFaTN9RHarJZWjSK/muAEO6L0sbu', NULL, '2020-06-16 15:19:39', '2020-06-16 15:19:39');
+INSERT INTO `users` VALUES (14, 'Головин', 'golovin_oas@oas.info', NULL, '$2y$10$cDceaMsfeIGCVms/fwlXQO.JF6nK83pQ6PneRPQTXgAiRJkV5AWqW', NULL, '2020-06-16 15:22:47', '2020-06-16 15:22:47');
+INSERT INTO `users` VALUES (15, 'Петрова', 'petrova_oas@oas.info', NULL, '$2y$10$1O0zT6KUqYlhsMzN2Kr3OueVeqk4Px0ZkT6vGVnvfC268PbUWexEm', NULL, '2020-06-16 15:23:57', '2020-06-16 15:23:57');
+INSERT INTO `users` VALUES (16, 'Васильев', 'audit@oas.ru', NULL, '$2y$10$Eg2lTI4NwitwQVp4T0/aHuIsjRDiazTrOQLvLE9FbCHaCWlPfxdLe', NULL, '2020-06-09 15:40:16', '2020-06-16 15:25:01');
+INSERT INTO `users` VALUES (17, 'Смолин', 'user@oas.ru', NULL, '$2y$10$EpwwsSnlFVuUgC1qbR4S5eyK9dHcVP54BpuDbQ7gY0jAXF6hmi5GW', NULL, '2020-06-12 15:44:28', '2020-06-16 15:25:13');
 
 -- ----------------------------
 -- Table structure for workers

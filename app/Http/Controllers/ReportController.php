@@ -105,6 +105,7 @@ class ReportController extends Controller
                                 ->where('num_home', $flat->num_home)
                                 ->where('num_flat', $flat->num_flat)
                                 ->where('defect_id', $d->id)
+                                ->whereBetween('date_in', [$from, $to])
                                 ->count();
                 
                 if ($san_defect) {
@@ -142,6 +143,7 @@ class ReportController extends Controller
                     ->where('num_home', $flat->num_home)
                     ->where('num_flat', $flat->num_flat)
                     ->where('defect_id', $d->id)
+                    ->whereBetween('date_in', [$from, $to])
                     ->count();
 
                 if ($elc_defect) {

@@ -8,7 +8,6 @@ class Promiser extends Model
 {
     protected $fillable = [
         'street_id',
-        'type_id',
         'num_home',
         'num_corp',
         'num_flat',
@@ -19,10 +18,5 @@ class Promiser extends Model
     public function street()
     {
         return $this->belongsTo('App\Models\Street');
-    }
-
-    public function type()
-    {
-        return $this->belongsTo('App\Models\Type');
     }
 }

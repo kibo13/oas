@@ -87,6 +87,7 @@ Route::middleware(['auth'])->group(function() {
 
     // reports 
     Route::group([
+        'middleware' => 'role:repo',
         'prefix' => 'report'
     ], function () {
         Route::get('/', 'ReportController@index')->name('report.index');

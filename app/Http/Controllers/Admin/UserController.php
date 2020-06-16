@@ -7,6 +7,7 @@ use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Auth;
 
 class UserController extends Controller
 {
@@ -17,10 +18,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        // $users = User::orderBy('name')->get();
-        $users = User::with(['roles' => function ($query) {
-            $query->orderBy('name', 'desc');
-        }])->get();
+        $admin = Auth::user()->name;
+        $users = User::where('name', '!=', $admin)->get();
         return view('pages.users.index', compact('users'));
     }
 

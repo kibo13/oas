@@ -74637,6 +74637,8 @@ __webpack_require__(/*! ./pages/bid */ "./resources/js/custom/pages/bid.js");
 
 __webpack_require__(/*! ./pages/statement */ "./resources/js/custom/pages/statement.js");
 
+__webpack_require__(/*! ./pages/promiser */ "./resources/js/custom/pages/promiser.js");
+
 __webpack_require__(/*! ./pages/report */ "./resources/js/custom/pages/report.js");
 
 __webpack_require__(/*! ./pages/brief */ "./resources/js/custom/pages/brief.js");
@@ -74677,6 +74679,32 @@ $(document).ready(function () {
     e.preventDefault();
     window.print();
   });
+});
+
+/***/ }),
+
+/***/ "./resources/js/custom/pages/promiser.js":
+/*!***********************************************!*\
+  !*** ./resources/js/custom/pages/promiser.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  // wrapper
+  var wprom = document.getElementById("promiser-wrap");
+
+  if (wprom) {
+    $("#promiser-save").on("click", function (e) {
+      var off = new Date($("#promiser-off").val());
+      var on = new Date($("#promiser-on").val());
+
+      if (off > on) {
+        alert("Дата отключения не должна быть позже даты подключения");
+        return false;
+      }
+    });
+  }
 });
 
 /***/ }),

@@ -40,7 +40,13 @@
             {{ $promiser->num_flat }}
           </td>
           <td>{{ getDMY($promiser->date_off) }}г.</td>
-          <td>{{ getDMY($promiser->date_on) }}г.</td>
+          <td>
+            @if($promiser->date_on == null)
+            <span class="text-danger font-weight-bold">отключен</span>
+            @else
+            {{ getDMY($promiser->date_on) }}г.
+            @endif
+          </td>
           @if(Auth::user()->roles()->pluck('slug')->contains('audit'))
           <td>
             <div class="d-flex">

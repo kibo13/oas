@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Promiser;
-use App\Models\Type;
 use App\Models\Street;
 use Illuminate\Http\Request;
 
@@ -16,7 +15,7 @@ class PromiserController extends Controller
      */
     public function index()
     {
-        $promisers = Promiser::paginate(10);
+        $promisers = Promiser::orderBy('date_off', 'DESC')->orderBy('date_on', 'DESC')->paginate(20);
         return view('pages.promisers.index', compact('promisers'));
     }
 
@@ -28,11 +27,7 @@ class PromiserController extends Controller
     public function create()
     {
         $streets = Street::get();
-        $type = Type::where('slug', 'elc')->first();
-        return view(
-            'pages.promisers.form',
-            compact('streets', 'type')
-        );
+        return view('pages.promisers.form', compact('streets'));
     }
 
     /**
@@ -67,11 +62,7 @@ class PromiserController extends Controller
     public function edit(Promiser $promiser)
     {
         $streets = Street::get();
-        $type = Type::where('slug', 'elc')->first();
-        return view(
-            'pages.promisers.form',
-            compact('promiser', 'streets', 'type')
-        );
+        return view('pages.promisers.form', compact('streets', 'promiser'));
     }
 
     /**

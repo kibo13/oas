@@ -11,11 +11,6 @@ class Type extends Model
         'slug'
     ];
 
-    public function promisers()
-    {
-        return $this->hasMany('App\Models\Promiser');
-    }
-
     public function defects()
     {
         return $this->hasMany('App\Models\Defect');
