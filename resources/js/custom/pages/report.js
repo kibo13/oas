@@ -75,22 +75,22 @@ $(document).ready(function() {
         const repo5_home = document.getElementById("repo5-home");
         const repo5_type = document.getElementById("repo5-type");
 
-        // repo5_btn.onclick = () => {
-        //     // compare dates
-        //     compareDates(repo5_from, repo5_to);
+        repo5_btn.onclick = () => {
+            // compare dates
+            compareDates(repo5_from, repo5_to);
 
-        //     // check field plot is empty
-        //     if (repo5_home.selectedIndex == 0) {
-        //         alert("Выберите адрес");
-        //         return false;
-        //     }
+            // check field plot is empty
+            if (repo5_home.selectedIndex == 0) {
+                alert("Выберите адрес");
+                return false;
+            }
 
-        //     // check field type is empty
-        //     if (repo5_type.selectedIndex == 0) {
-        //         alert("Выберите тип заявки");
-        //         return false;
-        //     }
-        // };
+            // check field type is empty
+            if (repo5_type.selectedIndex == 0) {
+                alert("Выберите тип заявки");
+                return false;
+            }
+        };
 
         // plus day
         function plusDay(d1, d2) {

@@ -74703,20 +74703,6 @@ $(document).ready(function () {
   var rmenu = document.getElementById("repo-menu");
 
   if (wrepo) {
-    // repo5_btn.onclick = () => {
-    //     // compare dates
-    //     compareDates(repo5_from, repo5_to);
-    //     // check field plot is empty
-    //     if (repo5_home.selectedIndex == 0) {
-    //         alert("Выберите адрес");
-    //         return false;
-    //     }
-    //     // check field type is empty
-    //     if (repo5_type.selectedIndex == 0) {
-    //         alert("Выберите тип заявки");
-    //         return false;
-    //     }
-    // };
     // plus day
     var plusDay = function plusDay(d1, d2) {
       var date = new Date(d1.value);
@@ -74829,6 +74815,22 @@ $(document).ready(function () {
     var repo5_btn = document.getElementById("repo5");
     var repo5_home = document.getElementById("repo5-home");
     var repo5_type = document.getElementById("repo5-type");
+
+    repo5_btn.onclick = function () {
+      // compare dates
+      compareDates(repo5_from, repo5_to); // check field plot is empty
+
+      if (repo5_home.selectedIndex == 0) {
+        alert("Выберите адрес");
+        return false;
+      } // check field type is empty
+
+
+      if (repo5_type.selectedIndex == 0) {
+        alert("Выберите тип заявки");
+        return false;
+      }
+    };
   }
 });
 

@@ -11,6 +11,7 @@ use App\Models\Branch;
 use App\Models\Defect;
 use App\Models\Address;
 use App\Models\Statement;
+use Illuminate\Support\Facades\DB;
 
 use PhpOffice\PhpWord\Element\AbstractContainer;
 use PhpOffice\PhpWord\Element\Row;
@@ -40,12 +41,43 @@ class ReportController extends Controller
         // type
         $type_id = $request->repo5_type;
 
+        // statements
+        $statements = Statement::get();
+
         // defects
         $d_elc = Defect::where('type_id', 1)->get();
         $d_san = Defect::where('type_id', 2)->get();
 
-        // statements
-        $statements = Statement::where('defect_id', '!=', null)->whereBetween('date_in', [$from, $to])->get();
+        // flats 
+        $f_san = DB::table('statements')
+            ->select(
+                'street_id', 
+                'num_home', 
+                'num_flat', 
+                DB::raw('count(*) as total')
+            )
+            ->where('street_id', $address->street_id)
+            ->where('num_home',  $address->num_home)
+            ->where('type_id', 2)
+            ->where('type_id', '!=', null)
+            ->whereBetween('date_in', [$from, $to])
+            ->groupBy('street_id', 'num_home','num_flat')
+            ->get();
+        
+        $f_elc = DB::table('statements')
+            ->select(
+                'street_id',
+                'num_home',
+                'num_flat',
+                DB::raw('count(*) as total')
+            )
+            ->where('street_id', $address->street_id)
+            ->where('num_home',  $address->num_home)
+            ->where('type_id', 1)
+            ->where('type_id', '!=', null)
+            ->whereBetween('date_in', [$from, $to])
+            ->groupBy('street_id', 'num_home', 'num_flat')
+            ->get();
 
         // table of san  
         $t_san = new Table(array('borderSize' => 10));
@@ -60,59 +92,94 @@ class ReportController extends Controller
                 ->addText($d->desc, array('bold' => true, 'size' => '8'));
         }
 
-        foreach ($statements as $stat) {
+        foreach ($f_san as $flat) {
 
-            $san_address = $statements->where('street_id', $address->street_id)->where('num_home', $address->num_home)->count();
+            $t_san->addRow();
+            $t_san->addCell(3000)->addText($flat->num_flat);
+            $t_san->addCell(1000)->addText($flat->total, array('bold' => true));
 
-            if ($san_address) {
-
-                $t_san->addRow();
-                $t_san->addCell(3000)->addText($stat->num_flat);
-                $t_san->addCell(1000)->addText($san_address, array('bold' => true));
-
-                // foreach ($d_san as $d) {
-                //     $san_defect = $statements
-                //         ->where('street_id',  $address->street_id)->where('num_home', $address->num_home)->where('type_id', 2)->where('defect_id',  $d->id)
-                //         ->count();
-
-                //     if ($san_defect) {
-                //         $t_san->addCell(1000)->addText($san_defect);
-                //     } else {
-                //         $t_san->addCell(1000)->addText('');
-                //     }
-                // }
+            foreach ($d_san as $d) {
+                
+                $san_defect = $statements
+                                ->where('street_id', $flat->street_id)
+                                ->where('num_home', $flat->num_home)
+                                ->where('num_flat', $flat->num_flat)
+                                ->where('defect_id', $d->id)
+                                ->count();
+                
+                if ($san_defect) {
+                    $t_san->addCell(1000)->addText($san_defect);
+                } else {
+                    $t_san->addCell(1000)->addText('');
+                }
 
             }
-
         }
 
-        // $d_elc = Defect::where('type_id', 1)->get();
-        // $d_san = Defect::where('type_id', 2)->get();
+        // table of elc 
+        $t_elc = new Table(array('borderSize' => 10));
+        $t_elc->addRow();
+        $t_elc->addCell(3000)->addText('Квартира', array('bold' => true, 'size' => '8'));
+        $t_elc->addCell(1000)->addText('Всего', array('bold' => true, 'size' => '8'));
 
-        // statements 
-        // $s_elc = Statement::where('defect_id', '!=', null)
-        //     ->where('type_id', 1)
-        //     ->whereBetween('date_in', [$from, $to])
-        //     ->get();
+        foreach ($d_elc as $d) {
 
-        // $s_san = Statement::where('defect_id', '!=', null)
-        //     ->where('type_id', 2)
-        //     ->whereBetween('date_in', [$from, $to])
-        //     ->get();
+            $t_elc
+                ->addCell(1000)
+                ->addText($d->desc, array('bold' => true, 'size' => '8'));
+        }
 
+        foreach ($f_elc as $flat) {
 
+            $t_elc->addRow();
+            $t_elc->addCell(3000)->addText($flat->num_flat);
+            $t_elc->addCell(1000)->addText($flat->total, array('bold' => true));
 
+            foreach ($d_elc as $d) {
 
+                $elc_defect = $statements
+                    ->where('street_id', $flat->street_id)
+                    ->where('num_home', $flat->num_home)
+                    ->where('num_flat', $flat->num_flat)
+                    ->where('defect_id', $d->id)
+                    ->count();
 
-
+                if ($elc_defect) {
+                    $t_elc->addCell(1000)->addText($elc_defect);
+                } else {
+                    $t_elc->addCell(1000)->addText('');
+                }
+            }
+        }
 
         $templateProcessor = new TemplateProcessor('reports/address.docx');
         $templateProcessor->setValue('address', $address->street->name . ' дом ' . $address->num_home);
         $templateProcessor->setValue('date_from', getDMY($from) . 'г.');
         $templateProcessor->setValue('date_to',   getDMY($to) . 'г.');
 
-        $templateProcessor->setValue('m1', 'Сведения по сантехнике');
-        $templateProcessor->setComplexBlock('t1', $t_san);
+        // all tables 
+        if ($type_id == 0) {
+            $templateProcessor->setValue('m1', 'Сведения по сантехнике');
+            $templateProcessor->setComplexBlock('t1', $t_san);
+            $templateProcessor->setValue('m2', 'Сведения по электрике');
+            $templateProcessor->setComplexBlock('t2', $t_elc);
+        }
+
+        // just table of elc 
+        if ($type_id == 1) {
+            $templateProcessor->setValue('m1', 'Сведения по электрике');
+            $templateProcessor->setComplexBlock('t1', $t_elc);
+            $templateProcessor->setValue('m2', '');
+            $templateProcessor->setValue('t2', '');
+        }
+
+        // just table of san 
+        if ($type_id == 2) {
+            $templateProcessor->setValue('m1', 'Сведения по сантехнике');
+            $templateProcessor->setComplexBlock('t1', $t_san);
+            $templateProcessor->setValue('m2', '');
+            $templateProcessor->setValue('t2', '');
+        }
 
         $fileName = 'Сведения об аварийном состоянии жилого дома с ' . getDMY($from) . ' по ' . getDMY($to);
         $templateProcessor->saveAs($fileName . '.docx');

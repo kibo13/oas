@@ -11,7 +11,7 @@
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 16/06/2020 00:49:22
+ Date: 16/06/2020 09:08:24
 */
 
 SET NAMES utf8mb4;
@@ -1212,7 +1212,7 @@ CREATE TABLE `bids`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   `desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of bids
@@ -1719,7 +1719,7 @@ CREATE TABLE `statements`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 118 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 115 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of statements
@@ -1835,6 +1835,9 @@ INSERT INTO `statements` VALUES (108, 5, 12, '28', 61, 'Омарова', '4-57-7
 INSERT INTO `statements` VALUES (109, 5, 13, '20', 62, 'Нерпин', '6-66-91', '2020-05-15', '16:40:00', 2, 'течет вентель г\\воды', NULL, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 'Ромашкин', 'ЖЭУ-5', 0, NULL, NULL);
 INSERT INTO `statements` VALUES (110, 5, 13, '21', 63, 'Кулмагамбетов', '6-41-50', '2020-05-16', '16:50:00', 2, 'течет смеситель в ванне', NULL, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 'Ромашкин', 'ЖЭУ-5', 0, NULL, NULL);
 INSERT INTO `statements` VALUES (111, 5, 13, '24', 64, 'Болатов', '4-34-68', '2020-05-17', '18:00:00', 2, 'забита канализация в квартире', NULL, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 'Ромашкин', 'ЖЭУ-5', 0, NULL, NULL);
+INSERT INTO `statements` VALUES (112, 1, 19, '6', 13, 'Прокопенко', '7-77-88', '2020-05-15', '11:05:00', 1, 'Выбивает автомат в щитке', 14, 0, 0, 0, 0, 0, 0, '2020-05-15', '14:47:00', 'Поменяли автомат', 'Репин', 'ОАС', 2, '2020-06-16 01:04:07', '2020-06-16 01:05:52');
+INSERT INTO `statements` VALUES (113, 1, 19, '6', 17, 'Хруничева', '5-45-11', '2020-05-30', '15:07:00', 2, 'Протекает кран х/в', 26, 0, 0, 0, 0, 1, 0, '2020-05-30', '17:15:00', 'Перекрыли стояк х/в', 'Тен', 'ЖЭУ-1', 1, '2020-06-16 01:08:35', '2020-06-16 01:09:07');
+INSERT INTO `statements` VALUES (114, 1, 19, '6', 23, 'Прутов', '7-81-91', '2020-05-20', '14:15:00', 2, 'Протекает кран горячей воды', 31, 0, 0, 0, 1, 0, 0, '2020-05-20', '15:40:00', 'Перекрыли стояк г/в', 'Крикун', 'ЖЭУ-1', 1, '2020-06-16 03:04:38', '2020-06-16 03:05:10');
 
 -- ----------------------------
 -- Table structure for streets

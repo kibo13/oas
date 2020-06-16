@@ -1,8 +1,8 @@
 <div class="w-100 bk-repo bk-hidden" data-id="5">
 
-  <h5 class="my-2">Отчет "Сведения об аварийном состоянии жилого дома" в процессе разработки...</h5>
+  <!-- <h5 class="my-2">Отчет "Сведения об аварийном состоянии жилого дома" в процессе разработки...</h5> -->
 
-  <!-- <form method="GET" action="{{ route('report.address') }}">
+  <form method="GET" action="{{ route('report.address') }}">
 
     <div class="row m-0 p-0">
 
@@ -47,5 +47,5 @@
       Отчет
     </button>
 
-  </form> -->
+  </form>
 </div>

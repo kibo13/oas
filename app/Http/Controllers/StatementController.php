@@ -25,11 +25,11 @@ class StatementController extends Controller
         $branch = getBranch();
 
         if ($branch >= 1 || $branch <= 5) {
-            $statements = Statement::where('branch_id', $branch)->paginate(10);
+            $statements = Statement::where('branch_id', $branch)->orderBy('date_in', 'DESC')->paginate(10);
         }
 
         if ($branch == 9) {
-            $statements = Statement::paginate(10);
+            $statements = Statement::orderBy('date_in', 'DESC')->paginate(10);
         }
 
         return view('pages.statements.index', compact('statements'));
