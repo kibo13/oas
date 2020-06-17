@@ -12,8 +12,36 @@
   </div>
   @endif
 
+  @if($total != 0)
+  <div class="mt-1 mb-2 pt-3 bk-callout bk-callout-info">
+    <h5 class="mb-0">
+      Контроль заявок
+      <span class="bk-text--info text-info align-top font-weight-bold">
+        {{ getDMY($today) }}г.
+      </span>
+    </h5>
+    <p class="m-0 mt-2 p-0">
+      Общее количество неустранненых заявок составляет
+      <span class="bk-text--info text-info font-weight-bold">
+        {{ $total }}
+      </span>
+    </p>
+    <ul class="m-0 p-0">
+
+      <li></li>
+      <li> </li>
+      <li>Из них:</li>
+      <li>Из них:</li>
+      <li>Из них:</li>
+      <li class="bk-text--info text-info font-weight-bold">Количество 10</li>
+      <li class="bk-text--info text-info font-weight-bold">Количество 10</li>
+      <li class="bk-text--info text-info font-weight-bold">Количество 10</li>
+    </ul>
+  </div>
+  @endif
+
   <div class="table-responsive mt-1">
-    <table class="bk-table table table-bordered">
+    <table class="bk-table table table-bordered table-hover">
       <thead class="thead-light">
         <tr>
           <th scope="col">#</th>

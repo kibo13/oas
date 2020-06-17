@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Statement;
-use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Http\Request;
+
+// models 
 use App\Models\Address;
 use App\Models\Branch;
 use App\Models\Defect;
+use App\Models\Statement;
 use App\Models\Type;
-use App\Models\Bid;
-
 
 class StatementController extends Controller
 {
@@ -21,18 +21,32 @@ class StatementController extends Controller
      */
     public function index()
     {
+        // constant 
+        $today = config('constants.date_now');
+
         // getBranch - custom fn from Helpers
         $branch = getBranch();
 
         if ($branch >= 1 || $branch <= 5) {
-            $statements = Statement::where('branch_id', $branch)->orderBy('date_in', 'DESC')->paginate(10);
+            $stats      = Statement::where('branch_id', $branch)->get();
+            $statements = Statement::where('branch_id', $branch)->orderBy('date_in', 'DESC')->paginate(10);     
         }
 
         if ($branch == 9) {
+            $stats      = Statement::get();
             $statements = Statement::orderBy('date_in', 'DESC')->paginate(10);
         }
 
-        return view('pages.statements.index', compact('statements'));
+        // counters 
+        $total = $stats->where('state', '!=', 2)->count();
+        $take  = $stats->where('state', 0)->count();
+        $temp  = $stats->where('state', 1)->count();
+        $done  = $stats->where('state', 2)->count();      
+
+        return view(
+            'pages.statements.index', 
+            compact('statements', 'today', 'total', 'take', 'temp', 'done')
+        );
     }
 
     /**

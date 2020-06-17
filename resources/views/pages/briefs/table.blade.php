@@ -1,6 +1,6 @@
 <div class="tab-pane fade show active" id="table" role="tabpanel" aria-labelledby="table-tab">
   <div class="table-responsive mt-1">
-    <table class="bk-table table table-bordered">
+    <table class="bk-table table table-bordered table-hover">
       <thead class="thead-light">
         <tr>
           <th rowspan="2" class="align-top">#</th>

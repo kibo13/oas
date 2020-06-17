@@ -11,7 +11,7 @@
   </div>
 
   <div class="table-responsive mt-1">
-    <table class="bk-table table table-bordered">
+    <table class="bk-table table table-bordered table-hover">
       <thead class="thead-light">
         <tr>
           <th scope="col">#</th>

@@ -10970,6 +10970,11 @@ textarea {
   font-size: 12px;
 }
 
+.bk-text--info {
+  font-size: 12.5px;
+  letter-spacing: 0.5px;
+}
+
 .bk-line-height {
   line-height: 12px;
 }
@@ -11600,6 +11605,17 @@ a[data-toggle=collapse] {
 .bk-alert-danger {
   padding: 0 10px;
   width: 100% !important;
+}
+
+.bk-callout {
+  padding: 10px 15px;
+  border: 1px solid #eee;
+  border-left-width: 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.bk-callout-info {
+  border-left-color: #5bc0de;
 }
 
 .bk-card {

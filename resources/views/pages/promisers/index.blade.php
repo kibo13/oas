@@ -14,8 +14,19 @@
   </div>
   @endif
 
+  @if($count != 0)
+  <div class="mt-1 mb-2 bk-callout bk-callout-info">
+    <h6 class="m-0 p-0">
+      Количество откл.квартиросъемщиков<br>на
+      <span class="bk-text--info text-info font-weight-bold">{{ getDMY($today) }}г.</span>
+      составляет:
+      <span class="bk-text--info text-info font-weight-bold">{{ $count }}</span>
+    </h6>
+  </div>
+  @endif
+
   <div class="table-responsive mt-1">
-    <table class="bk-table table table-bordered">
+    <table class="bk-table table table-bordered table-hover">
       <thead class="thead-light">
         <tr>
           <th scope="col">#</th>

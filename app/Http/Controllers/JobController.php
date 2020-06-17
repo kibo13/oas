@@ -17,9 +17,16 @@ class JobController extends Controller
      */
     public function index()
     {
+
+        $today = config('constants.date_now');
+        $count = Job::where('date_on', $today)->count();
+
         $streets = Street::get();
-        $jobs = Job::orderBy('date_on', 'DESC')->paginate(10);
-        return view('pages.jobs.index', compact('jobs', 'streets'));
+        $jobs = Job::orderBy('date_on', 'DESC')->paginate(15);
+        return view(
+            'pages.jobs.index', 
+            compact('jobs', 'streets', 'count', 'today')
+        );
     }
 
     /**
