@@ -37,12 +37,6 @@ Route::middleware(['auth'])->group(function() {
     ], function () {
         Route::resource('plots', 'PlotController');
         Route::resource('statements', 'StatementController');
-        Route::resource('bids', 'BidController');
-        Route::group([
-            'prefix' => 'bids'
-        ], function () {
-            Route::resource('logs', 'LogController');
-        });
     });
 
     // role: audit 
@@ -72,13 +66,8 @@ Route::middleware(['auth'])->group(function() {
     });
 
     // role: guest 
-    Route::get('bids', 'BidController@index')->name('bids.index');
-    Route::get('bids/{bid}', 'BidController@show')->name('bids.show');
-
-    // testing 
     Route::get('statements', 'StatementController@index')
             ->name('statements.index');
-
     Route::get('jobs', 'JobController@index')->name('jobs.index');
     Route::get('jobs/{job}', 'JobController@show')->name('jobs.show');
     Route::get('briefs', 'BriefController@index')->name('briefs.index');

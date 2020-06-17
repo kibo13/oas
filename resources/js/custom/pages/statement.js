@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+    // alert 
+    
+
     // print addresses depending on plot 
     $("#statement-plot").on("change", e => {
 

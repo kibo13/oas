@@ -5,6 +5,8 @@ $(document).ready(function () {
 		var data_id = $(e.target).data('id');
 		var data_tname = $(e.target).data('table-name');
 
+		// console.log(data_id);
+
 		switch (data_tname) {
 
 			// START namespace "pts" 	
@@ -42,14 +44,6 @@ $(document).ready(function () {
 			// START namespace "disp" 
 			case 'plot':
 				$('#bk-delete-form').attr('action', '/plots/' + data_id);
-				break;
-
-			case 'bid':
-				$('#bk-delete-form').attr('action', '/bids/' + data_id);
-				break;
-
-			case 'log':
-				$('#bk-delete-form').attr('action', '/bids/logs/' + data_id);
 				break;
 			
 			case 'statement':

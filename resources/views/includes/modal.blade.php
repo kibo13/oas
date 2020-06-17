@@ -26,8 +26,8 @@
 				</div>
 
 				<div class="modal-footer">
-					<button type="submit" class="bk-confirm btn btn-danger mr-0">Да</button>
-					<button type="button" class="bk-confirm btn btn-secondary" data-dismiss="modal">Нет</button>
+					<button type="submit" class="bk-btn-confirm btn btn-danger mr-0">Да</button>
+					<button type="button" class="bk-btn-confirm btn btn-secondary" data-dismiss="modal">Нет</button>
 				</div>
 
 			</form>

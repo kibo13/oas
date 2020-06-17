@@ -74501,7 +74501,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 $(document).ready(function () {
   $('.bk-btn-del').on('click', function (e) {
     var data_id = $(e.target).data('id');
-    var data_tname = $(e.target).data('table-name');
+    var data_tname = $(e.target).data('table-name'); // console.log(data_id);
 
     switch (data_tname) {
       // START namespace "pts" 	
@@ -74539,14 +74539,6 @@ $(document).ready(function () {
 
       case 'plot':
         $('#bk-delete-form').attr('action', '/plots/' + data_id);
-        break;
-
-      case 'bid':
-        $('#bk-delete-form').attr('action', '/bids/' + data_id);
-        break;
-
-      case 'log':
-        $('#bk-delete-form').attr('action', '/bids/logs/' + data_id);
         break;
 
       case 'statement':
@@ -74633,8 +74625,6 @@ __webpack_require__(/*! ./includes/navbar */ "./resources/js/custom/includes/nav
 __webpack_require__(/*! ./includes/modal */ "./resources/js/custom/includes/modal.js"); // pages 
 
 
-__webpack_require__(/*! ./pages/bid */ "./resources/js/custom/pages/bid.js");
-
 __webpack_require__(/*! ./pages/statement */ "./resources/js/custom/pages/statement.js");
 
 __webpack_require__(/*! ./pages/promiser */ "./resources/js/custom/pages/promiser.js");
@@ -74642,28 +74632,6 @@ __webpack_require__(/*! ./pages/promiser */ "./resources/js/custom/pages/promise
 __webpack_require__(/*! ./pages/report */ "./resources/js/custom/pages/report.js");
 
 __webpack_require__(/*! ./pages/brief */ "./resources/js/custom/pages/brief.js");
-
-/***/ }),
-
-/***/ "./resources/js/custom/pages/bid.js":
-/*!******************************************!*\
-  !*** ./resources/js/custom/pages/bid.js ***!
-  \******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-$(document).ready(function () {
-  // add new record 
-  $("#add-log").on("click", function (e) {
-    e.preventDefault();
-    $("#bk-log").hasClass("bk-hidden") ? $("#bk-log").removeClass("bk-hidden") : $("#bk-log").addClass("bk-hidden");
-  }); // print home depending on street
-
-  $('#bid-street').on('change', function (e) {
-    var num_home = $("#bid-street option:selected").data("home");
-    $("#bid-home").val(num_home);
-  });
-});
 
 /***/ }),
 
@@ -74878,6 +74846,7 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 $(document).ready(function () {
+  // alert 
   // print addresses depending on plot 
   $("#statement-plot").on("change", function (e) {
     var plot_id = $(e.target).val();

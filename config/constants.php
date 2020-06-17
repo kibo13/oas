@@ -39,19 +39,6 @@
       ],
     ],
 
-    // states of bids
-    'type_log' => [
-
-      '0' => [
-        'name' => 'Локализация'
-      ], 
-
-      '1' => [
-        'name' => 'Устранение'
-      ]
-
-    ],
-
     // types of jobs
     'type_job' => [
 
