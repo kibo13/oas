@@ -16,14 +16,13 @@ class CreateJobsTable extends Migration
         Schema::create('jobs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('organization_id')->unsigned();
-            $table->bigInteger('street_id')->unsigned();
             $table->string('type_job');
             $table->string('type_off')->nullable();
             $table->text('desc')->nullable();
-            $table->dateTime('date_on');
-            $table->dateTime('date_off');
-            $table->integer('num_home');
-            $table->string('num_corp')->nullable();
+            $table->date('date_on');
+            $table->date('date_off');
+            $table->time('time_on')->nullable();
+            $table->time('time_off')->nullable();
             $table->timestamps();
         });
     }

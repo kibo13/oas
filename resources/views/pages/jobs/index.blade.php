@@ -79,6 +79,7 @@
 								</span>
 							</div>
 
+							@if(Auth::user()->roles()->pluck('slug')->contains('oas'))
 							<div class="bk-btn bk-btn-crud btn btn-warning mr-1" data-tip="Редактировать">
 								<a href="{{ route('jobs.edit', $job) }}" class="bk-btn-wrap bk-btn-link"></a>
 								<span class="bk-btn-wrap bk-btn-icon">
@@ -93,6 +94,7 @@
 									@include('includes.icons.trash')
 								</span>
 							</div>
+							@endif
 
 						</div>
 					</td>
