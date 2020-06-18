@@ -11,7 +11,7 @@
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 18/06/2020 06:47:16
+ Date: 18/06/2020 21:46:17
 */
 
 SET NAMES utf8mb4;
@@ -1629,19 +1629,6 @@ CREATE TABLE `role_user`  (
 -- ----------------------------
 -- Records of role_user
 -- ----------------------------
-INSERT INTO `role_user` VALUES (1, 1);
-INSERT INTO `role_user` VALUES (3, 1);
-INSERT INTO `role_user` VALUES (4, 1);
-INSERT INTO `role_user` VALUES (5, 1);
-INSERT INTO `role_user` VALUES (6, 1);
-INSERT INTO `role_user` VALUES (8, 1);
-INSERT INTO `role_user` VALUES (9, 1);
-INSERT INTO `role_user` VALUES (10, 1);
-INSERT INTO `role_user` VALUES (11, 1);
-INSERT INTO `role_user` VALUES (12, 1);
-INSERT INTO `role_user` VALUES (13, 1);
-INSERT INTO `role_user` VALUES (14, 1);
-INSERT INTO `role_user` VALUES (16, 1);
 INSERT INTO `role_user` VALUES (1, 2);
 INSERT INTO `role_user` VALUES (3, 3);
 INSERT INTO `role_user` VALUES (4, 3);
@@ -1659,12 +1646,12 @@ INSERT INTO `role_user` VALUES (14, 6);
 INSERT INTO `role_user` VALUES (3, 7);
 INSERT INTO `role_user` VALUES (10, 7);
 INSERT INTO `role_user` VALUES (14, 7);
-INSERT INTO `role_user` VALUES (3, 8);
-INSERT INTO `role_user` VALUES (11, 8);
-INSERT INTO `role_user` VALUES (14, 8);
 INSERT INTO `role_user` VALUES (3, 9);
 INSERT INTO `role_user` VALUES (11, 9);
 INSERT INTO `role_user` VALUES (14, 9);
+INSERT INTO `role_user` VALUES (3, 8);
+INSERT INTO `role_user` VALUES (11, 8);
+INSERT INTO `role_user` VALUES (14, 8);
 INSERT INTO `role_user` VALUES (3, 10);
 INSERT INTO `role_user` VALUES (12, 10);
 INSERT INTO `role_user` VALUES (14, 10);
@@ -1684,6 +1671,19 @@ INSERT INTO `role_user` VALUES (5, 15);
 INSERT INTO `role_user` VALUES (14, 15);
 INSERT INTO `role_user` VALUES (6, 16);
 INSERT INTO `role_user` VALUES (15, 17);
+INSERT INTO `role_user` VALUES (1, 1);
+INSERT INTO `role_user` VALUES (3, 1);
+INSERT INTO `role_user` VALUES (4, 1);
+INSERT INTO `role_user` VALUES (5, 1);
+INSERT INTO `role_user` VALUES (6, 1);
+INSERT INTO `role_user` VALUES (8, 1);
+INSERT INTO `role_user` VALUES (9, 1);
+INSERT INTO `role_user` VALUES (10, 1);
+INSERT INTO `role_user` VALUES (11, 1);
+INSERT INTO `role_user` VALUES (12, 1);
+INSERT INTO `role_user` VALUES (13, 1);
+INSERT INTO `role_user` VALUES (14, 1);
+INSERT INTO `role_user` VALUES (16, 1);
 
 -- ----------------------------
 -- Table structure for roles
@@ -1961,23 +1961,23 @@ CREATE TABLE `users`  (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'admin', 'admin@oas.com', NULL, '$2y$10$kas1ukOVl1kyTkp6D16Vve4IFg8CisTj5WLIHmCLosDVuqBDEbmf6', NULL, '2020-06-09 15:25:35', '2020-06-09 15:25:35');
-INSERT INTO `users` VALUES (2, 'Админ', 'admin@oas.info', NULL, '$2y$10$JaKnfU59LB3DYfOULKubI.SJ.INL/WULFtiokhn6KPsU4CqWCzLY.', NULL, '2020-06-16 14:59:14', '2020-06-16 14:59:14');
-INSERT INTO `users` VALUES (3, 'Репин', 'oas@oas.info', NULL, '$2y$10$wPbOZXqeJgNHgv3Qo8ebLOIEyFU3zkisu4VKRrjKt0juIkXOnfzJW', NULL, '2020-06-16 15:03:26', '2020-06-16 15:03:26');
-INSERT INTO `users` VALUES (4, 'Крикун', 'krikun_oas@oas.info', NULL, '$2y$10$6wJF0xAmONZMkqUX26AFDe8T3PPqHFuTFqjqF7FDAI4SNs5p2TgOG', NULL, '2020-06-16 15:06:37', '2020-06-16 15:06:37');
-INSERT INTO `users` VALUES (5, 'Тен', 'ten_oas@oas.info', NULL, '$2y$10$QIXsP/DuxFAFUzw/.hcm.eU/jvZc1MSNdMRJ6mt52MVQmp8Qjguvy', NULL, '2020-06-16 15:07:54', '2020-06-16 15:07:54');
-INSERT INTO `users` VALUES (6, 'Громов', 'gromov_oas@oas.info', NULL, '$2y$10$4qmyERwdMFaX9mHChIxBEOPQw/5YnpFCutv.a97ZqKLLs9D5a3uNO', NULL, '2020-06-16 15:09:40', '2020-06-16 15:09:40');
-INSERT INTO `users` VALUES (7, 'Платонов', 'plat_oas@oas.info', NULL, '$2y$10$V5DLX1HeDkBEQ8WUiBqKNuiXWBOhy2egfJooO9b.sW3zyUoGO9Gr.', NULL, '2020-06-16 15:12:01', '2020-06-16 15:12:01');
-INSERT INTO `users` VALUES (8, 'Бакин', 'bakin_oas@oas.info', NULL, '$2y$10$9XLXAptUL7jn8BVUVz3bbeItK35S9BqzMVn7gRdzOCDNyVA3QvFXW', NULL, '2020-06-16 15:14:32', '2020-06-16 15:14:32');
-INSERT INTO `users` VALUES (9, 'Шукиров', 'shuk_oas@oas.info', NULL, '$2y$10$g41OVQXHql6WMwLhc1iNwOebWdQ51fdcpdxoZDT.6jEorp4Ve1gH2', NULL, '2020-06-16 15:13:26', '2020-06-16 15:13:26');
-INSERT INTO `users` VALUES (10, 'Кенжегулов', 'keng_oas@oas.info', NULL, '$2y$10$prsxCinuow4H8BhFVhppYe4/KkLBP9O6wXxbqwmOnrdhVsiZTg.P2', NULL, '2020-06-16 15:17:03', '2020-06-16 15:17:03');
-INSERT INTO `users` VALUES (11, 'Уайсов', 'yaisov_oas@oas.info', NULL, '$2y$10$wXX.KR7Qhlkyf.irQ3jKietXTaPhXeM.WR5HQ9HCn91.eL63wFGme', NULL, '2020-06-16 15:16:10', '2020-06-16 15:16:10');
-INSERT INTO `users` VALUES (12, 'Ромашкин', 'romashka_oas@oas.info', NULL, '$2y$10$qkQq6b5KaNj5CAZ2C3tPE.eqh4kRtxVP0htUa.EGcLbDbyiPEJb9O', NULL, '2020-06-16 15:18:56', '2020-06-16 15:18:56');
-INSERT INTO `users` VALUES (13, 'Цветков', 'cvetkov_oas@oas.info', NULL, '$2y$10$h91bEn3jM62LYd7jvCPjS.IL3EFaTN9RHarJZWjSK/muAEO6L0sbu', NULL, '2020-06-16 15:19:39', '2020-06-16 15:19:39');
-INSERT INTO `users` VALUES (14, 'Головин', 'golovin_oas@oas.info', NULL, '$2y$10$cDceaMsfeIGCVms/fwlXQO.JF6nK83pQ6PneRPQTXgAiRJkV5AWqW', NULL, '2020-06-16 15:22:47', '2020-06-16 15:22:47');
-INSERT INTO `users` VALUES (15, 'Петрова', 'petrova_oas@oas.info', NULL, '$2y$10$1O0zT6KUqYlhsMzN2Kr3OueVeqk4Px0ZkT6vGVnvfC268PbUWexEm', NULL, '2020-06-16 15:23:57', '2020-06-16 15:23:57');
-INSERT INTO `users` VALUES (16, 'Васильев', 'audit@oas.ru', NULL, '$2y$10$Eg2lTI4NwitwQVp4T0/aHuIsjRDiazTrOQLvLE9FbCHaCWlPfxdLe', NULL, '2020-06-09 15:40:16', '2020-06-16 15:25:01');
-INSERT INTO `users` VALUES (17, 'Смолин', 'user@oas.ru', NULL, '$2y$10$EpwwsSnlFVuUgC1qbR4S5eyK9dHcVP54BpuDbQ7gY0jAXF6hmi5GW', NULL, '2020-06-12 15:44:28', '2020-06-16 15:25:13');
+INSERT INTO `users` VALUES (1, 'kibo13', 'admin@oas.com', NULL, '$2y$10$kas1ukOVl1kyTkp6D16Vve4IFg8CisTj5WLIHmCLosDVuqBDEbmf6', NULL, '2020-06-09 15:25:35', '2020-06-18 16:45:08');
+INSERT INTO `users` VALUES (2, 'Админ', 'admin@oas.info', NULL, '$2y$10$CbHG.VKYAb.7BQVfdlUh..3635NzHmzUq76gk0TV/tKBm4AZx7Z7G', NULL, '2020-06-16 14:59:14', '2020-06-18 16:26:26');
+INSERT INTO `users` VALUES (3, 'Репин', 'oas@oas.info', NULL, '$2y$10$lWcGeZQJQqyaIm8NPni/0O7ecPUABmADuEsF1MKYrRyeZvhIp0HpC', NULL, '2020-06-16 15:03:26', '2020-06-18 16:27:10');
+INSERT INTO `users` VALUES (4, 'Крикун', 'krikun_oas@oas.info', NULL, '$2y$10$tJqPrQNA1AxsQD1Cmu0Ra..TISdSrMtvywAU3mWgiIs7FezCrUoem', NULL, '2020-06-16 15:06:37', '2020-06-18 16:27:39');
+INSERT INTO `users` VALUES (5, 'Тен', 'ten_oas@oas.info', NULL, '$2y$10$YWqqa2Xlxm1BijLoQKxUk.OhBa7bapifOXYvq3ws04HkpXkwOZB6u', NULL, '2020-06-16 15:07:54', '2020-06-18 16:28:05');
+INSERT INTO `users` VALUES (6, 'Громов', 'gromov_oas@oas.info', NULL, '$2y$10$CIIPZWPwuLKmd03lCk96HeGlkTuxukO2U0TIv4CWezArszN3Y9ysG', NULL, '2020-06-16 15:09:40', '2020-06-18 16:28:37');
+INSERT INTO `users` VALUES (7, 'Платонов', 'plat_oas@oas.info', NULL, '$2y$10$o2yzUNgMRDuql8pJLjP3.eedcaOeM35OG27dqjo1lyB5V5vpGzRuW', NULL, '2020-06-16 15:12:01', '2020-06-18 16:28:49');
+INSERT INTO `users` VALUES (8, 'Бакин', 'bakin_oas@oas.info', NULL, '$2y$10$PGnbus5jkNp.m06SJ27Zdex.d9ws4.47M9Ax12GVj1I4UCUhZBqya', NULL, '2020-06-16 15:14:32', '2020-06-18 16:29:35');
+INSERT INTO `users` VALUES (9, 'Шукиров', 'shuk_oas@oas.info', NULL, '$2y$10$L5vFRhbieQGPX4.82WQWXu7BhgnJ4bhjk7ftgqu6AQK5zUnBx802W', NULL, '2020-06-16 15:13:26', '2020-06-18 16:29:10');
+INSERT INTO `users` VALUES (10, 'Кенжегулов', 'keng_oas@oas.info', NULL, '$2y$10$D1VOQ7jUbzXxNSd0XduJ1u5HjJrBfcL8WwmY8Xgtuzcbp9ZVHeAaW', NULL, '2020-06-16 15:17:03', '2020-06-18 16:29:51');
+INSERT INTO `users` VALUES (11, 'Уайсов', 'yaisov_oas@oas.info', NULL, '$2y$10$iyCny1pgCwuPJHsKRnwqgu159jLnQwLhoDQUFLnZvCsAqVgh5dc0m', NULL, '2020-06-16 15:16:10', '2020-06-18 16:30:10');
+INSERT INTO `users` VALUES (12, 'Ромашкин', 'romashka_oas@oas.info', NULL, '$2y$10$QNPi/.lkpQwFZEzdDuyl/um7kTJT56PXfsTeYIX0iFMPpsvlsP14K', NULL, '2020-06-16 15:18:56', '2020-06-18 16:30:36');
+INSERT INTO `users` VALUES (13, 'Цветков', 'cvetkov_oas@oas.info', NULL, '$2y$10$wqormoGSOBFn7LpJgDR5s.9t.jVKG5DJbEDlQz0QoTQ64Ob5NUHja', NULL, '2020-06-16 15:19:39', '2020-06-18 16:30:49');
+INSERT INTO `users` VALUES (14, 'Головин', 'golovin_oas@oas.info', NULL, '$2y$10$TN401rN1Shu0sUIl9Gqz0ORrybw7ama3Ck2PiDGmL4zLcizjMfbWq', NULL, '2020-06-16 15:22:47', '2020-06-18 16:31:08');
+INSERT INTO `users` VALUES (15, 'Петрова', 'petrova_oas@oas.info', NULL, '$2y$10$nrJlUFHR71CjG50gr8V7Uu.Vr1GPdpuLbMj2.INyJls.Gba0YlRhO', NULL, '2020-06-16 15:23:57', '2020-06-18 16:31:26');
+INSERT INTO `users` VALUES (16, 'Васильев', 'audit@oas.ru', NULL, '$2y$10$JzP.OqRGsrnd4tfptjmSbOWIpUxDtvufNdpx/lkgbOSNQjJKgn8Dm', NULL, '2020-06-09 15:40:16', '2020-06-18 16:31:41');
+INSERT INTO `users` VALUES (17, 'Смолин', 'user@oas.ru', NULL, '$2y$10$914wqz0Z9emckYlqLXchHO.oY49D5w9bgukjCS6PyqJeOR4.LA97m', NULL, '2020-06-12 15:44:28', '2020-06-18 16:31:53');
 
 -- ----------------------------
 -- Table structure for workers
