@@ -1,7 +1,25 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
-    // alert 
-    
+    // alert control statements 
+    $('#stat-triangle').on('click mouseenter', e => {
+
+        let elem = e.target;
+
+        if ($(elem).hasClass('bk-btn-triangle--down')) {
+            $(elem)
+                .removeClass('bk-btn-triangle--down')
+                .addClass('bk-btn-triangle--up');
+        } else {
+            $(elem)
+                .removeClass('bk-btn-triangle--up')
+                .addClass('bk-btn-triangle--down');
+        }
+
+        $('#stat-list').stop().slideToggle('normal', function () {
+            $('.bk-hidden').toggleClass('bk-hidden');
+        });
+
+    })
 
     // print addresses depending on plot 
     $("#statement-plot").on("change", e => {

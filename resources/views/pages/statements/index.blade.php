@@ -13,26 +13,36 @@
   @endif
 
   @if($total != 0)
-  <div class="mt-1 mb-2 pt-3 bk-callout bk-callout-info">
+  <div class="mt-1 mb-2 pt-3 pb-0 bk-callout bk-callout-info">
     <h5 class="mb-0">
       Контроль заявок
       <span class="bk-text--info text-info align-top font-weight-bold">
         {{ getDMY($today) }}г.
       </span>
     </h5>
-    <p class="d-flex m-0 mt-2 p-0">
+    <p class="d-flex m-0 my-2 p-0">
       Общее количество неустранненых заявок составляет
       <span class="bk-text--info text-info font-weight-bold mx-1">
         {{ $total }}
       </span>
-      <a id="stat-triangle" href="javascript:void(0)" class="bk-btn bk-btn-triangle" data-tip="Подробнее">
-        <span class="bk-btn-triangle--down"></span>
+      <a href="javascript:void(0)" class="bk-btn bk-btn-triangle" data-tip="Подробнее">
+        <span id="stat-triangle" class="bk-btn-triangle--down"></span>
       </a>
     </p>
-    <ul id="stat-list" class="m-0 p-0">
-      <li class="bk-text--info text-info font-weight-bold">Количество 10</li>
-      <li class="bk-text--info text-info font-weight-bold">Количество 10</li>
-      <li class="bk-text--info text-info font-weight-bold">Количество 10</li>
+    <ul id="stat-list" class="m-0 px-3 border-top bk-hidden" style="padding: 10px 5px;">
+
+      <li>
+        <span class="text-info font-weight-bold">Количество заявок:</span>
+      </li>
+      <li>
+        - зарегистированных <span class="bk-text--small align-top text-info font-weight-bold">{{ $take }}</span>
+      </li>
+      <li>
+        - локализированных <span class="bk-text--small align-top text-info font-weight-bold">{{ $temp }}</span>
+      </li>
+      <li>
+        - устраненных <span class="bk-text--small align-top text-info font-weight-bold">{{ $done }}</span>
+      </li>
     </ul>
   </div>
   @endif

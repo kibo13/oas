@@ -74629,6 +74629,8 @@ __webpack_require__(/*! ./pages/statement */ "./resources/js/custom/pages/statem
 
 __webpack_require__(/*! ./pages/promiser */ "./resources/js/custom/pages/promiser.js");
 
+__webpack_require__(/*! ./pages/job */ "./resources/js/custom/pages/job.js");
+
 __webpack_require__(/*! ./pages/report */ "./resources/js/custom/pages/report.js");
 
 __webpack_require__(/*! ./pages/brief */ "./resources/js/custom/pages/brief.js");
@@ -74647,6 +74649,32 @@ $(document).ready(function () {
     e.preventDefault();
     window.print();
   });
+});
+
+/***/ }),
+
+/***/ "./resources/js/custom/pages/job.js":
+/*!******************************************!*\
+  !*** ./resources/js/custom/pages/job.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  // wrapper
+  var wjob = document.getElementById("job-wrap");
+
+  if (wjob) {
+    $("#job-save").on("click", function (e) {
+      var off = new Date($("#job-start").val());
+      var on = new Date($("#job-end").val());
+
+      if (off > on) {
+        alert("Дата начала работы не должна быть позже даты окончания");
+        return false;
+      }
+    });
+  }
 });
 
 /***/ }),
@@ -74846,8 +74874,21 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 $(document).ready(function () {
-  // alert 
-  // print addresses depending on plot 
+  // alert control statements 
+  $('#stat-triangle').on('click mouseenter', function (e) {
+    var elem = e.target;
+
+    if ($(elem).hasClass('bk-btn-triangle--down')) {
+      $(elem).removeClass('bk-btn-triangle--down').addClass('bk-btn-triangle--up');
+    } else {
+      $(elem).removeClass('bk-btn-triangle--up').addClass('bk-btn-triangle--down');
+    }
+
+    $('#stat-list').stop().slideToggle('normal', function () {
+      $('.bk-hidden').toggleClass('bk-hidden');
+    });
+  }); // print addresses depending on plot 
+
   $("#statement-plot").on("change", function (e) {
     var plot_id = $(e.target).val();
     $('#statement-street').empty();

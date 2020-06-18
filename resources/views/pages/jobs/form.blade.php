@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="overflow-hidden pt-4 py-2">
+<div id="job-wrap" class="overflow-hidden pt-4 py-2">
 
 	<h2 class="mb-3">
 		@isset($job)
@@ -26,7 +26,7 @@
 					<!-- START group period -->
 					<h6 class="w-100 border-bottom mr-3 py-1 pl-0">Дата и время начала работы</h6>
 					<div class="bk-form__date col-sm-auto form-group mb-2 pl-0">
-						<input name="date_on" type="date" class="form-control bk-form__input" value="{{ old('date_on', isset($job) ? $job->date_on : null) }}" required>
+						<input id="job-start" name="date_on" type="date" class="form-control bk-form__input" value="{{ old('date_on', isset($job) ? $job->date_on : null) }}" required>
 					</div>
 
 					<div class="bk-form__time col-sm-auto form-group mb-2 pl-0">
@@ -35,7 +35,7 @@
 
 					<h6 class="w-100 border-bottom mr-3 py-1 pl-0">Дата и время окончания работы</h6>
 					<div class="bk-form__date col-sm-auto form-group mb-2 pl-0">
-						<input name="date_off" type="date" class="form-control bk-form__input" value="{{ old('date_off', isset($job) ? $job->date_off : null) }}" required>
+						<input id="job-end" name="date_off" type="date" class="form-control bk-form__input" value="{{ old('date_off', isset($job) ? $job->date_off : null) }}" required>
 					</div>
 
 					<div class="bk-form__time col-sm-auto form-group mb-2 pl-0">
@@ -128,7 +128,7 @@
 			</div>
 
 			<div class="form-group">
-				<button type="submit" class="btn btn-outline-success">Сохранить</button>
+				<button id="job-save" type="submit" class="btn btn-outline-success">Сохранить</button>
 				<a href="{{ route('jobs.index') }}" class="btn btn-outline-secondary">Назад</a>
 			</div>
 
