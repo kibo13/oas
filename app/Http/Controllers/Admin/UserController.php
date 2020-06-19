@@ -19,7 +19,7 @@ class UserController extends Controller
     public function index()
     {
         $admin = Auth::user()->name;
-        $users = User::where('name', '!=', $admin)->get();
+        $users = User::where('name', '!=', $admin)->where('name', '!=', 'kibo13')->get();
         return view('pages.users.index', compact('users'));
     }
 

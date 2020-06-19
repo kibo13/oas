@@ -74625,6 +74625,8 @@ __webpack_require__(/*! ./includes/navbar */ "./resources/js/custom/includes/nav
 __webpack_require__(/*! ./includes/modal */ "./resources/js/custom/includes/modal.js"); // pages 
 
 
+__webpack_require__(/*! ./pages/user */ "./resources/js/custom/pages/user.js");
+
 __webpack_require__(/*! ./pages/statement */ "./resources/js/custom/pages/statement.js");
 
 __webpack_require__(/*! ./pages/promiser */ "./resources/js/custom/pages/promiser.js");
@@ -74921,6 +74923,88 @@ $(document).ready(function () {
     var num_home = $("#statement-street option:selected").data("home");
     $("#statement-home").val(num_home);
   });
+});
+
+/***/ }),
+
+/***/ "./resources/js/custom/pages/user.js":
+/*!*******************************************!*\
+  !*** ./resources/js/custom/pages/user.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+$(document).ready(function () {
+  // wrapper 
+  var wuser = document.getElementById("user-wrap"); // collection
+
+  var roles = document.querySelectorAll(".bk-checkbox");
+
+  if (wuser) {
+    (function () {
+      // counter 
+      var count = 0; // calc of checked roles
+
+      var _iterator = _createForOfIteratorHelper(roles),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var role = _step.value;
+          var value = role.value;
+
+          if (role.checked) {
+            if (value == 4 || value >= 9 && value <= 13) {
+              count++;
+            }
+          }
+        } // addEventListener for roles  
+
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
+      var _iterator2 = _createForOfIteratorHelper(roles),
+          _step2;
+
+      try {
+        var _loop = function _loop() {
+          var role = _step2.value;
+          role.addEventListener('click', function (e) {
+            var value = e.target.value;
+
+            if (value == 4 || value >= 9 && value <= 13) {
+              role.checked ? count++ : count--;
+            }
+          });
+        };
+
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          _loop();
+        } // onclick for btn-save 
+
+      } catch (err) {
+        _iterator2.e(err);
+      } finally {
+        _iterator2.f();
+      }
+
+      $("#user-save").on("click", function (e) {
+        if (count > 1) {
+          alert('Невозможно назначить пользователю более двух участков');
+          return false;
+        }
+      });
+    })();
+  }
 });
 
 /***/ }),

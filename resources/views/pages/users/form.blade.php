@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="overflow-hidden pt-4 py-2">
+<div id="user-wrap" class="overflow-hidden pt-4 py-2">
 
 	<h2 class="mb-3">
 		@isset($user)
@@ -70,8 +70,8 @@
 				</div>
 
 				<div class="form-group mb-0">
-					<label for="password" class="bk-form__label mb-0">Подтверждение</label>
-					<input id="password" type="password" class="form-control bk-form__input" name="password_confirmation" autocomplete="off">
+					<label for="confirm-password" class="bk-form__label mb-0">Подтверждение</label>
+					<input id="confirm-password" type="password" class="form-control bk-form__input" name="password_confirmation" autocomplete="off">
 				</div>
 			</div>
 			<!-- END group users -->
@@ -85,7 +85,7 @@
 						id="{{ $key }}"
 						name="roles[]"
 						type="checkbox" 
-						class="custom-control-input" 
+						class="bk-checkbox custom-control-input" 
 						value="{{ $role->id }}"
 						@isset($user)
 							@if($user->roles->where('id', $role->id)->count())
@@ -103,7 +103,7 @@
 			<!-- END group roles -->
 
 			<div class="form-group">
-				<button type="submit" class="btn btn-outline-success">Сохранить</button>
+				<button id="user-save" type="submit" class="btn btn-outline-success">Сохранить</button>
 				<a href="{{ route('users.index') }}" class="btn btn-outline-secondary">Назад</a>
 			</div>
 
