@@ -32,7 +32,7 @@ class StatementController extends Controller
             $statements = Statement::where('branch_id', $branch)->orderBy('date_in', 'DESC')->paginate(10);     
         }
 
-        if ($branch == 6) {
+        if ($branch > 5) {
             $stats      = Statement::get();
             $statements = Statement::orderBy('date_in', 'DESC')->paginate(10);
         }

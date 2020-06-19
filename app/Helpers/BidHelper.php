@@ -24,9 +24,13 @@ function getBranch()
 
     $branch_id = 5;
 
+  } elseif ($why->contains('oas')) {
+
+    $branch_id = 9;
+
   } else {
 
-    $branch_id = 6;
+    $branch_id = 10;
 
   }
 
