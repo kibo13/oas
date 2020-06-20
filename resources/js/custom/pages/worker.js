@@ -1,31 +1,9 @@
-$(document).ready(function () {
-	// wrapper
-	const wjob = document.getElementById("job-wrap");
-	// index 
-	const ijob = document.getElementById('job-index');
+$(document).ready(function() {
+    // blade.index
+    const iworker = document.getElementById("worker-index");
 
-	// if active form.blade.php 
-	if (wjob) {
-
-		$("#job-save").on("click", e => {
-
-			let off = new Date($("#job-start").val());
-			let on = new Date($("#job-end").val());
-
-			if (off > on) {
-				alert(
-					"Дата начала работы не должна быть позже даты окончания"
-				);
-				return false;
-			}
-
-		});
-
-	} else 
-
-	// if active index.blade.php 
-	if (ijob) {
-		let table = document.getElementById("job-table");
+    if (iworker) {
+        let table = document.getElementById("worker-table");
 
         // setup datatables
         $(table).dataTable({
@@ -50,6 +28,5 @@ $(document).ready(function () {
                 ]
             ]
         });
-	}
-
+    }
 });

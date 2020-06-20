@@ -1,31 +1,9 @@
-$(document).ready(function () {
-	// wrapper
-	const wjob = document.getElementById("job-wrap");
-	// index 
-	const ijob = document.getElementById('job-index');
+$(document).ready(function() {
+    // blade.index
+    const ibranch = document.getElementById("branch-index");
 
-	// if active form.blade.php 
-	if (wjob) {
-
-		$("#job-save").on("click", e => {
-
-			let off = new Date($("#job-start").val());
-			let on = new Date($("#job-end").val());
-
-			if (off > on) {
-				alert(
-					"Дата начала работы не должна быть позже даты окончания"
-				);
-				return false;
-			}
-
-		});
-
-	} else 
-
-	// if active index.blade.php 
-	if (ijob) {
-		let table = document.getElementById("job-table");
+    if (ibranch) {
+        let table = document.getElementById("branch-table");
 
         // setup datatables
         $(table).dataTable({
@@ -37,7 +15,7 @@ $(document).ready(function () {
             aoColumnDefs: [
                 {
                     bSortable: false,
-                    aTargets: [-1]
+                    aTargets: [2]
                 }
             ],
             lengthMenu: [
@@ -50,6 +28,5 @@ $(document).ready(function () {
                 ]
             ]
         });
-	}
-
+    }
 });

@@ -3,9 +3,13 @@ $(document).ready(function () {
 	// wrapper 
 	const wuser = document.getElementById("user-wrap");
 
+	// index 
+	const iuser = document.getElementById("user-index");
+
 	// collection
 	const roles = document.querySelectorAll(".bk-checkbox");
 
+	// if active form.blade.php 
 	if (wuser) {
 
 		// counter 
@@ -51,6 +55,35 @@ $(document).ready(function () {
 						
 		});
 
+	} else 
+
+	// if active index.blade.php
+	if (iuser) {
+		 let table = document.getElementById("user-table");
+
+         // setup datatables
+         $(table).dataTable({
+             language: {
+                 searchPlaceholder: "Поиск",
+                 url:
+                     "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json"
+             },
+             aoColumnDefs: [
+                 {
+                     bSortable: false,
+                     aTargets: [3]
+                 }
+             ],
+             lengthMenu: [
+                 [10, 25, 50, -1],
+                 [
+                     "Показывать по 10",
+                     "Показывать по 25",
+                     "Показывать по 50",
+                     "Все записи"
+                 ]
+             ]
+         });
 	}
 
 });

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="overflow-hidden pt-4 py-2">
+<div id="branch-index" class="overflow-hidden pt-4 py-2">
   <h2 class="mb-0">Отделы</h2>
 
   <div class="py-2 mb-1">
@@ -14,7 +14,7 @@
   </div>
 
   <div class="table-responsive">
-    <table class="bk-table table table-bordered table-hover">
+    <table id="branch-table" class="bk-table table table-bordered table-hover">
       <thead class="thead-light">
         <tr>
           <th scope="col">#</th>
@@ -52,6 +52,5 @@
       </tbody>
     </table>
   </div>
-  {{ $branches->links() }}
 </div>
 @endsection

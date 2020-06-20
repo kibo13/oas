@@ -14,7 +14,7 @@ class StreetController extends Controller
      */
     public function index()
     {
-        $streets = Street::orderBy('name', 'ASC')->paginate(10);
+        $streets = Street::get();
         return view('pages.addresses.streets.index', compact('streets'));
     }
 

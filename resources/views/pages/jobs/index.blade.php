@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="overflow-hidden pt-4 py-2">
+<div id="job-index" class="overflow-hidden pt-4 py-2">
 	<h2 class="mb-1">Учет работ</h2>
 
 	@if(Auth::user()->roles()->pluck('slug')->contains('oas'))
@@ -24,7 +24,7 @@
 	@endif
 
 	<div class="table-responsive mt-1">
-		<table class="bk-table table table-bordered table-hover">
+		<table id="job-table" class="bk-table table table-bordered table-hover">
 			<thead class="thead-light">
 				<tr>
 					<th rowspan="2" class="align-top">#</th>
@@ -105,6 +105,5 @@
 		</table>
 	</div>
 
-	{{ $jobs->links() }}
 </div>
 @endsection

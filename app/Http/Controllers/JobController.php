@@ -22,7 +22,8 @@ class JobController extends Controller
         $count = Job::where('date_on', $today)->count();
 
         $streets = Street::get();
-        $jobs = Job::orderBy('date_on', 'DESC')->paginate(15);
+        $jobs = Job::get();
+        
         return view(
             'pages.jobs.index', 
             compact('jobs', 'streets', 'count', 'today')

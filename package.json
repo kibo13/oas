@@ -25,6 +25,8 @@
     },
     "dependencies": {
         "air-datepicker": "^2.2.3",
-        "chart.js": "^2.9.3"
+        "chart.js": "^2.9.3",
+        "datatables.net": "^1.10.21",
+        "datatables.net-dt": "^1.10.21"
     }
 }

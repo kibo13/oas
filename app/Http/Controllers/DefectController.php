@@ -15,7 +15,7 @@ class DefectController extends Controller
      */
     public function index()
     {
-        $defects = Defect::paginate(10);
+        $defects = Defect::get();
         return view('pages.defects.index', compact('defects'));
     }
 

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="overflow-hidden pt-4 py-2">
+<div id="stat-index" class="overflow-hidden pt-4 py-2">
   <h2 class="mb-1">Заявки</h2>
 
   @if(Auth::user()->roles()->pluck('slug')->contains('disp'))
@@ -48,7 +48,7 @@
   @endif
 
   <div class="table-responsive mt-1">
-    <table class="bk-table table table-bordered table-hover">
+    <table id="stat-table" class="bk-table table table-bordered table-hover">
       <thead class="thead-light">
         <tr>
           <th scope="col">#</th>
@@ -123,7 +123,5 @@
       </tbody>
     </table>
   </div>
-
-  {{ $statements->links() }}
 </div>
 @endsection

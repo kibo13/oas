@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="overflow-hidden pt-4 py-2">
+<div id="worker-index" class="overflow-hidden pt-4 py-2">
 	<h2 class="mb-1">Сотрудники</h2>
 
 	@if(Auth::user()->roles()->pluck('slug')->contains('hh'))
@@ -13,7 +13,7 @@
 	@endif
 
 	<div class="table-responsive mt-1">
-		<table class="bk-table table table-bordered table-hover">
+		<table id="worker-table" class="bk-table table table-bordered table-hover">
 			<thead class="thead-light">
 				<tr>
 					<th scope="col">#</th>
@@ -84,6 +84,5 @@
 			</tbody>
 		</table>
 	</div>
-	{{ $workers->links() }}
 </div>
 @endsection

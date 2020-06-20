@@ -11,7 +11,7 @@
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 18/06/2020 21:46:17
+ Date: 20/06/2020 23:54:04
 */
 
 SET NAMES utf8mb4;
@@ -1677,11 +1677,6 @@ INSERT INTO `role_user` VALUES (4, 1);
 INSERT INTO `role_user` VALUES (5, 1);
 INSERT INTO `role_user` VALUES (6, 1);
 INSERT INTO `role_user` VALUES (8, 1);
-INSERT INTO `role_user` VALUES (9, 1);
-INSERT INTO `role_user` VALUES (10, 1);
-INSERT INTO `role_user` VALUES (11, 1);
-INSERT INTO `role_user` VALUES (12, 1);
-INSERT INTO `role_user` VALUES (13, 1);
 INSERT INTO `role_user` VALUES (14, 1);
 INSERT INTO `role_user` VALUES (16, 1);
 
@@ -1956,7 +1951,7 @@ CREATE TABLE `users`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 51 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users

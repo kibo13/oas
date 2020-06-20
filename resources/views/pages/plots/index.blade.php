@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="overflow-hidden pt-4 py-2">
+<div id="plot-index" class="overflow-hidden pt-4 py-2">
 	<h2 class="mb-0">Участки</h2>
 
 	<div class="py-2 mb-1">
@@ -11,7 +11,7 @@
 	</div>
 
 	<div class="table-responsive">
-		<table class="bk-table table table-bordered">
+		<table id="plot-table" class="bk-table table table-bordered">
 			<thead class="thead-light">
 				<tr>
 					<th scope="col">#</th>

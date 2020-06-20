@@ -15,7 +15,7 @@ class AddressController extends Controller
      */
     public function index()
     {
-        $addresses = Address::paginate(20);
+        $addresses = Address::get();
         return view('pages.addresses.index', compact('addresses'));
     }
 

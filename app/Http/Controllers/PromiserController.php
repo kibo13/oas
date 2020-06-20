@@ -17,7 +17,7 @@ class PromiserController extends Controller
     {
         $today = config('constants.date_now');
         $count = Promiser::where('date_on', null)->count();
-        $promisers = Promiser::orderBy('date_off', 'DESC')->orderBy('date_on', 'DESC')->paginate(20);
+        $promisers = Promiser::get();
         return view('pages.promisers.index', compact('promisers', 'count', 'today'));
     }
 

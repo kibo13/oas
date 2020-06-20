@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="overflow-hidden pt-4 py-2">
+<div id="promiser-index" class="overflow-hidden pt-4 py-2">
   <h2 class="bk-title mb-4" data-desc="(откл. квартиросъемщики)">
     Потребители
   </h2>
@@ -26,7 +26,7 @@
   @endif
 
   <div class="table-responsive mt-1">
-    <table class="bk-table table table-bordered table-hover">
+    <table id="promiser-table" class="bk-table table table-bordered table-hover">
       <thead class="thead-light">
         <tr>
           <th scope="col">#</th>
@@ -87,6 +87,5 @@
       </tbody>
     </table>
   </div>
-  {{ $promisers->links() }}
 </div>
 @endsection

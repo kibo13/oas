@@ -28,20 +28,18 @@ class StatementController extends Controller
         $branch = getBranch();
 
         if ($branch >= 1 || $branch <= 5) {
-            $stats      = Statement::where('branch_id', $branch)->get();
-            $statements = Statement::where('branch_id', $branch)->orderBy('date_in', 'DESC')->paginate(10);     
+            $statements = Statement::where('branch_id', $branch)->get();
         }
 
         if ($branch > 5) {
-            $stats      = Statement::get();
-            $statements = Statement::orderBy('date_in', 'DESC')->paginate(10);
+            $statements = Statement::get();
         }
 
         // counters 
-        $total = $stats->where('state', '!=', 2)->count();
-        $take  = $stats->where('state', 0)->count();
-        $temp  = $stats->where('state', 1)->count();
-        $done  = $stats->where('state', 2)->count();      
+        $total = $statements->where('state', '!=', 2)->count();
+        $take  = $statements->where('state', 0)->count();
+        $temp  = $statements->where('state', 1)->count();
+        $done  = $statements->where('state', 2)->count();      
 
         return view(
             'pages.statements.index', 
