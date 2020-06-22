@@ -22,14 +22,17 @@
 </head>
 
 <body>
+	@include('includes.loader')
+	<!-- /.loader -->
+
 	<div class="wrapper d-flex flex-column">
-		
+
 		@include('home.header')
 		<!-- /.sidebar -->
 
 		@yield('content')
 		<!-- /.content -->
-		
+
 	</div>
 
 	@include('includes.footer')

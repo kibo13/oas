@@ -1,3 +1,6 @@
+// loader 
+require('./loader');
+
 // includes 
 require('./includes/sidebar');
 require('./includes/navbar');

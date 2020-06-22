@@ -89967,7 +89967,10 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-// includes 
+// loader 
+__webpack_require__(/*! ./loader */ "./resources/js/custom/loader.js"); // includes 
+
+
 __webpack_require__(/*! ./includes/sidebar */ "./resources/js/custom/includes/sidebar.js");
 
 __webpack_require__(/*! ./includes/navbar */ "./resources/js/custom/includes/navbar.js");
@@ -90004,6 +90007,19 @@ __webpack_require__(/*! ./pages/report */ "./resources/js/custom/pages/report.js
 __webpack_require__(/*! ./pages/worker */ "./resources/js/custom/pages/worker.js");
 
 __webpack_require__(/*! ./pages/brief */ "./resources/js/custom/pages/brief.js");
+
+/***/ }),
+
+/***/ "./resources/js/custom/loader.js":
+/*!***************************************!*\
+  !*** ./resources/js/custom/loader.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(window).on("load", function () {
+  $("#loader").fadeOut().end().delay(500).fadeOut("slow");
+});
 
 /***/ }),
 

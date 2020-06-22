@@ -22,6 +22,8 @@
 </head>
 
 <body>
+  @include('includes.loader')
+  <!-- /.loader -->
 
   <div class="wrapper">
 
