@@ -45,17 +45,6 @@ class PromiserController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Promiser  $promiser
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Promiser $promiser)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Promiser  $promiser

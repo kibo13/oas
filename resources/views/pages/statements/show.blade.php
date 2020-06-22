@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="overflow-hidden pt-4 py-2">
+<div id="stat-show" class="overflow-hidden pt-4 py-2">
 
   <h4 class="mb-3">
     Статус по заявке №{{ $statement->id }}<br>
@@ -9,6 +9,8 @@
   </h4>
 
   <div class="row p-0 m-0">
+
+    <input id="stat-id" type="hidden" value="{{ $statement->id }}">
 
     <!-- START group address -->
     <h6 class="w-100 border-bottom mb-0 mr-3 py-1 pl-0 font-weight-bold">Адрес</h6>
@@ -100,17 +102,17 @@
       <!-- END group home_crane -->
 
       <!-- START group plot -->
-      <input type="hidden" name="plot" value="{{ $branch->name }}">
+      <input id="stat-plot" type="hidden" value="{{ $branch->name }}">
       <!-- END group plot -->
 
       <!-- START group receiver -->
-      <input type="hidden" name="receiver" value="{{ $user }}">
+      <input id="stat-receiver" type="hidden" value="{{ $user }}">
       <!-- END group receiver -->
 
       <!-- START group action -->
       <h6 class="w-100 border-bottom mr-3 py-1 pl-0 font-weight-bold">Действие</h6>
       <div class="col-sm-auto form-group mb-2 pl-0">
-        <select name="state" class="form-control bk-form__input">
+        <select id="stat-state" name="state" class="form-control bk-form__input">
           <option disabled selected>Выберите действие</option>
           @foreach($actions as $action)
           <option value="{{ $action['id'] }}" @isset($statement) @if($statement->state == $action['id'])
@@ -129,10 +131,16 @@
       <h6 class="w-100 border-bottom mr-3 py-1 pl-0 font-weight-bold">Дата и время действия</h6>
       <div class="bk-form__date col-sm-auto form-group mb-2 pl-0">
         <input name="date_off" type="date" class="form-control bk-form__input" value="{{ old('date_off', $statement->date_off != null ? $statement->date_off : $statement->date_in) }}" required>
+        <div id="stat-date" class="border my-2" style="display: none;">
+          {{ old('date_off', $statement->date_off != null ? $statement->date_off : $statement->date_in) }}
+        </div>
       </div>
 
       <div class="bk-form__time col-sm-auto form-group mb-2 pl-0">
         <input name="time_off" type="time" class="form-control bk-form__input" value="{{ old('time_off', $statement->time_off != null ? $statement->time_off : $statement->time_in) }}" required>
+        <div id="stat-time" class="border my-2" style="display: none;">
+          {{ old('time_off', $statement->time_off != null ? $statement->time_off : $statement->time_in) }}
+        </div>
       </div>
       <!-- END group date_action -->
 
@@ -157,9 +165,29 @@
       <!-- START group solution -->
       <h6 class="w-100 border-bottom mr-3 py-1 pl-0 font-weight-bold">Принятые меры</h6>
       <div class="w-100 form-group mb-2 pl-0 mr-3">
-        <textarea class="form-control" name="solution" style="height:80px;" placeholder="Опишите принятые меры">{{ old('solution', isset($statement) ? $statement->solution : null) }}</textarea>
+        <textarea class="form-control" name="solution" style="height:80px;">{{ $statement->solution }}</textarea>
       </div>
+      <div id="stat-solution" class="border my-2" style="display: none;"></div>
       <!-- END group solution -->
+
+
+      <!-- START save to log -->
+      <div class="w-100 mr-3 mb-2 px-1" style="user-select: none;">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="bk-log-checkbox custom-control-input" id="show-log" data-toggle="modal" data-target="#bk-log-modal">
+          <label class="custom-control-label" for="show-log">Сохранить в журнале действий</label>
+        </div>
+      </div>
+      <!-- END save to log -->
+
+      <div id="stat-success" class="w-100 mr-3 bk-hidden alert alert-success" role="alert">
+        Запись успешно добавлена в журнал действий
+      </div>
+
+      <div id="stat-danger" class="w-100 mr-3 bk-hidden alert alert-danger" role="alert">
+        Произошла ошибка. Повторите попытку позже
+      </div>
+
     </div>
 
     <div class="form-group">

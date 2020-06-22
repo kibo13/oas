@@ -44,9 +44,13 @@
   @include('includes.footer')
   <!-- /.bk-footer -->
 
-  <!-- START modal-general-confirm -->
-  @include('includes.modal')
-  <!-- END modal-general-confirm -->
+  <!-- START modal-log -->
+  @include('includes.modals.log')
+  <!-- END modal-log -->
+
+  <!-- START modal-destroy -->
+  @include('includes.modals.destroy')
+  <!-- END modal-destroy -->
 
 </body>
 

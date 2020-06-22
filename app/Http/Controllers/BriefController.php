@@ -139,17 +139,6 @@ class BriefController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Brief  $brief
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Brief $brief)
-    {
-        // 
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Brief  $brief

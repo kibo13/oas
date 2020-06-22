@@ -10,10 +10,24 @@ use App\Models\Address;
 use App\Models\Branch;
 use App\Models\Defect;
 use App\Models\Statement;
+use App\Models\Log;
 use App\Models\Type;
 
 class StatementController extends Controller
 {
+    /**
+     * Display a listing of the logs.
+     */
+    public function logs(Statement $statement)
+    {
+        $logs = Log::where('statement_id', $statement->id)->get();
+        
+        return view(
+            'pages.statements.logs.index', 
+            compact('logs', 'statement')
+        );
+    }
+
     /**
      * Display a listing of the resource.
      *

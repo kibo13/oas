@@ -89890,6 +89890,10 @@ $(document).ready(function () {
       case 'statement':
         $('#bk-delete-form').attr('action', '/statements/' + data_id);
         break;
+
+      case 'log':
+        $('#bk-delete-form').attr('action', '/logs/' + data_id);
+        break;
       // END namespace "disp"
       // START namespace "oas" 
 
@@ -89988,6 +89992,8 @@ __webpack_require__(/*! ./pages/organization */ "./resources/js/custom/pages/org
 __webpack_require__(/*! ./pages/defect */ "./resources/js/custom/pages/defect.js");
 
 __webpack_require__(/*! ./pages/statement */ "./resources/js/custom/pages/statement.js");
+
+__webpack_require__(/*! ./pages/log */ "./resources/js/custom/pages/log.js");
 
 __webpack_require__(/*! ./pages/promiser */ "./resources/js/custom/pages/promiser.js");
 
@@ -90146,6 +90152,90 @@ $(document).ready(function () {
         lengthMenu: [[10, 25, 50, -1], ["Показывать по 10", "Показывать по 25", "Показывать по 50", "Все записи"]]
       });
     }
+});
+
+/***/ }),
+
+/***/ "./resources/js/custom/pages/log.js":
+/*!******************************************!*\
+  !*** ./resources/js/custom/pages/log.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+$(document).ready(function () {
+  var log_modal = document.getElementById("bk-log-modal");
+
+  if (log_modal) {
+    // all buttons to bk-log-modal
+    var buttons = document.querySelectorAll(".bk-log-btn");
+
+    var _iterator = _createForOfIteratorHelper(buttons),
+        _step;
+
+    try {
+      var _loop = function _loop() {
+        var btn = _step.value;
+        var attr = btn.dataset.id;
+        btn.addEventListener("click", function (e) {
+          // buttons close
+          if (attr != 1) {
+            $(".bk-log-checkbox").prop("checked", false);
+          } // button ajax
+          else {
+              var statement_id = $('#log-statement').val();
+              var date_log = $('#log-date').val();
+              var time_log = $('#log-time').val();
+              var solution = $('#log-solution').val();
+              var receiver = $('#log-receiver').val();
+              var plot = $('#log-plot').val();
+              var state = $('#log-state').val();
+              $.ajax({
+                url: "/logs",
+                type: "POST",
+                data: {
+                  statement_id: statement_id,
+                  date_log: date_log,
+                  time_log: time_log,
+                  solution: solution,
+                  receiver: receiver,
+                  plot: plot,
+                  state: state
+                },
+                headers: {
+                  "X-CSRF-Token": $('meta[name="csrf-token"]').attr("content")
+                },
+                success: function success(data) {
+                  $('#stat-success').removeClass('bk-hidden');
+                  $(".bk-log-checkbox").prop("checked", true);
+                  $(".bk-log-checkbox").prop("disabled", true);
+                  $(log_modal).modal("hide");
+                },
+                error: function error(msg) {
+                  $("#stat-danger").removeClass("bk-hidden");
+                  $(".bk-log-checkbox").prop("checked", false);
+                  $(log_modal).modal("hide");
+                }
+              });
+            }
+        });
+      };
+
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        _loop();
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+  }
 });
 
 /***/ }),
@@ -90449,55 +90539,10 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 $(document).ready(function () {
-  // alert control statements 
-  $('#stat-triangle').on('click mouseenter', function (e) {
-    var elem = e.target;
-
-    if ($(elem).hasClass('bk-btn-triangle--down')) {
-      $(elem).removeClass('bk-btn-triangle--down').addClass('bk-btn-triangle--up');
-    } else {
-      $(elem).removeClass('bk-btn-triangle--up').addClass('bk-btn-triangle--down');
-    }
-
-    $('#stat-list').stop().slideToggle('normal', function () {
-      $('.bk-hidden').toggleClass('bk-hidden');
-    });
-  }); // print addresses depending on plot 
-
-  $("#statement-plot").on("change", function (e) {
-    var plot_id = $(e.target).val();
-    $('#statement-street').empty();
-    $.ajax({
-      url: '/data/plots',
-      method: 'GET'
-    }).done(function (streets) {
-      $('#statement-street').append("<option disabled selected>\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0430\u0434\u0440\u0435\u0441</option>");
-
-      var _iterator = _createForOfIteratorHelper(streets),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var street = _step.value;
-
-          if (street.branch_id == plot_id) {
-            $("#statement-street").append("<option value=\"".concat(street.street_id, "\" data-home=\"").concat(street.num_home, "\">\n                            ").concat(street.name, " \u0434.").concat(street.num_home, "\n                        </option>"));
-          }
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-    });
-  }); // print home depending on street
-
-  $("#statement-street").on("change", function (e) {
-    var num_home = $("#statement-street option:selected").data("home");
-    $("#statement-home").val(num_home);
-  }); // index
-
-  var istat = document.getElementById('stat-index');
+  // blade-templates
+  var istat = document.getElementById("stat-index");
+  var fstat = document.getElementById("stat-form");
+  var sstat = document.getElementById("stat-show"); // if active stat-index
 
   if (istat) {
     var table = document.getElementById("stat-table"); // setup datatables
@@ -90512,8 +90557,93 @@ $(document).ready(function () {
         aTargets: [-1]
       }],
       lengthMenu: [[10, 25, 50, -1], ["Показывать по 10", "Показывать по 25", "Показывать по 50", "Все записи"]]
+    }); // alert control statements
+
+    $("#stat-triangle").on("click mouseenter", function (e) {
+      var elem = e.target;
+
+      if ($(elem).hasClass("bk-btn-triangle--down")) {
+        $(elem).removeClass("bk-btn-triangle--down").addClass("bk-btn-triangle--up");
+      } else {
+        $(elem).removeClass("bk-btn-triangle--up").addClass("bk-btn-triangle--down");
+      }
+
+      $("#stat-list").stop().slideToggle("normal", function () {
+        $(".bk-hidden").toggleClass("bk-hidden");
+      });
     });
-  }
+  } // if active stat-form
+  else if (fstat) {
+      // print addresses depending on plot
+      $("#statement-plot").on("change", function (e) {
+        var plot_id = $(e.target).val();
+        $("#statement-street").empty();
+        $.ajax({
+          url: "/data/plots",
+          method: "GET"
+        }).done(function (streets) {
+          $("#statement-street").append("<option disabled selected>\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0430\u0434\u0440\u0435\u0441</option>");
+
+          var _iterator = _createForOfIteratorHelper(streets),
+              _step;
+
+          try {
+            for (_iterator.s(); !(_step = _iterator.n()).done;) {
+              var street = _step.value;
+
+              if (street.branch_id == plot_id) {
+                $("#statement-street").append("<option value=\"".concat(street.street_id, "\" data-home=\"").concat(street.num_home, "\">\n                            ").concat(street.name, " \u0434.").concat(street.num_home, "\n                        </option>"));
+              }
+            }
+          } catch (err) {
+            _iterator.e(err);
+          } finally {
+            _iterator.f();
+          }
+        });
+      }); // print home depending on street
+
+      $("#statement-street").on("change", function (e) {
+        var num_home = $("#statement-street option:selected").data("home");
+        $("#statement-home").val(num_home);
+      });
+    } // if active stat-show
+    else if (sstat) {
+        // fields
+        var f_id = document.getElementById("stat-id").value;
+        var f_plot = document.getElementById("stat-plot").value;
+        var f_receiver = document.getElementById("stat-receiver").value;
+        var f_state = document.getElementById("stat-state");
+        $("#show-log").on("click", function (e) {
+          $("#stat-solution").html($("textarea").val());
+          var f_solution = $('#stat-solution').text();
+          $("#stat-date").html($("input[name=date_off]").val());
+          $("#stat-time").html($("input[name=time_off]").val());
+          var f_date = $('#stat-date').text();
+          var f_time = $("#stat-time").text(); // check f_date and f_time is empty
+
+          if (f_date == null || f_time == null) {
+            alert("\u041D\u0435\u043E\u0431\u0445\u043E\u0434\u0438\u043C\u043E \u0437\u0430\u043F\u043E\u043B\u043D\u0438\u0442\u044C \u043F\u043E\u043B\u0435 \"\u0414\u0430\u0442\u0430 \u0438 \u0432\u0440\u0435\u043C\u044F \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u044F\"");
+            return false;
+          } // check f_solution is empty
+          else if (f_solution == '') {
+              alert("\u041D\u0435\u043E\u0431\u0445\u043E\u0434\u0438\u043C\u043E \u0437\u0430\u043F\u043E\u043B\u043D\u0438\u0442\u044C \u043F\u043E\u043B\u0435 \"\u041F\u0440\u0438\u043D\u044F\u0442\u044B\u0435 \u043C\u0435\u0440\u044B\"");
+              return false;
+            } // check f_state is empty
+            else if (f_state.selectedIndex == '') {
+                alert("\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0442\u0438\u043F \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u044F");
+                return false;
+              } else {
+                $("#log-statement").val(f_id);
+                $("#log-date").val(f_date);
+                $("#log-time").val(f_time);
+                $("#log-state").val(f_state.value);
+                $("#log-plot").val(f_plot);
+                $("#log-receiver").val(f_receiver);
+                $("#log-solution").val(f_solution);
+              }
+        });
+      }
 });
 
 /***/ }),

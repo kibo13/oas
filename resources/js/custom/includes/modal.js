@@ -49,6 +49,10 @@ $(document).ready(function () {
 			case 'statement':
 				$('#bk-delete-form').attr('action', '/statements/' + data_id);
 				break;
+			
+			case 'log':
+				$('#bk-delete-form').attr('action', '/logs/' + data_id);
+				break;
 			// END namespace "disp"
 
 			// START namespace "oas" 

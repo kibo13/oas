@@ -13,6 +13,7 @@ require('./pages/plot');
 require('./pages/organization');
 require('./pages/defect');
 require('./pages/statement');
+require('./pages/log');
 require('./pages/promiser');
 require('./pages/job');
 require("./pages/report");

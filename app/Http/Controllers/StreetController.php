@@ -41,17 +41,6 @@ class StreetController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Street  $street
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Street $street)
-    {
-        // 
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Street  $street

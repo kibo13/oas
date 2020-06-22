@@ -12,7 +12,7 @@ Auth::routes([
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::middleware(['auth'])->group(function() {
+Route::middleware(['auth'])->group(function () {
 
     // role: admin 
     Route::group([
@@ -20,7 +20,7 @@ Route::middleware(['auth'])->group(function() {
         'namespace' => 'Admin',
         'prefix' => 'admin'
     ], function () {
-        Route::resource('users', 'UserController');
+        Route::resource('users', 'UserController')->except(['show']);
     });
 
     // role: oas
@@ -28,31 +28,32 @@ Route::middleware(['auth'])->group(function() {
         'middleware' => 'role:oas'
     ], function () {
         Route::resource('jobs', 'JobController');
-        Route::resource('briefs', 'BriefController');
+        Route::resource('briefs', 'BriefController')->except(['show']);
     });
 
     // role: disp
     Route::group([
         'middleware' => 'role:disp'
     ], function () {
-        Route::resource('plots', 'PlotController');
+        Route::resource('plots', 'PlotController')->except(['show']);
         Route::resource('statements', 'StatementController');
+        Route::resource('logs', 'LogController')->only(['store', 'destroy']);
     });
 
     // role: audit 
     Route::group([
         'middleware' => 'role:audit'
     ], function () {
-        Route::resource('promisers', 'PromiserController');
+        Route::resource('promisers', 'PromiserController')->except(['show']);
     });
-    
+
     // role: hh
     Route::group([
         'middleware' => 'role:hh'
     ], function () {
         Route::resource('workers', 'WorkerController');
-        Route::resource('branches', 'BranchController');
-        Route::resource('positions', 'PositionController');
+        Route::resource('branches', 'BranchController')->except(['show']);
+        Route::resource('positions', 'PositionController')->except(['show']);
     });
 
     // role: pts
@@ -60,14 +61,16 @@ Route::middleware(['auth'])->group(function() {
         'middleware' => 'role:pts'
     ], function () {
         Route::resource('organizations', 'OrganizationController');
-        Route::resource('addresses', 'AddressController');
-        Route::resource('streets', 'StreetController');
-        Route::resource('defects', 'DefectController');
+        Route::resource('addresses', 'AddressController')->except(['show']);
+        Route::resource('streets', 'StreetController')->except(['show']);
+        Route::resource('defects', 'DefectController')->except(['show']);
     });
 
     // role: guest 
     Route::get('statements', 'StatementController@index')
-            ->name('statements.index');
+        ->name('statements.index');
+    Route::get('statements/{statement}/logs', 'StatementController@logs')
+        ->name('statements.logs');
     Route::get('jobs', 'JobController@index')->name('jobs.index');
     Route::get('jobs/{job}', 'JobController@show')->name('jobs.show');
     Route::get('briefs', 'BriefController@index')->name('briefs.index');

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="overflow-hidden pt-4 py-2">
+<div id="stat-form" class="overflow-hidden pt-4 py-2">
 
   <h2 class="mb-3">
     @isset($statement)
@@ -58,14 +58,11 @@
           <select id="statement-plot" name="branch_id" class="form-control bk-form__input">
             <option disabled selected>Выберите участок</option>
             @foreach($plots as $plot)
-            <option 
-              value="{{ $plot->id }}" 
-              @isset($statement) 
-                @if($statement->branch_id == $plot->id)
-                  selected
-                @endif
+            <option value="{{ $plot->id }}" @isset($statement) @if($statement->branch_id == $plot->id)
+              selected
+              @endif
               @endisset
-            >
+              >
               {{ ucfirst($plot->name) }}
             </option>
             @endforeach
@@ -81,35 +78,28 @@
           <select name="street_id" id="statement-street" class="form-control bk-form__input">
             <option disabled selected>Выберите адрес</option>
             @if($branch->id == 9)
-              @isset($statement) 
-                @foreach($stedit as $street)
-                <option 
-                  value="{{ $street->street_id }}" 
-                  data-home="{{ $street->num_home }}" 
-                    @if($statement->street_id == $street->street_id && $statement->num_home == $street->num_home)
-                      selected
-                    @endif
-                >
-                  {{ ucfirst($street->street->name) }}
-                  д.{{ ucfirst($street->num_home) }}
-                </option>
-                @endforeach
-              @endisset
-            @else
-              @foreach($streets as $street)
-              <option 
-                value="{{ $street->street_id }}" 
-                data-home="{{ $street->num_home }}" 
-                @isset($statement) 
-                  @if($statement->street_id == $street->street_id && $statement->num_home == $street->num_home)
-                    selected
-                  @endif
-                @endisset
+            @isset($statement)
+            @foreach($stedit as $street)
+            <option value="{{ $street->street_id }}" data-home="{{ $street->num_home }}" @if($statement->street_id == $street->street_id && $statement->num_home == $street->num_home)
+              selected
+              @endif
               >
-                {{ ucfirst($street->street->name) }}
-                д.{{ ucfirst($street->num_home) }}
-              </option>
-              @endforeach
+              {{ ucfirst($street->street->name) }}
+              д.{{ ucfirst($street->num_home) }}
+            </option>
+            @endforeach
+            @endisset
+            @else
+            @foreach($streets as $street)
+            <option value="{{ $street->street_id }}" data-home="{{ $street->num_home }}" @isset($statement) @if($statement->street_id == $street->street_id && $statement->num_home == $street->num_home)
+              selected
+              @endif
+              @endisset
+              >
+              {{ ucfirst($street->street->name) }}
+              д.{{ ucfirst($street->num_home) }}
+            </option>
+            @endforeach
             @endif
 
           </select>

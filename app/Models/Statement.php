@@ -50,5 +50,10 @@ class Statement extends Model
     public function defect()
     {
         return $this->belongsTo('App\Models\Defect');
+    }
+
+    public function logs()
+    {
+        return $this->hasMany('App\Models\Log');
     }   
 }

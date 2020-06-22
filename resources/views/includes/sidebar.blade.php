@@ -1,4 +1,3 @@
-@section('sidebar')
 <nav id="sidebar" class="bk-sidebar border-right">
 
   <div class="sidebar-header border-bottom">
@@ -26,7 +25,7 @@
     <!-- END home -->
 
     <!-- START Statements -->
-    <li @sbactive('statem*')>
+    <li @sbactive('statemen*')>
       <a href="{{ route('statements.index') }}" class="bk-sidebar__link d-flex align-items-start">
         <span class="bk-sidebar__link--icon d-flex align-items-start mx-2">
           <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="inbox" class="bk-sidebar__link--size svg-inline--fa fa-inbox fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">

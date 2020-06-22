@@ -56,17 +56,6 @@ class PlotController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Plot  $plot
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Plot $plot)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Plot  $plot

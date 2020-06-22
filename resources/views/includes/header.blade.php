@@ -1,4 +1,3 @@
-@section('header')
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
 	<div class="container-fluid px-1">
 

@@ -59,9 +59,7 @@
           <th scope="col">Неисправность</th>
           <th scope="col">Статус</th>
           <th scope="col">Принял</th>
-          @if(Auth::user()->roles()->pluck('slug')->contains('disp'))
           <th scope="col">Действие</th>
-          @endif
         </tr>
       </thead>
       <tbody>
@@ -84,12 +82,19 @@
             @endif
           </td>
           <td>
-            {{ $statement->receiver }}
-            <small class="text-muted align-top">{{ $statement->plot }}</small>
+            {{ $statement->receiver }} <small class="text-muted align-text-top">{{ $statement->plot }}</small>
           </td>
-          @if(Auth::user()->roles()->pluck('slug')->contains('disp'))
+
           <td>
             <div class="d-flex">
+              <div class="bk-btn bk-btn-crud btn btn-secondary mr-1" data-tip="Журнал">
+                <a href="{{ route('statements.logs', $statement) }}" class="bk-btn-wrap bk-btn-link"></a>
+                <span class="bk-btn-wrap bk-btn-icon">
+                  @include('includes.icons.book')
+                </span>
+              </div>
+
+              @if(Auth::user()->roles()->pluck('slug')->contains('disp'))
               <div class="bk-btn bk-btn-crud btn btn-info mr-1" data-tip="Состояние">
                 <a href="{{ route('statements.show', $statement) }}" class="bk-btn-wrap bk-btn-link"></a>
                 <span class="bk-btn-wrap bk-btn-icon">
@@ -111,10 +116,11 @@
                   @include('includes.icons.trash')
                 </span>
               </div>
+              @endif
 
             </div>
           </td>
-          @endif
+
 
         </tr>
         @endforeach

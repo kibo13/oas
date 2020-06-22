@@ -41,17 +41,6 @@ class PositionController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Position  $position
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Position $position)
-    {
-        
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Position  $position

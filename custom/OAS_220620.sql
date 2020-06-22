@@ -11,7 +11,7 @@
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 20/06/2020 23:54:04
+ Date: 22/06/2020 10:03:58
 */
 
 SET NAMES utf8mb4;
@@ -1381,6 +1381,24 @@ INSERT INTO `jobs` VALUES (15, 1, 'Аварийная', 'Электричест�
 INSERT INTO `jobs` VALUES (16, 1, 'Плановая', 'Электричество', 'Техническое осбфывфывф', '2020-06-18', '2020-06-18', '10:15:00', '12:45:00', '2020-06-17 09:44:02', '2020-06-18 01:51:00');
 
 -- ----------------------------
+-- Table structure for logs
+-- ----------------------------
+DROP TABLE IF EXISTS `logs`;
+CREATE TABLE `logs`  (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `statement_id` bigint(20) UNSIGNED NOT NULL,
+  `date_log` date NULL DEFAULT NULL,
+  `time_log` time(0) NULL DEFAULT NULL,
+  `solution` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
+  `receiver` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `plot` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `state` tinyint(4) NOT NULL DEFAULT 0,
+  `created_at` timestamp(0) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
 -- Table structure for migrations
 -- ----------------------------
 DROP TABLE IF EXISTS `migrations`;
@@ -1389,7 +1407,7 @@ CREATE TABLE `migrations`  (
   `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 96 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 97 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of migrations
@@ -1414,6 +1432,7 @@ INSERT INTO `migrations` VALUES (92, '2020_06_18_052235_create_statements_table'
 INSERT INTO `migrations` VALUES (93, '2020_06_18_052333_create_workers_table', 3);
 INSERT INTO `migrations` VALUES (94, '2020_06_18_052457_create_jobs_table', 3);
 INSERT INTO `migrations` VALUES (95, '2020_06_18_052714_create_address_job_table', 3);
+INSERT INTO `migrations` VALUES (96, '2020_06_21_092212_create_logs_table', 4);
 
 -- ----------------------------
 -- Table structure for organizations
@@ -1956,7 +1975,7 @@ CREATE TABLE `users`  (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'kibo13', 'admin@oas.com', NULL, '$2y$10$kas1ukOVl1kyTkp6D16Vve4IFg8CisTj5WLIHmCLosDVuqBDEbmf6', NULL, '2020-06-09 15:25:35', '2020-06-18 16:45:08');
+INSERT INTO `users` VALUES (1, 'kibo13', 'admin@oas.com', NULL, '$2y$10$e.mqEIbi1m4Z11rAQfZnauuc468s/z0cwLcOUhZGy0Mb6V3Agnriu', NULL, '2020-06-09 15:25:35', '2020-06-22 05:03:23');
 INSERT INTO `users` VALUES (2, 'Админ', 'admin@oas.info', NULL, '$2y$10$CbHG.VKYAb.7BQVfdlUh..3635NzHmzUq76gk0TV/tKBm4AZx7Z7G', NULL, '2020-06-16 14:59:14', '2020-06-18 16:26:26');
 INSERT INTO `users` VALUES (3, 'Репин', 'oas@oas.info', NULL, '$2y$10$lWcGeZQJQqyaIm8NPni/0O7ecPUABmADuEsF1MKYrRyeZvhIp0HpC', NULL, '2020-06-16 15:03:26', '2020-06-18 16:27:10');
 INSERT INTO `users` VALUES (4, 'Крикун', 'krikun_oas@oas.info', NULL, '$2y$10$tJqPrQNA1AxsQD1Cmu0Ra..TISdSrMtvywAU3mWgiIs7FezCrUoem', NULL, '2020-06-16 15:06:37', '2020-06-18 16:27:39');
