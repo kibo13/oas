@@ -37,6 +37,9 @@
 
 	@include('includes.footer')
 	<!-- /.bk-footer -->
+
+	@include('includes.certificate')
+	<!-- /.certificate -->
 </body>
 
 

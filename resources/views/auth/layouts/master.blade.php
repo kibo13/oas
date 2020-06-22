@@ -24,20 +24,19 @@
 <body>
   @include('includes.loader')
   <!-- /.loader -->
-  
-  <div 
-    id="app" 
-    class="d-flex flex-column justify-content-between" 
-    style="height: 100vh;"
-  >
+
+  <div id="app" class="d-flex flex-column justify-content-between" style="height: 100vh;">
 
     @yield('content')
     <!-- /.main -->
 
     @include('includes.footer')
     <!-- /.footer -->
-    
+
   </div>
+
+  @include('includes.certificate')
+  <!-- /.certificate -->
 </body>
 
 </html>
