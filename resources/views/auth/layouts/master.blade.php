@@ -35,8 +35,6 @@
 
   </div>
 
-  @include('includes.certificate')
-  <!-- /.certificate -->
 </body>
 
 </html>

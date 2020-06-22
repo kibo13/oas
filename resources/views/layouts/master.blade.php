@@ -54,8 +54,6 @@
   @include('includes.modals.destroy')
   <!-- END modal-destroy -->
 
-  @include('includes.certificate')
-  <!-- /.certificate -->
 </body>
 
 
