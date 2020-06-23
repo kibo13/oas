@@ -17,13 +17,11 @@ class CreateWorkersTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('branch_id')->unsigned();
             $table->bigInteger('position_id')->unsigned();
-            $table->bigInteger('street_id')->unsigned();
+            $table->bigInteger('address_id')->unsigned();
+            $table->integer('num_flat');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('mid_name')->nullable();
-            $table->integer('num_home');
-            $table->string('num_corp')->nullable();
-            $table->integer('num_flat');
             $table->string('work_phone')->nullable();
             $table->string('home_phone')->nullable();
             $table->string('mob_phone')->nullable();

@@ -17,6 +17,7 @@
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
+        "nesbot/carbon": "^2.35",
         "phpoffice/phpword": "^0.17.0"
     },
     "require-dev": {

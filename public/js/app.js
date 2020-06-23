@@ -90590,25 +90590,37 @@ $(document).ready(function () {
     });
   } // if active stat-form
   else if (fstat) {
-      // print addresses depending on plot
-      $("#statement-plot").on("change", function (e) {
-        var plot_id = $(e.target).val();
-        $("#statement-street").empty();
+      $('#date-time').on('click', function (e) {
+        if (e.target.checked) {
+          $("#date_in").removeClass("bk-disabled");
+          $("#time_in").removeClass("bk-disabled");
+        } else {
+          $("#date_in").addClass("bk-disabled");
+          $("#time_in").addClass("bk-disabled");
+        }
+      }); // print home depending on street
+
+      $("#stat-street").on("change", function (e) {
+        var add_id = $("#stat-street option:selected").data("id");
+        var num_home = $("#stat-street option:selected").data("home"); // set num_home to field of num_home
+
+        $("#stat-home").val(num_home);
         $.ajax({
           url: "/data/plots",
           method: "GET"
-        }).done(function (streets) {
-          $("#statement-street").append("<option disabled selected>\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0430\u0434\u0440\u0435\u0441</option>");
-
-          var _iterator = _createForOfIteratorHelper(streets),
+        }).done(function (plots) {
+          var _iterator = _createForOfIteratorHelper(plots),
               _step;
 
           try {
             for (_iterator.s(); !(_step = _iterator.n()).done;) {
-              var street = _step.value;
+              var plot = _step.value;
 
-              if (street.branch_id == plot_id) {
-                $("#statement-street").append("<option value=\"".concat(street.street_id, "\" data-home=\"").concat(street.num_home, "\">\n                            ").concat(street.name, " \u0434.").concat(street.num_home, "\n                        </option>"));
+              if (add_id == plot.address_id) {
+                // set branch_id to field of branch_id
+                $("#stat-branch").val(plot.branch_id); // set branch_name to field of branch_name
+
+                $('#stat-plot').text(plot.name);
               }
             }
           } catch (err) {
@@ -90617,11 +90629,6 @@ $(document).ready(function () {
             _iterator.f();
           }
         });
-      }); // print home depending on street
-
-      $("#statement-street").on("change", function (e) {
-        var num_home = $("#statement-street option:selected").data("home");
-        $("#statement-home").val(num_home);
       });
     } // if active stat-show
     else if (sstat) {

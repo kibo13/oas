@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Promiser;
-use App\Models\Street;
+use App\Models\Address;
 use Illuminate\Http\Request;
 
 class PromiserController extends Controller
@@ -18,7 +18,10 @@ class PromiserController extends Controller
         $today = config('constants.date_now');
         $count = Promiser::where('date_on', null)->count();
         $promisers = Promiser::get();
-        return view('pages.promisers.index', compact('promisers', 'count', 'today'));
+        return view(
+            'pages.promisers.index', 
+            compact('promisers', 'count', 'today')
+        );
     }
 
     /**
@@ -28,8 +31,8 @@ class PromiserController extends Controller
      */
     public function create()
     {
-        $streets = Street::get();
-        return view('pages.promisers.form', compact('streets'));
+        $addresses = Address::get();
+        return view('pages.promisers.form', compact('addresses'));
     }
 
     /**
@@ -52,8 +55,8 @@ class PromiserController extends Controller
      */
     public function edit(Promiser $promiser)
     {
-        $streets = Street::get();
-        return view('pages.promisers.form', compact('streets', 'promiser'));
+        $addresses = Address::get();
+        return view('pages.promisers.form', compact('addresses', 'promiser'));
     }
 
     /**

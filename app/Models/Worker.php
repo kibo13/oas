@@ -9,21 +9,20 @@ class Worker extends Model
     protected $fillable = [
         'branch_id', 
         'position_id',
-        'street_id',
+        'address_id',
+        'num_flat',
         'first_name',
         'last_name',
         'mid_name',
         'work_phone',
         'mob_phone',
-        'home_phone',
-        'num_home', 
-        'num_flat', 
-        'num_corp'
+        'home_phone'
     ];
 
-    public function street()
+    // many 
+    public function address()
     {
-        return $this->belongsTo('App\Models\Street');
+        return $this->belongsTo('App\Models\Address');
     }
 
     public function position()

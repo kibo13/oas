@@ -11002,6 +11002,21 @@ textarea {
   color: #6c757d;
 }
 
+.bk-disabled {
+  position: relative;
+  overflow: hidden;
+}
+
+.bk-disabled::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -15px;
+  width: 100%;
+  height: 100%;
+  background: rgba(96, 125, 139, 0.1);
+}
+
 .loader {
   display: flex;
   justify-content: center;

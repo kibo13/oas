@@ -15,12 +15,10 @@ class CreatePromisersTable extends Migration
     {
         Schema::create('promisers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('street_id')->unsigned();
-            $table->string('num_home');
-            $table->string('num_corp')->nullable();
+            $table->bigInteger('address_id')->unsigned();
             $table->integer('num_flat');
-            $table->date('date_on')->nullable();
             $table->date('date_off');
+            $table->date('date_on')->nullable();
             $table->timestamps();
         });
     }

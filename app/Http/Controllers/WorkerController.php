@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Worker;
-use App\Models\Street;
+use App\Models\Address;
 use App\Models\Branch;
 use App\Models\Position;
 use Illuminate\Http\Request;
@@ -28,12 +28,12 @@ class WorkerController extends Controller
      */
     public function create()
     {
-        $streets = Street::get();
+        $addresses = Address::get();
         $positions = Position::get();
         $branches = Branch::get();
         return view(
             'pages.workers.form', 
-            compact('streets', 'positions', 'branches')
+            compact('addresses', 'positions', 'branches')
         );
     }
 
@@ -50,17 +50,6 @@ class WorkerController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Worker  $worker
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Worker $worker)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Worker  $worker
@@ -68,12 +57,12 @@ class WorkerController extends Controller
      */
     public function edit(Worker $worker)
     {
-        $streets = Street::get();
+        $addresses = Address::get();
         $positions = Position::get();
         $branches = Branch::get();
         return view(
             'pages.workers.form',
-            compact('worker', 'streets', 'positions', 'branches')
+            compact('worker', 'addresses', 'positions', 'branches')
         );
     }
 

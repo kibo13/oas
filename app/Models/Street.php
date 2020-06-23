@@ -10,18 +10,9 @@ class Street extends Model
         'name',
     ];
 
+    // one 
     public function addresses()
     {
         return $this->hasMany('App\Models\Address');
-    }
-
-    public function workers()
-    {
-        return $this->hasMany('App\Models\Worker');
-    }
-
-    public function promisers()
-    {
-        return $this->hasMany('App\Models\Promiser');
     }
 }

@@ -7,16 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Promiser extends Model
 {
     protected $fillable = [
-        'street_id',
-        'num_home',
-        'num_corp',
+        'address_id',
         'num_flat',
         'date_on',
         'date_off'
     ];
 
-    public function street()
+    // many 
+    public function address()
     {
-        return $this->belongsTo('App\Models\Street');
+        return $this->belongsTo('App\Models\Address');
     }
 }

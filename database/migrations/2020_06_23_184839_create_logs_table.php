@@ -23,6 +23,11 @@ class CreateLogsTable extends Migration
             $table->string('plot')->nullable();
             $table->tinyInteger('state')->default(0);
             $table->timestamps();
+            $table
+                ->foreign('statement_id')
+                ->references('id')
+                ->on('statements')
+                ->onDelete('cascade');
         });
     }
 

@@ -56,37 +56,49 @@ $(document).ready(function() {
 
     // if active stat-form
     else if (fstat) {
-        // print addresses depending on plot
-        $("#statement-plot").on("change", e => {
-            let plot_id = $(e.target).val();
-            $("#statement-street").empty();
+
+        $('#date-time').on('click', e => {
+
+            if (e.target.checked) {
+                $("#date_in").removeClass("bk-disabled");
+                $("#time_in").removeClass("bk-disabled");
+            } else {
+                $("#date_in").addClass("bk-disabled");
+                $("#time_in").addClass("bk-disabled");
+            }
+           
+        })
+       
+        // print home depending on street
+        $("#stat-street").on("change", e => {
+
+            let add_id = $("#stat-street option:selected").data("id");
+            let num_home = $("#stat-street option:selected").data("home");
+            
+            // set num_home to field of num_home
+            $("#stat-home").val(num_home);
 
             $.ajax({
                 url: "/data/plots",
                 method: "GET"
-            }).done(function(streets) {
-                $("#statement-street").append(
-                    `<option disabled selected>Выберите адрес</option>`
-                );
+            }).done(function(plots) {
+                
+                for (let plot of plots) {
 
-                for (let street of streets) {
-                    if (street.branch_id == plot_id) {
-                        $("#statement-street").append(
-                            `<option value="${street.street_id}" data-home="${street.num_home}">
-                            ${street.name} д.${street.num_home}
-                        </option>`
-                        );
+                    if (add_id == plot.address_id) {
+
+                        // set branch_id to field of branch_id
+                        $("#stat-branch").val(plot.branch_id);
+
+                        // set branch_name to field of branch_name
+                        $('#stat-plot').text(plot.name);
                     }
+
                 }
+
             });
-        });
 
-        // print home depending on street
-        $("#statement-street").on("change", e => {
-            let num_home = $("#statement-street option:selected").data("home");
-            $("#statement-home").val(num_home);
         });
-
     }
 
     // if active stat-show

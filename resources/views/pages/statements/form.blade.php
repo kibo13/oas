@@ -24,14 +24,19 @@
 
         <!-- START group date and time income -->
         <h6 class="w-100 border-bottom mr-3 py-1 pl-0">Дата и время поступления</h6>
-        <div class="bk-form__date col-sm-auto form-group mb-2 pl-0">
-          <input name="date_in" type="date" class="form-control bk-form__input" value="{{ old('date_in', isset($statement) ? $statement->date_in : null) }}" required>
+        <div id="date_in" class="bk-disabled bk-form__date col-sm-auto form-group mb-2 pl-0">
+          <input name="date_in" type="date" class="form-control bk-form__input" value="{{ old('date_in', isset($statement) ? $statement->date_in : $date_now) }}" required>
         </div>
 
-        <div class="bk-form__time col-sm-auto form-group mb-2 pl-0">
-          <input name="time_in" type="time" class="form-control bk-form__input" value="{{ old('time_in', isset($statement) ? $statement->time_in : null) }}" required>
+        <div id="time_in" class="bk-disabled bk-form__time col-sm-auto form-group mb-2 pl-0">
+          <input name="time_in" type="time" class="form-control bk-form__input" value="{{ old('time_in', isset($statement) ? $statement->time_in : $time_now) }}" required>
         </div>
         <!-- END group date and time income -->
+
+        <div class="w-100 custom-control custom-checkbox mb-2" style="user-select: none;">
+          <input type="checkbox" class="custom-control-input" id="date-time">
+          <label class="custom-control-label" for="date-time">Редактировать дату и время</label>
+        </div>
 
         <!-- START group plot -->
         <input type="hidden" name="plot" value="{{ old('plot', isset($statement) ? $statement->plot : $branch->name) }}">
@@ -44,7 +49,7 @@
         <!-- START group plots -->
         <h6 class="w-100 border-bottom mr-3 py-1 pl-0">
           Участок
-          <small class="text-muted align-top">
+          <small id="stat-plot" class="text-muted align-top">
             @isset($statement)
             {{ $statement->branch->name }}
             @else
@@ -53,59 +58,26 @@
           </small>
         </h6>
 
-        @if($branch->id == 9)
-        <div class="bk-form__plot col-sm-auto form-group mb-2 pl-0">
-          <select id="statement-plot" name="branch_id" class="form-control bk-form__input">
-            <option disabled selected>Выберите участок</option>
-            @foreach($plots as $plot)
-            <option value="{{ $plot->id }}" @isset($statement) @if($statement->branch_id == $plot->id)
-              selected
-              @endif
-              @endisset
-              >
-              {{ ucfirst($plot->name) }}
-            </option>
-            @endforeach
-          </select>
-        </div>
-        <h6 class="w-100 m-0 p-0"></h6>
-        @else
-        <input id="my-num" type="hidden" name="branch_id" value="{{ old('branch_id', isset($statement) ? $statement->branch_id : $branch->id) }}">
-        @endif
+        <input id="stat-branch" type="hidden" name="branch_id" value="{{ old('branch_id', isset($statement) ? $statement->branch_id : $branch->id) }}">
 
         <div class="bk-form__street col-sm-auto form-group mb-2 pl-0">
           <label for="statement-street" class="bk-form__label mb-0">Адрес</label>
-          <select name="street_id" id="statement-street" class="form-control bk-form__input">
+          <select name="street_id" id="stat-street" class="form-control bk-form__input">
             <option disabled selected>Выберите адрес</option>
-            @if($branch->id == 9)
-            @isset($statement)
-            @foreach($stedit as $street)
-            <option value="{{ $street->street_id }}" data-home="{{ $street->num_home }}" @if($statement->street_id == $street->street_id && $statement->num_home == $street->num_home)
-              selected
-              @endif
-              >
-              {{ ucfirst($street->street->name) }}
-              д.{{ ucfirst($street->num_home) }}
-            </option>
-            @endforeach
-            @endisset
-            @else
-            @foreach($streets as $street)
-            <option value="{{ $street->street_id }}" data-home="{{ $street->num_home }}" @isset($statement) @if($statement->street_id == $street->street_id && $statement->num_home == $street->num_home)
+            @foreach($addresses as $address)
+            <option value="{{ $address->street_id }}" data-id="{{ $address->id }}" data-home="{{ $address->num_home }}" @isset($statement) @if($statement->street_id == $address->street_id && $statement->num_home == $address->num_home)
               selected
               @endif
               @endisset
               >
-              {{ ucfirst($street->street->name) }}
-              д.{{ ucfirst($street->num_home) }}
+              {{ $address->street->name }}
+              д.{{ $address->num_home }}
             </option>
             @endforeach
-            @endif
-
           </select>
         </div>
 
-        <input id="statement-home" type="hidden" name="num_home" value="{{ old('num_home', isset($statement) ? $statement->num_home : null) }}">
+        <input id="stat-home" type="hidden" name="num_home" value="{{ old('num_home', isset($statement) ? $statement->num_home : null) }}">
 
         <div class="bk-form__home col-sm-auto form-group mb-2 pl-0">
           <label for="num_flat" class="bk-form__label mb-0">Квартира</label>

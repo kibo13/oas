@@ -51,7 +51,7 @@ Route::middleware(['auth'])->group(function () {
     Route::group([
         'middleware' => 'role:hh'
     ], function () {
-        Route::resource('workers', 'WorkerController');
+        Route::resource('workers', 'WorkerController')->except(['show']);
         Route::resource('branches', 'BranchController')->except(['show']);
         Route::resource('positions', 'PositionController')->except(['show']);
     });
@@ -92,9 +92,5 @@ Route::middleware(['auth'])->group(function () {
     });
 
     // JSON 
-    Route::group([
-        'prefix' => 'data'
-    ], function () {
-        Route::get('/plots', 'DataController@plots');
-    });
+    Route::get('data/plots', 'DataController@plots');
 });

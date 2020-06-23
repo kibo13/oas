@@ -40,16 +40,15 @@
 					<td>{{ $worker->branch->name }}</td>
 					<td>{{ $worker->position->name }}</td>
 					<td class="address">
-						{{ $worker->street->name }}
-						{{ $worker->num_home }}
-						{{ $worker->num_corp }}
+						{{ $worker->address->street->name }}
+						{{ $worker->address->num_home }}
 						-
 						{{ $worker->num_flat }}
 					</td>
 					<td class="phones">
-						Раб: {{ $worker->work_phone }}<br>
-						Дом: {{ $worker->home_phone }}<br>
-						Сот: {{ $worker->mob_phone }}
+						@if($worker->work_phone != null) Раб: {{ $worker->work_phone }}<br>@endif
+						@if($worker->home_phone != null) Дом: {{ $worker->home_phone }}<br>@endif
+						@if($worker->mob_phone != null) Моб: {{ $worker->mob_phone }} @endif
 					</td>
 					@if(Auth::user()->roles()->pluck('slug')->contains('hh'))
 					<td>
@@ -62,13 +61,7 @@
 							</div>
 
 							<div class="bk-btn bk-btn-crud btn btn-danger" data-tip="Удалить">
-								<a 
-									href="javascript:void(0)" 
-									class="bk-btn-wrap bk-btn-link bk-btn-del" 
-									data-id="{{ $worker->id }}" 
-									data-table-name="worker" 
-									data-toggle="modal" 
-									data-target="#bk-delete-modal">
+								<a href="javascript:void(0)" class="bk-btn-wrap bk-btn-link bk-btn-del" data-id="{{ $worker->id }}" data-table-name="worker" data-toggle="modal" data-target="#bk-delete-modal">
 								</a>
 								<span class="bk-btn-wrap bk-btn-icon">
 									@include('includes.icons.trash')

@@ -12,6 +12,7 @@ use App\Models\Defect;
 use App\Models\Statement;
 use App\Models\Log;
 use App\Models\Type;
+use Carbon\Carbon;
 
 class StatementController extends Controller
 {
@@ -68,18 +69,37 @@ class StatementController extends Controller
      */
     public function create()
     {
+        // date and time register 
+        $date_now = Carbon::now()->format('Y-m-d');
+        $time_now = Carbon::now()->addHour(5)->format('H:i');
+
+        // types 
         $types = Type::get();
-        $plots = Branch::where('slug', 1)->get();
+
+        // receiver 
         $user = Auth::user()->name;
+
+        // branch_id for addresses
         $branch_id = getBranch();
+
+        // why plot coming
         $branch = Branch::where('id', $branch_id)->first();
-        $streets = Address::whereHas('plots', function ($q) use ($branch_id) {
+
+        // addresses
+        $addresses = Address::whereHas('plots', function ($q) use ($branch_id) {
             $q->where('branch_id', '=', $branch_id);
         })->get();
 
         return view(
             'pages.statements.form',
-            compact('streets', 'types', 'user', 'branch', 'plots')
+            compact(
+                'addresses', 
+                'types', 
+                'user', 
+                'branch', 
+                'date_now',
+                'time_now'
+            )
         );
     }
 
@@ -103,11 +123,19 @@ class StatementController extends Controller
      */
     public function show(Statement $statement)
     {
+        // temp or done 
         $actions = config('constants.actions');
+
+        // receiver for logs 
         $user = Auth::user()->name;
+
+        // plot for logs 
         $branch_id = getBranch();
         $branch = Branch::where('id', $branch_id)->first();
+
+        // defects 
         $defects = Defect::where('type_id', $statement->type->id)->get();
+        
         return view(
             'pages.statements.show',
             compact('statement', 'actions', 'defects', 'user', 'branch')
@@ -122,23 +150,24 @@ class StatementController extends Controller
      */
     public function edit(Statement $statement)
     {
+        // types 
         $types = Type::get();
-        $plots = Branch::where('slug', 1)->get();
-        $user = Auth::user()->name;
-        $branch_id = getBranch();
-        $branch = Branch::where('id', $branch_id)->first();
-        $streets = Address::whereHas('plots', function ($q) use ($branch_id) {
-            $q->where('branch_id', '=', $branch_id);
-        })->get();
 
-        $current_id = $statement->branch_id;
-        $stedit = Address::whereHas('plots', function ($q) use ($current_id) {
-            $q->where('branch_id', '=', $current_id);
+        // branch_id for addresses
+        $branch_id = getBranch();
+
+        // addresses
+        $addresses = Address::whereHas('plots', function ($q) use ($branch_id) {
+            $q->where('branch_id', '=', $branch_id);
         })->get();
 
         return view(
             'pages.statements.form',
-            compact('streets', 'types', 'user', 'branch', 'plots', 'statement', 'stedit')
+            compact(
+                'addresses', 
+                'types', 
+                'statement'
+            )
         );
     }
 

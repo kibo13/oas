@@ -44,9 +44,8 @@
         <tr>
           <td>{{ $id+=1 }}</td>
           <td class="address">
-            {{ $promiser->street->name }}
-            {{ $promiser->num_home }}
-            {{ $promiser->num_corp }}
+            {{ $promiser->address->street->name }}
+            {{ $promiser->address->num_home }}
             -
             {{ $promiser->num_flat }}
           </td>
