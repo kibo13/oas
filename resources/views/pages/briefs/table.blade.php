@@ -3,26 +3,55 @@
     <table class="bk-table table table-bordered table-hover">
       <thead class="thead-light">
         <tr>
-          <th rowspan="2" class="align-top">#</th>
-          <th rowspan="2" class="align-top">Дата</th>
-          <th rowspan="2" class="align-top">Температура</th>
-          <th rowspan="2" class="align-top text-center">Атмосферное<br> давление</th>
-          <th colspan="4" class="text-center">Параметры гор.воды</th>
-          <th colspan="5" class="text-center">Параметры хол.воды</th>
+          <th rowspan="2" class="bk-line-height align-top">#</th>
+          <th rowspan="2" class="bk-line-height align-top">Дата</th>
+          <th rowspan="2" class="bk-line-height align-top">Температура</th>
+          <th rowspan="2" class="bk-line-height align-top text-center">Атмосферное<br> давление</th>
+          <th colspan="4" class="bk-line-height text-center align-top">Параметры гор.воды</th>
+          <th colspan="5" class="bk-line-height text-center">
+            Параметры хол.воды<br>
+            <small class="text-muted">кгс/см<span class="align-top">2</span></small>
+
+          </th>
           @if(Auth::user()->roles()->pluck('slug')->contains('oas'))
-          <th rowspan="2" class="align-top print-hide">Действие</th>
+          <th rowspan="2" class="bk-line-height align-top print-hide">Действие</th>
           @endif
         </tr>
         <tr>
-          <th scope="col" class="text-center">Р<small class="text-muted align-bottom">пр</small></th>
-          <th scope="col" class="text-center">Т<small class="text-muted align-bottom">пр</small></th>
-          <th scope="col" class="text-center">Р<small class="text-muted align-bottom">обр</small></th>
-          <th scope="col" class="text-center">Т<small class="text-muted align-bottom">обр</small></th>
-          <th scope="col" class="text-center">Р<small class="text-muted align-bottom">еч</small></th>
-          <th scope="col" class="bk-line-height text-center">1,2<br><small class="text-muted align-bottom">мкр</small></th>
-          <th scope="col" class="bk-line-height text-center">3,4<br><small class="text-muted align-bottom">мкр</small></th>
-          <th scope="col" class="bk-line-height text-center">5,6<br><small class="text-muted align-bottom">мкр</small></th>
-          <th scope="col" class="bk-line-height text-center">7<br><small class="text-muted align-bottom">мкр</small></th>
+          <th scope="col" class="bk-line-height text-center">
+            Р<small class="text-muted align-bottom">пр</small>
+            <br>
+            <small class="text-muted">кгс/см<span class="align-top">2</span></small>
+
+          </th>
+          <th scope="col" class="bk-line-height text-center">
+
+            Т<small class="text-muted align-bottom">пр</small>
+            <br>
+            <small class="text-muted">градус</span></small>
+          </th>
+          <th scope="col" class="bk-line-height text-center">Р<small class="text-muted align-bottom">обр</small>
+            <br>
+            <small class="text-muted">кгс/см<span class="align-top">2</span></small>
+          </th>
+          <th scope="col" class="bk-line-height text-center">Т<small class="text-muted align-bottom">обр</small> <br>
+            <small class="text-muted">градус</span></small>
+          </th>
+          <th scope="col" class="text-center">
+            Р<small class="text-muted align-bottom">еч</small>
+          </th>
+          <th scope="col" class="bk-line-height text-center">
+            1,2<br><small class="text-muted align-bottom">мкр</small>
+          </th>
+          <th scope="col" class="bk-line-height text-center">
+            3,4<br><small class="text-muted align-bottom">мкр</small>
+          </th>
+          <th scope="col" class="bk-line-height text-center">
+            5,6<br><small class="text-muted align-bottom">мкр</small>
+          </th>
+          <th scope="col" class="bk-line-height text-center">
+            7<br><small class="text-muted align-bottom">мкр</small>
+          </th>
         </tr>
       </thead>
       <tbody>
