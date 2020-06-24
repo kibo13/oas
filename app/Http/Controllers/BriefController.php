@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brief;
 use Illuminate\Http\Request;
 use App\Charts\PressureTempChart; 
+use Carbon\Carbon;
 
 class BriefController extends Controller
 {
@@ -122,7 +123,7 @@ class BriefController extends Controller
      */
     public function create()
     {
-        $now = config('constants.date_now');
+        $now = Carbon::now()->format('Y-m-d');
         return view('pages.briefs.form', compact('now'));
     }
 

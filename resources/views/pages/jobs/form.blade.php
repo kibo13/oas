@@ -105,13 +105,19 @@
 					</div>
 					<!-- END group description -->
 
+					<input 
+						id="job-slug" 
+						type="hidden" 
+						name="slug" 
+						value="{{ old('slug', isset($job) ? $job->slug : null) }}">
+
 					<!-- START group addresses -->
 					<h6 class="w-100 border-bottom mr-3 py-1 pl-0">Список адресов</h6>
 					<div id="home-list" class="d-flex flex-wrap pl-2 mr-3" style="height: 250px; overflow-y: auto;">
 
 						@foreach($addresses as $id => $address)
 						<div class="bk-form__address col-sm-auto custom-control custom-checkbox mb-2">
-							<input id="{{ $id }}" name="addresses[]" type="checkbox" class="custom-control-input" value="{{ $address->id }}" @isset($job) @if($job->addresses->where('id', $address->id)->count())
+							<input id="{{ $id }}" name="addresses[]" type="checkbox" class="bk-chk custom-control-input" value="{{ $address->id }}" @isset($job) @if($job->addresses->where('id', $address->id)->count())
 							checked="checked"
 							@endif
 							@endisset

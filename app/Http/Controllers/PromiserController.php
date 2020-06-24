@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Promiser;
 use App\Models\Address;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class PromiserController extends Controller
 {
@@ -15,7 +16,7 @@ class PromiserController extends Controller
      */
     public function index()
     {
-        $today = config('constants.date_now');
+        $today = Carbon::now()->format('Y-m-d');
         $count = Promiser::where('date_on', null)->count();
         $promisers = Promiser::get();
         return view(

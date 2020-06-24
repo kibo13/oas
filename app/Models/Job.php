@@ -14,7 +14,8 @@ class Job extends Model
         'date_on',
         'time_on',
         'date_off',
-        'time_off'
+        'time_off',
+        'slug'
     ];
 
     public function organization()

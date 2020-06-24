@@ -11,11 +11,26 @@ class HomeController extends Controller
 {
     public function index()
     {
+
+        // streets 
         $streets = Street::get();
-        $jobs = Job::orderBy('date_on', 'DESC')
-            ->orderBy('time_on', 'DESC')
-            ->paginate(5);
+
+        // getBranch - custom fn from Helpers
+        $branch = getBranch();
+
+        if ($branch >= 1 || $branch <= 5) {
+            $jobs = Job::where('slug', 'LIKE', '%' . $branch . '%')
+                            ->orderBy('date_on', 'DESC')
+                            ->orderBy('time_on', 'DESC')
+                            ->paginate(5);
+        }
+
+        if ($branch > 5) {
+            $jobs = Job::orderBy('date_on', 'DESC')
+                ->orderBy('time_on', 'DESC')
+                ->paginate(5);
+        }
             
-        return view('home.index', compact('jobs', 'streets'));
+        return view('home', compact('jobs', 'streets'));
     }
 }

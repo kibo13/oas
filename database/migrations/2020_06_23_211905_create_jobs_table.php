@@ -23,6 +23,7 @@ class CreateJobsTable extends Migration
             $table->date('date_off');
             $table->time('time_on')->nullable();
             $table->time('time_off')->nullable();
+            $table->string('slug')->nullable();
             $table->timestamps();
         });
     }

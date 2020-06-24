@@ -1,10 +1,15 @@
-@extends('home.layouts.master')
+@extends('layouts.master')
 
 @section('content')
-<div class="container-fluid pt-5">
-  <div class="row ">
-    <div class="col-md-8 offset-md-2">
-      @foreach($jobs as $job)
+<div id="stat-index" class="overflow-hidden pt-4 py-2">
+
+
+  <!-- /.title -->
+
+  <div class="row m-0 p-0">
+
+    @foreach($jobs as $job)
+    <div class="col-md-auto">
       <div class="bk-card card mb-3 position-relative">
         <div class="card-body">
           <h5 class="card-title">{{ $job->type_job }} работа</h5>
@@ -40,10 +45,12 @@
           {{ $job->type_job }} работа
         </span>
       </div>
-      @endforeach
-
-      {{ $jobs->links() }}
     </div>
+    @endforeach
+
+    {{ $jobs->links() }}
   </div>
+  <!-- /.content -->
+
 </div>
 @endsection

@@ -90136,24 +90136,83 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 $(document).ready(function () {
   // wrapper
-  var wjob = document.getElementById("job-wrap"); // index 
+  var wjob = document.getElementById("job-wrap"); // index
 
-  var ijob = document.getElementById('job-index'); // if active form.blade.php 
+  var ijob = document.getElementById("job-index"); // if active form.blade.php
 
   if (wjob) {
-    $("#job-save").on("click", function (e) {
-      var off = new Date($("#job-start").val());
-      var on = new Date($("#job-end").val());
+    (function () {
+      var slug = document.getElementById("job-slug");
+      var checks = document.querySelectorAll(".bk-chk");
+      var temp = []; // compare dates
 
-      if (off > on) {
-        alert("Дата начала работы не должна быть позже даты окончания");
-        return false;
+      $("#job-save").on("click", function (e) {
+        var off = new Date($("#job-start").val());
+        var on = new Date($("#job-end").val());
+
+        if (off > on) {
+          alert("Дата начала работы не должна быть позже даты окончания");
+          return false;
+        }
+      }); // add events to checker
+
+      var _iterator = _createForOfIteratorHelper(checks),
+          _step;
+
+      try {
+        var _loop = function _loop() {
+          var ch = _step.value;
+          ch.addEventListener("click", function (e) {
+            $.ajax({
+              url: "/data/plots",
+              method: "GET"
+            }).done(function (plots) {
+              var _iterator2 = _createForOfIteratorHelper(plots),
+                  _step2;
+
+              try {
+                for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+                  var plot = _step2.value;
+
+                  if (ch.value == plot.address_id) {
+                    if (ch.checked) {
+                      temp.push(plot.branch_id);
+                    } else {
+                      temp.pop(plot.branch_id);
+                    }
+                  }
+                }
+              } catch (err) {
+                _iterator2.e(err);
+              } finally {
+                _iterator2.f();
+              }
+
+              console.log(temp);
+              slug.value = Array.from(new Set(temp));
+            });
+          });
+        };
+
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          _loop();
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
       }
-    });
-  } else // if active index.blade.php 
-    if (ijob) {
+    })();
+  } // if active index.blade.php
+  else if (ijob) {
       var table = document.getElementById("job-table"); // setup datatables
 
       $(table).dataTable({

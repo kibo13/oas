@@ -37,7 +37,7 @@ class StatementController extends Controller
     public function index()
     {
         // constant 
-        $today = config('constants.date_now');
+        $today = Carbon::now()->format('Y-m-d');
 
         // getBranch - custom fn from Helpers
         $branch = getBranch();

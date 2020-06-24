@@ -7,6 +7,7 @@ use App\Models\Street;
 use App\Models\Address;
 use App\Models\Organization;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class JobController extends Controller
 {
@@ -18,11 +19,25 @@ class JobController extends Controller
     public function index()
     {
 
-        $today = config('constants.date_now');
-        $count = Job::where('date_on', $today)->count();
+        // date_now 
+        $today = Carbon::now()->format('Y-m-d');
 
+        // streets 
         $streets = Street::get();
-        $jobs = Job::get();
+
+        // getBranch - custom fn from Helpers
+        $branch = getBranch();
+
+        if ($branch >= 1 || $branch <= 5) {
+            $jobs = Job::where('slug', 'LIKE', '%' . $branch . '%')->get();
+        }
+
+        if ($branch > 5) {
+            $jobs = Job::get();
+        }
+
+        // counters 
+        $count = $jobs->where('date_on', $today)->count(); 
         
         return view(
             'pages.jobs.index', 

@@ -10,8 +10,6 @@ Auth::routes([
     'register' => false
 ]);
 
-Route::get('/', 'HomeController@index')->name('home');
-
 Route::middleware(['auth'])->group(function () {
 
     // role: admin 
@@ -67,6 +65,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
     // role: guest 
+    Route::get('/', 'HomeController@index')->name('home');
     Route::get('statements', 'StatementController@index')
         ->name('statements.index');
     Route::get('statements/{statement}/logs', 'StatementController@logs')
