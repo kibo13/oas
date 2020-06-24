@@ -27,7 +27,7 @@ class DataController extends Controller
             ->select(
                 'branches.name',
                 'plots.branch_id',
-                'address_plot.address_id',
+                'address_plot.address_id'
             )
             ->where(
                 'branch_id',
