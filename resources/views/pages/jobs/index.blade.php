@@ -27,16 +27,13 @@
 		<table id="job-table" class="bk-table table table-bordered table-hover">
 			<thead class="thead-light">
 				<tr>
-					<th rowspan="2" class="align-top">#</th>
-					<th rowspan="2" class="align-top">Вид работ</th>
-					<th rowspan="2" class="align-top">Тип откл.</th>
-					<th colspan="2" class="text-center">Период проведения работ</th>
-					<th rowspan="2" class="align-top">Адреса</th>
-					<th rowspan="2" class="align-top print-hide">Действие</th>
-				</tr>
-				<tr>
-					<th scope="col" class="text-center">Начало</th>
-					<th scope="col" class="text-center">Заверш.</th>
+					<th scope="col">#</th>
+					<th scope="col">Вид работ</th>
+					<th scope="col">Тип откл.</th>
+					<th scope="col">Начало работ</th>
+					<th scope="col">Заверш.работ</th>
+					<th scope="col">Адрес</th>
+					<th scope="col">Действие</th>
 				</tr>
 			</thead>
 			<tbody>
