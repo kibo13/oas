@@ -4,11 +4,13 @@
 <div id="plot-index" class="overflow-hidden pt-4 py-2">
 	<h2 class="mb-0">Участки</h2>
 
+	@if(Auth::user()->permissions()->pluck('slug')->contains('plot_full'))
 	<div class="py-2 mb-1">
 		<a href="{{ route('plots.create') }}" class="btn btn-outline-primary">
 			Новая запись
 		</a>
 	</div>
+	@endif
 
 	<div class="table-responsive">
 		<table id="plot-table" class="bk-table table table-bordered">
@@ -17,38 +19,43 @@
 					<th scope="col">#</th>
 					<th scope="col">Участок</th>
 					<th scope="col">Список адресов</th>
+					@if(Auth::user()->permissions()->pluck('slug')->contains('plot_full'))
 					<th scope="col">Действие</th>
+					@endif
 				</tr>
 			</thead>
 			<tbody>
-
 				@foreach($plots as $id => $plot)
 				@if($plot->branch->slug != 2)
 				<tr>
 					<td>{{ $id+=1 }}</td>
 					<td>{{ $plot->branch->name }}</td>
 					<td>
-
-						@foreach($streets as $street)
-						@if($plot->addresses->where('street_id', $street->id)->count())
-						{{ $street->name }}
-						@endif
-
-						@foreach($plot->addresses as $address)
-						<small class="bk-text--small text-muted align-top">
-							@if($street->id == $address->street_id)
-							д.{{ $address->num_home }},
+						<div class="bk-plot">
+							<a href="javascript:void(0)" class="bk-btn bk-btn-triangle" style="position: absolute; top: 0; right: 5px;">
+								<span class="bk-triangle bk-btn-triangle--down"></span>
+							</a>
+							@foreach($streets as $street)
+							@if($plot->addresses->where('street_id', $street->id)->count())
+							{{ $street->name }}
 							@endif
-						</small>
-						@endforeach
 
-						@if($plot->addresses->where('street_id', $street->id)->count())
-						<br>
-						@endif
+							@foreach($plot->addresses as $address)
+							<small class="bk-text--small text-muted align-top">
+								@if($street->id == $address->street_id)
+								д.{{ $address->num_home }},
+								@endif
+							</small>
+							@endforeach
 
-						@endforeach
+							@if($plot->addresses->where('street_id', $street->id)->count())
+							<br>
+							@endif
 
+							@endforeach
+						</div>
 					</td>
+					@if(Auth::user()->permissions()->pluck('slug')->contains('plot_full'))
 					<td>
 						<div class="d-flex">
 							<div class="bk-btn bk-btn-crud btn btn-warning mr-1" data-tip="Редактировать">
@@ -68,6 +75,7 @@
 
 						</div>
 					</td>
+					@endif
 				</tr>
 				@endif
 				@endforeach

@@ -16,14 +16,14 @@
 		<div class="bk-navbar collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="bk-navbar__list navbar-nav d-flex justify-content-end w-100">
 
-				@if(Auth::user()->roles()->pluck('slug')->contains('admin'))
+				@if(Auth::user()->permissions()->pluck('slug')->contains('user_read'))
 				<li @nbactive('user*')>
 					<a class="nav-link" href="{{ route('users.index') }}">Пользователи</a>
 				</li>
 				@endif
 				<!-- /.admin-panel -->
 
-				@if(Auth::user()->roles()->pluck('slug')->contains('info'))
+				@if(Auth::user()->permissions()->pluck('info')->contains('1'))
 				<li class="nav-item dropdown mr-2">
 					<a id="navbarDropdown" class="nav-link dropdown-toggle bk-navbar__info pr-3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 						Информация
@@ -31,25 +31,31 @@
 					<!-- /.show-user -->
 					<div class="bk-navbar__dropitem dropdown-menu dropdown-menu-right p-0" aria-labelledby="navbarDropdown">
 
-						@if(Auth::user()->roles()->pluck('slug')->contains('hh'))
+						@if(Auth::user()->permissions()->pluck('slug')->contains('branch_read'))
 						<a class="dropdown-item bk-navbar__link" href="{{ route('branches.index') }}">
 							Отделы
 						</a>
 						@endif
 
-						@if(Auth::user()->roles()->pluck('slug')->contains('disp'))
+						@if(Auth::user()->permissions()->pluck('slug')->contains('plot_read'))
 						<a class="dropdown-item bk-navbar__link" href="{{ route('plots.index') }}">
 							Участки
 						</a>
 						@endif
 
-						@if(Auth::user()->roles()->pluck('slug')->contains('pts'))
+						@if(Auth::user()->permissions()->pluck('slug')->contains('build_read'))
 						<a class="dropdown-item bk-navbar__link" href="{{ route('organizations.index') }}">
 							Предприятия
 						</a>
+						@endif
+
+						@if(Auth::user()->permissions()->pluck('slug')->contains('address_read'))
 						<a class="dropdown-item bk-navbar__link" href="{{ route('addresses.index') }}">
 							Адреса
 						</a>
+						@endif
+
+						@if(Auth::user()->permissions()->pluck('slug')->contains('defect_read'))
 						<a class="dropdown-item bk-navbar__link" href="{{ route('defects.index') }}">
 							Неисправности
 						</a>

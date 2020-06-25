@@ -37,7 +37,7 @@ class StatementController extends Controller
     public function index()
     {
         // constant 
-        $today = Carbon::now()->format('Y-m-d');
+        $today = Carbon::now()->addHour(5)->format('Y-m-d');
 
         // getBranch - custom fn from Helpers
         $branch = getBranch();
@@ -70,7 +70,7 @@ class StatementController extends Controller
     public function create()
     {
         // date and time register 
-        $date_now = Carbon::now()->format('Y-m-d');
+        $date_now = Carbon::now()->addHour(5)->format('Y-m-d');
         $time_now = Carbon::now()->addHour(5)->format('H:i');
 
         // types 

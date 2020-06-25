@@ -16,7 +16,7 @@ class PromiserController extends Controller
      */
     public function index()
     {
-        $today = Carbon::now()->format('Y-m-d');
+        $today = Carbon::now()->addHour(5)->format('Y-m-d');
         $count = Promiser::where('date_on', null)->count();
         $promisers = Promiser::get();
         return view(

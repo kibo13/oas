@@ -4,7 +4,7 @@
 <div id="job-index" class="overflow-hidden pt-4 py-2">
 	<h2 class="mb-1">Учет работ</h2>
 
-	@if(Auth::user()->roles()->pluck('slug')->contains('oas'))
+	@if(Auth::user()->permissions()->pluck('slug')->contains('job_full'))
 	<div class="py-2 mt-1">
 		<a href="{{ route('jobs.create') }}" class="btn btn-outline-primary">
 			Новая запись
@@ -76,7 +76,7 @@
 								</span>
 							</div>
 
-							@if(Auth::user()->roles()->pluck('slug')->contains('oas'))
+							@if(Auth::user()->permissions()->pluck('slug')->contains('job_full'))
 							<div class="bk-btn bk-btn-crud btn btn-warning mr-1" data-tip="Редактировать">
 								<a href="{{ route('jobs.edit', $job) }}" class="bk-btn-wrap bk-btn-link"></a>
 								<span class="bk-btn-wrap bk-btn-icon">

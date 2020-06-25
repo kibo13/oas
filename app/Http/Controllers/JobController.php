@@ -20,7 +20,7 @@ class JobController extends Controller
     {
 
         // date_now 
-        $today = Carbon::now()->format('Y-m-d');
+        $today = Carbon::now()->addHour(5)->format('Y-m-d');
 
         // streets 
         $streets = Street::get();
@@ -29,11 +29,11 @@ class JobController extends Controller
         $branch = getBranch();
 
         if ($branch >= 1 || $branch <= 5) {
-            $jobs = Job::where('slug', 'LIKE', '%' . $branch . '%')->get();
+            $jobs = Job::where('slug', 'LIKE', '%' . $branch . '%')->orderBy('date_on', 'DESC')->get();
         }
 
         if ($branch > 5) {
-            $jobs = Job::get();
+            $jobs = Job::orderBy('date_on', 'DESC')->get();
         }
 
         // counters 

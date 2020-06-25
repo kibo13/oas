@@ -4,7 +4,7 @@
 <div id="worker-index" class="overflow-hidden pt-4 py-2">
 	<h2 class="mb-1">Сотрудники</h2>
 
-	@if(Auth::user()->roles()->pluck('slug')->contains('hh'))
+	@if(Auth::user()->permissions()->pluck('slug')->contains('emp_full'))
 	<div class="py-2 mt-1">
 		<a href="{{ route('workers.create') }}" class="btn btn-outline-primary">
 			Новая запись
@@ -22,7 +22,7 @@
 					<th scope="col">Должность</th>
 					<th scope="col">Адрес</th>
 					<th scope="col">Телефоны</th>
-					@if(Auth::user()->roles()->pluck('slug')->contains('hh'))
+					@if(Auth::user()->permissions()->pluck('slug')->contains('emp_full'))
 					<th scope="col">Действие</th>
 					@endif
 				</tr>
@@ -50,7 +50,7 @@
 						@if($worker->home_phone != null) Дом: {{ $worker->home_phone }}<br>@endif
 						@if($worker->mob_phone != null) Моб: {{ $worker->mob_phone }} @endif
 					</td>
-					@if(Auth::user()->roles()->pluck('slug')->contains('hh'))
+					@if(Auth::user()->permissions()->pluck('slug')->contains('emp_full'))
 					<td>
 						<div class="d-flex">
 							<div class="bk-btn bk-btn-crud btn btn-warning mr-1" data-tip="Редактировать">

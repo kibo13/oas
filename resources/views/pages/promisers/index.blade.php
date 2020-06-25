@@ -6,7 +6,7 @@
     Потребители
   </h2>
 
-  @if(Auth::user()->roles()->pluck('slug')->contains('audit'))
+  @if(Auth::user()->permissions()->pluck('slug')->contains('prom_full'))
   <div class="py-2 mt-1">
     <a href="{{ route('promisers.create') }}" class="btn btn-outline-primary">
       Новая запись
@@ -33,7 +33,7 @@
           <th scope="col">Адрес</th>
           <th scope="col">Дата отключения</th>
           <th scope="col">Дата подключения</th>
-          @if(Auth::user()->roles()->pluck('slug')->contains('audit'))
+          @if(Auth::user()->permissions()->pluck('slug')->contains('prom_full'))
           <th scope="col">Действие</th>
           @endif
         </tr>
@@ -57,7 +57,7 @@
             {{ getDMY($promiser->date_on) }}г.
             @endif
           </td>
-          @if(Auth::user()->roles()->pluck('slug')->contains('audit'))
+          @if(Auth::user()->permissions()->pluck('slug')->contains('prom_full'))
           <td>
             <div class="d-flex">
               <div class="bk-btn bk-btn-crud btn btn-warning mr-1" data-tip="Редактировать">

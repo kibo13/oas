@@ -21,7 +21,7 @@
           <th scope="col">Дата и время</th>
           <th scope="col">Принятые меры</th>
           <th scope="col">Внес изменения</th>
-          @if(Auth::user()->roles()->pluck('slug')->contains('disp'))
+          @if(Auth::user()->permissions()->pluck('slug')->contains('bid_full'))
           <th scope="col">Действие</th>
           @endif
         </tr>
@@ -44,7 +44,7 @@
           <td>{{ $log->solution }}</td>
           <td>{{ $log->receiver }} <small class="text-muted align-text-top">{{ $log->plot }}</small></td>
 
-          @if(Auth::user()->roles()->pluck('slug')->contains('disp'))
+          @if(Auth::user()->permissions()->pluck('slug')->contains('bid_full'))
           <td>
             <div class="d-flex">
 

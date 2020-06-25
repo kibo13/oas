@@ -4,11 +4,13 @@
 <div id="defect-index" class="overflow-hidden pt-4 py-2">
   <h2 class="mb-1">Неисправности</h2>
 
+  @if(Auth::user()->permissions()->pluck('slug')->contains('defect_full'))
   <div class="py-2 mt-1">
     <a href="{{ route('defects.create') }}" class="btn btn-outline-primary">
       Новая запись
     </a>
   </div>
+  @endif
 
   <div class="table-responsive mt-1">
     <table id="defect-table" class="bk-table table table-bordered table-hover">
@@ -18,7 +20,9 @@
           <th scope="col">Тип</th>
           <th scope="col">Принадлежность</th>
           <th scope="col">Описание</th>
+          @if(Auth::user()->permissions()->pluck('slug')->contains('defect_full'))
           <th scope="col">Действие</th>
+          @endif
         </tr>
       </thead>
       <tbody>
@@ -29,6 +33,7 @@
           <td>{{ $defect->type->name }}</td>
           <td>{{ $defect->attachment }}</td>
           <td>{{ $defect->desc }}</td>
+          @if(Auth::user()->permissions()->pluck('slug')->contains('defect_full'))
           <td>
             <div class="d-flex">
               <div class="bk-btn bk-btn-crud btn btn-warning mr-1" data-tip="Редактировать">
@@ -48,6 +53,7 @@
 
             </div>
           </td>
+          @endif
         </tr>
         @endforeach
 

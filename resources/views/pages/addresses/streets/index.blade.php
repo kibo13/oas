@@ -5,9 +5,11 @@
   <h2 class="mb-0">Улицы</h2>
 
   <div class="py-2 mb-1">
+    @if(Auth::user()->permissions()->pluck('slug')->contains('address_full'))
     <a href="{{ route('streets.create') }}" class="btn btn-outline-primary">
       Новая запись
     </a>
+    @endif
     <a href="{{ route('addresses.index') }}" class="btn btn-outline-secondary">
       Адреса
     </a>
@@ -19,7 +21,9 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Улица</th>
+          @if(Auth::user()->permissions()->pluck('slug')->contains('address_full'))
           <th scope="col">Действие</th>
+          @endif
         </tr>
       </thead>
       <tbody>
@@ -27,6 +31,7 @@
         <tr>
           <th scope="row">{{ $key+=1 }}</th>
           <td>{{ $street->name }}</td>
+          @if(Auth::user()->permissions()->pluck('slug')->contains('address_full'))
           <td>
             <div class="d-flex">
               <div class="bk-btn bk-btn-crud btn btn-warning mr-1" data-tip="Редактировать">
@@ -46,6 +51,7 @@
 
             </div>
           </td>
+          @endif
         </tr>
         @endforeach
 

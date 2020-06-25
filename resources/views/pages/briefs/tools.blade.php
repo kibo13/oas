@@ -1,6 +1,6 @@
 <div class="d-flex flex-column flex-md-row justify-content-between mt-2 mb-3">
 
-	@if(Auth::user()->roles()->pluck('slug')->contains('oas'))
+	@if(Auth::user()->permissions()->pluck('slug')->contains('grap_full'))
 	<div class="mb-3 mb-md-0">
 		<a href="{{ route('briefs.create') }}" class="btn btn-outline-primary">
 			Новая запись
@@ -14,22 +14,12 @@
 			<div class="d-flex">
 				<div class="bk-form__datepicker">
 					<small class="bk-form__datepicker--text text-dark font-weight-bold">Начало периода</small>
-					<input 
-						type="date" 
-						name="date_from" 
-						class="bk-form__datepicker--field form-control rounded-0" 
-						value="{{ request()->date_from }}"
-						required>
+					<input type="date" name="date_from" class="bk-form__datepicker--field form-control rounded-0" value="{{ request()->date_from }}" required>
 				</div>
 
 				<div class="bk-form__datepicker">
 					<small class="bk-form__datepicker--text text-dark font-weight-bold">Конец периода</small>
-					<input 
-						type="date" 
-						name="date_to" 
-						class="bk-form__datepicker--field form-control rounded-0 bl-none" 
-						value="{{ request()->date_to }}" 
-						required>
+					<input type="date" name="date_to" class="bk-form__datepicker--field form-control rounded-0 bl-none" value="{{ request()->date_to }}" required>
 				</div>
 			</div>
 

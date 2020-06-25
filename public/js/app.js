@@ -90366,6 +90366,23 @@ $(document).ready(function () {
       },
       paging: false,
       bSort: false
+    }); // show-hide plots
+
+    $(".bk-triangle").on("click", function (e) {
+      var elem = e.target;
+      var tip = e.target.parentNode.parentNode;
+
+      if ($(elem).hasClass("bk-btn-triangle--down")) {
+        $(elem).removeClass("bk-btn-triangle--down").addClass("bk-btn-triangle--up");
+      } else {
+        $(elem).removeClass("bk-btn-triangle--up").addClass("bk-btn-triangle--down");
+      }
+
+      if (tip.classList.contains("bk-plot-active")) {
+        $(tip).removeClass("bk-plot-active");
+      } else {
+        $(tip).addClass("bk-plot-active");
+      }
     });
   }
 });
@@ -90767,80 +90784,100 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 $(document).ready(function () {
-  // wrapper 
-  var wuser = document.getElementById("user-wrap"); // index 
+  // blade-templates
+  var iuser = document.getElementById("user-index");
+  var fuser = document.getElementById("user-wrap"); // if active form.blade.php
 
-  var iuser = document.getElementById("user-index"); // collection
+  if (fuser) {
+    // field of role
+    var f_role = document.getElementById("user-slug"); // select of roles
 
-  var roles = document.querySelectorAll(".bk-checkbox"); // if active form.blade.php 
+    var select = document.getElementById("role-select"); // checkboxs
 
-  if (wuser) {
-    (function () {
-      // counter 
-      var count = 0; // calc of checked roles
+    var checkboxs = document.querySelectorAll(".bk-checkbox");
 
-      var _iterator = _createForOfIteratorHelper(roles),
-          _step;
+    select.onchange = function (e) {
+      var val = e.target.options[select.selectedIndex].value;
+      var attr = e.target.options[select.selectedIndex].dataset.slug; // set option:selected to field of role
 
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var role = _step.value;
-          var value = role.value;
+      f_role.value = val; // switch off checkboxs
 
-          if (role.checked) {
-            if (value == 4 || value >= 9 && value <= 13) {
-              count++;
-            }
-          }
-        } // addEventListener for roles  
+      $(checkboxs).prop("checked", false); // why selected
 
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
+      switch (attr) {
+        case "admin":
+          $(checkboxs).prop("checked", true);
+          break;
+
+        case "oas":
+          $(".home").prop("checked", true);
+          $(".bid_read").prop("checked", true);
+          $(".bid_full").prop("checked", true);
+          $(".job_read").prop("checked", true);
+          $(".job_full").prop("checked", true);
+          $(".prom_read").prop("checked", true);
+          $(".emp_read").prop("checked", true);
+          $(".grap_read").prop("checked", true);
+          $(".grap_full").prop("checked", true);
+          $(".plot_read").prop("checked", true);
+          $(".plot_full").prop("checked", true);
+          $(".repo").prop("checked", true);
+          break;
+
+        case "zheu1":
+        case "zheu2":
+        case "zheu3":
+        case "zheu4":
+        case "zheu5":
+          $(".home").prop("checked", true);
+          $(".bid_read").prop("checked", true);
+          $(".bid_full").prop("checked", true);
+          $(".job_read").prop("checked", true);
+          $(".prom_read").prop("checked", true);
+          $(".emp_read").prop("checked", true);
+          $(".grap_read").prop("checked", true);
+          $(".plot_read").prop("checked", true);
+          $(".plot_full").prop("checked", true);
+          break;
+
+        case "pts":
+          $(".build_read").prop("checked", true);
+          $(".build_full").prop("checked", true);
+          $(".address_read").prop("checked", true);
+          $(".address_full").prop("checked", true);
+          $(".defect_read").prop("checked", true);
+          $(".defect_full").prop("checked", true);
+          $(".repo").prop("checked", true);
+          break;
+
+        case "hh":
+          $(".emp_read").prop("checked", true);
+          $(".emp_full").prop("checked", true);
+          $(".branch_read").prop("checked", true);
+          $(".branch_full").prop("checked", true);
+          break;
+
+        case "audit":
+          $(".prom_read").prop("checked", true);
+          $(".prom_full").prop("checked", true);
+          break;
+
+        case "user":
+          $(".home").prop("checked", true);
+          $(".bid_read").prop("checked", true);
+          $(".prom_read").prop("checked", true);
+          $(".job_read").prop("checked", true);
+          $(".emp_read").prop("checked", true);
+          $(".grap_read").prop("checked", true);
+          break;
+
+        default:
+          break;
       }
-
-      var _iterator2 = _createForOfIteratorHelper(roles),
-          _step2;
-
-      try {
-        var _loop = function _loop() {
-          var role = _step2.value;
-          role.addEventListener('click', function (e) {
-            var value = e.target.value;
-
-            if (value == 4 || value >= 9 && value <= 13) {
-              role.checked ? count++ : count--;
-            }
-          });
-        };
-
-        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-          _loop();
-        } // onclick for btn-save 
-
-      } catch (err) {
-        _iterator2.e(err);
-      } finally {
-        _iterator2.f();
-      }
-
-      $("#user-save").on("click", function (e) {
-        if (count > 1) {
-          alert('Невозможно назначить пользователю более двух участков');
-          return false;
-        }
-      });
-    })();
-  } else // if active index.blade.php
-    if (iuser) {
+    };
+  } // if active index.blade.php
+  else if (iuser) {
       var table = document.getElementById("user-table"); // setup datatables
 
       $(table).dataTable({
@@ -90850,9 +90887,26 @@ $(document).ready(function () {
         },
         aoColumnDefs: [{
           bSortable: false,
-          aTargets: [3]
+          aTargets: [-1]
         }],
         lengthMenu: [[10, 25, 50, -1], ["Показывать по 10", "Показывать по 25", "Показывать по 50", "Все записи"]]
+      }); // show-hide permissions
+
+      $(".bk-triangle").on("click", function (e) {
+        var elem = e.target;
+        var tip = e.target.parentNode.parentNode;
+
+        if ($(elem).hasClass("bk-btn-triangle--down")) {
+          $(elem).removeClass("bk-btn-triangle--down").addClass("bk-btn-triangle--up");
+        } else {
+          $(elem).removeClass("bk-btn-triangle--up").addClass("bk-btn-triangle--down");
+        }
+
+        if (tip.classList.contains("bk-perm-active")) {
+          $(tip).removeClass("bk-perm-active");
+        } else {
+          $(tip).addClass("bk-perm-active");
+        }
       });
     }
 });

@@ -13,7 +13,7 @@
             <small class="text-muted">кгс/см<span class="align-top">2</span></small>
 
           </th>
-          @if(Auth::user()->roles()->pluck('slug')->contains('oas'))
+          @if(Auth::user()->permissions()->pluck('slug')->contains('grap_full'))
           <th rowspan="2" class="bk-line-height align-top print-hide">Действие</th>
           @endif
         </tr>
@@ -71,7 +71,7 @@
           <td>{{ $brief->cw_tf }}</td>
           <td>{{ $brief->cw_fs }}</td>
           <td>{{ $brief->cw_s }}</td>
-          @if(Auth::user()->roles()->pluck('slug')->contains('oas'))
+          @if(Auth::user()->permissions()->pluck('slug')->contains('grap_full'))
           <td class="print-hide">
             <div class="d-flex">
               <div class="bk-btn bk-btn-crud btn btn-warning mr-1" data-tip="Редактировать">

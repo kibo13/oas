@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password'
+        'name', 'email', 'password', 'role_id'
     ];
 
     /**
@@ -37,20 +37,27 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function roles()
+    // many 
+    public function role()
     {
-        return $this->belongsToMany('App\Models\Role');
+        return $this->belongsTo('App\Models\Role');
+    }
+
+    // many 
+    public function permissions()
+    {
+        return $this->belongsToMany('App\Models\Permission');
     }
 
     /**
-     * @param mixed ...$roles
+     * @param mixed ...$permissions
      * @return bool
      */
-    
-    public function hasRole(...$roles)
+
+    public function hasPermission(...$permissions)
     {
-        foreach ($roles as $role) {
-            if ($this->roles->contains('slug', $role)) {
+        foreach ($permissions as $permission) {
+            if ($this->permissions->contains('slug', $permission)) {
                 return true;
             }
         }

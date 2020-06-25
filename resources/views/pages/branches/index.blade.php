@@ -5,9 +5,11 @@
   <h2 class="mb-0">Отделы</h2>
 
   <div class="py-2 mb-1">
+    @if(Auth::user()->permissions()->pluck('slug')->contains('branch_full'))
     <a href="{{ route('branches.create') }}" class="btn btn-outline-primary">
       Новая запись
     </a>
+    @endif
     <a href="{{ route('positions.index') }}" class="btn btn-outline-secondary">
       Должности
     </a>
@@ -19,7 +21,9 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Отдел</th>
+          @if(Auth::user()->permissions()->pluck('slug')->contains('branch_full'))
           <th scope="col">Действие</th>
+          @endif
         </tr>
       </thead>
       <tbody>
@@ -27,6 +31,7 @@
         <tr>
           <th scope="row">{{ $key+=1 }}</th>
           <td>{{ $branch->name }}</td>
+          @if(Auth::user()->permissions()->pluck('slug')->contains('branch_full'))
           <td>
             <div class="d-flex">
               <div class="bk-btn bk-btn-crud btn btn-warning mr-1" data-tip="Редактировать">
@@ -46,6 +51,7 @@
 
             </div>
           </td>
+          @endif
         </tr>
         @endforeach
 

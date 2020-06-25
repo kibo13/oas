@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Permission;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -18,9 +19,16 @@ class UserController extends Controller
      */
     public function index()
     {
+        // sections 
+        $sections = config('constants.sections');
+
+        // why 
         $admin = Auth::user()->name;
+
+        // users 
         $users = User::where('name', '!=', $admin)->where('name', '!=', 'kibo13')->get();
-        return view('pages.users.index', compact('users'));
+
+        return view('pages.users.index', compact('users', 'sections'));
     }
 
     /**
@@ -30,8 +38,19 @@ class UserController extends Controller
      */
     public function create(Request $request)
     {
+        // sections 
+        $sections = config('constants.sections');
+
+        // roles 
         $roles = Role::get();
-        return view('pages.users.form', compact('roles'));
+
+        // permissions
+        $permissions = Permission::get();
+        
+        return view(
+            'pages.users.form', 
+            compact('sections', 'roles', 'permissions')
+        );
     }
 
     /**
@@ -45,12 +64,13 @@ class UserController extends Controller
         $user = User::create([
             'name' => $request['name'],
             'email' => $request['email'],
+            'role_id' => $request['role_id'],
             'password' => bcrypt($request['password'])
         ]);
         
-        // roles 
-        if ($request->input('roles')) :
-            $user->roles()->attach($request->input('roles'));
+        // permissions 
+        if ($request->input('permissions')) :
+            $user->permissions()->attach($request->input('permissions'));
         endif;
 
         return redirect()->route('users.index');
@@ -64,8 +84,18 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        // sections 
+        $sections = config('constants.sections');
+
+        // roles 
         $roles = Role::get();
-        return view('pages.users.form', compact('user', 'roles'));
+
+        // permissions
+        $permissions = Permission::get();
+
+        return view(
+            'pages.users.form', 
+            compact('sections', 'roles', 'permissions', 'user'));
     }
 
     /**
@@ -79,13 +109,14 @@ class UserController extends Controller
     {
         $user->name = $request['name'];
         $user->email = $request['email'];
+        $user->role_id = $request['role_id'];
         $request['password'] == null ?:
             $user->password = bcrypt($request['password']);
   
-        // roles 
-        $user->roles()->detach();
-        if ($request->input('roles')) :
-            $user->roles()->attach($request->input('roles'));
+        // permissions 
+        $user->permissions()->detach();
+        if ($request->input('permissions')) :
+            $user->permissions()->attach($request->input('permissions'));
         endif;
 
         $user->save();
@@ -101,8 +132,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        // roles 
-        $user->roles()->detach();
+        // permissions 
+        $user->permissions()->detach();
         $user->delete();
 
         return redirect()->route('users.index');

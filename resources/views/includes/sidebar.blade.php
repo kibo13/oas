@@ -13,6 +13,7 @@
   <ul class="bk-sidebar__list list-unstyled components my-2">
 
     <!-- START home -->
+    @if(Auth::user()->permissions()->pluck('slug')->contains('home'))
     <li @sbactive('home*')>
       <a href="{{ route('home') }}" class="bk-sidebar__link d-flex align-items-start">
         <span class="bk-sidebar__link--icon d-flex align-items-start mx-2">
@@ -22,9 +23,11 @@
         </span>
         <span class="bk-sidebar__link--icon">Главная</span></a>
     </li>
+    @endif
     <!-- END home -->
 
     <!-- START Statements -->
+    @if(Auth::user()->permissions()->pluck('slug')->contains('bid_read'))
     <li @sbactive('statemen*')>
       <a href="{{ route('statements.index') }}" class="bk-sidebar__link d-flex align-items-start">
         <span class="bk-sidebar__link--icon d-flex align-items-start mx-2">
@@ -34,9 +37,11 @@
         </span>
         <span class="bk-sidebar__link--icon">Заявки</span></a>
     </li>
+    @endif
     <!-- END Bids -->
 
     <!-- START Jobs -->
+    @if(Auth::user()->permissions()->pluck('slug')->contains('job_read'))
     <li @sbactive('job*')>
       <a href="{{ route('jobs.index') }}" class="bk-sidebar__link d-flex align-items-start">
         <span class="bk-sidebar__link--icon d-flex align-items-start mx-2">
@@ -46,9 +51,11 @@
         </span>
         <span class="bk-sidebar__link--icon">Учет работ</span></a>
     </li>
+    @endif
     <!-- START Jobs -->
 
     <!-- START Promisers -->
+    @if(Auth::user()->permissions()->pluck('slug')->contains('prom_read'))
     <li @sbactive('promise*')>
       <a href="{{ route('promisers.index') }}" class="bk-sidebar__link d-flex align-items-start">
         <span class="bk-sidebar__link--icon d-flex align-items-start mx-2">
@@ -58,9 +65,11 @@
         </span>
         <span class="bk-sidebar__link--icon">Потребители</span></a>
     </li>
+    @endif
     <!-- START Promisers -->
 
     <!-- START Workers -->
+    @if(Auth::user()->permissions()->pluck('slug')->contains('emp_read'))
     <li @sbactive('worke*')>
       <a href="{{ route('workers.index') }}" class="bk-sidebar__link d-flex align-items-start">
         <span class="bk-sidebar__link--icon d-flex align-items-start mx-2">
@@ -71,10 +80,11 @@
         <span class="bk-sidebar__link--icon">Сотрудники</span>
       </a>
     </li>
+    @endif
     <!-- START Workers -->
 
     <!-- START Reports -->
-    @if(Auth::user()->roles()->pluck('slug')->contains('repo'))
+    @if(Auth::user()->permissions()->pluck('slug')->contains('repo'))
     <li @sbactive('repo*')>
       <a href="{{ route('report.index') }}" class="bk-sidebar__link d-flex align-items-start">
         <span class="bk-sidebar__link--icon d-flex align-items-start mx-2">
@@ -89,6 +99,7 @@
     <!-- END Reports -->
 
     <!-- START Briefs -->
+    @if(Auth::user()->permissions()->pluck('slug')->contains('grap_read'))
     <li @sbactive('brie*')>
       <a href="{{ route('briefs.index') }}" class="bk-sidebar__link d-flex align-items-start">
         <span class="bk-sidebar__link--icon d-flex align-items-start mx-2">
@@ -99,6 +110,7 @@
         <span class="bk-sidebar__link--icon">Графики</span>
       </a>
     </li>
+    @endif
     <!-- END Briefs -->
 
   </ul>

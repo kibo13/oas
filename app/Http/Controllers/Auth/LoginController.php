@@ -45,4 +45,34 @@ class LoginController extends Controller
     {
         return 'name';
     }
+
+    /**
+     * The user has been authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        // pts 
+        if ($user->role->slug == 'pts') {
+            return redirect()->route('report.index');
+        } 
+        
+        // hh 
+        elseif ($user->role->slug == 'hh') {
+            return redirect()->route('workers.index');
+        }
+
+        // hh 
+        elseif ($user->role->slug == 'audit') {
+            return redirect()->route('promisers.index'); 
+        }
+
+        // other users 
+        else {
+            return redirect()->route('home');
+        }
+    }
 }

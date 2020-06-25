@@ -11,7 +11,7 @@
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 24/06/2020 11:47:16
+ Date: 26/06/2020 02:08:32
 */
 
 SET NAMES utf8mb4;
@@ -1404,7 +1404,7 @@ CREATE TABLE `logs`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `logs_statement_id_foreign`(`statement_id`) USING BTREE,
   CONSTRAINT `logs_statement_id_foreign` FOREIGN KEY (`statement_id`) REFERENCES `statements` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for migrations
@@ -1415,7 +1415,7 @@ CREATE TABLE `migrations`  (
   `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 107 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 115 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of migrations
@@ -1441,6 +1441,10 @@ INSERT INTO `migrations` VALUES (99, '2020_06_23_184748_create_statements_table'
 INSERT INTO `migrations` VALUES (100, '2020_06_23_184839_create_logs_table', 4);
 INSERT INTO `migrations` VALUES (105, '2020_06_23_211905_create_jobs_table', 5);
 INSERT INTO `migrations` VALUES (106, '2020_06_23_211951_create_address_job_table', 5);
+INSERT INTO `migrations` VALUES (111, '2020_06_25_135551_create_permissions_table', 6);
+INSERT INTO `migrations` VALUES (112, '2020_06_25_135612_create_permission_user_table', 6);
+INSERT INTO `migrations` VALUES (113, '2020_06_25_135911_alter_users_table', 7);
+INSERT INTO `migrations` VALUES (114, '2020_06_25_171144_alter_permissions_table', 8);
 
 -- ----------------------------
 -- Table structure for organizations
@@ -1471,6 +1475,235 @@ CREATE TABLE `password_resets`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   INDEX `password_resets_email_index`(`email`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for permission_user
+-- ----------------------------
+DROP TABLE IF EXISTS `permission_user`;
+CREATE TABLE `permission_user`  (
+  `permission_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  INDEX `permission_user_user_id_foreign`(`user_id`) USING BTREE,
+  INDEX `permission_user_permission_id_foreign`(`permission_id`) USING BTREE,
+  CONSTRAINT `permission_user_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
+  CONSTRAINT `permission_user_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of permission_user
+-- ----------------------------
+INSERT INTO `permission_user` VALUES (1, 3);
+INSERT INTO `permission_user` VALUES (4, 3);
+INSERT INTO `permission_user` VALUES (5, 3);
+INSERT INTO `permission_user` VALUES (6, 3);
+INSERT INTO `permission_user` VALUES (7, 3);
+INSERT INTO `permission_user` VALUES (8, 3);
+INSERT INTO `permission_user` VALUES (10, 3);
+INSERT INTO `permission_user` VALUES (12, 3);
+INSERT INTO `permission_user` VALUES (13, 3);
+INSERT INTO `permission_user` VALUES (16, 3);
+INSERT INTO `permission_user` VALUES (17, 3);
+INSERT INTO `permission_user` VALUES (24, 3);
+INSERT INTO `permission_user` VALUES (10, 15);
+INSERT INTO `permission_user` VALUES (11, 15);
+INSERT INTO `permission_user` VALUES (14, 15);
+INSERT INTO `permission_user` VALUES (15, 15);
+INSERT INTO `permission_user` VALUES (8, 16);
+INSERT INTO `permission_user` VALUES (9, 16);
+INSERT INTO `permission_user` VALUES (1, 17);
+INSERT INTO `permission_user` VALUES (4, 17);
+INSERT INTO `permission_user` VALUES (6, 17);
+INSERT INTO `permission_user` VALUES (8, 17);
+INSERT INTO `permission_user` VALUES (10, 17);
+INSERT INTO `permission_user` VALUES (12, 17);
+INSERT INTO `permission_user` VALUES (2, 2);
+INSERT INTO `permission_user` VALUES (3, 2);
+INSERT INTO `permission_user` VALUES (1, 2);
+INSERT INTO `permission_user` VALUES (4, 2);
+INSERT INTO `permission_user` VALUES (5, 2);
+INSERT INTO `permission_user` VALUES (6, 2);
+INSERT INTO `permission_user` VALUES (7, 2);
+INSERT INTO `permission_user` VALUES (8, 2);
+INSERT INTO `permission_user` VALUES (9, 2);
+INSERT INTO `permission_user` VALUES (10, 2);
+INSERT INTO `permission_user` VALUES (11, 2);
+INSERT INTO `permission_user` VALUES (12, 2);
+INSERT INTO `permission_user` VALUES (13, 2);
+INSERT INTO `permission_user` VALUES (14, 2);
+INSERT INTO `permission_user` VALUES (15, 2);
+INSERT INTO `permission_user` VALUES (16, 2);
+INSERT INTO `permission_user` VALUES (17, 2);
+INSERT INTO `permission_user` VALUES (18, 2);
+INSERT INTO `permission_user` VALUES (19, 2);
+INSERT INTO `permission_user` VALUES (20, 2);
+INSERT INTO `permission_user` VALUES (21, 2);
+INSERT INTO `permission_user` VALUES (22, 2);
+INSERT INTO `permission_user` VALUES (23, 2);
+INSERT INTO `permission_user` VALUES (24, 2);
+INSERT INTO `permission_user` VALUES (18, 14);
+INSERT INTO `permission_user` VALUES (19, 14);
+INSERT INTO `permission_user` VALUES (20, 14);
+INSERT INTO `permission_user` VALUES (21, 14);
+INSERT INTO `permission_user` VALUES (22, 14);
+INSERT INTO `permission_user` VALUES (23, 14);
+INSERT INTO `permission_user` VALUES (24, 14);
+INSERT INTO `permission_user` VALUES (1, 4);
+INSERT INTO `permission_user` VALUES (4, 4);
+INSERT INTO `permission_user` VALUES (5, 4);
+INSERT INTO `permission_user` VALUES (6, 4);
+INSERT INTO `permission_user` VALUES (8, 4);
+INSERT INTO `permission_user` VALUES (10, 4);
+INSERT INTO `permission_user` VALUES (12, 4);
+INSERT INTO `permission_user` VALUES (16, 4);
+INSERT INTO `permission_user` VALUES (17, 4);
+INSERT INTO `permission_user` VALUES (1, 5);
+INSERT INTO `permission_user` VALUES (4, 5);
+INSERT INTO `permission_user` VALUES (5, 5);
+INSERT INTO `permission_user` VALUES (6, 5);
+INSERT INTO `permission_user` VALUES (8, 5);
+INSERT INTO `permission_user` VALUES (10, 5);
+INSERT INTO `permission_user` VALUES (12, 5);
+INSERT INTO `permission_user` VALUES (16, 5);
+INSERT INTO `permission_user` VALUES (17, 5);
+INSERT INTO `permission_user` VALUES (1, 6);
+INSERT INTO `permission_user` VALUES (4, 6);
+INSERT INTO `permission_user` VALUES (5, 6);
+INSERT INTO `permission_user` VALUES (6, 6);
+INSERT INTO `permission_user` VALUES (8, 6);
+INSERT INTO `permission_user` VALUES (10, 6);
+INSERT INTO `permission_user` VALUES (12, 6);
+INSERT INTO `permission_user` VALUES (16, 6);
+INSERT INTO `permission_user` VALUES (17, 6);
+INSERT INTO `permission_user` VALUES (1, 7);
+INSERT INTO `permission_user` VALUES (4, 7);
+INSERT INTO `permission_user` VALUES (5, 7);
+INSERT INTO `permission_user` VALUES (6, 7);
+INSERT INTO `permission_user` VALUES (8, 7);
+INSERT INTO `permission_user` VALUES (10, 7);
+INSERT INTO `permission_user` VALUES (12, 7);
+INSERT INTO `permission_user` VALUES (16, 7);
+INSERT INTO `permission_user` VALUES (17, 7);
+INSERT INTO `permission_user` VALUES (1, 8);
+INSERT INTO `permission_user` VALUES (4, 8);
+INSERT INTO `permission_user` VALUES (5, 8);
+INSERT INTO `permission_user` VALUES (6, 8);
+INSERT INTO `permission_user` VALUES (8, 8);
+INSERT INTO `permission_user` VALUES (10, 8);
+INSERT INTO `permission_user` VALUES (12, 8);
+INSERT INTO `permission_user` VALUES (16, 8);
+INSERT INTO `permission_user` VALUES (17, 8);
+INSERT INTO `permission_user` VALUES (1, 9);
+INSERT INTO `permission_user` VALUES (4, 9);
+INSERT INTO `permission_user` VALUES (5, 9);
+INSERT INTO `permission_user` VALUES (6, 9);
+INSERT INTO `permission_user` VALUES (8, 9);
+INSERT INTO `permission_user` VALUES (10, 9);
+INSERT INTO `permission_user` VALUES (12, 9);
+INSERT INTO `permission_user` VALUES (16, 9);
+INSERT INTO `permission_user` VALUES (17, 9);
+INSERT INTO `permission_user` VALUES (1, 10);
+INSERT INTO `permission_user` VALUES (4, 10);
+INSERT INTO `permission_user` VALUES (5, 10);
+INSERT INTO `permission_user` VALUES (6, 10);
+INSERT INTO `permission_user` VALUES (8, 10);
+INSERT INTO `permission_user` VALUES (10, 10);
+INSERT INTO `permission_user` VALUES (12, 10);
+INSERT INTO `permission_user` VALUES (16, 10);
+INSERT INTO `permission_user` VALUES (17, 10);
+INSERT INTO `permission_user` VALUES (1, 11);
+INSERT INTO `permission_user` VALUES (4, 11);
+INSERT INTO `permission_user` VALUES (5, 11);
+INSERT INTO `permission_user` VALUES (6, 11);
+INSERT INTO `permission_user` VALUES (8, 11);
+INSERT INTO `permission_user` VALUES (10, 11);
+INSERT INTO `permission_user` VALUES (12, 11);
+INSERT INTO `permission_user` VALUES (16, 11);
+INSERT INTO `permission_user` VALUES (17, 11);
+INSERT INTO `permission_user` VALUES (1, 12);
+INSERT INTO `permission_user` VALUES (4, 12);
+INSERT INTO `permission_user` VALUES (5, 12);
+INSERT INTO `permission_user` VALUES (6, 12);
+INSERT INTO `permission_user` VALUES (8, 12);
+INSERT INTO `permission_user` VALUES (10, 12);
+INSERT INTO `permission_user` VALUES (12, 12);
+INSERT INTO `permission_user` VALUES (16, 12);
+INSERT INTO `permission_user` VALUES (17, 12);
+INSERT INTO `permission_user` VALUES (1, 13);
+INSERT INTO `permission_user` VALUES (4, 13);
+INSERT INTO `permission_user` VALUES (5, 13);
+INSERT INTO `permission_user` VALUES (6, 13);
+INSERT INTO `permission_user` VALUES (8, 13);
+INSERT INTO `permission_user` VALUES (10, 13);
+INSERT INTO `permission_user` VALUES (12, 13);
+INSERT INTO `permission_user` VALUES (16, 13);
+INSERT INTO `permission_user` VALUES (17, 13);
+INSERT INTO `permission_user` VALUES (2, 1);
+INSERT INTO `permission_user` VALUES (3, 1);
+INSERT INTO `permission_user` VALUES (1, 1);
+INSERT INTO `permission_user` VALUES (4, 1);
+INSERT INTO `permission_user` VALUES (5, 1);
+INSERT INTO `permission_user` VALUES (6, 1);
+INSERT INTO `permission_user` VALUES (7, 1);
+INSERT INTO `permission_user` VALUES (8, 1);
+INSERT INTO `permission_user` VALUES (9, 1);
+INSERT INTO `permission_user` VALUES (10, 1);
+INSERT INTO `permission_user` VALUES (11, 1);
+INSERT INTO `permission_user` VALUES (12, 1);
+INSERT INTO `permission_user` VALUES (13, 1);
+INSERT INTO `permission_user` VALUES (14, 1);
+INSERT INTO `permission_user` VALUES (15, 1);
+INSERT INTO `permission_user` VALUES (16, 1);
+INSERT INTO `permission_user` VALUES (17, 1);
+INSERT INTO `permission_user` VALUES (18, 1);
+INSERT INTO `permission_user` VALUES (19, 1);
+INSERT INTO `permission_user` VALUES (20, 1);
+INSERT INTO `permission_user` VALUES (21, 1);
+INSERT INTO `permission_user` VALUES (22, 1);
+INSERT INTO `permission_user` VALUES (23, 1);
+INSERT INTO `permission_user` VALUES (24, 1);
+
+-- ----------------------------
+-- Table structure for permissions
+-- ----------------------------
+DROP TABLE IF EXISTS `permissions`;
+CREATE TABLE `permissions`  (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `info` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `created_at` timestamp(0) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `desc` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of permissions
+-- ----------------------------
+INSERT INTO `permissions` VALUES (1, 'Главная', 'home', '0', NULL, NULL, 'Просмотр');
+INSERT INTO `permissions` VALUES (2, 'Пользователи', 'user_read', '0', NULL, NULL, 'Просмотр');
+INSERT INTO `permissions` VALUES (3, 'Пользователи', 'user_full', '0', NULL, NULL, 'Редактирование');
+INSERT INTO `permissions` VALUES (4, 'Заявки', 'bid_read', '0', NULL, NULL, 'Просмотр');
+INSERT INTO `permissions` VALUES (5, 'Заявки', 'bid_full', '0', NULL, NULL, 'Редактирование');
+INSERT INTO `permissions` VALUES (6, 'Учет работ', 'job_read', '0', NULL, NULL, 'Просмотр');
+INSERT INTO `permissions` VALUES (7, 'Учет работ', 'job_full', '0', NULL, NULL, 'Редактирование');
+INSERT INTO `permissions` VALUES (8, 'Потребители', 'prom_read', '0', NULL, NULL, 'Просмотр');
+INSERT INTO `permissions` VALUES (9, 'Потребители', 'prom_full', '0', NULL, NULL, 'Редактирование');
+INSERT INTO `permissions` VALUES (10, 'Сотрудники', 'emp_read', '0', NULL, NULL, 'Просмотр');
+INSERT INTO `permissions` VALUES (11, 'Сотрудники', 'emp_full', '0', NULL, NULL, 'Редактирование');
+INSERT INTO `permissions` VALUES (12, 'Графики', 'grap_read', '0', NULL, NULL, 'Просмотр');
+INSERT INTO `permissions` VALUES (13, 'Графики', 'grap_full', '0', NULL, NULL, 'Редактирование');
+INSERT INTO `permissions` VALUES (14, 'Отделы', 'branch_read', '1', NULL, NULL, 'Просмотр');
+INSERT INTO `permissions` VALUES (15, 'Отделы', 'branch_full', '1', NULL, NULL, 'Редактирование');
+INSERT INTO `permissions` VALUES (16, 'Участки', 'plot_read', '1', NULL, NULL, 'Просмотр');
+INSERT INTO `permissions` VALUES (17, 'Участки', 'plot_full', '1', NULL, NULL, 'Редактирование');
+INSERT INTO `permissions` VALUES (18, 'Предприятия', 'build_read', '1', NULL, NULL, 'Просмотр');
+INSERT INTO `permissions` VALUES (19, 'Предприятия', 'build_full', '1', NULL, NULL, 'Редактирование');
+INSERT INTO `permissions` VALUES (20, 'Адреса', 'address_read', '1', NULL, NULL, 'Просмотр');
+INSERT INTO `permissions` VALUES (21, 'Адреса', 'address_full', '1', NULL, NULL, 'Редактирование');
+INSERT INTO `permissions` VALUES (22, 'Неисправности', 'defect_read', '1', NULL, NULL, 'Просмотр');
+INSERT INTO `permissions` VALUES (23, 'Неисправности', 'defect_full', '1', NULL, NULL, 'Редактирование');
+INSERT INTO `permissions` VALUES (24, 'Отчеты', 'repo', '0', NULL, NULL, 'Просмотр');
 
 -- ----------------------------
 -- Table structure for plots
@@ -1573,60 +1806,6 @@ CREATE TABLE `role_user`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of role_user
--- ----------------------------
-INSERT INTO `role_user` VALUES (1, 2);
-INSERT INTO `role_user` VALUES (3, 3);
-INSERT INTO `role_user` VALUES (4, 3);
-INSERT INTO `role_user` VALUES (14, 3);
-INSERT INTO `role_user` VALUES (16, 3);
-INSERT INTO `role_user` VALUES (3, 4);
-INSERT INTO `role_user` VALUES (9, 4);
-INSERT INTO `role_user` VALUES (14, 4);
-INSERT INTO `role_user` VALUES (3, 5);
-INSERT INTO `role_user` VALUES (9, 5);
-INSERT INTO `role_user` VALUES (14, 5);
-INSERT INTO `role_user` VALUES (3, 6);
-INSERT INTO `role_user` VALUES (10, 6);
-INSERT INTO `role_user` VALUES (14, 6);
-INSERT INTO `role_user` VALUES (3, 7);
-INSERT INTO `role_user` VALUES (10, 7);
-INSERT INTO `role_user` VALUES (14, 7);
-INSERT INTO `role_user` VALUES (3, 9);
-INSERT INTO `role_user` VALUES (11, 9);
-INSERT INTO `role_user` VALUES (14, 9);
-INSERT INTO `role_user` VALUES (3, 8);
-INSERT INTO `role_user` VALUES (11, 8);
-INSERT INTO `role_user` VALUES (14, 8);
-INSERT INTO `role_user` VALUES (3, 10);
-INSERT INTO `role_user` VALUES (12, 10);
-INSERT INTO `role_user` VALUES (14, 10);
-INSERT INTO `role_user` VALUES (3, 11);
-INSERT INTO `role_user` VALUES (12, 11);
-INSERT INTO `role_user` VALUES (14, 11);
-INSERT INTO `role_user` VALUES (3, 12);
-INSERT INTO `role_user` VALUES (13, 12);
-INSERT INTO `role_user` VALUES (14, 12);
-INSERT INTO `role_user` VALUES (3, 13);
-INSERT INTO `role_user` VALUES (13, 13);
-INSERT INTO `role_user` VALUES (14, 13);
-INSERT INTO `role_user` VALUES (8, 14);
-INSERT INTO `role_user` VALUES (14, 14);
-INSERT INTO `role_user` VALUES (16, 14);
-INSERT INTO `role_user` VALUES (5, 15);
-INSERT INTO `role_user` VALUES (14, 15);
-INSERT INTO `role_user` VALUES (6, 16);
-INSERT INTO `role_user` VALUES (15, 17);
-INSERT INTO `role_user` VALUES (1, 1);
-INSERT INTO `role_user` VALUES (3, 1);
-INSERT INTO `role_user` VALUES (4, 1);
-INSERT INTO `role_user` VALUES (5, 1);
-INSERT INTO `role_user` VALUES (6, 1);
-INSERT INTO `role_user` VALUES (8, 1);
-INSERT INTO `role_user` VALUES (14, 1);
-INSERT INTO `role_user` VALUES (16, 1);
-
--- ----------------------------
 -- Table structure for roles
 -- ----------------------------
 DROP TABLE IF EXISTS `roles`;
@@ -1643,19 +1822,16 @@ CREATE TABLE `roles`  (
 -- Records of roles
 -- ----------------------------
 INSERT INTO `roles` VALUES (1, 'Администратор', 'admin', NULL, '2020-05-23 16:14:59');
-INSERT INTO `roles` VALUES (3, 'Диспетчер', 'disp', '2020-05-23 16:19:12', '2020-05-23 16:19:12');
-INSERT INTO `roles` VALUES (4, 'ОАС', 'oas', '2020-05-23 16:19:26', '2020-05-23 16:19:26');
-INSERT INTO `roles` VALUES (5, 'СПиУП', 'hh', '2020-05-23 16:27:05', '2020-05-23 16:34:49');
-INSERT INTO `roles` VALUES (6, 'Энергосбыт', 'audit', '2020-05-23 16:29:17', '2020-05-23 16:34:39');
+INSERT INTO `roles` VALUES (2, 'Диспетчер ОАС', 'oas', '2020-05-23 16:19:26', '2020-05-23 16:19:26');
+INSERT INTO `roles` VALUES (3, 'Диспетчер ЖЭУ-1', 'zheu1', NULL, NULL);
+INSERT INTO `roles` VALUES (4, 'Диспетчер ЖЭУ-2', 'zheu2', NULL, NULL);
+INSERT INTO `roles` VALUES (5, 'Диспетчер ЖЭУ-3', 'zheu3', NULL, NULL);
+INSERT INTO `roles` VALUES (6, 'Диспетчер ЖЭУ-4', 'zheu4', NULL, NULL);
+INSERT INTO `roles` VALUES (7, 'Диспетчер ЖЭУ-5', 'zheu5', NULL, NULL);
 INSERT INTO `roles` VALUES (8, 'ПТС', 'pts', '2020-05-24 17:34:18', '2020-05-24 17:34:18');
-INSERT INTO `roles` VALUES (9, 'ЖЭУ-1', 'zheu1', NULL, NULL);
-INSERT INTO `roles` VALUES (10, 'ЖЭУ-2', 'zheu2', NULL, NULL);
-INSERT INTO `roles` VALUES (11, 'ЖЭУ-3', 'zheu3', NULL, NULL);
-INSERT INTO `roles` VALUES (12, 'ЖЭУ-4', 'zheu4', NULL, NULL);
-INSERT INTO `roles` VALUES (13, 'ЖЭУ-5', 'zheu5', NULL, NULL);
-INSERT INTO `roles` VALUES (14, 'Справочник', 'info', NULL, NULL);
-INSERT INTO `roles` VALUES (15, 'Пользователь', 'user', NULL, NULL);
-INSERT INTO `roles` VALUES (16, 'Отчеты', 'repo', NULL, NULL);
+INSERT INTO `roles` VALUES (9, 'СПиУП', 'hh', '2020-05-23 16:27:05', '2020-05-23 16:34:49');
+INSERT INTO `roles` VALUES (10, 'Энергосбыт', 'audit', '2020-05-23 16:29:17', '2020-05-23 16:34:39');
+INSERT INTO `roles` VALUES (11, 'Пользователь', 'user', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for statements
@@ -1895,30 +2071,31 @@ CREATE TABLE `users`  (
   `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `role_id` bigint(20) UNSIGNED NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'kibo13', 'admin@oas.com', NULL, '$2y$10$0GIgN92/sxGnUJwdRJT2I.Z7eIu2FqW//61wdWQp42c6wxQX/6bq6', NULL, '2020-06-09 15:25:35', '2020-06-24 06:46:16');
-INSERT INTO `users` VALUES (2, 'Админ', 'admin@oas.info', NULL, '$2y$10$CbHG.VKYAb.7BQVfdlUh..3635NzHmzUq76gk0TV/tKBm4AZx7Z7G', NULL, '2020-06-16 14:59:14', '2020-06-18 16:26:26');
-INSERT INTO `users` VALUES (3, 'Репин', 'oas@oas.info', NULL, '$2y$10$lWcGeZQJQqyaIm8NPni/0O7ecPUABmADuEsF1MKYrRyeZvhIp0HpC', NULL, '2020-06-16 15:03:26', '2020-06-18 16:27:10');
-INSERT INTO `users` VALUES (4, 'Крикун', 'krikun_oas@oas.info', NULL, '$2y$10$tJqPrQNA1AxsQD1Cmu0Ra..TISdSrMtvywAU3mWgiIs7FezCrUoem', NULL, '2020-06-16 15:06:37', '2020-06-18 16:27:39');
-INSERT INTO `users` VALUES (5, 'Тен', 'ten_oas@oas.info', NULL, '$2y$10$YWqqa2Xlxm1BijLoQKxUk.OhBa7bapifOXYvq3ws04HkpXkwOZB6u', NULL, '2020-06-16 15:07:54', '2020-06-18 16:28:05');
-INSERT INTO `users` VALUES (6, 'Громов', 'gromov_oas@oas.info', NULL, '$2y$10$CIIPZWPwuLKmd03lCk96HeGlkTuxukO2U0TIv4CWezArszN3Y9ysG', NULL, '2020-06-16 15:09:40', '2020-06-18 16:28:37');
-INSERT INTO `users` VALUES (7, 'Платонов', 'plat_oas@oas.info', NULL, '$2y$10$o2yzUNgMRDuql8pJLjP3.eedcaOeM35OG27dqjo1lyB5V5vpGzRuW', NULL, '2020-06-16 15:12:01', '2020-06-18 16:28:49');
-INSERT INTO `users` VALUES (8, 'Бакин', 'bakin_oas@oas.info', NULL, '$2y$10$PGnbus5jkNp.m06SJ27Zdex.d9ws4.47M9Ax12GVj1I4UCUhZBqya', NULL, '2020-06-16 15:14:32', '2020-06-18 16:29:35');
-INSERT INTO `users` VALUES (9, 'Шукиров', 'shuk_oas@oas.info', NULL, '$2y$10$L5vFRhbieQGPX4.82WQWXu7BhgnJ4bhjk7ftgqu6AQK5zUnBx802W', NULL, '2020-06-16 15:13:26', '2020-06-18 16:29:10');
-INSERT INTO `users` VALUES (10, 'Кенжегулов', 'keng_oas@oas.info', NULL, '$2y$10$D1VOQ7jUbzXxNSd0XduJ1u5HjJrBfcL8WwmY8Xgtuzcbp9ZVHeAaW', NULL, '2020-06-16 15:17:03', '2020-06-18 16:29:51');
-INSERT INTO `users` VALUES (11, 'Уайсов', 'yaisov_oas@oas.info', NULL, '$2y$10$iyCny1pgCwuPJHsKRnwqgu159jLnQwLhoDQUFLnZvCsAqVgh5dc0m', NULL, '2020-06-16 15:16:10', '2020-06-18 16:30:10');
-INSERT INTO `users` VALUES (12, 'Ромашкин', 'romashka_oas@oas.info', NULL, '$2y$10$QNPi/.lkpQwFZEzdDuyl/um7kTJT56PXfsTeYIX0iFMPpsvlsP14K', NULL, '2020-06-16 15:18:56', '2020-06-18 16:30:36');
-INSERT INTO `users` VALUES (13, 'Цветков', 'cvetkov_oas@oas.info', NULL, '$2y$10$wqormoGSOBFn7LpJgDR5s.9t.jVKG5DJbEDlQz0QoTQ64Ob5NUHja', NULL, '2020-06-16 15:19:39', '2020-06-18 16:30:49');
-INSERT INTO `users` VALUES (14, 'Головин', 'golovin_oas@oas.info', NULL, '$2y$10$TN401rN1Shu0sUIl9Gqz0ORrybw7ama3Ck2PiDGmL4zLcizjMfbWq', NULL, '2020-06-16 15:22:47', '2020-06-18 16:31:08');
-INSERT INTO `users` VALUES (15, 'Петрова', 'petrova_oas@oas.info', NULL, '$2y$10$nrJlUFHR71CjG50gr8V7Uu.Vr1GPdpuLbMj2.INyJls.Gba0YlRhO', NULL, '2020-06-16 15:23:57', '2020-06-18 16:31:26');
-INSERT INTO `users` VALUES (16, 'Васильев', 'audit@oas.ru', NULL, '$2y$10$JzP.OqRGsrnd4tfptjmSbOWIpUxDtvufNdpx/lkgbOSNQjJKgn8Dm', NULL, '2020-06-09 15:40:16', '2020-06-18 16:31:41');
-INSERT INTO `users` VALUES (17, 'Смолин', 'user@oas.ru', NULL, '$2y$10$914wqz0Z9emckYlqLXchHO.oY49D5w9bgukjCS6PyqJeOR4.LA97m', NULL, '2020-06-12 15:44:28', '2020-06-18 16:31:53');
+INSERT INTO `users` VALUES (1, 'kibo13', 'admin@oas.com', NULL, '$2y$10$YzZ7J8plBtJDiyDFi7/F3OgxJ2FTV2sgs1W0LATmp7N8aHXbWJjN.', NULL, '2020-06-09 15:25:35', '2020-06-25 21:08:16', 1);
+INSERT INTO `users` VALUES (2, 'Админ', 'admin@oas.info', NULL, '$2y$10$CbHG.VKYAb.7BQVfdlUh..3635NzHmzUq76gk0TV/tKBm4AZx7Z7G', NULL, '2020-06-16 14:59:14', '2020-06-25 16:30:04', 1);
+INSERT INTO `users` VALUES (3, 'Репин', 'oas@oas.info', NULL, '$2y$10$lWcGeZQJQqyaIm8NPni/0O7ecPUABmADuEsF1MKYrRyeZvhIp0HpC', NULL, '2020-06-16 15:03:26', '2020-06-25 16:44:15', 2);
+INSERT INTO `users` VALUES (4, 'Крикун', 'krikun_oas@oas.info', NULL, '$2y$10$tJqPrQNA1AxsQD1Cmu0Ra..TISdSrMtvywAU3mWgiIs7FezCrUoem', NULL, '2020-06-16 15:06:37', '2020-06-25 16:44:22', 3);
+INSERT INTO `users` VALUES (5, 'Тен', 'ten_oas@oas.info', NULL, '$2y$10$YWqqa2Xlxm1BijLoQKxUk.OhBa7bapifOXYvq3ws04HkpXkwOZB6u', NULL, '2020-06-16 15:07:54', '2020-06-25 16:44:29', 3);
+INSERT INTO `users` VALUES (6, 'Громов', 'gromov_oas@oas.info', NULL, '$2y$10$CIIPZWPwuLKmd03lCk96HeGlkTuxukO2U0TIv4CWezArszN3Y9ysG', NULL, '2020-06-16 15:09:40', '2020-06-25 16:44:39', 4);
+INSERT INTO `users` VALUES (7, 'Платонов', 'plat_oas@oas.info', NULL, '$2y$10$o2yzUNgMRDuql8pJLjP3.eedcaOeM35OG27dqjo1lyB5V5vpGzRuW', NULL, '2020-06-16 15:12:01', '2020-06-25 16:44:47', 4);
+INSERT INTO `users` VALUES (8, 'Бакин', 'bakin_oas@oas.info', NULL, '$2y$10$PGnbus5jkNp.m06SJ27Zdex.d9ws4.47M9Ax12GVj1I4UCUhZBqya', NULL, '2020-06-16 15:14:32', '2020-06-25 16:44:54', 5);
+INSERT INTO `users` VALUES (9, 'Шукиров', 'shuk_oas@oas.info', NULL, '$2y$10$L5vFRhbieQGPX4.82WQWXu7BhgnJ4bhjk7ftgqu6AQK5zUnBx802W', NULL, '2020-06-16 15:13:26', '2020-06-25 16:45:04', 5);
+INSERT INTO `users` VALUES (10, 'Кенжегулов', 'keng_oas@oas.info', NULL, '$2y$10$D1VOQ7jUbzXxNSd0XduJ1u5HjJrBfcL8WwmY8Xgtuzcbp9ZVHeAaW', NULL, '2020-06-16 15:17:03', '2020-06-25 16:45:15', 6);
+INSERT INTO `users` VALUES (11, 'Уайсов', 'yaisov_oas@oas.info', NULL, '$2y$10$iyCny1pgCwuPJHsKRnwqgu159jLnQwLhoDQUFLnZvCsAqVgh5dc0m', NULL, '2020-06-16 15:16:10', '2020-06-25 16:45:24', 6);
+INSERT INTO `users` VALUES (12, 'Ромашкин', 'romashka_oas@oas.info', NULL, '$2y$10$QNPi/.lkpQwFZEzdDuyl/um7kTJT56PXfsTeYIX0iFMPpsvlsP14K', NULL, '2020-06-16 15:18:56', '2020-06-25 16:45:33', 7);
+INSERT INTO `users` VALUES (13, 'Цветков', 'cvetkov_oas@oas.info', NULL, '$2y$10$wqormoGSOBFn7LpJgDR5s.9t.jVKG5DJbEDlQz0QoTQ64Ob5NUHja', NULL, '2020-06-16 15:19:39', '2020-06-25 16:45:42', 7);
+INSERT INTO `users` VALUES (14, 'Головин', 'golovin_oas@oas.info', NULL, '$2y$10$TN401rN1Shu0sUIl9Gqz0ORrybw7ama3Ck2PiDGmL4zLcizjMfbWq', NULL, '2020-06-16 15:22:47', '2020-06-25 16:46:00', 8);
+INSERT INTO `users` VALUES (15, 'Петрова', 'petrova_oas@oas.info', NULL, '$2y$10$nrJlUFHR71CjG50gr8V7Uu.Vr1GPdpuLbMj2.INyJls.Gba0YlRhO', NULL, '2020-06-16 15:23:57', '2020-06-25 16:46:14', 9);
+INSERT INTO `users` VALUES (16, 'Васильев', 'audit@oas.ru', NULL, '$2y$10$JzP.OqRGsrnd4tfptjmSbOWIpUxDtvufNdpx/lkgbOSNQjJKgn8Dm', NULL, '2020-06-09 15:40:16', '2020-06-25 16:46:26', 10);
+INSERT INTO `users` VALUES (17, 'Смолин', 'user@oas.ru', NULL, '$2y$10$914wqz0Z9emckYlqLXchHO.oY49D5w9bgukjCS6PyqJeOR4.LA97m', NULL, '2020-06-12 15:44:28', '2020-06-25 16:46:35', 11);
 
 -- ----------------------------
 -- Table structure for workers

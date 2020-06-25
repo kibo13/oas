@@ -11017,6 +11017,24 @@ textarea {
   background: rgba(96, 125, 139, 0.1);
 }
 
+.bk-checkbox {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+
+.bk-perm,
+.bk-plot {
+  position: relative;
+  height: 20px;
+  overflow: hidden;
+}
+
+.bk-perm-active,
+.bk-plot-active {
+  height: auto;
+}
+
 .loader {
   display: flex;
   justify-content: center;

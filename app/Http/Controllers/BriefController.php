@@ -123,7 +123,7 @@ class BriefController extends Controller
      */
     public function create()
     {
-        $now = Carbon::now()->format('Y-m-d');
+        $now = Carbon::now()->addHour(5)->format('Y-m-d');
         return view('pages.briefs.form', compact('now'));
     }
 

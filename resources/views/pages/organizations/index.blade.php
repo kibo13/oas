@@ -4,11 +4,13 @@
 <div id="organ-index" class="overflow-hidden pt-4 py-2">
   <h2 class="mb-0">Предприятия</h2>
 
+  @if(Auth::user()->permissions()->pluck('slug')->contains('build_full'))
   <div class="py-2 mb-1">
     <a href="{{ route('organizations.create') }}" class="btn btn-outline-primary">
       Новая запись
     </a>
   </div>
+  @endif
 
   <div class="table-responsive">
     <table id="organ-table" class="bk-table table table-bordered table-hover">
@@ -16,7 +18,9 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Предприятие</th>
+          @if(Auth::user()->permissions()->pluck('slug')->contains('build_full'))
           <th scope="col">Действие</th>
+          @endif
         </tr>
       </thead>
 
@@ -25,6 +29,7 @@
         <tr>
           <th scope="row">{{ $key+=1 }}</th>
           <td>{{ $organization->name }}</td>
+          @if(Auth::user()->permissions()->pluck('slug')->contains('build_full'))
           <td>
             <div class="d-flex">
               <div class="bk-btn bk-btn-crud btn btn-warning mr-1" data-tip="Редактировать">
@@ -44,6 +49,7 @@
 
             </div>
           </td>
+          @endif
         </tr>
         @endforeach
       </tbody>

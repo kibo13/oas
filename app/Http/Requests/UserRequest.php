@@ -28,6 +28,7 @@ class UserRequest extends FormRequest
             $rules = [
                 'name' => ['required', 'string', 'max:20'],
                 'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
+                'role_id' => ['required'],
                 'password' => ['required', 'string', 'min:6', 'confirmed'],
             ];
         };  
@@ -36,6 +37,7 @@ class UserRequest extends FormRequest
             $rules = [
                 'name' => ['required', 'string', 'max:20'],
                 'email' => ['required', 'string', 'email', 'max:100', Rule::unique('users')->ignore($this->route()->parameter('user')->id)],
+                'role_id' => ['required'],
                 'password' => ['nullable', 'string', 'min:6', 'confirmed'],
             ];
         };
@@ -53,6 +55,7 @@ class UserRequest extends FormRequest
         return [
             'name' => 'логин',
             'email' => 'e-mail',
+            'role_id' => 'роль',
             'password' => 'пароль'
         ];
     }

@@ -4,7 +4,7 @@
 <div id="stat-index" class="overflow-hidden pt-4 py-2">
   <h2 class="mb-1">Заявки</h2>
 
-  @if(Auth::user()->roles()->pluck('slug')->contains('disp'))
+  @if(Auth::user()->permissions()->pluck('slug')->contains('bid_full'))
   <div class="py-2 mt-1">
     <a href="{{ route('statements.create') }}" class="btn btn-outline-primary">
       Новая запись
@@ -94,7 +94,7 @@
                 </span>
               </div>
 
-              @if(Auth::user()->roles()->pluck('slug')->contains('disp'))
+              @if(Auth::user()->permissions()->pluck('slug')->contains('bid_full'))
               <div class="bk-btn bk-btn-crud btn btn-info mr-1" data-tip="Состояние">
                 <a href="{{ route('statements.show', $statement) }}" class="bk-btn-wrap bk-btn-link"></a>
                 <span class="bk-btn-wrap bk-btn-icon">
