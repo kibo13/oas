@@ -96,12 +96,27 @@ $(document).ready(function() {
                     break;
             }
         };
+
+        // cheking access to home-page
+        $("#user-save").on("click", e => {
+            let slug = document.getElementById("user-slug").value;
+            let home = document.querySelector(".home");
+
+            if (slug != '') {
+                if (slug < 8 || slug > 10) {
+                    if (!home.checked) {
+                        alert(`Для заданной роли необходимо указать доступ к разделу "Главная"`);
+                        return false;
+                    }
+                }
+            }
+        });
     }
 
     // if active index.blade.php
     else if (iuser) {
         // show-hide permissions
-        $(".bk-triangle").on("click", e => {
+        $(document).on("click", ".bk-triangle", e => {
             let elem = e.target;
             let tip = e.target.parentNode.parentNode;
 

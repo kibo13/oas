@@ -4,7 +4,7 @@ $(document).ready(function() {
 
     if (iplot) {
         // show-hide plots
-        $(".bk-triangle").on("click", e => {
+        $(document).on("click", ".bk-triangle", e => {
             let elem = e.target;
             let tip = e.target.parentNode.parentNode;
 

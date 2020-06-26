@@ -90258,7 +90258,7 @@ $(document).ready(function () {
 
   if (iplot) {
     // show-hide plots
-    $(".bk-triangle").on("click", function (e) {
+    $(document).on("click", ".bk-triangle", function (e) {
       var elem = e.target;
       var tip = e.target.parentNode.parentNode;
 
@@ -90675,11 +90675,26 @@ $(document).ready(function () {
         default:
           break;
       }
-    };
+    }; // cheking access to home-page
+
+
+    $("#user-save").on("click", function (e) {
+      var slug = document.getElementById("user-slug").value;
+      var home = document.querySelector(".home");
+
+      if (slug != '') {
+        if (slug < 8 || slug > 10) {
+          if (!home.checked) {
+            alert("\u0414\u043B\u044F \u0437\u0430\u0434\u0430\u043D\u043D\u043E\u0439 \u0440\u043E\u043B\u0438 \u043D\u0435\u043E\u0431\u0445\u043E\u0434\u0438\u043C\u043E \u0443\u043A\u0430\u0437\u0430\u0442\u044C \u0434\u043E\u0441\u0442\u0443\u043F \u043A \u0440\u0430\u0437\u0434\u0435\u043B\u0443 \"\u0413\u043B\u0430\u0432\u043D\u0430\u044F\"");
+            return false;
+          }
+        }
+      }
+    });
   } // if active index.blade.php
   else if (iuser) {
       // show-hide permissions
-      $(".bk-triangle").on("click", function (e) {
+      $(document).on("click", ".bk-triangle", function (e) {
         var elem = e.target;
         var tip = e.target.parentNode.parentNode;
 

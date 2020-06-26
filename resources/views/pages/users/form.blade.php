@@ -73,15 +73,11 @@
 						<select id="role-select" class="form-control bk-form__input @error('role_id') is-invalid @enderror">
 							<option disabled selected>Выберите роль</option>
 							@foreach($roles as $role)
-							<option 
-								value="{{ $role->id }}" 
-								data-slug="{{ $role->slug }}"
-								@isset($user) 
-									@if($user->role_id == $role->id)
-										selected
-									@endif
+							<option value="{{ $role->id }}" data-slug="{{ $role->slug }}" @isset($user) @if($user->role_id == $role->id)
+								selected
+								@endif
 								@endisset
-							>
+								>
 								{{ $role->name }}
 							</option>
 							@endforeach
