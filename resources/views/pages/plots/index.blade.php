@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div id="plot-index" class="overflow-hidden pt-4 py-2">
+<div id="plot-index" class="bk-page overflow-hidden pt-4 py-2">
 	<h2 class="mb-0">Участки</h2>
 
 	@if(Auth::user()->permissions()->pluck('slug')->contains('plot_full'))
@@ -20,7 +20,7 @@
 					<th scope="col">Участок</th>
 					<th scope="col">Список адресов</th>
 					@if(Auth::user()->permissions()->pluck('slug')->contains('plot_full'))
-					<th scope="col">Действие</th>
+					<th scope="col" class="no-sort">Действие</th>
 					@endif
 				</tr>
 			</thead>

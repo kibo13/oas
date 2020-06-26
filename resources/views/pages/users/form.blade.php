@@ -110,13 +110,13 @@
 								</tr>
 							</thead>
 							<tbody>
-								@foreach($sections as $section)
+								@foreach($sections as $id => $section)
 								<tr>
-									<td>{{ $section['id'] }}</td>
-									<td>{{ $section['name'] }}</td>
-									@if($permissions->where('name', $section['name'])->count() == 2)
+									<td>{{ $id+=1 }}</td>
+									<td>{{ $section }}</td>
+									@if($permissions->where('name', $section)->count() == 2)
 									@foreach($permissions as $perm)
-									@if($perm->name == $section['name'])
+									@if($perm->name == $section)
 									<td class="text-center">
 
 										<input name="permissions[]" type="checkbox" class="bk-checkbox {{$perm->slug}}" value="{{ $perm->id }}" @isset($user) @if($user->permissions->where('id', $perm->id)->count())
@@ -130,7 +130,7 @@
 									@endforeach
 									@else
 									@foreach($permissions as $perm)
-									@if($perm->name == $section['name'])
+									@if($perm->name == $section)
 									<td class="text-center">
 										<input name="permissions[]" type="checkbox" class="bk-checkbox {{$perm->slug}}" value="{{ $perm->id }}" @isset($user) @if($user->permissions->where('id', $perm->id)->count())
 										checked="checked"

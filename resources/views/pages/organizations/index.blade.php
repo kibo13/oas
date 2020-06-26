@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div id="organ-index" class="overflow-hidden pt-4 py-2">
+<div id="organ-index" class="bk-page overflow-hidden pt-4 py-2">
   <h2 class="mb-0">Предприятия</h2>
 
   @if(Auth::user()->permissions()->pluck('slug')->contains('build_full'))
@@ -19,7 +19,7 @@
           <th scope="col">#</th>
           <th scope="col">Предприятие</th>
           @if(Auth::user()->permissions()->pluck('slug')->contains('build_full'))
-          <th scope="col">Действие</th>
+          <th scope="col" class="no-sort">Действие</th>
           @endif
         </tr>
       </thead>

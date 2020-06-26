@@ -100,32 +100,6 @@ $(document).ready(function() {
 
     // if active index.blade.php
     else if (iuser) {
-        let table = document.getElementById("user-table");
-
-        // setup datatables
-        $(table).dataTable({
-            language: {
-                searchPlaceholder: "Поиск",
-                url:
-                    "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json"
-            },
-            aoColumnDefs: [
-                {
-                    bSortable: false,
-                    aTargets: [-1]
-                }
-            ],
-            lengthMenu: [
-                [10, 25, 50, -1],
-                [
-                    "Показывать по 10",
-                    "Показывать по 25",
-                    "Показывать по 50",
-                    "Все записи"
-                ]
-            ]
-        });
-
         // show-hide permissions
         $(".bk-triangle").on("click", e => {
             let elem = e.target;

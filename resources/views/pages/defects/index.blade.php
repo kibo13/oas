@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div id="defect-index" class="overflow-hidden pt-4 py-2">
+<div id="defect-index" class="bk-page overflow-hidden pt-4 py-2">
   <h2 class="mb-1">Неисправности</h2>
 
   @if(Auth::user()->permissions()->pluck('slug')->contains('defect_full'))
@@ -21,7 +21,7 @@
           <th scope="col">Принадлежность</th>
           <th scope="col">Описание</th>
           @if(Auth::user()->permissions()->pluck('slug')->contains('defect_full'))
-          <th scope="col">Действие</th>
+          <th scope="col" class="no-sort">Действие</th>
           @endif
         </tr>
       </thead>

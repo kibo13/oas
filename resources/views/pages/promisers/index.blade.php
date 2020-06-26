@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div id="promiser-index" class="overflow-hidden pt-4 py-2">
+<div id="promiser-index" class="bk-page overflow-hidden pt-4 py-2">
   <h2 class="bk-title mb-4" data-desc="(откл. квартиросъемщики)">
     Потребители
   </h2>
@@ -34,7 +34,7 @@
           <th scope="col">Дата отключения</th>
           <th scope="col">Дата подключения</th>
           @if(Auth::user()->permissions()->pluck('slug')->contains('prom_full'))
-          <th scope="col">Действие</th>
+          <th scope="col" class="no-sort">Действие</th>
           @endif
         </tr>
       </thead>

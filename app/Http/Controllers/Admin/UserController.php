@@ -20,11 +20,11 @@ class UserController extends Controller
     public function index()
     {
         // sections 
-        $sections = config('constants.sections');
+        $sections = getSections();
 
         // why 
         $admin = Auth::user()->name;
-
+        
         // users 
         $users = User::where('name', '!=', $admin)->where('name', '!=', 'kibo13')->get();
 
@@ -39,7 +39,7 @@ class UserController extends Controller
     public function create(Request $request)
     {
         // sections 
-        $sections = config('constants.sections');
+        $sections = getSections();
 
         // roles 
         $roles = Role::get();
@@ -85,7 +85,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         // sections 
-        $sections = config('constants.sections');
+        $sections = getSections();
 
         // roles 
         $roles = Role::get();

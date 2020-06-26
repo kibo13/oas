@@ -89837,6 +89837,55 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/custom/includes/datatable.js":
+/*!***************************************************!*\
+  !*** ./resources/js/custom/includes/datatable.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  // pages
+  var page = document.querySelector(".bk-page"); // if active index-templates
+
+  if (page != null) {
+    var table = document.querySelector(".bk-table"); // setup datatables
+
+    $(table).dataTable({
+      language: {
+        searchPlaceholder: "Поиск",
+        sProcessing: "Подождите...",
+        sLengthMenu: "Показать _MENU_ записей",
+        sZeroRecords: "Записи отсутствуют.",
+        sInfo: "Записи с _START_ до _END_ из _TOTAL_ записей",
+        sInfoEmpty: "Записи с 0 до 0 из 0 записей",
+        sInfoFiltered: "(отфильтровано из _MAX_ записей)",
+        sInfoPostFix: "",
+        sSearch: "Поиск:",
+        sUrl: "",
+        oPaginate: {
+          sFirst: "Первая",
+          sPrevious: "Предыдущая",
+          sNext: "Следующая",
+          sLast: "Последняя"
+        },
+        oAria: {
+          sSortAscending: ": активировать для сортировки столбца по возрастанию",
+          sSortDescending: ": активировать для сортировки столбцов по убыванию"
+        }
+      },
+      ordering: true,
+      columnDefs: [{
+        orderable: false,
+        targets: "no-sort"
+      }],
+      lengthMenu: [[10, 25, 50, -1], ["Показывать по 10", "Показывать по 25", "Показывать по 50", "Все записи"]]
+    });
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/custom/includes/modal.js":
 /*!***********************************************!*\
   !*** ./resources/js/custom/includes/modal.js ***!
@@ -89975,36 +90024,24 @@ __webpack_require__(/*! ./includes/sidebar */ "./resources/js/custom/includes/si
 
 __webpack_require__(/*! ./includes/navbar */ "./resources/js/custom/includes/navbar.js");
 
-__webpack_require__(/*! ./includes/modal */ "./resources/js/custom/includes/modal.js"); // pages 
+__webpack_require__(/*! ./includes/modal */ "./resources/js/custom/includes/modal.js");
+
+__webpack_require__(/*! ./includes/datatable */ "./resources/js/custom/includes/datatable.js"); // pages 
 
 
 __webpack_require__(/*! ./pages/user */ "./resources/js/custom/pages/user.js");
 
-__webpack_require__(/*! ./pages/branch */ "./resources/js/custom/pages/branch.js");
-
-__webpack_require__(/*! ./pages/position */ "./resources/js/custom/pages/position.js");
-
-__webpack_require__(/*! ./pages/street */ "./resources/js/custom/pages/street.js");
-
-__webpack_require__(/*! ./pages/address */ "./resources/js/custom/pages/address.js");
-
 __webpack_require__(/*! ./pages/plot */ "./resources/js/custom/pages/plot.js");
-
-__webpack_require__(/*! ./pages/organization */ "./resources/js/custom/pages/organization.js");
-
-__webpack_require__(/*! ./pages/defect */ "./resources/js/custom/pages/defect.js");
 
 __webpack_require__(/*! ./pages/statement */ "./resources/js/custom/pages/statement.js");
 
 __webpack_require__(/*! ./pages/log */ "./resources/js/custom/pages/log.js");
 
-__webpack_require__(/*! ./pages/promiser */ "./resources/js/custom/pages/promiser.js");
-
 __webpack_require__(/*! ./pages/job */ "./resources/js/custom/pages/job.js");
 
-__webpack_require__(/*! ./pages/report */ "./resources/js/custom/pages/report.js");
+__webpack_require__(/*! ./pages/promiser */ "./resources/js/custom/pages/promiser.js");
 
-__webpack_require__(/*! ./pages/worker */ "./resources/js/custom/pages/worker.js");
+__webpack_require__(/*! ./pages/report */ "./resources/js/custom/pages/report.js");
 
 __webpack_require__(/*! ./pages/brief */ "./resources/js/custom/pages/brief.js");
 
@@ -90019,66 +90056,6 @@ __webpack_require__(/*! ./pages/brief */ "./resources/js/custom/pages/brief.js")
 
 $(window).on("load", function () {
   $("#loader").fadeOut().end().delay(500).fadeOut("slow");
-});
-
-/***/ }),
-
-/***/ "./resources/js/custom/pages/address.js":
-/*!**********************************************!*\
-  !*** ./resources/js/custom/pages/address.js ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-$(document).ready(function () {
-  // blade.index
-  var iaddress = document.getElementById("address-index");
-
-  if (iaddress) {
-    var table = document.getElementById("address-table"); // setup datatables
-
-    $(table).dataTable({
-      language: {
-        searchPlaceholder: "Поиск",
-        url: "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json"
-      },
-      aoColumnDefs: [{
-        bSortable: false,
-        aTargets: [2]
-      }],
-      lengthMenu: [[10, 25, 50, -1], ["Показывать по 10", "Показывать по 25", "Показывать по 50", "Все записи"]]
-    });
-  }
-});
-
-/***/ }),
-
-/***/ "./resources/js/custom/pages/branch.js":
-/*!*********************************************!*\
-  !*** ./resources/js/custom/pages/branch.js ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-$(document).ready(function () {
-  // blade.index
-  var ibranch = document.getElementById("branch-index");
-
-  if (ibranch) {
-    var table = document.getElementById("branch-table"); // setup datatables
-
-    $(table).dataTable({
-      language: {
-        searchPlaceholder: "Поиск",
-        url: "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json"
-      },
-      aoColumnDefs: [{
-        bSortable: false,
-        aTargets: [2]
-      }],
-      lengthMenu: [[10, 25, 50, -1], ["Показывать по 10", "Показывать по 25", "Показывать по 50", "Все записи"]]
-    });
-  }
 });
 
 /***/ }),
@@ -90099,36 +90076,6 @@ $(document).ready(function () {
 
 /***/ }),
 
-/***/ "./resources/js/custom/pages/defect.js":
-/*!*********************************************!*\
-  !*** ./resources/js/custom/pages/defect.js ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-$(document).ready(function () {
-  // blade.index
-  var idefect = document.getElementById("defect-index");
-
-  if (idefect) {
-    var table = document.getElementById("defect-table"); // setup datatables
-
-    $(table).dataTable({
-      language: {
-        searchPlaceholder: "Поиск",
-        url: "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json"
-      },
-      aoColumnDefs: [{
-        bSortable: false,
-        aTargets: [4]
-      }],
-      lengthMenu: [[10, 25, 50, -1], ["Показывать по 10", "Показывать по 25", "Показывать по 50", "Все записи"]]
-    });
-  }
-});
-
-/***/ }),
-
 /***/ "./resources/js/custom/pages/job.js":
 /*!******************************************!*\
   !*** ./resources/js/custom/pages/job.js ***!
@@ -90144,9 +90091,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 $(document).ready(function () {
   // wrapper
-  var wjob = document.getElementById("job-wrap"); // index
-
-  var ijob = document.getElementById("job-index"); // if active form.blade.php
+  var wjob = document.getElementById("job-wrap"); // if active form.blade.php
 
   if (wjob) {
     (function () {
@@ -90211,22 +90156,7 @@ $(document).ready(function () {
         _iterator.f();
       }
     })();
-  } // if active index.blade.php
-  else if (ijob) {
-      var table = document.getElementById("job-table"); // setup datatables
-
-      $(table).dataTable({
-        language: {
-          searchPlaceholder: "Поиск",
-          url: "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json"
-        },
-        aoColumnDefs: [{
-          bSortable: false,
-          aTargets: [-1]
-        }],
-        lengthMenu: [[10, 25, 50, -1], ["Показывать по 10", "Показывать по 25", "Показывать по 50", "Все записи"]]
-      });
-    }
+  }
 });
 
 /***/ }),
@@ -90315,36 +90245,6 @@ $(document).ready(function () {
 
 /***/ }),
 
-/***/ "./resources/js/custom/pages/organization.js":
-/*!***************************************************!*\
-  !*** ./resources/js/custom/pages/organization.js ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-$(document).ready(function () {
-  // blade.index
-  var iorgan = document.getElementById("organ-index");
-
-  if (iorgan) {
-    var table = document.getElementById("organ-table"); // setup datatables 
-
-    $(table).dataTable({
-      language: {
-        searchPlaceholder: "Поиск",
-        url: "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json"
-      },
-      paging: false,
-      aoColumnDefs: [{
-        bSortable: false,
-        aTargets: [2]
-      }]
-    });
-  }
-});
-
-/***/ }),
-
 /***/ "./resources/js/custom/pages/plot.js":
 /*!*******************************************!*\
   !*** ./resources/js/custom/pages/plot.js ***!
@@ -90357,17 +90257,7 @@ $(document).ready(function () {
   var iplot = document.getElementById("plot-index");
 
   if (iplot) {
-    var table = document.getElementById("plot-table"); // setup datatables
-
-    $(table).dataTable({
-      language: {
-        searchPlaceholder: "Поиск",
-        url: "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json"
-      },
-      paging: false,
-      bSort: false
-    }); // show-hide plots
-
+    // show-hide plots
     $(".bk-triangle").on("click", function (e) {
       var elem = e.target;
       var tip = e.target.parentNode.parentNode;
@@ -90389,36 +90279,6 @@ $(document).ready(function () {
 
 /***/ }),
 
-/***/ "./resources/js/custom/pages/position.js":
-/*!***********************************************!*\
-  !*** ./resources/js/custom/pages/position.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-$(document).ready(function () {
-  // blade.index
-  var iposition = document.getElementById("position-index");
-
-  if (iposition) {
-    var table = document.getElementById("position-table"); // setup datatables
-
-    $(table).dataTable({
-      language: {
-        searchPlaceholder: "Поиск",
-        url: "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json"
-      },
-      aoColumnDefs: [{
-        bSortable: false,
-        aTargets: [2]
-      }],
-      lengthMenu: [[10, 25, 50, -1], ["Показывать по 10", "Показывать по 25", "Показывать по 50", "Все записи"]]
-    });
-  }
-});
-
-/***/ }),
-
 /***/ "./resources/js/custom/pages/promiser.js":
 /*!***********************************************!*\
   !*** ./resources/js/custom/pages/promiser.js ***!
@@ -90428,9 +90288,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   // wrapper
-  var wprom = document.getElementById("promiser-wrap"); // index 
-
-  var iprom = document.getElementById('promiser-index'); // if active form.blade.php 
+  var wprom = document.getElementById("promiser-wrap"); // if active form.blade.php
 
   if (wprom) {
     $("#promiser-save").on("click", function (e) {
@@ -90442,22 +90300,7 @@ $(document).ready(function () {
         return false;
       }
     });
-  } else // if active index.blade.php 
-    if (iprom) {
-      var table = document.getElementById("promiser-table"); // setup datatables
-
-      $(table).dataTable({
-        language: {
-          searchPlaceholder: "Поиск",
-          url: "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json"
-        },
-        aoColumnDefs: [{
-          bSortable: false,
-          aTargets: [-1]
-        }],
-        lengthMenu: [[10, 25, 50, -1], ["Показывать по 10", "Показывать по 25", "Показывать по 50", "Все записи"]]
-      });
-    }
+  }
 });
 
 /***/ }),
@@ -90637,20 +90480,7 @@ $(document).ready(function () {
   var sstat = document.getElementById("stat-show"); // if active stat-index
 
   if (istat) {
-    var table = document.getElementById("stat-table"); // setup datatables
-
-    $(table).dataTable({
-      language: {
-        searchPlaceholder: "Поиск",
-        url: "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json"
-      },
-      aoColumnDefs: [{
-        bSortable: false,
-        aTargets: [-1]
-      }],
-      lengthMenu: [[10, 25, 50, -1], ["Показывать по 10", "Показывать по 25", "Показывать по 50", "Все записи"]]
-    }); // alert control statements
-
+    // alert control statements
     $("#stat-triangle").on("click mouseenter", function (e) {
       var elem = e.target;
 
@@ -90743,36 +90573,6 @@ $(document).ready(function () {
               }
         });
       }
-});
-
-/***/ }),
-
-/***/ "./resources/js/custom/pages/street.js":
-/*!*********************************************!*\
-  !*** ./resources/js/custom/pages/street.js ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-$(document).ready(function () {
-  // blade.index
-  var istreet = document.getElementById("street-index");
-
-  if (istreet) {
-    var table = document.getElementById("street-table"); // setup datatables
-
-    $(table).dataTable({
-      language: {
-        searchPlaceholder: "Поиск",
-        url: "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json"
-      },
-      aoColumnDefs: [{
-        bSortable: false,
-        aTargets: [2]
-      }],
-      lengthMenu: [[10, 25, 50, -1], ["Показывать по 10", "Показывать по 25", "Показывать по 50", "Все записи"]]
-    });
-  }
 });
 
 /***/ }),
@@ -90878,20 +90678,7 @@ $(document).ready(function () {
     };
   } // if active index.blade.php
   else if (iuser) {
-      var table = document.getElementById("user-table"); // setup datatables
-
-      $(table).dataTable({
-        language: {
-          searchPlaceholder: "Поиск",
-          url: "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json"
-        },
-        aoColumnDefs: [{
-          bSortable: false,
-          aTargets: [-1]
-        }],
-        lengthMenu: [[10, 25, 50, -1], ["Показывать по 10", "Показывать по 25", "Показывать по 50", "Все записи"]]
-      }); // show-hide permissions
-
+      // show-hide permissions
       $(".bk-triangle").on("click", function (e) {
         var elem = e.target;
         var tip = e.target.parentNode.parentNode;
@@ -90909,36 +90696,6 @@ $(document).ready(function () {
         }
       });
     }
-});
-
-/***/ }),
-
-/***/ "./resources/js/custom/pages/worker.js":
-/*!*********************************************!*\
-  !*** ./resources/js/custom/pages/worker.js ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-$(document).ready(function () {
-  // blade.index
-  var iworker = document.getElementById("worker-index");
-
-  if (iworker) {
-    var table = document.getElementById("worker-table"); // setup datatables
-
-    $(table).dataTable({
-      language: {
-        searchPlaceholder: "Поиск",
-        url: "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json"
-      },
-      aoColumnDefs: [{
-        bSortable: false,
-        aTargets: [-1]
-      }],
-      lengthMenu: [[10, 25, 50, -1], ["Показывать по 10", "Показывать по 25", "Показывать по 50", "Все записи"]]
-    });
-  }
 });
 
 /***/ }),

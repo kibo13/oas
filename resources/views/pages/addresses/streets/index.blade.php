@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div id="street-index" class="overflow-hidden pt-4 py-2">
+<div id="street-index" class="bk-page overflow-hidden pt-4 py-2">
   <h2 class="mb-0">Улицы</h2>
 
   <div class="py-2 mb-1">
@@ -22,7 +22,7 @@
           <th scope="col">#</th>
           <th scope="col">Улица</th>
           @if(Auth::user()->permissions()->pluck('slug')->contains('address_full'))
-          <th scope="col">Действие</th>
+          <th scope="col" class="no-sort">Действие</th>
           @endif
         </tr>
       </thead>

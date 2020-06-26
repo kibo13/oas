@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div id="stat-index" class="overflow-hidden pt-4 py-2">
+<div id="stat-index" class="bk-page overflow-hidden pt-4 py-2">
   <h2 class="mb-1">Заявки</h2>
 
   @if(Auth::user()->permissions()->pluck('slug')->contains('bid_full'))
@@ -59,7 +59,7 @@
           <th scope="col">Неисправность</th>
           <th scope="col">Статус</th>
           <th scope="col">Принял</th>
-          <th scope="col">Действие</th>
+          <th scope="col" class="no-sort">Действие</th>
         </tr>
       </thead>
       <tbody>

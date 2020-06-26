@@ -1,8 +1,6 @@
 $(document).ready(function() {
     // wrapper
     const wjob = document.getElementById("job-wrap");
-    // index
-    const ijob = document.getElementById("job-index");
 
     // if active form.blade.php
     if (wjob) {
@@ -48,34 +46,5 @@ $(document).ready(function() {
             
         }
         
-    }
-
-    // if active index.blade.php
-    else if (ijob) {
-        let table = document.getElementById("job-table");
-
-        // setup datatables
-        $(table).dataTable({
-            language: {
-                searchPlaceholder: "Поиск",
-                url:
-                    "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json"
-            },
-            aoColumnDefs: [
-                {
-                    bSortable: false,
-                    aTargets: [-1]
-                }
-            ],
-            lengthMenu: [
-                [10, 25, 50, -1],
-                [
-                    "Показывать по 10",
-                    "Показывать по 25",
-                    "Показывать по 50",
-                    "Все записи"
-                ]
-            ]
-        });
     }
 });

@@ -5,20 +5,14 @@ require('./loader');
 require('./includes/sidebar');
 require('./includes/navbar');
 require('./includes/modal');
+require('./includes/datatable');
 
 // pages 
 require('./pages/user');
-require('./pages/branch');
-require('./pages/position');
-require('./pages/street');
-require('./pages/address');
 require('./pages/plot');
-require('./pages/organization');
-require('./pages/defect');
 require('./pages/statement');
-require('./pages/log');
-require('./pages/promiser');
-require('./pages/job');
+require("./pages/log");
+require("./pages/job");
+require("./pages/promiser");
 require("./pages/report");
-require('./pages/worker');
 require('./pages/brief');

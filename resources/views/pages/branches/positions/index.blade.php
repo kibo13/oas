@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div id="position-index" class="overflow-hidden pt-4 py-2">
+<div id="position-index" class="bk-page overflow-hidden pt-4 py-2">
   <h2 class="mb-0">Должности</h2>
 
   <div class="py-2 mb-1">
@@ -22,7 +22,7 @@
           <th scope="col">#</th>
           <th scope="col">Должность</th>
           @if(Auth::user()->permissions()->pluck('slug')->contains('branch_full'))
-          <th scope="col">Действие</th>
+          <th scope="col" class="no-sort">Действие</th>
           @endif
         </tr>
       </thead>

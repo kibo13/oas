@@ -22,7 +22,7 @@
           <th scope="col">Принятые меры</th>
           <th scope="col">Внес изменения</th>
           @if(Auth::user()->permissions()->pluck('slug')->contains('bid_full'))
-          <th scope="col">Действие</th>
+          <th scope="col" class="no-sort">Действие</th>
           @endif
         </tr>
       </thead>
