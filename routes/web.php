@@ -58,6 +58,7 @@ Route::middleware(['auth'])->group(function () {
     ], function () {
         Route::get('jobs', 'JobController@index')->name('jobs.index');
         Route::get('jobs/{job}', 'JobController@show')->name('jobs.show');
+        Route::get('report/{job}', 'ReportController@job')->name('report.job');
     });
 
     // permission: promisers
@@ -179,7 +180,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/work', 'ReportController@work')->name('report.work');
         Route::get('/crash', 'ReportController@crash')->name('report.crash');
         Route::get('/brief', 'ReportController@brief')->name('report.brief');
-        Route::get('/{job}', 'ReportController@job')->name('report.job');
     });
 
     // permission:home 
