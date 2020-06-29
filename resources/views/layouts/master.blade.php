@@ -54,6 +54,10 @@
   @include('includes.modals.destroy')
   <!-- END modal-destroy -->
 
+  <!-- START modal-about -->
+  @include('includes.modals.about')
+  <!-- END modal-about -->
+
 </body>
 
 

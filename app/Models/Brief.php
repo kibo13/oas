@@ -18,6 +18,13 @@ class Brief extends Model
         'cw_ot',
         'cw_tf',
         'cw_fs',
-        'cw_s'
+        'cw_s',
+        'kg_pst',
+        'kg_pbk',
+        'kg_r',
+        'kg_ot',
+        'kg_tf',
+        'kg_fs',
+        'kg_s'
     ];
 }

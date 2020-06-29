@@ -10,7 +10,7 @@
           <th colspan="4" class="bk-line-height text-center align-top">Параметры гор.воды</th>
           <th colspan="5" class="bk-line-height text-center">
             Параметры хол.воды<br>
-            <small class="text-muted">кгс/см<span class="align-top">2</span></small>
+            <small class="text-muted">МПа</small>
 
           </th>
           @if(Auth::user()->permissions()->pluck('slug')->contains('grap_full'))
@@ -21,7 +21,7 @@
           <th scope="col" class="bk-line-height text-center">
             Р<small class="text-muted align-bottom">пр</small>
             <br>
-            <small class="text-muted">кгс/см<span class="align-top">2</span></small>
+            <small class="text-muted">МПа</small>
 
           </th>
           <th scope="col" class="bk-line-height text-center">
@@ -32,7 +32,7 @@
           </th>
           <th scope="col" class="bk-line-height text-center">Р<small class="text-muted align-bottom">обр</small>
             <br>
-            <small class="text-muted">кгс/см<span class="align-top">2</span></small>
+            <small class="text-muted">МПа</small>
           </th>
           <th scope="col" class="bk-line-height text-center">Т<small class="text-muted align-bottom">обр</small> <br>
             <small class="text-muted">градус</span></small>

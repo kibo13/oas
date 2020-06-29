@@ -90067,11 +90067,84 @@ $(window).on("load", function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 $(document).ready(function () {
-  $('#brief-print').on('click', function (e) {
-    e.preventDefault();
-    window.print();
-  });
+  // blade-templates
+  var ibrief = document.getElementById("brief-index");
+  var fbrief = document.getElementById("brief-form"); // if active index.blade.php
+
+  if (ibrief) {
+    $("#brief-print").on("click", function (e) {
+      e.preventDefault();
+      window.print();
+    });
+  } // if active form.blade.php
+  else if (fbrief) {
+      (function () {
+        var getMPa = function getMPa(value) {
+          var pa = 98066.5;
+          return value * pa / 1000000;
+        };
+
+        // values of pressure
+        var values = document.querySelectorAll(".bk-pa");
+
+        var _iterator = _createForOfIteratorHelper(values),
+            _step;
+
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var val = _step.value;
+            val.addEventListener("change", function (e) {
+              var attr = e.target.dataset.pa;
+              var temp = e.target.value;
+
+              switch (attr) {
+                case "hw_pst":
+                  $("#hw_pst").val(getMPa(temp));
+                  break;
+
+                case "hw_pbk":
+                  $("#hw_pbk").val(getMPa(temp));
+                  break;
+
+                case "cw_r":
+                  $("#cw_r").val(getMPa(temp));
+                  break;
+
+                case "cw_ot":
+                  $("#cw_ot").val(getMPa(temp));
+                  break;
+
+                case "cw_tf":
+                  $("#cw_tf").val(getMPa(temp));
+                  break;
+
+                case "cw_fs":
+                  $("#cw_fs").val(getMPa(temp));
+                  break;
+
+                case "cw_s":
+                  $("#cw_s").val(getMPa(temp));
+                  break;
+
+                default:
+                  break;
+              }
+            });
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
+      })();
+    }
 });
 
 /***/ }),

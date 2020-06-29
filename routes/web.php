@@ -171,16 +171,17 @@ Route::middleware(['auth'])->group(function () {
 
     // permission:reports 
     Route::group([
-        'middleware' => 'permission:repo',
-        'prefix' => 'report'
+        'middleware' => 'permission:repo'
     ], function () {
-        Route::get('', 'ReportController@index')->name('report.index');
-        Route::get('/address', 'ReportController@address')->name('report.address');
-        Route::get('/plot', 'ReportController@plot')->name('report.plot');
-        Route::get('/work', 'ReportController@work')->name('report.work');
-        Route::get('/crash', 'ReportController@crash')->name('report.crash');
-        Route::get('/brief', 'ReportController@brief')->name('report.brief');
+        Route::get('report', 'ReportController@index')->name('report.index');
+        Route::get('report`/address', 'ReportController@address')->name('report.address');
+        Route::get('report`/plot', 'ReportController@plot')->name('report.plot');
+        Route::get('report`/work', 'ReportController@work')->name('report.work');
+        Route::get('report`/crash', 'ReportController@crash')->name('report.crash');
+        Route::get('report`/brief', 'ReportController@brief')->name('report.brief');
     });
+
+    
 
     // permission:home 
     Route::group([

@@ -112,6 +112,5 @@
     </li>
     @endif
     <!-- END Briefs -->
-
   </ul>
 </nav>
