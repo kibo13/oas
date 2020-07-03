@@ -11,7 +11,7 @@
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 26/06/2020 02:08:32
+ Date: 03/07/2020 15:26:48
 */
 
 SET NAMES utf8mb4;
@@ -1242,36 +1242,43 @@ CREATE TABLE `briefs`  (
   `pressure` smallint(6) NOT NULL,
   `hw_tst` tinyint(4) NOT NULL,
   `hw_tbk` tinyint(4) NOT NULL,
-  `hw_pst` decimal(2, 1) NOT NULL,
-  `hw_pbk` decimal(2, 1) NOT NULL,
-  `cw_r` decimal(2, 1) NOT NULL,
-  `cw_ot` decimal(2, 1) NOT NULL,
-  `cw_tf` decimal(2, 1) NOT NULL,
-  `cw_fs` decimal(2, 1) NOT NULL,
-  `cw_s` decimal(2, 1) NOT NULL,
+  `hw_pst` decimal(8, 2) NULL DEFAULT NULL,
+  `hw_pbk` decimal(8, 2) NULL DEFAULT NULL,
+  `cw_r` decimal(8, 2) NULL DEFAULT NULL,
+  `cw_ot` decimal(8, 2) NULL DEFAULT NULL,
+  `cw_tf` decimal(8, 2) NULL DEFAULT NULL,
+  `cw_fs` decimal(8, 2) NULL DEFAULT NULL,
+  `cw_s` decimal(8, 2) NULL DEFAULT NULL,
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `kg_pst` decimal(8, 2) NOT NULL,
+  `kg_pbk` decimal(8, 2) NOT NULL,
+  `kg_r` decimal(8, 2) NOT NULL,
+  `kg_ot` decimal(8, 2) NOT NULL,
+  `kg_tf` decimal(8, 2) NOT NULL,
+  `kg_fs` decimal(8, 2) NOT NULL,
+  `kg_s` decimal(8, 2) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of briefs
 -- ----------------------------
-INSERT INTO `briefs` VALUES (1, '2020-05-11', 37, 380, 60, 55, 5.8, 2.5, 2.8, 2.8, 3.1, 3.2, 3.1, '2020-05-30 19:58:02', '2020-05-31 06:57:14');
-INSERT INTO `briefs` VALUES (2, '2020-05-12', 36, 379, 60, 47, 5.9, 2.5, 3.0, 3.0, 3.1, 3.2, 3.2, '2020-05-30 20:10:06', '2020-05-31 06:57:20');
-INSERT INTO `briefs` VALUES (3, '2020-05-13', 37, 376, 57, 50, 5.9, 2.9, 3.0, 3.1, 3.1, 3.2, 3.1, '2020-05-31 07:12:06', '2020-05-31 07:12:06');
-INSERT INTO `briefs` VALUES (4, '2020-05-14', 37, 380, 58, 48, 5.8, 3.0, 2.9, 3.1, 3.1, 3.1, 3.3, '2020-05-31 07:12:56', '2020-05-31 07:12:56');
-INSERT INTO `briefs` VALUES (5, '2020-05-15', 38, 380, 60, 47, 6.3, 2.5, 3.0, 3.0, 3.0, 3.1, 3.1, '2020-05-31 07:13:56', '2020-05-31 07:13:56');
-INSERT INTO `briefs` VALUES (6, '2020-05-16', 39, 380, 57, 50, 6.2, 2.1, 3.2, 3.1, 3.1, 3.2, 3.2, '2020-05-31 07:14:44', '2020-05-31 07:14:44');
-INSERT INTO `briefs` VALUES (7, '2020-05-17', 38, 380, 60, 51, 6.0, 2.4, 2.9, 2.9, 3.0, 3.1, 3.1, '2020-05-31 07:15:40', '2020-05-31 07:15:40');
-INSERT INTO `briefs` VALUES (8, '2020-05-18', 36, 380, 58, 55, 6.5, 2.4, 3.0, 3.0, 3.0, 3.2, 3.1, '2020-05-31 07:16:41', '2020-05-31 07:16:41');
-INSERT INTO `briefs` VALUES (9, '2020-05-19', 34, 370, 61, 48, 6.1, 2.1, 2.9, 2.9, 3.1, 3.1, 3.0, '2020-05-31 07:17:37', '2020-05-31 07:17:37');
-INSERT INTO `briefs` VALUES (10, '2020-05-20', 33, 380, 57, 50, 6.4, 2.5, 2.8, 2.8, 2.8, 3.0, 2.9, '2020-05-31 07:18:24', '2020-05-31 07:18:24');
-INSERT INTO `briefs` VALUES (11, '2020-05-21', 32, 380, 68, 50, 6.0, 2.1, 2.9, 2.9, 3.0, 3.0, 3.0, '2020-05-31 07:19:24', '2020-05-31 07:19:24');
-INSERT INTO `briefs` VALUES (12, '2020-05-22', 32, 380, 61, 46, 5.9, 2.0, 3.0, 3.0, 3.0, 3.1, 3.1, '2020-05-31 07:20:13', '2020-05-31 07:20:13');
-INSERT INTO `briefs` VALUES (13, '2020-05-23', 33, 380, 71, 47, 6.5, 2.5, 3.2, 3.2, 3.2, 3.3, 3.3, '2020-05-31 07:21:06', '2020-05-31 07:21:06');
-INSERT INTO `briefs` VALUES (14, '2020-05-24', 31, 380, 58, 49, 6.3, 2.5, 3.2, 3.2, 3.2, 3.3, 3.3, '2020-05-31 07:21:44', '2020-05-31 07:21:44');
-INSERT INTO `briefs` VALUES (15, '2020-05-25', 37, 380, 56, 51, 5.9, 2.9, 3.0, 3.1, 3.2, 3.2, 3.3, '2020-06-09 16:10:05', '2020-06-09 16:10:05');
+INSERT INTO `briefs` VALUES (1, '2020-05-11', 37, 380, 60, 55, 0.57, 0.25, 0.27, 0.27, 0.30, 0.31, 0.30, '2020-05-30 19:58:02', '2020-06-29 21:41:14', 5.80, 2.50, 2.80, 2.80, 3.10, 3.20, 3.10);
+INSERT INTO `briefs` VALUES (2, '2020-05-12', 36, 379, 60, 47, 0.58, 0.25, 0.29, 0.29, 0.30, 0.31, 0.31, '2020-05-30 20:10:06', '2020-06-29 21:42:14', 5.90, 2.50, 3.00, 3.00, 3.10, 3.20, 3.20);
+INSERT INTO `briefs` VALUES (3, '2020-05-13', 37, 376, 57, 50, 0.58, 0.28, 0.29, 0.30, 0.30, 0.31, 0.30, '2020-05-31 07:12:06', '2020-06-29 21:42:27', 5.90, 2.90, 3.00, 3.10, 3.10, 3.20, 3.10);
+INSERT INTO `briefs` VALUES (4, '2020-05-14', 37, 380, 58, 48, 0.57, 0.29, 0.28, 0.30, 0.30, 0.30, 0.32, '2020-05-31 07:12:56', '2020-06-29 21:42:42', 5.80, 3.00, 2.90, 3.10, 3.10, 3.10, 3.30);
+INSERT INTO `briefs` VALUES (5, '2020-05-15', 38, 380, 60, 47, 0.62, 0.25, 0.29, 0.29, 0.29, 0.30, 0.30, '2020-05-31 07:13:56', '2020-06-29 21:42:57', 6.30, 2.50, 3.00, 3.00, 3.00, 3.10, 3.10);
+INSERT INTO `briefs` VALUES (6, '2020-05-16', 39, 380, 57, 50, 0.61, 0.21, 0.31, 0.30, 0.30, 0.31, 0.31, '2020-05-31 07:14:44', '2020-06-29 21:43:16', 6.20, 2.10, 3.20, 3.10, 3.10, 3.20, 3.20);
+INSERT INTO `briefs` VALUES (7, '2020-05-17', 38, 380, 60, 51, 0.59, 0.24, 0.28, 0.28, 0.29, 0.30, 0.30, '2020-05-31 07:15:40', '2020-06-29 21:43:36', 6.00, 2.40, 2.90, 2.90, 3.00, 3.10, 3.10);
+INSERT INTO `briefs` VALUES (8, '2020-05-18', 36, 380, 58, 55, 0.64, 0.24, 0.29, 0.29, 0.29, 0.31, 0.30, '2020-05-31 07:16:41', '2020-06-29 21:43:47', 6.50, 2.40, 3.00, 3.00, 3.00, 3.20, 3.10);
+INSERT INTO `briefs` VALUES (9, '2020-05-19', 34, 370, 61, 48, 0.60, 0.21, 0.28, 0.28, 0.30, 0.30, 0.29, '2020-05-31 07:17:37', '2020-06-29 21:44:00', 6.10, 2.10, 2.90, 2.90, 3.10, 3.10, 3.00);
+INSERT INTO `briefs` VALUES (10, '2020-05-20', 33, 380, 57, 50, 0.63, 0.25, 0.27, 0.27, 0.27, 0.29, 0.28, '2020-05-31 07:18:24', '2020-06-29 21:44:13', 6.40, 2.50, 2.80, 2.80, 2.80, 3.00, 2.90);
+INSERT INTO `briefs` VALUES (11, '2020-05-21', 32, 380, 68, 50, 0.59, 0.21, 0.28, 0.28, 0.29, 0.29, 0.29, '2020-05-31 07:19:24', '2020-06-29 21:44:30', 6.00, 2.10, 2.90, 2.90, 3.00, 3.00, 3.00);
+INSERT INTO `briefs` VALUES (12, '2020-05-22', 32, 380, 61, 46, 0.58, 0.20, 0.29, 0.29, 0.29, 0.30, 0.30, '2020-05-31 07:20:13', '2020-06-29 21:44:43', 5.90, 2.00, 3.00, 3.00, 3.00, 3.10, 3.10);
+INSERT INTO `briefs` VALUES (13, '2020-05-23', 33, 380, 71, 47, 0.64, 0.25, 0.31, 0.31, 0.31, 0.32, 0.32, '2020-05-31 07:21:06', '2020-06-29 21:45:31', 6.50, 2.50, 3.20, 3.20, 3.20, 3.30, 3.30);
+INSERT INTO `briefs` VALUES (14, '2020-05-24', 31, 380, 58, 49, 0.62, 0.25, 0.31, 0.31, 0.31, 0.32, 0.32, '2020-05-31 07:21:44', '2020-06-29 21:45:50', 6.30, 2.50, 3.20, 3.20, 3.20, 3.30, 3.30);
+INSERT INTO `briefs` VALUES (15, '2020-05-25', 37, 380, 56, 51, 0.58, 0.28, 0.29, 0.30, 0.31, 0.31, 0.32, '2020-06-09 16:10:05', '2020-06-29 21:46:07', 5.90, 2.90, 3.00, 3.10, 3.20, 3.20, 3.30);
 
 -- ----------------------------
 -- Table structure for defects
@@ -1404,7 +1411,13 @@ CREATE TABLE `logs`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `logs_statement_id_foreign`(`statement_id`) USING BTREE,
   CONSTRAINT `logs_statement_id_foreign` FOREIGN KEY (`statement_id`) REFERENCES `statements` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of logs
+-- ----------------------------
+INSERT INTO `logs` VALUES (2, 23, '2020-05-17', '11:33:00', 'Временно скрутили проводку', 'Шукиров', 'ЖЭУ-3', 1, '2020-06-29 20:19:40', '2020-06-29 20:19:40');
+INSERT INTO `logs` VALUES (3, 1, '2020-06-10', '10:55:00', 'Подтянули контакты в автомате', 'Громов', 'ЖЭУ-2', 1, '2020-06-29 20:20:50', '2020-06-29 20:20:50');
 
 -- ----------------------------
 -- Table structure for migrations
@@ -1415,7 +1428,7 @@ CREATE TABLE `migrations`  (
   `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 115 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 120 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of migrations
@@ -1445,6 +1458,7 @@ INSERT INTO `migrations` VALUES (111, '2020_06_25_135551_create_permissions_tabl
 INSERT INTO `migrations` VALUES (112, '2020_06_25_135612_create_permission_user_table', 6);
 INSERT INTO `migrations` VALUES (113, '2020_06_25_135911_alter_users_table', 7);
 INSERT INTO `migrations` VALUES (114, '2020_06_25_171144_alter_permissions_table', 8);
+INSERT INTO `migrations` VALUES (119, '2020_06_29_192936_alter_briefs_table', 9);
 
 -- ----------------------------
 -- Table structure for organizations
@@ -1516,30 +1530,6 @@ INSERT INTO `permission_user` VALUES (6, 17);
 INSERT INTO `permission_user` VALUES (8, 17);
 INSERT INTO `permission_user` VALUES (10, 17);
 INSERT INTO `permission_user` VALUES (12, 17);
-INSERT INTO `permission_user` VALUES (2, 2);
-INSERT INTO `permission_user` VALUES (3, 2);
-INSERT INTO `permission_user` VALUES (1, 2);
-INSERT INTO `permission_user` VALUES (4, 2);
-INSERT INTO `permission_user` VALUES (5, 2);
-INSERT INTO `permission_user` VALUES (6, 2);
-INSERT INTO `permission_user` VALUES (7, 2);
-INSERT INTO `permission_user` VALUES (8, 2);
-INSERT INTO `permission_user` VALUES (9, 2);
-INSERT INTO `permission_user` VALUES (10, 2);
-INSERT INTO `permission_user` VALUES (11, 2);
-INSERT INTO `permission_user` VALUES (12, 2);
-INSERT INTO `permission_user` VALUES (13, 2);
-INSERT INTO `permission_user` VALUES (14, 2);
-INSERT INTO `permission_user` VALUES (15, 2);
-INSERT INTO `permission_user` VALUES (16, 2);
-INSERT INTO `permission_user` VALUES (17, 2);
-INSERT INTO `permission_user` VALUES (18, 2);
-INSERT INTO `permission_user` VALUES (19, 2);
-INSERT INTO `permission_user` VALUES (20, 2);
-INSERT INTO `permission_user` VALUES (21, 2);
-INSERT INTO `permission_user` VALUES (22, 2);
-INSERT INTO `permission_user` VALUES (23, 2);
-INSERT INTO `permission_user` VALUES (24, 2);
 INSERT INTO `permission_user` VALUES (18, 14);
 INSERT INTO `permission_user` VALUES (19, 14);
 INSERT INTO `permission_user` VALUES (20, 14);
@@ -1661,6 +1651,20 @@ INSERT INTO `permission_user` VALUES (21, 1);
 INSERT INTO `permission_user` VALUES (22, 1);
 INSERT INTO `permission_user` VALUES (23, 1);
 INSERT INTO `permission_user` VALUES (24, 1);
+INSERT INTO `permission_user` VALUES (1, 2);
+INSERT INTO `permission_user` VALUES (2, 2);
+INSERT INTO `permission_user` VALUES (3, 2);
+INSERT INTO `permission_user` VALUES (4, 2);
+INSERT INTO `permission_user` VALUES (6, 2);
+INSERT INTO `permission_user` VALUES (8, 2);
+INSERT INTO `permission_user` VALUES (10, 2);
+INSERT INTO `permission_user` VALUES (12, 2);
+INSERT INTO `permission_user` VALUES (14, 2);
+INSERT INTO `permission_user` VALUES (16, 2);
+INSERT INTO `permission_user` VALUES (18, 2);
+INSERT INTO `permission_user` VALUES (20, 2);
+INSERT INTO `permission_user` VALUES (22, 2);
+INSERT INTO `permission_user` VALUES (24, 2);
 
 -- ----------------------------
 -- Table structure for permissions
@@ -1816,7 +1820,7 @@ CREATE TABLE `roles`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of roles
@@ -1871,7 +1875,6 @@ CREATE TABLE `statements`  (
 -- Records of statements
 -- ----------------------------
 INSERT INTO `statements` VALUES (1, 2, 8, '19', 17, 'Филатов', '7-20-31', '2020-06-10', '09:54:00', 1, 'Выбивает автомат в щитке', 17, 0, 0, 0, 0, 0, 0, '2020-06-10', '10:55:00', 'Подтянули контакты в автомате', 'Репин', 'ОАС', 1, '2020-06-14 11:33:51', '2020-06-15 07:17:18');
-INSERT INTO `statements` VALUES (2, 3, 24, '14', 21, 'Плюшкин', '7-11-04', '2020-06-10', '10:15:00', 2, 'Протекает санузел', 36, 0, 0, 0, 1, 1, 0, '2020-06-10', '12:31:00', 'Перекрыли стояк г/в и х/в', 'Репин', 'ОАС', 1, '2020-06-14 11:36:26', '2020-06-15 07:17:37');
 INSERT INTO `statements` VALUES (3, 1, 17, '27', 2, 'Морозов', '4-34-63', '2020-05-10', '09:44:00', 1, 'Обрыв нуля в РЩ', 12, 0, 0, 0, 0, 0, 0, '2020-05-10', '11:05:00', 'Заменили проводку', 'Крикун', 'ЖЭУ-1', 2, NULL, '2020-06-14 16:21:49');
 INSERT INTO `statements` VALUES (4, 1, 17, '31', 3, 'Кузнецова', '5-56-58', '2020-05-11', '10:11:00', 1, 'КЗ стоячной фазы', 23, 0, 0, 0, 0, 0, 0, '2020-05-11', '14:38:00', 'Прочее по электрике', 'Крикун', 'ЖЭУ-1', 2, NULL, '2020-06-14 16:22:56');
 INSERT INTO `statements` VALUES (5, 1, 19, '6', 17, 'Черненко', '6-41-45', '2020-05-12', '09:35:00', 2, 'Протекает труба в комнате', 25, 0, 0, 0, 0, 1, 0, '2020-05-12', '11:31:00', 'Перекрыли стояк х/в', 'Тен', 'ЖЭУ-1', 1, '2020-06-14 12:32:11', '2020-06-14 13:56:15');
@@ -1892,7 +1895,7 @@ INSERT INTO `statements` VALUES (19, 2, 7, '24', 17, 'Чубаров', '6-66-88'
 INSERT INTO `statements` VALUES (20, 2, 7, '26', 18, 'Ким', '6-41-47', '2020-05-17', '11:22:00', 2, 'Канализация кухонная', NULL, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 'Платонов', 'ЖЭУ-2', 0, NULL, NULL);
 INSERT INTO `statements` VALUES (21, 2, 7, '26а', 19, 'Шек', '4-34-65', '2020-05-17', '14:54:00', 2, 'Дыры в канализац.стояке', NULL, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 'Платонов', 'ЖЭУ-2', 0, NULL, NULL);
 INSERT INTO `statements` VALUES (22, 2, 2, '20', 20, 'Тен', '5-56-60', '2020-05-17', '09:54:00', 1, 'Обрыв нуля в РЩ', NULL, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 'Платонов', 'ЖЭУ-2', 0, NULL, NULL);
-INSERT INTO `statements` VALUES (23, 3, 2, '39', 21, 'Огай', '4-57-76', '2020-05-17', '10:33:00', 1, 'КЗ стоячной фазы', NULL, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 'Шукиров', 'ЖЭУ-3', 0, NULL, NULL);
+INSERT INTO `statements` VALUES (23, 3, 2, '39', 21, 'Огай', '4-57-76', '2020-05-17', '10:33:00', 1, 'КЗ стоячной фазы', 11, 0, 0, 0, 0, 0, 0, '2020-05-17', '11:33:00', 'Временно скрутили проводку', 'Шукиров', 'ЖЭУ-3', 1, NULL, '2020-06-29 20:19:42');
 INSERT INTO `statements` VALUES (24, 3, 2, '41', 22, 'Шолохов', '6-66-89', '2020-05-18', '09:37:00', 1, 'Обрыв нуля в РЩ', NULL, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 'Шукиров', 'ЖЭУ-3', 0, NULL, NULL);
 INSERT INTO `statements` VALUES (25, 3, 2, '43', 23, 'Бакин', '6-41-48', '2020-05-10', '09:44:00', 1, 'КЗ стоячной фазы', NULL, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 'Шукиров', 'ЖЭУ-3', 0, NULL, NULL);
 INSERT INTO `statements` VALUES (26, 3, 24, '10', 24, 'Царев', '4-34-66', '2020-05-10', '10:11:00', 2, 'Порыв стояка отопления', NULL, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 'Шукиров', 'ЖЭУ-3', 0, NULL, NULL);
@@ -2074,12 +2077,12 @@ CREATE TABLE `users`  (
   `role_id` bigint(20) UNSIGNED NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'kibo13', 'admin@oas.com', NULL, '$2y$10$YzZ7J8plBtJDiyDFi7/F3OgxJ2FTV2sgs1W0LATmp7N8aHXbWJjN.', NULL, '2020-06-09 15:25:35', '2020-06-25 21:08:16', 1);
+INSERT INTO `users` VALUES (1, 'kibo13', 'admin@oas.com', NULL, '$2y$10$QCTdPDlDwEw99801SoDPxud51b4Znf4OYA6K/u.MpqXCfyc4EdwO.', NULL, '2020-06-09 15:25:35', '2020-06-25 21:09:49', 1);
 INSERT INTO `users` VALUES (2, 'Админ', 'admin@oas.info', NULL, '$2y$10$CbHG.VKYAb.7BQVfdlUh..3635NzHmzUq76gk0TV/tKBm4AZx7Z7G', NULL, '2020-06-16 14:59:14', '2020-06-25 16:30:04', 1);
 INSERT INTO `users` VALUES (3, 'Репин', 'oas@oas.info', NULL, '$2y$10$lWcGeZQJQqyaIm8NPni/0O7ecPUABmADuEsF1MKYrRyeZvhIp0HpC', NULL, '2020-06-16 15:03:26', '2020-06-25 16:44:15', 2);
 INSERT INTO `users` VALUES (4, 'Крикун', 'krikun_oas@oas.info', NULL, '$2y$10$tJqPrQNA1AxsQD1Cmu0Ra..TISdSrMtvywAU3mWgiIs7FezCrUoem', NULL, '2020-06-16 15:06:37', '2020-06-25 16:44:22', 3);

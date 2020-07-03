@@ -10,6 +10,9 @@
 
   <title>АИС диспетчера отдела аварийной службы ГУП ЖХ</title>
 
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{{ asset('images/logo.png') }}">
+
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
 

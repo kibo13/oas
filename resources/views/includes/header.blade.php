@@ -65,11 +65,6 @@
 				@endif
 				<!-- /.info -->
 
-				<li>
-					<a class="nav-link" href="javascript:void(0)" data-toggle="modal" data-target="#bk-about-modal">Справка</a>
-				</li>
-				<!-- /.about -->
-
 				<li class="nav-item dropdown">
 					<a id="navbarDropdown" class="nav-link dropdown-toggle bk-navbar__info pr-3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 						{{ Auth::user()->name }}
